@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | 4LJTek</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="4LJTek Logo">
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" class="active">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
+        <p>Review your items before checkout.</p>
+    </div>
+</section>
+
+<section class="cart-section">
+    <div class="container">
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody id="cart-items">
+
+                <tr>
+                    <td>iPhone 16 Pro Max</td>
+                    <td>KSh 126,000</td>
+                    <td>1</td>
+                    <td>KSh 126,000</td>
+                    <td>
+                        <button class="remove-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+
+            <p><strong>Subtotal:</strong> KSh 126,000</p>
+            <p><strong>Delivery:</strong> Calculated at checkout</p>
+
+            <h3>Total: KSh 126,000</h3>
+
+            <a href="checkout.html" class="btn">
+                Proceed to Checkout
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
