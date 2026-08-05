@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders | 4LJTek</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4LJTek Orders</h1>
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="index.html">Store</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <h2>Customer Orders</h2>
+
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="orders-body">
+        </tbody>
+    </table>
+
+    <div style="margin-top:20px;">
+        <button class="btn" onclick="clearOrders()">
+            Clear Orders
+        </button>
+    </div>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
+const tbody = document.getElementById("orders-body");
+
+function loadOrders() {
+
+    tbody.innerHTML = "";
+
+    if (orders.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6">No orders yet.</td>
+            </tr>
+        `;
+        return;
+    }
+
+    orders.forEach((order, index) => {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>#${index + 1}</td>
+            <td>${order.name || "Customer"}</td>
+            <td>${order.phone || "-"}</td>
+            <td>KSh ${(order.total || 0).toLocaleString()}</td>
+            <td>${order.payment || "M-Pesa"}</td>
+            <td>${order.status || "Pending"}</td>
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+function clearOrders(){
+
+    if(confirm("Delete all orders?")){
+
+        localStorage.removeItem("orders");
+
+        location.reload();
+
+    }
+
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>
