@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products | 4LJTek</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4LJTek Product Manager</h1>
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="orders.html">Orders</a>
+            <a href="index.html">Store</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <h2>Add New Product</h2>
+
+    <form id="productForm">
+        <input type="text" id="name" placeholder="Product Name" required>
+
+        <input type="number" id="price" placeholder="Price (KSh)" required>
+
+        <input type="text" id="image" placeholder="Image URL or images/product.jpg" required>
+
+        <textarea id="description" placeholder="Product Description"></textarea>
+
+        <button type="submit" class="btn">Add Product</button>
+    </form>
+
+    <hr>
+
+    <h2>Available Products</h2>
+
+    <div id="productList"></div>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const form = document.getElementById("productForm");
+const productList = document.getElementById("productList");
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function saveProducts() {
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+function displayProducts() {
+    productList.innerHTML = "";
+
+    if (products.length === 0) {
+        productList.innerHTML = "<p>No products added yet.</p>";
+        return;
+    }
+
+    products.forEach((product, index) => {
+        productList.innerHTML += `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" style="width:120px;height:auto;">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p><strong>KSh ${Number(product.price).toLocaleString()}</strong></p>
+
+                <button class="btn" onclick="deleteProduct(${index})">
+                    Delete
+                </button>
+            </div>
+            <hr>
+        `;
+    });
+}
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    products.push({
+        name: document.getElementById("name").value,
+        price: document.getElementById("price").value,
+        image: document.getElementById("image").value,
+        description: document.getElementById("description").value
+    });
+
+    saveProducts();
+    displayProducts();
+    form.reset();
+
+    alert("Product added successfully!");
+});
+
+function deleteProduct(index) {
+    if (confirm("Delete this product?")) {
+        products.splice(index, 1);
+        saveProducts();
+        displayProducts();
+    }
+}
+
+displayProducts();
+</script>
+
+</body>
+</html>
