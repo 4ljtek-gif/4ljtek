@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | 4LJTek</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4LJTek</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cart.html">Cart</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="checkout container">
+    <h2>Checkout</h2>
+    <p>Please fill in your details to complete your order.</p>
+
+    <form id="checkout-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="07XXXXXXXX" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email">
+
+        <label for="address">Delivery Address</label>
+        <textarea id="address" rows="4" required></textarea>
+
+        <label for="payment">Payment Method</label>
+        <select id="payment" required>
+            <option value="">Select Payment Method</option>
+            <option>M-Pesa</option>
+            <option>Cash on Delivery</option>
+            <option>Bank Transfer</option>
+        </select>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <p>Items: <span id="checkout-items">0</span></p>
+            <p>Total: <strong>KSh <span id="checkout-total">0</span></strong></p>
+        </div>
+
+        <button type="submit" class="btn">Place Order</button>
+    </form>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+
+document.getElementById("checkout-items").textContent = cart.length;
+
+cart.forEach(item => {
+    total += item.price * item.quantity;
+});
+
+document.getElementById("checkout-total").textContent = total.toLocaleString();
+
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    alert("Thank you for shopping with 4LJTek! Your order has been received.");
+
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>
