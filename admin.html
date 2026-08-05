@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4LJTek Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4LJTek Admin Dashboard</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="orders.html">Orders</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="admin-section">
+        <h2>Store Overview</h2>
+
+        <div class="admin-cards">
+            <div class="card">
+                <h3>Total Products</h3>
+                <p id="total-products">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <p id="total-orders">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Sales</h3>
+                <p>KSh <span id="total-sales">0</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-section">
+        <h2>Quick Actions</h2>
+
+        <button class="btn" onclick="location.href='products.html'">
+            Manage Products
+        </button>
+
+        <button class="btn" onclick="location.href='orders.html'">
+            View Orders
+        </button>
+
+        <button class="btn" onclick="location.href='index.html'">
+            Visit Store
+        </button>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const products = JSON.parse(localStorage.getItem("products")) || [];
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let sales = 0;
+
+orders.forEach(order => {
+    sales += order.total || 0;
+});
+
+document.getElementById("total-products").textContent = products.length;
+document.getElementById("total-orders").textContent = orders.length;
+document.getElementById("total-sales").textContent = sales.toLocaleString();
+</script>
+
+</body>
+</html>
