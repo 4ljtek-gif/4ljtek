@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Receipt | 4LJTek</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4LJTek</h1>
+    </div>
+</header>
+
+<section class="container receipt">
+    <div class="receipt-card">
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for shopping with <strong>4LJTek</strong>.</p>
+
+        <hr>
+
+        <p><strong>Order Number:</strong> <span id="order-id"></span></p>
+        <p><strong>Date:</strong> <span id="order-date"></span></p>
+        <p><strong>Payment Method:</strong> <span id="payment-method"></span></p>
+
+        <hr>
+
+        <h3>Order Summary</h3>
+        <div id="receipt-items"></div>
+
+        <h3>Total: KSh <span id="receipt-total">0</span></h3>
+
+        <hr>
+
+        <p>Your order has been received successfully.</p>
+        <p>We'll contact you shortly to confirm delivery.</p>
+
+        <br>
+
+        <button onclick="window.print()" class="btn">
+            Print Receipt
+        </button>
+
+        <a href="index.html" class="btn">
+            Continue Shopping
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+const itemsContainer = document.getElementById("receipt-items");
+
+cart.forEach(item => {
+    total += item.price * item.quantity;
+
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <p>
+            ${item.name} × ${item.quantity}
+            <span style="float:right;">
+                KSh ${(item.price * item.quantity).toLocaleString()}
+            </span>
+        </p>
+    `;
+    itemsContainer.appendChild(div);
+});
+
+document.getElementById("receipt-total").textContent =
+    total.toLocaleString();
+
+document.getElementById("order-id").textContent =
+    "4LJ" + Math.floor(Math.random() * 1000000);
+
+document.getElementById("order-date").textContent =
+    new Date().toLocaleString();
+
+document.getElementById("payment-method").textContent =
+    localStorage.getItem("paymentMethod") || "M-Pesa";
+</script>
+
+</body>
+</html>
