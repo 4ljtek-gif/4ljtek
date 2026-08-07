@@ -8,16 +8,14 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Inter',sans-serif;
+font-family:Inter,sans-serif;
 }
 
 body{
@@ -26,69 +24,58 @@ color:#111;
 }
 
 header{
-background:#000;
-padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:20px 8%;
+background:#000;
+color:#fff;
 }
 
 .logo{
 font-size:32px;
 font-weight:800;
-color:#fff;
-}
-
-.logo span{
-color:#ccc;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:30px;
+margin-left:25px;
 font-weight:600;
-transition:.3s;
-}
-
-nav a:hover{
-color:#999;
 }
 
 .hero{
 height:90vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+flex-direction:column;
 text-align:center;
-padding:20px;
-background:#fff;
+background:#000;
+color:#fff;
 }
 
 .hero h1{
-font-size:64px;
+font-size:60px;
 margin-bottom:20px;
 }
 
 .hero p{
 font-size:20px;
-color:#555;
-margin-bottom:40px;
+max-width:650px;
+opacity:.8;
 }
 
-.btn{
-display:inline-block;
-padding:15px 35px;
-background:#000;
-color:#fff;
-text-decoration:none;
-border-radius:40px;
-font-weight:700;
-transition:.3s;
-}
-
-.btn:hover{
-background:#333;
+.hero button{
+margin-top:35px;
+padding:16px 40px;
+font-size:18px;
+border:none;
+background:#fff;
+color:#000;
+cursor:pointer;
+font-weight:bold;
+border-radius:50px;
 }
 
 .products{
@@ -98,51 +85,53 @@ padding:80px 8%;
 .products h2{
 text-align:center;
 font-size:40px;
-margin-bottom:50px;
+margin-bottom:40px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:30px;
 }
 
 .card{
-background:#fff;
-border:1px solid #eee;
-border-radius:15px;
-overflow:hidden;
+background:#f6f6f6;
+border-radius:18px;
+padding:25px;
+text-align:center;
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 15px 30px rgba(0,0,0,.1);
 }
 
 .card img{
 width:100%;
-height:220px;
-object-fit:cover;
+height:200px;
+object-fit:contain;
 }
 
 .card h3{
-padding:20px;
+margin:20px 0 10px;
 }
 
-.card p{
-padding:0 20px 20px;
-color:#666;
+.card button{
+padding:12px 28px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:30px;
+cursor:pointer;
 }
 
 footer{
 background:#000;
 color:#fff;
 text-align:center;
-padding:30px;
-margin-top:80px;
+padding:40px;
+margin-top:70px;
 }
-
 </style>
 
 </head>
@@ -152,7 +141,7 @@ margin-top:80px;
 <header>
 
 <div class="logo">
-4LJ<span>Tek</span>
+4LJTek
 </div>
 
 <nav>
@@ -165,21 +154,21 @@ margin-top:80px;
 
 <a href="contact.html">Contact</a>
 
+<a href="cart.html">Cart</a>
+
 </nav>
 
 </header>
 
 <section class="hero">
 
-<div>
-
 <h1>Premium Electronics.</h1>
 
-<p>iPhone • Samsung • PlayStation • TVs • Gaming • Accessories</p>
+<p>Discover iPhones, Samsung, PlayStation, TVs and Accessories at unbeatable prices.</p>
 
-<a href="products.html" class="btn">Shop Now</a>
-
-</div>
+<button onclick="location.href='products.html'">
+Shop Now
+</button>
 
 </section>
 
@@ -190,43 +179,27 @@ margin-top:80px;
 <div class="grid">
 
 <div class="card">
-
-<img src="images/iphone.jpg">
-
+<img src="images/iphone.png">
 <h3>iPhone</h3>
-
-<p>Latest Apple devices.</p>
-
+<button>View</button>
 </div>
 
 <div class="card">
-
-<img src="images/samsung.jpg">
-
+<img src="images/samsung.png">
 <h3>Samsung</h3>
-
-<p>Galaxy phones and tablets.</p>
-
+<button>View</button>
 </div>
 
 <div class="card">
-
-<img src="images/playstation.jpg">
-
+<img src="images/playstation.png">
 <h3>PlayStation</h3>
-
-<p>PS5 consoles and games.</p>
-
+<button>View</button>
 </div>
 
 <div class="card">
-
-<img src="images/tv.jpg">
-
+<img src="images/tv.png">
 <h3>Smart TVs</h3>
-
-<p>Premium entertainment.</p>
-
+<button>View</button>
 </div>
 
 </div>
@@ -235,7 +208,11 @@ margin-top:80px;
 
 <footer>
 
-<p>© 2026 4LJTek. Quality Over Quantity.</p>
+<h2>4LJTek</h2>
+
+<p>Quality Over Quantity</p>
+
+<p>© 2026 4LJTek. All Rights Reserved.</p>
 
 </footer>
 
