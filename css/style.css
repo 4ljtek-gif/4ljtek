@@ -653,4 +653,252 @@ footer{
 }
 
 }
-   
+ /* ==========================================
+   4LJTek HOMEPAGE FIX
+   Matches current index.html
+========================================== */
+
+/* HEADER */
+header{
+    padding:0 5%;
+}
+
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:80px;
+}
+
+header nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+header nav a{
+    font-weight:600;
+    font-size:1rem;
+    transition:.3s ease;
+}
+
+header nav a:hover{
+    color:var(--blue);
+}
+
+/* HERO */
+.hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
+    padding:90px 7%;
+    min-height:520px;
+}
+
+.hero-text h1{
+    font-size:3.5rem;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#d6d6d6;
+    font-size:1.15rem;
+    margin-bottom:30px;
+    max-width:600px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.shop-btn,
+.whatsapp-btn{
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.shop-btn{
+    background:var(--blue);
+    color:#fff;
+}
+
+.shop-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.whatsapp-btn{
+    background:var(--green);
+    color:#fff;
+}
+
+.whatsapp-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.hero-image{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:550px;
+    border-radius:var(--radius);
+}
+
+/* FEATURED CATEGORIES */
+.featured{
+    padding:80px 5%;
+    background:var(--light);
+}
+
+.featured h2{
+    text-align:center;
+    font-size:2.4rem;
+    font-weight:800;
+    margin-bottom:45px;
+}
+
+.featured .products{
+    padding:0;
+    background:transparent;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:25px 20px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    margin:0 auto 20px;
+}
+
+.card h3{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        padding:18px 15px;
+        gap:15px;
+    }
+
+    header nav{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    header nav a{
+        font-size:.9rem;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        padding:60px 20px;
+        gap:35px;
+    }
+
+    .hero-text{
+        order:2;
+    }
+
+    .hero-image{
+        order:1;
+    }
+
+    .hero-text h1{
+        font-size:2.5rem;
+    }
+
+    .hero-text p{
+        font-size:1rem;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .featured{
+        padding:60px 20px;
+    }
+
+    .featured h2{
+        font-size:2rem;
+    }
+
+    .featured .products{
+        grid-template-columns:1fr 1fr;
+        gap:15px;
+    }
+
+    .card{
+        padding:20px 10px;
+    }
+
+    .card img{
+        width:100px;
+        height:100px;
+    }
+}
+
+@media(max-width:480px){
+
+    .hero-text h1{
+        font-size:2.1rem;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .shop-btn,
+    .whatsapp-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .featured .products{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        width:120px;
+        height:120px;
+    }
+}  
