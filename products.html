@@ -3,114 +3,1160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products | 4LJTek</title>
+
+    <title>Products | 4LJTek</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header>
-    <div class="container">
-        <h1>4LJTek Product Manager</h1>
-        <nav>
-            <a href="admin.html">Dashboard</a>
-            <a href="orders.html">Orders</a>
-            <a href="index.html">Store</a>
-        </nav>
+
+    <div class="logo">
+        <img src="images/logo.png" alt="4LJTek Logo">
     </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
 </header>
 
-<main class="container">
 
-    <h2>Add New Product</h2>
+<section class="products-section">
 
-    <form id="productForm">
-        <input type="text" id="name" placeholder="Product Name" required>
+    <h2>Our Products</h2>
 
-        <input type="number" id="price" placeholder="Price (KSh)" required>
+    <p class="products-intro">
+        Premium electronics, genuine products and better deals from 4LJTek.
+    </p>
 
-        <input type="text" id="image" placeholder="Image URL or images/product.jpg" required>
 
-        <textarea id="description" placeholder="Product Description"></textarea>
+    <!-- SEARCH -->
 
-        <button type="submit" class="btn">Add Product</button>
-    </form>
+    <input
+        type="text"
+        id="search"
+        placeholder="Search products..."
+        style="width:100%;padding:12px;margin-bottom:35px;border-radius:8px;border:1px solid #ccc;"
+    >
 
-    <hr>
 
-    <h2>Available Products</h2>
+    <!-- =========================
+         SMARTPHONES
+    ========================== -->
 
-    <div id="productList"></div>
+    <h2 class="category-title">Smartphones</h2>
 
-</main>
+
+    <div class="products-grid">
+
+
+        <!-- iPhone 16 Pro Max -->
+
+        <div class="product-card">
+
+            <img src="images/iphone16promax.jpg" alt="iPhone 16 Pro Max">
+
+            <h3>iPhone 16 Pro Max</h3>
+
+            <p class="price">KSh 126,000</p>
+
+            <p>
+                Premium Apple flagship with powerful performance,
+                advanced cameras and Pro features.
+            </p>
+
+            <div class="product-actions">
+
+                <a
+                    class="whatsapp-btn"
+                    href="https://wa.me/254101984723"
+                    target="_blank">
+                    WhatsApp
+                </a>
+
+                <a
+                    class="call-btn"
+                    href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- iPhone 17 -->
+
+        <div class="product-card">
+
+            <img src="images/iphone17.jpg" alt="iPhone 17">
+
+            <h3>iPhone 17</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Next-generation iPhone with premium performance
+                and advanced features.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- iPhone 17 Air -->
+
+        <div class="product-card">
+
+            <img src="images/iphone17air.jpg" alt="iPhone 17 Air">
+
+            <h3>iPhone 17 Air</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Slim, elegant iPhone designed for a premium
+                everyday experience.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- iPhone 17 Pro -->
+
+        <div class="product-card">
+
+            <img src="images/iphone17pro.jpg" alt="iPhone 17 Pro">
+
+            <h3>iPhone 17 Pro</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Pro-level performance, cameras and premium
+                Apple design.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- iPhone 17 Pro Max -->
+
+        <div class="product-card">
+
+            <img src="images/iphone17promax.jpg" alt="iPhone 17 Pro Max">
+
+            <h3>iPhone 17 Pro Max</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Ultimate iPhone performance with premium
+                Pro features.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S24 Ultra -->
+
+        <div class="product-card">
+
+            <img src="images/s24ultra.jpg"
+                 alt="Samsung Galaxy S24 Ultra">
+
+            <h3>Samsung Galaxy S24 Ultra</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Premium Samsung flagship with powerful cameras,
+                performance and Galaxy AI features.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S25 -->
+
+        <div class="product-card">
+
+            <img src="images/s25.jpg" alt="Samsung Galaxy S25">
+
+            <h3>Samsung Galaxy S25</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium Galaxy S-series smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S25+ -->
+
+        <div class="product-card">
+
+            <img src="images/s25plus.jpg"
+                 alt="Samsung Galaxy S25 Plus">
+
+            <h3>Samsung Galaxy S25+</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Large-screen Galaxy flagship with premium performance.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S25 Ultra -->
+
+        <div class="product-card">
+
+            <img src="images/s25ultra.jpg"
+                 alt="Samsung Galaxy S25 Ultra">
+
+            <h3>Samsung Galaxy S25 Ultra</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Ultra-premium Samsung Galaxy flagship.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S26 -->
+
+        <div class="product-card">
+
+            <img src="images/s26.jpg"
+                 alt="Samsung Galaxy S26">
+
+            <h3>Samsung Galaxy S26</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Latest Galaxy S-series smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S26+ -->
+
+        <div class="product-card">
+
+            <img src="images/s26plus.jpg"
+                 alt="Samsung Galaxy S26 Plus">
+
+            <h3>Samsung Galaxy S26+</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium large-screen Galaxy smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Samsung S26 Ultra -->
+
+        <div class="product-card">
+
+            <img src="images/s26ultra.jpg"
+                 alt="Samsung Galaxy S26 Ultra">
+
+            <h3>Samsung Galaxy S26 Ultra</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Ultra-premium Galaxy flagship.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Google Pixel -->
+
+        <div class="product-card">
+
+            <img src="images/pixel.jpg"
+                 alt="Google Pixel">
+
+            <h3>Google Pixel</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Google Pixel smartphones with clean Android
+                and advanced camera technology.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 10 -->
+
+        <div class="product-card">
+
+            <img src="images/pixel10.jpg"
+                 alt="Google Pixel 10">
+
+            <h3>Google Pixel 10</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Google's next-generation Pixel smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 10 Pro -->
+
+        <div class="product-card">
+
+            <img src="images/pixel10pro.jpg"
+                 alt="Google Pixel 10 Pro">
+
+            <h3>Google Pixel 10 Pro</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium Pixel Pro smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 10 Pro XL -->
+
+        <div class="product-card">
+
+            <img src="images/pixel10proxl.jpg"
+                 alt="Google Pixel 10 Pro XL">
+
+            <h3>Google Pixel 10 Pro XL</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Large-screen Pixel Pro flagship.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 10 Pro Fold -->
+
+        <div class="product-card">
+
+            <img src="images/pixel10profold.jpg"
+                 alt="Google Pixel 10 Pro Fold">
+
+            <h3>Google Pixel 10 Pro Fold</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium foldable Pixel smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 11 -->
+
+        <div class="product-card">
+
+            <img src="images/pixel11.jpg"
+                 alt="Google Pixel 11">
+
+            <h3>Google Pixel 11</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Next-generation Google Pixel smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 11 Pro -->
+
+        <div class="product-card">
+
+            <img src="images/pixel11pro.jpg"
+                 alt="Google Pixel 11 Pro">
+
+            <h3>Google Pixel 11 Pro</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium Pixel Pro smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 11 Pro XL -->
+
+        <div class="product-card">
+
+            <img src="images/pixel11proxl.jpg"
+                 alt="Google Pixel 11 Pro XL">
+
+            <h3>Google Pixel 11 Pro XL</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Large premium Pixel flagship.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Pixel 11 Pro Fold -->
+
+        <div class="product-card">
+
+            <img src="images/pixel11profold.jpg"
+                 alt="Google Pixel 11 Pro Fold">
+
+            <h3>Google Pixel 11 Pro Fold</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Premium foldable Pixel smartphone.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PLAYSTATION
+    ========================== -->
+
+    <h2 class="category-title">PlayStation</h2>
+
+    <div class="products-grid">
+
+
+        <div class="product-card">
+
+            <img src="images/ps5.jpg" alt="PlayStation 5">
+
+            <h3>PlayStation 5</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Next-generation gaming console.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/ps5digital.jpg"
+                 alt="PlayStation 5 Digital Edition">
+
+            <h3>PlayStation 5 Digital Edition</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Digital edition of the PS5 console.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/ps5slim.jpg"
+                 alt="PS5 Slim">
+
+            <h3>PS5 Slim</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Slimmer PlayStation 5 design.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/ps5pro.jpg"
+                 alt="PlayStation 5 Pro">
+
+            <h3>PlayStation 5 Pro</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Enhanced PlayStation gaming performance.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/dualsense.jpg"
+                 alt="DualSense Wireless Controller">
+
+            <h3>DualSense Wireless Controller</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>Official PlayStation wireless controller.</p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         SMART TVs
+    ========================== -->
+
+    <h2 class="category-title">Smart TVs</h2>
+
+    <div class="products-grid">
+
+
+        <div class="product-card">
+
+            <img src="images/smarttv.jpg"
+                 alt="TCL Smart TVs">
+
+            <h3>TCL Smart TVs</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                TCL Smart TVs available in multiple
+                models and screen sizes.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/smarttv.jpg"
+                 alt="LG Smart TVs">
+
+            <h3>LG Smart TVs</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                LG OLED, QNED, NanoCell and 4K UHD
+                Smart TVs.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         SOUNDBARS
+    ========================== -->
+
+    <h2 class="category-title">Soundbars</h2>
+
+    <div class="products-grid">
+
+
+        <div class="product-card">
+
+            <img src="images/soundbar.jpg"
+                 alt="JBL Soundbars">
+
+            <h3>JBL Soundbars</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                JBL soundbars for powerful home
+                entertainment audio.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/soundbar.jpg"
+                 alt="Sony Soundbars">
+
+            <h3>Sony Soundbars</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Sony soundbars designed for immersive
+                home cinema sound.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         ACCESSORIES
+    ========================== -->
+
+    <h2 class="category-title">Accessories</h2>
+
+    <div class="products-grid">
+
+
+        <div class="product-card">
+
+            <img src="images/accessories.jpg"
+                 alt="Apple Accessories">
+
+            <h3>Apple Accessories</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                iPhone cases, MagSafe chargers, cables,
+                AirPods, adapters and more.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/accessories.jpg"
+                 alt="Samsung Accessories">
+
+            <h3>Samsung Accessories</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Galaxy cases, chargers, cables, Galaxy Buds,
+                S Pen and more.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="images/accessories.jpg"
+                 alt="Google Pixel Accessories">
+
+            <h3>Google Pixel Accessories</h3>
+
+            <p class="price">Contact for Price</p>
+
+            <p>
+                Pixel cases, chargers, cables, Pixel Buds,
+                Pixel Watch accessories and more.
+            </p>
+
+            <div class="product-actions">
+
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
+                    WhatsApp
+                </a>
+
+                <a class="call-btn"
+                   href="tel:+254101984723">
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
 
 <footer>
-    <div class="container">
-        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
-    </div>
+
+    <p>
+        &copy; <span id="year"></span>
+        4LJTek. Quality Over Quantity.
+    </p>
+
 </footer>
 
-<script>
-const form = document.getElementById("productForm");
-const productList = document.getElementById("productList");
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-function saveProducts() {
-    localStorage.setItem("products", JSON.stringify(products));
-}
-
-function displayProducts() {
-    productList.innerHTML = "";
-
-    if (products.length === 0) {
-        productList.innerHTML = "<p>No products added yet.</p>";
-        return;
-    }
-
-    products.forEach((product, index) => {
-        productList.innerHTML += `
-            <div class="product-card">
-                <img src="${product.image}" alt="${product.name}" style="width:120px;height:auto;">
-                <h3>${product.name}</h3>
-                <p>${product.description}</p>
-                <p><strong>KSh ${Number(product.price).toLocaleString()}</strong></p>
-
-                <button class="btn" onclick="deleteProduct(${index})">
-                    Delete
-                </button>
-            </div>
-            <hr>
-        `;
-    });
-}
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    products.push({
-        name: document.getElementById("name").value,
-        price: document.getElementById("price").value,
-        image: document.getElementById("image").value,
-        description: document.getElementById("description").value
-    });
-
-    saveProducts();
-    displayProducts();
-    form.reset();
-
-    alert("Product added successfully!");
-});
-
-function deleteProduct(index) {
-    if (confirm("Delete this product?")) {
-        products.splice(index, 1);
-        saveProducts();
-        displayProducts();
-    }
-}
-
-displayProducts();
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
