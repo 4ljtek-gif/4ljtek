@@ -1,7 +1,309 @@
-/* ==========================================
-   4LJTek Products — Premium Product Styling
-   Add this AFTER your existing products CSS.
-========================================== */
+/* =========================================================
+   4LJTek — Complete Site Styles
+   Rebuilt from the previous 4LJTek design direction
+   + polished Products page styling
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --black:#000;
+    --dark:#111;
+    --white:#fff;
+    --gray:#777;
+    --light:#f5f5f5;
+    --blue:#0070f3;
+    --green:#25D366;
+    --shadow:0 15px 40px rgba(0,0,0,.12);
+    --radius:18px;
+    --transition:.3s ease;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',Arial,sans-serif;
+    background:#fff;
+    color:var(--dark);
+    line-height:1.6;
+}
+
+img{
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    background:var(--black);
+    color:#fff;
+    font-size:13px;
+    padding:8px 0;
+}
+
+.topbar .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+/* =========================
+   HEADER / NAVIGATION
+========================= */
+
+header{
+    background:#fff;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header .container{
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo img{
+    width:150px;
+    height:auto;
+    display:block;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:var(--transition);
+}
+
+nav a:hover{
+    color:var(--blue);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:linear-gradient(135deg,#000,#1a1a1a);
+    color:#fff;
+    padding:90px 0;
+}
+
+.hero .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
+}
+
+.hero-content h1,
+.hero-content h2{
+    font-size:clamp(38px,5vw,64px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:22px;
+    font-weight:800;
+}
+
+.hero-content p{
+    color:#d5d5d5;
+    max-width:580px;
+    margin-bottom:30px;
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.btn,
+.hero a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+    transition:var(--transition);
+}
+
+.btn-primary{
+    background:var(--blue);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    filter:brightness(.95);
+}
+
+.btn-secondary{
+    background:#fff;
+    color:#111;
+}
+
+.btn-secondary:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:75px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:clamp(28px,4vw,42px);
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:-1px;
+    margin-bottom:12px;
+}
+
+.section-intro{
+    max-width:650px;
+    margin:0 auto 40px;
+    text-align:center;
+    color:var(--gray);
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:20px;
+}
+
+.category-card{
+    display:block;
+    text-decoration:none;
+    background:#fff;
+    border:1px solid #e9e9e9;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    transition:var(--transition);
+}
+
+.category-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+}
+
+.category-card img{
+    width:100%;
+    height:190px;
+    object-fit:contain;
+    padding:15px;
+    background:#f7f7f7;
+    display:block;
+}
+
+.category-card h3{
+    padding:17px;
+    font-size:17px;
+    font-weight:700;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature-card{
+    background:var(--light);
+    border-radius:var(--radius);
+    padding:30px;
+    text-align:center;
+}
+
+.feature-card i,
+.feature-icon{
+    font-size:30px;
+    color:var(--blue);
+    margin-bottom:15px;
+}
+
+.feature-card h3{
+    margin-bottom:8px;
+}
+
+.feature-card p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* =========================
+   PROMO / BANNER
+========================= */
+
+.promo-banner{
+    background:var(--blue);
+    color:#fff;
+    border-radius:var(--radius);
+    padding:40px;
+    text-align:center;
+}
+
+.promo-banner h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.promo-banner p{
+    margin-bottom:22px;
+}
+
+/* =========================
+   PRODUCTS — PREMIUM
+========================= */
 
 .products-section{
     padding:70px 20px 90px;
@@ -191,17 +493,199 @@
     border:0;
 }
 
-@media (max-width:900px){
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-card{
+    background:#fff;
+    border:1px solid #e9e9e9;
+    border-radius:var(--radius);
+    padding:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.contact-card h3{
+    margin-bottom:12px;
+}
+
+.contact-card p{
+    color:var(--gray);
+    margin-bottom:8px;
+}
+
+.contact-card a{
+    text-decoration:none;
+}
+
+.contact-card a:hover{
+    color:var(--blue);
+}
+
+/* =========================
+   FORMS
+========================= */
+
+form{
+    display:grid;
+    gap:15px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    font-family:inherit;
+    font-size:15px;
+    padding:13px 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 4px rgba(0,112,243,.08);
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#000;
+    color:#fff;
+    padding:35px 20px;
+    text-align:center;
+}
+
+footer p{
+    color:#bbb;
+    font-size:14px;
+}
+
+footer a{
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:#fff;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp-float{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+    z-index:999;
+    transition:.25s ease;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:1000px){
+    .hero .container{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .categories-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .products-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
-
-    .product-card img{
-        height:230px;
-    }
 }
 
-@media (max-width:600px){
+@media (max-width:700px){
+    .topbar .container{
+        justify-content:center;
+        text-align:center;
+    }
+
+    header .container{
+        min-height:68px;
+        gap:15px;
+    }
+
+    .logo img{
+        width:125px;
+    }
+
+    nav ul{
+        gap:13px;
+    }
+
+    nav a{
+        font-size:12px;
+    }
+
+    section{
+        padding:55px 0;
+    }
+
+    .hero{
+        padding:65px 0;
+    }
+
+    .hero-content h1,
+    .hero-content h2{
+        letter-spacing:-1px;
+    }
+
+    .features-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .categories-grid{
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+    }
+
+    .category-card img{
+        height:150px;
+    }
+
     .products-section{
         padding:45px 15px 70px;
     }
@@ -232,5 +716,36 @@
     .product-category-nav a{
         padding:9px 14px;
         font-size:13px;
+    }
+
+    .promo-banner{
+        padding:30px 20px;
+    }
+}
+
+@media (max-width:430px){
+    nav ul{
+        gap:8px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .categories-grid{
+        grid-template-columns:1fr;
+    }
+
+    .product-actions{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons a{
+        width:100%;
     }
 }
