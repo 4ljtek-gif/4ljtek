@@ -1261,3 +1261,126 @@ footer {
     }
 
 }
+/* =========================================
+   4LJTEK — PREMIUM CATEGORY CARDS
+========================================= */
+
+.featured {
+    padding: 80px 5%;
+}
+
+.featured h2 {
+    margin-bottom: 40px;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+/* CATEGORY GRID */
+.featured .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* CATEGORY CARD */
+.featured .card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+    padding: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #111;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.featured .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.10);
+}
+
+/* IMAGE AREA */
+.featured .card img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+/* CATEGORY NAME */
+.featured .card h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .featured .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured .card img {
+        height: 170px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .featured {
+        padding: 65px 18px;
+    }
+
+    .featured h2 {
+        font-size: 38px;
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .featured .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .featured .card {
+        padding: 12px;
+        border-radius: 17px;
+    }
+
+    .featured .card img {
+        height: 125px;
+        margin-bottom: 12px;
+    }
+
+    .featured .card h3 {
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .featured .card img {
+        height: 105px;
+    }
+
+    .featured .card h3 {
+        font-size: 15px;
+    }
+}
