@@ -1384,3 +1384,72 @@ footer {
         font-size: 15px;
     }
 }
+/* =========================================
+   4LJTEK PRODUCT CARD MOBILE FIX
+========================================= */
+
+.product-card,
+.product-item,
+.product {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.product-card img,
+.product-item img,
+.product img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+}
+
+.product-card h3,
+.product-item h3,
+.product h3 {
+    margin: 12px 0 6px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.product-card p,
+.product-item p,
+.product p {
+    margin: 0 0 12px;
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .product-card img,
+    .product-item img,
+    .product img {
+        height: 180px;
+        object-fit: contain;
+    }
+
+    .product-card,
+    .product-item,
+    .product {
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    .product-card h3,
+    .product-item h3,
+    .product h3 {
+        font-size: 16px;
+    }
+}
+
+
+/* SMALL PHONES */
+@media (max-width: 380px) {
+
+    .product-card img,
+    .product-item img,
+    .product img {
+        height: 150px;
+    }
+}
