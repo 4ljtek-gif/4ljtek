@@ -1453,3 +1453,125 @@ footer {
         height: 150px;
     }
 }
+/* =========================================
+   4LJTEK — PRODUCT STORE POLISH
+========================================= */
+
+/* Product cards */
+.product-card,
+.product-item,
+.product {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 22px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+/* Product image */
+.product-card img,
+.product-item img,
+.product img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    background: #f7f7f7;
+    border-radius: 16px;
+}
+
+/* Product name */
+.product-card h3,
+.product-item h3,
+.product h3 {
+    margin: 20px 0 8px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Price */
+.product-card .price,
+.product-item .price,
+.product .price {
+    font-size: 25px;
+    font-weight: 800;
+    color: #0070f3;
+    margin: 8px 0 14px;
+}
+
+/* Description */
+.product-card p,
+.product-item p,
+.product p {
+    color: #777;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.product-card a,
+.product-item a,
+.product a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* WhatsApp */
+.product-card .whatsapp,
+.product-item .whatsapp,
+.product .whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+
+/* Call */
+.product-card .call,
+.product-item .call,
+.product .call {
+    background: #111;
+    color: #fff;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .product-card,
+    .product-item,
+    .product {
+        padding: 14px;
+        border-radius: 18px;
+        margin-bottom: 18px;
+    }
+
+    .product-card img,
+    .product-item img,
+    .product img {
+        height: 190px;
+        border-radius: 14px;
+    }
+
+    .product-card h3,
+    .product-item h3,
+    .product h3 {
+        font-size: 19px;
+        margin-top: 16px;
+    }
+
+    .product-card .price,
+    .product-item .price,
+    .product .price {
+        font-size: 22px;
+    }
+
+}
