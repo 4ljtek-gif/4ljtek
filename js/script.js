@@ -47,3 +47,35 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 // Welcome message
 console.log("Welcome to 4LJTek - Quality Over Quantity!");
+/* =========================================
+   4LJTEK PRODUCT SEARCH
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const search = document.getElementById("search");
+    const products = document.querySelectorAll(".product-card");
+
+    if (!search || !products.length) return;
+
+    search.addEventListener("input", function () {
+
+        const query = this.value.toLowerCase().trim();
+        let visibleProducts = 0;
+
+        products.forEach(function (product) {
+
+            const text = product.textContent.toLowerCase();
+
+            if (text.includes(query)) {
+                product.style.display = "";
+                visibleProducts++;
+            } else {
+                product.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
