@@ -945,3 +945,108 @@ footer p {
     }
 
 }
+/* =========================================================
+   4LJTEK - PRODUCT CARD FINAL POLISH
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Product grid */
+    .products-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Product card */
+    .product-card {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    /* Product image */
+    .product-card > img {
+        width: 100%;
+        height: 240px;
+        padding: 15px;
+
+        object-fit: contain;
+
+        background: #f7f7f7;
+    }
+
+    /* Product name */
+    .product-card h3 {
+        padding: 18px 20px 0;
+
+        font-size: 22px;
+        line-height: 1.25;
+
+        font-weight: 800;
+    }
+
+    /* Price */
+    .product-card .price {
+        padding: 8px 20px 0;
+
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+    /* Description */
+    .product-card > p:not(.price) {
+        padding: 8px 20px 0;
+
+        font-size: 15px;
+        line-height: 1.5;
+
+        color: #777;
+    }
+
+    /* Buttons */
+    .product-actions {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+
+        padding: 18px 20px 20px;
+    }
+
+    .product-actions a {
+        min-height: 50px;
+
+        border-radius: 13px;
+
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .product-card > img {
+        height: 220px;
+    }
+
+    .product-card h3 {
+        font-size: 21px;
+    }
+
+    .product-card .price {
+        font-size: 18px;
+    }
+
+    .product-actions a {
+        font-size: 13px;
+    }
+
+}
