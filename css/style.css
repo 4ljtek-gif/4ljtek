@@ -929,3 +929,19 @@ footer p {
         height: 235px;
     }
 }
+@media (max-width: 600px) {
+
+    #search {
+        margin-bottom: 15px !important;
+    }
+
+    .category-title {
+        margin-top: 0 !important;
+        margin-bottom: 20px;
+    }
+
+    .category-title:not(:first-of-type) {
+        margin-top: 45px !important;
+    }
+
+}
