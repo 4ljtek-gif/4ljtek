@@ -2,66 +2,38 @@
 // 4LJTek - script.js
 // ===============================
 
-// Update the copyright year automatically
-document.addEventListener("DOMContentLoaded", () => {
-    const year = document.getElementById("year");
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-});
 
-// Product search
-const searchInput = document.getElementById("search");
-const products = document.querySelectorAll(".product-card");
-
-if (searchInput) {
-    searchInput.addEventListener("keyup", function () {
-        const value = this.value.toLowerCase();
-
-        products.forEach(product => {
-            const text = product.textContent.toLowerCase();
-
-            if (text.includes(value)) {
-                product.style.display = "block";
-            } else {
-                product.style.display = "none";
-            }
-        });
-    });
-}
-
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-// Welcome message
-console.log("Welcome to 4LJTek - Quality Over Quantity!");
-/* =========================================
-   4LJTEK PRODUCT SEARCH
-========================================= */
+// ===============================
+// UPDATE COPYRIGHT YEAR
+// ===============================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const search = document.getElementById("search");
+    const year = document.getElementById("year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+});
+
+
+// ===============================
+// PRODUCT SEARCH
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("search");
     const products = document.querySelectorAll(".product-card");
 
-    if (!search || !products.length) return;
+    if (!searchInput || !products.length) {
+        return;
+    }
 
-    search.addEventListener("input", function () {
+    searchInput.addEventListener("input", function () {
 
         const query = this.value.toLowerCase().trim();
-        let visibleProducts = 0;
 
         products.forEach(function (product) {
 
@@ -69,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (text.includes(query)) {
                 product.style.display = "";
-                visibleProducts++;
             } else {
                 product.style.display = "none";
             }
@@ -79,6 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+// ===============================
+// HOMEPAGE WHATSAPP
+// ===============================
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const whatsappButton = document.getElementById("home-whatsapp");
@@ -91,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const phone = "254101984723";
 
-            const message = "Hi 4LJTek, I'd like to order from your store.";
+            const message =
+                "Hi 4LJTek, I'd like to order from your store.";
 
             const whatsappLink =
                 "https://api.whatsapp.com/send?phone=" +
@@ -106,3 +84,99 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+
+// ===============================
+// PRODUCT WHATSAPP BUTTONS
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const productButtons =
+        document.querySelectorAll(".product-card .whatsapp-btn");
+
+    productButtons.forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const productCard = button.closest(".product-card");
+
+            if (!productCard) {
+                return;
+            }
+
+            const productNameElement =
+                productCard.querySelector("h3");
+
+            if (!productNameElement) {
+                return;
+            }
+
+            const productName =
+                productNameElement.textContent.trim();
+
+            const phone = "254101984723";
+
+            const message =
+                "Hi 4LJTek, I'm interested in the " +
+                productName +
+                ". Please share the price and availability.";
+
+            const whatsappLink =
+                "https://api.whatsapp.com/send?phone=" +
+                phone +
+                "&text=" +
+                encodeURIComponent(message);
+
+            window.location.href = whatsappLink;
+
+        });
+
+    });
+
+});
+
+
+// ===============================
+// SMOOTH SCROLLING
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const href = this.getAttribute("href");
+
+            // Ignore empty "#" links
+            if (!href || href === "#") {
+                return;
+            }
+
+            const target = document.querySelector(href);
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+
+// ===============================
+// WELCOME MESSAGE
+// ===============================
+
+console.log("Welcome to 4LJTek - Quality Over Quantity!");
