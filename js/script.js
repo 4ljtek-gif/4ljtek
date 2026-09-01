@@ -79,3 +79,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    const whatsappButton = document.getElementById("home-whatsapp");
+
+    if (whatsappButton) {
+
+        whatsappButton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const phone = "254101984723";
+
+            const message = "Hi 4LJTek, I'd like to order from your store.";
+
+            const whatsappLink =
+                "https://api.whatsapp.com/send?phone=" +
+                phone +
+                "&text=" +
+                encodeURIComponent(message);
+
+            window.location.href = whatsappLink;
+
+        });
+
+    }
+
+});
