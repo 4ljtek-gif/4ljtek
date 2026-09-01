@@ -842,3 +842,90 @@ footer p {
         height: 250px;
     }
 }
+/* =========================================================
+   4LJTEK - FINAL MOBILE POLISH
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Compact mobile header */
+    .site-header,
+    header {
+        padding: 8px 12px 12px;
+        gap: 5px;
+    }
+
+    .logo img {
+        width: 125px;
+        max-height: 58px;
+    }
+
+    nav ul {
+        gap: 17px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    /* Products page - tighter spacing */
+    .products-section {
+        padding-top: 42px;
+    }
+
+    .products-section > h2:first-child {
+        margin-bottom: 15px;
+    }
+
+    .products-intro {
+        margin-bottom: 18px;
+    }
+
+    .product-category-nav {
+        margin-bottom: 16px;
+    }
+
+    #search {
+        height: 62px;
+        margin-bottom: 28px !important;
+    }
+
+    /* Bring Smartphones closer to search */
+    .category-title {
+        margin-bottom: 20px;
+    }
+
+    .category-title:not(:first-of-type) {
+        margin-top: 48px;
+    }
+
+    /* Slightly shorter product image area */
+    .product-card > img {
+        height: 250px;
+        padding: 16px;
+    }
+
+    .product-card h3 {
+        font-size: 23px;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+
+    .logo img {
+        width: 115px;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .product-card > img {
+        height: 235px;
+    }
+}
