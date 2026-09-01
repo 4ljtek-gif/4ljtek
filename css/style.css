@@ -1050,3 +1050,41 @@ footer p {
     }
 
 }
+/* =========================================================
+   4LJTEK - CATEGORY NAVIGATION POLISH
+   ========================================================= */
+
+.product-category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.product-category-nav a {
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.product-category-nav a:active {
+    transform: scale(.96);
+}
+
+@media (max-width: 600px) {
+
+    .product-category-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+    }
+
+    .product-category-nav a {
+        width: 100%;
+        min-height: 44px;
+        padding: 8px 10px;
+
+        font-size: 13px;
+        text-align: center;
+    }
+
+}
