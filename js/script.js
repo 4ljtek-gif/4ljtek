@@ -37,9 +37,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         products.forEach(function (product) {
 
-            const text = product.textContent.toLowerCase();
+            const productNameElement =
+                product.querySelector("h3");
 
-            if (text.includes(query)) {
+            const productName =
+                productNameElement
+                    ? productNameElement.textContent.toLowerCase()
+                    : "";
+
+            const productText =
+                product.textContent.toLowerCase();
+
+            if (
+                query === "" ||
+                productName.includes(query) ||
+                productText.includes(query)
+            ) {
                 product.style.display = "";
             } else {
                 product.style.display = "none";
@@ -58,30 +71,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const whatsappButton = document.getElementById("home-whatsapp");
+    const whatsappButton =
+        document.getElementById("home-whatsapp");
 
-    if (whatsappButton) {
-
-        whatsappButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const phone = "254101984723";
-
-            const message =
-                "Hi 4LJTek, I'd like to order from your store.";
-
-            const whatsappLink =
-                "https://api.whatsapp.com/send?phone=" +
-                phone +
-                "&text=" +
-                encodeURIComponent(message);
-
-            window.location.href = whatsappLink;
-
-        });
-
+    if (!whatsappButton) {
+        return;
     }
+
+    whatsappButton.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const phone = "254101984723";
+
+        const message =
+            "Hi 4LJTek, I'd like to order from your store.";
+
+        const whatsappLink =
+            "https://api.whatsapp.com/send?phone=" +
+            phone +
+            "&text=" +
+            encodeURIComponent(message);
+
+        window.location.href = whatsappLink;
+
+    });
 
 });
 
@@ -93,7 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
 
     const productButtons =
-        document.querySelectorAll(".product-card .whatsapp-btn");
+        document.querySelectorAll(
+            ".product-card .whatsapp-btn"
+        );
 
     productButtons.forEach(function (button) {
 
@@ -101,7 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.preventDefault();
 
-            const productCard = button.closest(".product-card");
+            const productCard =
+                button.closest(".product-card");
 
             if (!productCard) {
                 return;
@@ -140,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ===============================
-// SMOOTH SCROLLING
+// SMOOTH CATEGORY SCROLLING
 // ===============================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -149,21 +166,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         link.addEventListener("click", function (event) {
 
-            const href = this.getAttribute("href");
+            const href =
+                this.getAttribute("href");
 
-            // Ignore empty "#" links
+            // Ignore empty links
             if (!href || href === "#") {
                 return;
             }
 
-            const target = document.querySelector(href);
+            const target =
+                document.querySelector(href);
 
             if (target) {
 
                 event.preventDefault();
 
                 target.scrollIntoView({
-                    behavior: "smooth"
+                    behavior: "smooth",
+                    block: "start"
                 });
 
             }
@@ -179,4 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // WELCOME MESSAGE
 // ===============================
 
-console.log("Welcome to 4LJTek - Quality Over Quantity!");
+console.log(
+    "Welcome to 4LJTek - Quality Over Quantity!"
+);
