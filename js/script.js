@@ -1,61 +1,82 @@
-document.addEventListener("DOMContentLoaded", function () {
+// ==========================================
+// 4LJTek WEBSITE JAVASCRIPT
+// ==========================================
 
-    // =========================
-    // PRODUCT SEARCH
-    // =========================
+
+// ==========================================
+// PRODUCT SEARCH
+// ==========================================
+
+function setupProductSearch() {
 
     const searchInput = document.getElementById("search");
 
-    if (searchInput) {
+    if (!searchInput) {
+        console.log("4LJTek: Search box not found.");
+        return;
+    }
 
-        searchInput.addEventListener("input", function () {
+    console.log("4LJTek: Search is ready.");
 
-            const searchTerm = this.value
-                .toLowerCase()
-                .trim();
+    searchInput.addEventListener("input", function () {
 
-            const products =
-                document.querySelectorAll(".product-card");
+        const searchTerm = this.value
+            .toLowerCase()
+            .trim();
 
-            products.forEach(function (product) {
+        const products = document.querySelectorAll(".product-card");
 
-                const productText =
-                    product.textContent.toLowerCase();
+        products.forEach(function (product) {
 
-                if (
-                    searchTerm === "" ||
-                    productText.includes(searchTerm)
-                ) {
-                    product.style.display = "";
-                } else {
-                    product.style.display = "none";
-                }
+            const productText = product.textContent
+                .toLowerCase();
 
-            });
+            if (productText.includes(searchTerm)) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
 
         });
 
-    }
+    });
+
+}
 
 
-    // =========================
-    // WHATSAPP PRODUCT BUTTONS
-    // =========================
+// ==========================================
+// WHATSAPP BUTTONS
+// ==========================================
 
-    const whatsappButtons =
-        document.querySelectorAll(".product-card .whatsapp-btn");
+function setupWhatsAppButtons() {
 
-    whatsappButtons.forEach(function (button) {
+    const buttons = document.querySelectorAll(
+        ".product-card .whatsapp-btn"
+    );
+
+    buttons.forEach(function (button) {
 
         button.addEventListener("click", function (event) {
 
             event.preventDefault();
 
-            const productCard =
-                button.closest(".product-card");
+            const card = button.closest(".product-card");
 
-            const productName =
-                productCard.querySelector("h3").textContent.trim();
+            if (!card) {
+                return;
+            }
+
+            const name = card.querySelector("h3");
+
+            if (!name) {
+                return;
+            }
+
+            const productName = name.textContent.trim();
 
             const phone = "254101984723";
 
@@ -64,50 +85,133 @@ document.addEventListener("DOMContentLoaded", function () {
                 productName +
                 ". Please share the price and availability.";
 
-            const whatsappURL =
+            const url =
                 "https://api.whatsapp.com/send?phone=" +
                 phone +
                 "&text=" +
                 encodeURIComponent(message);
 
-            window.location.href = whatsappURL;
+            window.location.href = url;
 
         });
 
     });
 
+}
 
-    // =========================
-    // CATEGORY NAVIGATION
-    // =========================
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+// ==========================================
+// HOMEPAGE WHATSAPP
+// ==========================================
+
+function setupHomeWhatsApp() {
+
+    const button =
+        document.getElementById("home-whatsapp");
+
+    if (!button) {
+        return;
+    }
+
+    button.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const phone = "254101984723";
+
+        const message =
+            "Hi 4LJTek, I'd like to order from your store.";
+
+        const url =
+            "https://api.whatsapp.com/send?phone=" +
+            phone +
+            "&text=" +
+            encodeURIComponent(message);
+
+        window.location.href = url;
+
+    });
+
+}
+
+
+// ==========================================
+// CATEGORY NAVIGATION
+// ==========================================
+
+function setupCategoryNavigation() {
+
+    const links =
+        document.querySelectorAll(
+            '.product-category-nav a[href^="#"]'
+        );
+
+    links.forEach(function (link) {
 
         link.addEventListener("click", function (event) {
 
-            const targetID =
-                this.getAttribute("href");
+            const id =
+                link.getAttribute("href");
 
-            if (!targetID || targetID === "#") {
+            if (!id || id === "#") {
                 return;
             }
 
             const target =
-                document.querySelector(targetID);
+                document.querySelector(id);
 
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
+            if (!target) {
+                return;
             }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
         });
 
     });
 
-});
+}
+
+
+// ==========================================
+// START EVERYTHING
+// ==========================================
+
+function start4LJTek() {
+
+    setupProductSearch();
+
+    setupWhatsAppButtons();
+
+    setupHomeWhatsApp();
+
+    setupCategoryNavigation();
+
+    console.log(
+        "4LJTek website JavaScript loaded successfully."
+    );
+
+}
+
+
+// ==========================================
+// RUN AFTER PAGE LOAD
+// ==========================================
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        start4LJTek
+    );
+
+} else {
+
+    start4LJTek();
+
+}
