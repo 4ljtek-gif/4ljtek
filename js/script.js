@@ -2,12 +2,11 @@
 // 4LJTek - script.js
 // ===============================
 
-
-// ===============================
-// UPDATE COPYRIGHT YEAR
-// ===============================
-
 document.addEventListener("DOMContentLoaded", function () {
+
+    // ===============================
+    // COPYRIGHT YEAR
+    // ===============================
 
     const year = document.getElementById("year");
 
@@ -15,103 +14,95 @@ document.addEventListener("DOMContentLoaded", function () {
         year.textContent = new Date().getFullYear();
     }
 
-});
 
-
-// ===============================
-// PRODUCT SEARCH
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
+    // ===============================
+    // PRODUCT SEARCH
+    // ===============================
 
     const searchInput = document.getElementById("search");
-    const products = document.querySelectorAll(".product-card");
 
-    if (!searchInput || !products.length) {
-        return;
-    }
+    if (searchInput) {
 
-    searchInput.addEventListener("input", function () {
+        searchInput.addEventListener("input", function () {
 
-        const query = this.value.toLowerCase().trim();
+            const query = searchInput.value
+                .toLowerCase()
+                .trim();
 
-        products.forEach(function (product) {
+            const products =
+                document.querySelectorAll(".product-card");
 
-            const productNameElement =
-                product.querySelector("h3");
+            products.forEach(function (product) {
 
-            const productName =
-                productNameElement
-                    ? productNameElement.textContent.toLowerCase()
-                    : "";
+                const productName =
+                    product.querySelector("h3");
 
-            const productText =
-                product.textContent.toLowerCase();
+                const nameText =
+                    productName
+                        ? productName.textContent.toLowerCase()
+                        : "";
 
-            if (
-                query === "" ||
-                productName.includes(query) ||
-                productText.includes(query)
-            ) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
+                const fullText =
+                    product.textContent.toLowerCase();
+
+                if (
+                    query === "" ||
+                    nameText.includes(query) ||
+                    fullText.includes(query)
+                ) {
+                    product.style.display = "";
+                } else {
+                    product.style.display = "none";
+                }
+
+            });
 
         });
 
-    });
-
-});
-
-
-// ===============================
-// HOMEPAGE WHATSAPP
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const whatsappButton =
-        document.getElementById("home-whatsapp");
-
-    if (!whatsappButton) {
-        return;
     }
 
-    whatsappButton.addEventListener("click", function (event) {
 
-        event.preventDefault();
+    // ===============================
+    // HOMEPAGE WHATSAPP
+    // ===============================
 
-        const phone = "254101984723";
+    const homeWhatsApp =
+        document.getElementById("home-whatsapp");
 
-        const message =
-            "Hi 4LJTek, I'd like to order from your store.";
+    if (homeWhatsApp) {
 
-        const whatsappLink =
-            "https://api.whatsapp.com/send?phone=" +
-            phone +
-            "&text=" +
-            encodeURIComponent(message);
+        homeWhatsApp.addEventListener("click", function (event) {
 
-        window.location.href = whatsappLink;
+            event.preventDefault();
 
-    });
+            const phone = "254101984723";
 
-});
+            const message =
+                "Hi 4LJTek, I'd like to order from your store.";
+
+            const whatsappLink =
+                "https://api.whatsapp.com/send?phone=" +
+                phone +
+                "&text=" +
+                encodeURIComponent(message);
+
+            window.location.href = whatsappLink;
+
+        });
+
+    }
 
 
-// ===============================
-// PRODUCT WHATSAPP BUTTONS
-// ===============================
+    // ===============================
+    // PRODUCT WHATSAPP
+    // ===============================
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const productButtons =
+    const productWhatsAppButtons =
         document.querySelectorAll(
             ".product-card .whatsapp-btn"
         );
 
-    productButtons.forEach(function (button) {
+    productWhatsAppButtons.forEach(function (button) {
 
         button.addEventListener("click", function (event) {
 
@@ -153,14 +144,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-});
 
-
-// ===============================
-// SMOOTH CATEGORY SCROLLING
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
+    // ===============================
+    // CATEGORY SMOOTH SCROLL
+    // ===============================
 
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
@@ -169,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const href =
                 this.getAttribute("href");
 
-            // Ignore empty links
             if (!href || href === "#") {
                 return;
             }
@@ -192,13 +178,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+
+    // ===============================
+    // CONSOLE MESSAGE
+    // ===============================
+
+    console.log(
+        "Welcome to 4LJTek - Quality Over Quantity!"
+    );
+
 });
-
-
-// ===============================
-// WELCOME MESSAGE
-// ===============================
-
-console.log(
-    "Welcome to 4LJTek - Quality Over Quantity!"
-);
