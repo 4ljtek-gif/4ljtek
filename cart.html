@@ -2,50 +2,275 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Cart | 4LJTek</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* ==============================
+           CART PAGE
+        ============================== */
+
+        .cart-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 25px 90px;
+        }
+
+        .cart-page h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .cart-subtitle {
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 45px;
+        }
+
+        #cart-items {
+            width: 100%;
+        }
+
+        #empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f7f7f7;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #777;
+        }
+
+        /* CART PRODUCT */
+
+        #cart-items > div {
+            background: #f7f7f7 !important;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px !important;
+            padding: 25px !important;
+            margin-bottom: 18px !important;
+        }
+
+        #cart-items h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 0 10px;
+        }
+
+        #cart-items p {
+            font-size: 17px;
+            color: #555;
+        }
+
+        /* REMOVE */
+
+        .remove-cart-btn {
+            background: #111;
+            color: #fff;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .2s ease;
+        }
+
+        .remove-cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* SUMMARY */
+
+        #cart-summary {
+            background: #111;
+            color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px !important;
+        }
+
+        #cart-summary h3 {
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        #cart-summary p {
+            font-size: 18px;
+            color: #ddd;
+        }
+
+        #cart-summary strong {
+            color: #fff;
+        }
+
+        #cart-summary .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        #cart-summary .product-actions button {
+            min-height: 52px;
+            border: 0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #cart-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        #cart-call {
+            background: #fff;
+            color: #111;
+        }
+
+        #clear-cart {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #555 !important;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .cart-page {
+                padding: 45px 20px 70px;
+            }
+
+            .cart-page h1 {
+                font-size: 42px;
+                line-height: 1.05;
+            }
+
+            .cart-subtitle {
+                font-size: 17px;
+                line-height: 1.5;
+                margin-bottom: 30px;
+            }
+
+            #cart-items > div {
+                padding: 22px !important;
+            }
+
+            #cart-items h3 {
+                font-size: 22px;
+            }
+
+            #cart-summary {
+                padding: 24px;
+            }
+
+            #cart-summary h3 {
+                font-size: 24px;
+            }
+
+            #cart-summary .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
+
+<!-- ==============================
+     HEADER
+============================== -->
 
 <header class="site-header">
 
     <div class="logo">
+
         <a href="index.html">
-            <img src="images/logo.png" alt="4LJTek">
+
+            <img
+                src="images/logo.png"
+                alt="4LJTek"
+            >
+
         </a>
+
     </div>
 
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="cart.html">
+            Cart
+        </a>
+
     </nav>
 
 </header>
 
 
-<section class="products-section">
+<!-- ==============================
+     CART
+============================== -->
 
-    <h2>Your Cart</h2>
+<main class="cart-page">
 
-    <p class="products-intro">
+    <h1>
+        Your Cart
+    </h1>
+
+    <p class="cart-subtitle">
         Review the products you've selected.
     </p>
 
-
-    <!-- CART ITEMS -->
 
     <div id="cart-items">
 
@@ -56,18 +281,27 @@
     </div>
 
 
-    <!-- CART SUMMARY -->
+    <!-- ==============================
+         CART SUMMARY
+    ============================== -->
 
-    <div id="cart-summary" style="display:none; margin-top:30px;">
+    <div
+        id="cart-summary"
+        style="display:none;"
+    >
 
         <h3>
-            Cart Summary
+            Order Summary
         </h3>
+
 
         <p>
             Items:
-            <strong id="cart-count">0</strong>
+            <strong id="cart-count">
+                0
+            </strong>
         </p>
+
 
         <p>
             Total:
@@ -76,19 +310,19 @@
             </strong>
         </p>
 
+
         <div class="product-actions">
 
             <button
                 type="button"
-                class="whatsapp-btn"
                 id="cart-whatsapp"
             >
                 Order via WhatsApp
             </button>
 
+
             <button
                 type="button"
-                class="call-btn"
                 id="cart-call"
             >
                 Call 4LJTek
@@ -96,18 +330,22 @@
 
         </div>
 
+
         <button
             type="button"
             id="clear-cart"
-            style="margin-top:15px; padding:12px 20px; border:0; border-radius:10px; cursor:pointer;"
         >
             Clear Cart
         </button>
 
     </div>
 
-</section>
+</main>
 
+
+<!-- ==============================
+     FOOTER
+============================== -->
 
 <footer>
 
@@ -119,6 +357,7 @@
 
 
 <script src="js/script.js"></script>
+
 
 </body>
 
