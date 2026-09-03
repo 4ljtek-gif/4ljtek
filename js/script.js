@@ -29,18 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 .toLowerCase()
                 .trim();
 
-            const products =
-                document.querySelectorAll(".product-card");
+            const products = document.querySelectorAll(".product-card");
 
             products.forEach(function (product) {
 
                 const productName =
                     product.querySelector("h3");
 
-                const nameText =
-                    productName
-                        ? productName.textContent.toLowerCase()
-                        : "";
+                const nameText = productName
+                    ? productName.textContent.toLowerCase()
+                    : "";
 
                 const fullText =
                     product.textContent.toLowerCase();
@@ -153,15 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         link.addEventListener("click", function (event) {
 
-            const href =
-                this.getAttribute("href");
+            const href = this.getAttribute("href");
 
             if (!href || href === "#") {
                 return;
             }
 
-            const target =
-                document.querySelector(href);
+            const target = document.querySelector(href);
 
             if (target) {
 
