@@ -1,95 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart | 4LJTek</title>
+
+    <title>Cart | 4LJTek</title>
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="4LJTek Logo">
-        </a>
+<header class="site-header">
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="active">
-                    <i class="fas fa-shopping-cart"></i> Cart
-                </a></li>
-            </ul>
-        </nav>
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo.png" alt="4LJTek">
+        </a>
     </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
 </header>
 
-<section class="page-header">
-    <div class="container">
-        <h1>Your Shopping Cart</h1>
-        <p>Review your items before checkout.</p>
+
+<section class="products-section">
+
+    <h2>Your Cart</h2>
+
+    <p class="products-intro">
+        Review the products you've selected.
+    </p>
+
+
+    <!-- CART ITEMS -->
+
+    <div id="cart-items">
+
+        <p id="empty-cart">
+            Your cart is empty.
+        </p>
+
     </div>
-</section>
 
-<section class="cart-section">
-    <div class="container">
 
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
+    <!-- CART SUMMARY -->
 
-            <tbody id="cart-items">
+    <div id="cart-summary" style="display:none; margin-top:30px;">
 
-                <tr>
-                    <td>iPhone 16 Pro Max</td>
-                    <td>KSh 126,000</td>
-                    <td>1</td>
-                    <td>KSh 126,000</td>
-                    <td>
-                        <button class="remove-btn">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+        <h3>
+            Cart Summary
+        </h3>
 
-            </tbody>
-        </table>
+        <p>
+            Items:
+            <strong id="cart-count">0</strong>
+        </p>
 
-        <div class="cart-summary">
-            <h2>Cart Summary</h2>
+        <p>
+            Total:
+            <strong id="cart-total">
+                Contact for Price
+            </strong>
+        </p>
 
-            <p><strong>Subtotal:</strong> KSh 126,000</p>
-            <p><strong>Delivery:</strong> Calculated at checkout</p>
+        <div class="product-actions">
 
-            <h3>Total: KSh 126,000</h3>
+            <button
+                type="button"
+                class="whatsapp-btn"
+                id="cart-whatsapp"
+            >
+                Order via WhatsApp
+            </button>
 
-            <a href="checkout.html" class="btn">
-                Proceed to Checkout
-            </a>
+            <button
+                type="button"
+                class="call-btn"
+                id="cart-call"
+            >
+                Call 4LJTek
+            </button>
+
         </div>
 
+        <button
+            type="button"
+            id="clear-cart"
+            style="margin-top:15px; padding:12px 20px; border:0; border-radius:10px; cursor:pointer;"
+        >
+            Clear Cart
+        </button>
+
     </div>
+
 </section>
 
+
 <footer>
-    <div class="container">
-        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
-    </div>
+
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
+
 </footer>
+
 
 <script src="js/script.js"></script>
 
 </body>
+
 </html>
