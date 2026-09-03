@@ -1,88 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Checkout | 4LJTek</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        .checkout-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 65px 25px 90px;
+        }
+
+        .checkout-page h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 12px;
+        }
+
+        .checkout-intro {
+            color: #777;
+            font-size: 19px;
+            margin-bottom: 40px;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .checkout-box {
+            background: #f7f7f7;
+            border: 1px solid #e3e3e3;
+            border-radius: 22px;
+            padding: 30px;
+        }
+
+        .checkout-box h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background: #fff;
+            color: #111;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #111;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .required {
+            color: #d00;
+        }
+
+        /* ORDER SUMMARY */
+
+        .checkout-summary {
+            background: #111;
+            color: #fff;
+            border-radius: 22px;
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .checkout-summary h2 {
+            margin-top: 0;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        #checkout-items {
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 10px 0;
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .checkout-total strong {
+            color: #fff;
+        }
+
+        #place-order {
+            width: 100%;
+            min-height: 56px;
+            border: 0;
+            border-radius: 13px;
+            background: #25D366;
+            color: #fff;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .back-cart {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-cart:hover {
+            color: #fff;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .checkout-page {
+                padding: 50px 18px 70px;
+            }
+
+            .checkout-page h1 {
+                font-size: 45px;
+                letter-spacing: -2px;
+            }
+
+            .checkout-intro {
+                font-size: 17px;
+                line-height: 1.5;
+            }
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-box {
+                padding: 23px;
+                border-radius: 20px;
+            }
+
+            .checkout-summary {
+                position: static;
+                padding: 25px;
+                border-radius: 20px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-<header>
-    <div class="container">
-        <h1>4LJTek</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="cart.html">Cart</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+
+<header class="site-header">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="4LJTek"
+            >
+
+        </a>
+
     </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="products.html">Products</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html">Cart</a>
+
+    </nav>
+
 </header>
 
-<section class="checkout container">
-    <h2>Checkout</h2>
-    <p>Please fill in your details to complete your order.</p>
 
-    <form id="checkout-form">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required>
+<main class="checkout-page">
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" placeholder="07XXXXXXXX" required>
+    <h1>
+        Checkout
+    </h1>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email">
+    <p class="checkout-intro">
+        Enter your details and we'll prepare your order.
+    </p>
 
-        <label for="address">Delivery Address</label>
-        <textarea id="address" rows="4" required></textarea>
 
-        <label for="payment">Payment Method</label>
-        <select id="payment" required>
-            <option value="">Select Payment Method</option>
-            <option>M-Pesa</option>
-            <option>Cash on Delivery</option>
-            <option>Bank Transfer</option>
-        </select>
+    <div class="checkout-grid">
 
-        <div class="order-summary">
-            <h3>Order Summary</h3>
-            <p>Items: <span id="checkout-items">0</span></p>
-            <p>Total: <strong>KSh <span id="checkout-total">0</span></strong></p>
-        </div>
 
-        <button type="submit" class="btn">Place Order</button>
-    </form>
-</section>
+        <!-- CUSTOMER DETAILS -->
+
+        <section class="checkout-box">
+
+            <h2>
+                Customer Details
+            </h2>
+
+
+            <form id="checkout-form">
+
+
+                <div class="form-group">
+
+                    <label for="customer-name">
+                        Full Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customer-name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customer-phone">
+                        Phone Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customer-phone"
+                        placeholder="e.g. 0712 345 678"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="delivery-location">
+                        Delivery Location
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="delivery-location"
+                        placeholder="e.g. Nairobi CBD"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="delivery-method">
+                        Delivery / Collection
+                    </label>
+
+                    <select id="delivery-method">
+
+                        <option value="Delivery">
+                            Delivery
+                        </option>
+
+                        <option value="Collection">
+                            Collection
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="order-notes">
+                        Order Notes
+                    </label>
+
+                    <textarea
+                        id="order-notes"
+                        placeholder="Any additional details..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="place-order"
+                >
+                    Place Order via WhatsApp
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ORDER SUMMARY -->
+
+        <aside class="checkout-summary">
+
+            <h2>
+                Your Order
+            </h2>
+
+
+            <div id="checkout-items">
+
+                <p>
+                    Loading cart...
+                </p>
+
+            </div>
+
+
+            <div class="checkout-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong>
+                    Contact for Price
+                </strong>
+
+            </div>
+
+
+            <a
+                href="cart.html"
+                class="back-cart"
+            >
+                ← Back to Cart
+            </a>
+
+        </aside>
+
+    </div>
+
+</main>
+
 
 <footer>
-    <div class="container">
-        <p>&copy; 2026 4LJTek. All Rights Reserved.</p>
-    </div>
+
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
+
 </footer>
 
+
 <script>
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let total = 0;
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-document.getElementById("checkout-items").textContent = cart.length;
+        const CART_KEY = "4ljtekCart";
 
-cart.forEach(item => {
-    total += item.price * item.quantity;
-});
+        const WHATSAPP_NUMBER =
+            "254101984723";
 
-document.getElementById("checkout-total").textContent = total.toLocaleString();
 
-document.getElementById("checkout-form").addEventListener("submit", function(e){
-    e.preventDefault();
+        function getCart() {
 
-    alert("Thank you for shopping with 4LJTek! Your order has been received.");
+            try {
 
-    localStorage.removeItem("cart");
-    window.location.href = "index.html";
-});
+                return JSON.parse(
+                    localStorage.getItem(CART_KEY)
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        const cart = getCart();
+
+        const items =
+            document.getElementById(
+                "checkout-items"
+            );
+
+
+        /* ==============================
+           CHECK EMPTY CART
+        ============================== */
+
+        if (cart.length === 0) {
+
+            items.innerHTML = `
+                <p>
+                    Your cart is empty.
+                </p>
+            `;
+
+            document.getElementById(
+                "place-order"
+            ).disabled = true;
+
+            document.getElementById(
+                "place-order"
+            ).style.opacity = "0.5";
+
+            return;
+
+        }
+
+
+        /* ==============================
+           DISPLAY PRODUCTS
+        ============================== */
+
+        items.innerHTML = "";
+
+
+        cart.forEach(function (item) {
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "checkout-item";
+
+            row.innerHTML = `
+
+                <span>
+                    ${item.name}
+                </span>
+
+                <strong>
+                    ×${item.quantity}
+                </strong>
+
+            `;
+
+            items.appendChild(row);
+
+        });
+
+
+        /* ==============================
+           SUBMIT ORDER
+        ============================== */
+
+        document
+            .getElementById("checkout-form")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                "customer-name"
+                            )
+                            .value
+                            .trim();
+
+
+                    const phone =
+                        document
+                            .getElementById(
+                                "customer-phone"
+                            )
+                            .value
+                            .trim();
+
+
+                    const location =
+                        document
+                            .getElementById(
+                                "delivery-location"
+                            )
+                            .value
+                            .trim();
+
+
+                    const method =
+                        document
+                            .getElementById(
+                                "delivery-method"
+                            )
+                            .value;
+
+
+                    const notes =
+                        document
+                            .getElementById(
+                                "order-notes"
+                            )
+                            .value
+                            .trim();
+
+
+                    let message =
+                        "Hi 4LJTek! I'd like to place an order.%0A%0A";
+
+
+                    message +=
+                        "*Customer Details*%0A";
+
+                    message +=
+                        "Name: " +
+                        encodeURIComponent(name) +
+                        "%0A";
+
+                    message +=
+                        "Phone: " +
+                        encodeURIComponent(phone) +
+                        "%0A";
+
+                    message +=
+                        "Location: " +
+                        encodeURIComponent(location) +
+                        "%0A";
+
+                    message +=
+                        "Method: " +
+                        encodeURIComponent(method) +
+                        "%0A%0A";
+
+
+                    message +=
+                        "*Order*%0A";
+
+
+                    cart.forEach(function (item) {
+
+                        message +=
+                            "• " +
+                            encodeURIComponent(
+                                item.name
+                            ) +
+                            " x" +
+                            item.quantity +
+                            "%0A";
+
+                    });
+
+
+                    if (notes) {
+
+                        message +=
+                            "%0A*Notes*%0A" +
+                            encodeURIComponent(
+                                notes
+                            ) +
+                            "%0A";
+
+                    }
+
+
+                    message +=
+                        "%0APlease confirm the price and availability.";
+
+
+                    const whatsappURL =
+                        "https://api.whatsapp.com/send?phone=" +
+                        WHATSAPP_NUMBER +
+                        "&text=" +
+                        message;
+
+
+                    window.location.href =
+                        whatsappURL;
+
+                }
+            );
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>
