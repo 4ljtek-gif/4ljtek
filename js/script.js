@@ -1,4 +1,4 @@
-// ==========================================
+ // ==========================================
 // 4LJTek WEBSITE JAVASCRIPT
 // ==========================================
 
@@ -614,4 +614,114 @@ function setupWhatsAppButtons() {
 // HOMEPAGE WHATSAPP
 // ==========================================
 
-function setup
+function setupHomeWhatsApp() {
+
+    const button =
+        document.getElementById("home-whatsapp");
+
+    if (!button) return;
+
+    button.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const message =
+            "Hi 4LJTek, I'd like to order from your store.";
+
+        const url =
+            "https://api.whatsapp.com/send?phone=" +
+            WHATSAPP_NUMBER +
+            "&text=" +
+            encodeURIComponent(message);
+
+        window.location.href = url;
+
+    });
+
+}
+
+
+// ==========================================
+// CATEGORY NAVIGATION
+// ==========================================
+
+function setupCategoryNavigation() {
+
+    const links =
+        document.querySelectorAll(
+            '.product-category-nav a[href^="#"]'
+        );
+
+    links.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const id =
+                link.getAttribute("href");
+
+            if (!id || id === "#") return;
+
+            const target =
+                document.querySelector(id);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+}
+
+
+// ==========================================
+// START WEBSITE
+// ==========================================
+
+function start4LJTek() {
+
+    setupProductSearch();
+
+    setupAddToCartButtons();
+
+    setupWhatsAppButtons();
+
+    setupHomeWhatsApp();
+
+    setupCategoryNavigation();
+
+    displayCart();
+
+    updateCartCount();
+
+    setupClearCart();
+
+    setupCartWhatsApp();
+
+    setupCartCall();
+
+}
+
+
+// ==========================================
+// RUN AFTER PAGE LOAD
+// ==========================================
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        start4LJTek
+    );
+
+} else {
+
+    start4LJTek();
+
+}
