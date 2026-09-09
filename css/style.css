@@ -1328,112 +1328,6 @@ footer p {
         font-size: 11px;
     }
 }
-/* ==========================================
-   4LJTEK PREMIUM MOBILE MENU
-   ========================================== */
-
-.mobile-menu-btn {
-    display: none;
-    width: 46px;
-    height: 46px;
-    border: 1px solid #e5e5e5;
-    border-radius: 13px;
-    background: #fff;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-    z-index: 1001;
-}
-
-.mobile-menu-btn span {
-    display: block;
-    width: 21px;
-    height: 2px;
-    background: #111;
-    margin: 5px auto;
-    border-radius: 10px;
-    transition: .3s ease;
-}
-
-/* X animation */
-
-header.mobile-open .mobile-menu-btn span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-header.mobile-open .mobile-menu-btn span:nth-child(2) {
-    opacity: 0;
-}
-
-header.mobile-open .mobile-menu-btn span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    header {
-        position: relative;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    header nav {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
-
-        background: rgba(255,255,255,.97);
-        backdrop-filter: blur(15px);
-
-        border: 1px solid #e5e5e5;
-        border-radius: 20px;
-
-        padding: 10px;
-
-        box-shadow: 0 20px 50px rgba(0,0,0,.12);
-
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-
-        transition: .25s ease;
-    }
-
-    header.mobile-open nav {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    header nav ul {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 4px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    header nav ul li {
-        width: 100%;
-    }
-
-    header nav ul li a {
-        display: flex !important;
-        align-items: center;
-        width: 100%;
-        min-height: 52px;
-
-        padding: 0 18px;
 
         border-radius: 13px;
 
@@ -1458,4 +1352,203 @@ header.mobile-open .mobile-menu-btn span:nth-child(3) {
         color: #fff !important;
         margin-top: 4px;
     }
+}
+
+/* ==========================================
+   4LJTEK MOBILE MENU — FINAL FIX
+   ========================================== */
+
+.mobile-menu-btn {
+    display: none;
+}
+
+
+/* ==========================================
+   MOBILE HEADER
+   ========================================== */
+
+@media (max-width: 700px) {
+
+    header {
+        position: relative !important;
+        z-index: 9999 !important;
+
+        min-height: 82px !important;
+        height: auto !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+
+        padding: 14px 20px !important;
+        box-sizing: border-box;
+    }
+
+    header .logo {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    header .logo img {
+        max-width: 105px !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+
+    /* HAMBURGER */
+
+    .mobile-menu-btn {
+        display: flex !important;
+
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+
+        width: 46px !important;
+        height: 46px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        border: 1px solid #dedede !important;
+        border-radius: 14px !important;
+
+        background: #ffffff !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+
+        cursor: pointer !important;
+        z-index: 10000 !important;
+
+        box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    }
+
+    .mobile-menu-btn span {
+        display: block !important;
+
+        width: 21px !important;
+        height: 2px !important;
+
+        margin: 3px 0 !important;
+
+        background: #111111 !important;
+
+        border-radius: 10px !important;
+
+        transition: .25s ease !important;
+    }
+
+
+    /* HAMBURGER → X */
+
+    header.mobile-open .mobile-menu-btn span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg) !important;
+    }
+
+    header.mobile-open .mobile-menu-btn span:nth-child(2) {
+        opacity: 0 !important;
+    }
+
+    header.mobile-open .mobile-menu-btn span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg) !important;
+    }
+
+
+    /* MOBILE NAV */
+
+    header nav {
+        position: absolute !important;
+
+        top: calc(100% + 8px) !important;
+        left: 15px !important;
+        right: 15px !important;
+
+        width: auto !important;
+
+        padding: 10px !important;
+
+        background: rgba(255,255,255,.98) !important;
+
+        border: 1px solid #e5e5e5 !important;
+        border-radius: 20px !important;
+
+        box-shadow: 0 20px 50px rgba(0,0,0,.15) !important;
+
+        opacity: 0 !important;
+        visibility: hidden !important;
+
+        transform: translateY(-10px) !important;
+
+        transition: .25s ease !important;
+
+        z-index: 9998 !important;
+    }
+
+
+    header.mobile-open nav {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+
+        width: 100% !important;
+
+        gap: 4px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    header nav ul li {
+        width: 100% !important;
+        list-style: none !important;
+    }
+
+
+    header nav ul li a {
+        display: flex !important;
+
+        align-items: center !important;
+
+        width: 100% !important;
+        min-height: 52px !important;
+
+        padding: 0 18px !important;
+
+        box-sizing: border-box !important;
+
+        border-radius: 13px !important;
+
+        color: #111111 !important;
+
+        font-size: 15px !important;
+        font-weight: 800 !important;
+
+        text-decoration: none !important;
+    }
+
+
+    header nav ul li a:active,
+    header nav ul li a:hover {
+        background: #f2f2f2 !important;
+    }
+
+
+    /* CART */
+
+    header nav ul li:last-child a {
+        background: #111111 !important;
+        color: #ffffff !important;
+    }
+
 }
