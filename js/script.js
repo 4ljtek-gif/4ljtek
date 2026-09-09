@@ -618,8 +618,15 @@ function setupMobileMenu() {
 
     });
 }
-    function start4LJTek() {
+ function start4LJTek() {
     setupMobileMenu();
     setupProductSearch();
-
+    setupAddToCartButtons();
+    setupWhatsAppButtons();
+    setupHomeWhatsApp();
+    displayCart();
+    updateCartCount();
+    setupClearCart();
+    setupCartWhatsApp();
+    setupCartCall();
 }
