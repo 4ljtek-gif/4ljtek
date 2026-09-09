@@ -11,7 +11,19 @@
     <title>Products | 4LJTek</title>
 
     <link rel="stylesheet"
-          href="css/style.css">
+          href="./css/style.css?v=5">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
 
@@ -23,9 +35,206 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
+            margin: 0;
             background: #f7f7f7;
+            color: #111;
+            font-family: "Montserrat", sans-serif;
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .site-header {
+            min-height: 76px !important;
+            padding: 10px 5% !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+
+            background: #fff !important;
+
+            position: relative;
+            z-index: 9999;
+        }
+
+        .site-header .logo {
+            display: block !important;
+            flex-shrink: 0;
+        }
+
+        .site-header .logo a {
+            display: block;
+        }
+
+        .site-header .logo img {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+
+        .site-header nav {
+            display: flex !important;
+            align-items: center;
+        }
+
+        .site-header nav ul {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .site-header nav a {
+            color: #111;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: .2s ease;
+        }
+
+        .site-header nav a:hover {
+            color: #006eff;
+        }
+
+
+        /* ==========================================
+           MOBILE MENU BUTTON
+        ========================================== */
+
+        .mobile-menu-btn {
+            display: none;
+
+            width: 64px;
+            height: 64px;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 20px;
+
+            background: #111;
+            color: #fff;
+
+            font-family: Arial, sans-serif;
+            font-size: 38px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            position: relative;
+            z-index: 10001;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.15);
+        }
+
+
+        /* ==========================================
+           PREMIUM MOBILE MENU
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .site-header {
+                min-height: 110px !important;
+
+                padding: 15px 20px !important;
+
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .site-header .logo img {
+                width: 120px !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+
+            .site-header nav {
+                display: none !important;
+
+                position: absolute;
+
+                left: 0;
+                right: 0;
+
+                top: 100%;
+
+                width: 100%;
+
+                background: #fff;
+
+                border-top: 1px solid #eee;
+
+                box-shadow:
+                    0 20px 45px rgba(0,0,0,.12);
+
+                z-index: 10000;
+            }
+
+            .site-header.mobile-menu-open nav {
+                display: block !important;
+            }
+
+            .site-header nav ul {
+                display: block !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .site-header nav li {
+                display: block !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                border-bottom: 1px solid #eee;
+            }
+
+            .site-header nav li:last-child {
+                border-bottom: 0;
+            }
+
+            .site-header nav a {
+                display: block !important;
+
+                width: 100% !important;
+
+                padding: 22px 30px !important;
+
+                color: #111 !important;
+
+                font-size: 16px !important;
+                font-weight: 800 !important;
+
+                text-decoration: none !important;
+            }
+
+            .site-header nav a:active,
+            .site-header nav a:hover {
+                background: #f7f7f7;
+                color: #006eff !important;
+            }
+
         }
 
 
@@ -39,7 +248,6 @@
             min-height: 390px;
 
             display: flex;
-
             align-items: center;
 
             overflow: hidden;
@@ -60,7 +268,6 @@
             color: #fff;
         }
 
-
         .products-hero::after {
             content: "";
 
@@ -79,21 +286,18 @@
             filter: blur(20px);
         }
 
-
         .products-hero-content {
             position: relative;
 
             z-index: 2;
 
             width: 100%;
-
             max-width: 1400px;
 
             margin: 0 auto;
 
             padding: 70px 5%;
         }
-
 
         .products-eyebrow {
             display: inline-block;
@@ -103,14 +307,11 @@
             color: #4da3ff;
 
             font-size: 12px;
-
             font-weight: 800;
 
             text-transform: uppercase;
-
             letter-spacing: 2px;
         }
-
 
         .products-hero h1 {
             max-width: 760px;
@@ -129,7 +330,6 @@
 
             letter-spacing: -3px;
         }
-
 
         .products-hero p {
             max-width: 650px;
@@ -171,12 +371,10 @@
             margin-bottom: 25px;
         }
 
-
         .product-category-nav a {
             display: inline-flex;
 
             align-items: center;
-
             justify-content: center;
 
             padding: 12px 20px;
@@ -192,12 +390,10 @@
             text-decoration: none;
 
             font-size: 12px;
-
             font-weight: 800;
 
             transition: .25s ease;
         }
-
 
         .product-category-nav a:hover {
             background: #111;
@@ -220,10 +416,8 @@
             margin-bottom: 55px;
         }
 
-
         #search {
             width: 100%;
-
             height: 58px;
 
             padding: 0 20px;
@@ -233,7 +427,6 @@
             border-radius: 16px;
 
             background: #fff;
-
             color: #111;
 
             font-family: inherit;
@@ -247,7 +440,6 @@
 
             transition: .25s ease;
         }
-
 
         #search:focus {
             border-color: #111;
@@ -265,7 +457,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
 
             gap: 20px;
@@ -273,21 +464,18 @@
             margin: 70px 0 28px;
         }
 
-
         .category-title {
             margin: 0;
 
             color: #111;
 
             font-size: 30px;
-
             line-height: 1.1;
 
             font-weight: 900;
 
             letter-spacing: -1px;
         }
-
 
         .category-line {
             flex: 1;
@@ -313,17 +501,14 @@
 
 
         /* ==========================================
-           PREMIUM PRODUCT CARD
+           PRODUCT CARD
         ========================================== */
 
         .product-card {
             position: relative;
 
             display: flex;
-
             flex-direction: column;
-
-            overflow: hidden;
 
             min-width: 0;
 
@@ -338,12 +523,13 @@
             box-shadow:
                 0 8px 30px rgba(0,0,0,.045);
 
+            overflow: hidden;
+
             transition:
                 transform .3s ease,
                 box-shadow .3s ease,
                 border-color .3s ease;
         }
-
 
         .product-card:hover {
             transform: translateY(-6px);
@@ -356,48 +542,21 @@
 
 
         /* ==========================================
-           IMAGE AREA
+           PRODUCT IMAGE
         ========================================== */
-
-        .product-image-wrap {
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 100%;
-
-            height: 250px;
-
-            overflow: hidden;
-
-            border-radius: 17px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #fafafa,
-                    #eeeeee
-                );
-
-            margin-bottom: 18px;
-        }
-
 
         .product-card > img {
             width: 100%;
-
             height: 250px;
-
-            object-fit: contain;
 
             display: block;
 
             padding: 12px;
 
+            margin-bottom: 18px;
+
+            object-fit: contain;
+
             border-radius: 17px;
 
             background:
@@ -407,12 +566,9 @@
                     #eeeeee
                 );
 
-            margin-bottom: 18px;
-
             transition:
                 transform .35s ease;
         }
-
 
         .product-card:hover > img {
             transform: scale(1.04);
@@ -437,7 +593,6 @@
             letter-spacing: -.35px;
         }
 
-
         .product-card .price {
             margin: 0 0 10px;
 
@@ -447,7 +602,6 @@
 
             font-weight: 850;
         }
-
 
         .product-card > p:not(.price) {
             margin: 0 0 20px;
@@ -471,21 +625,21 @@
 
             gap: 7px;
 
+            width: 100%;
+
             margin-top: auto;
         }
-
 
         .product-actions a,
         .product-actions button {
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
-            min-height: 46px;
-
             width: 100%;
+
+            min-height: 46px;
 
             padding: 10px;
 
@@ -522,7 +676,6 @@
             border: 1px solid #111 !important;
         }
 
-
         .product-actions .add-cart-btn:hover {
             background: #0878ff !important;
 
@@ -537,7 +690,6 @@
 
             color: #fff;
         }
-
 
         .product-actions .whatsapp-btn:hover {
             background: #1ebe5d;
@@ -555,7 +707,6 @@
 
             border: 1px solid #ddd;
         }
-
 
         .product-actions .call-btn:hover {
             background: #111;
@@ -589,11 +740,9 @@
             position: absolute;
 
             width: 1px;
-
             height: 1px;
 
             padding: 0;
-
             margin: -1px;
 
             overflow: hidden;
@@ -630,11 +779,9 @@
                 min-height: 330px;
             }
 
-
             .products-hero-content {
                 padding: 55px 20px;
             }
-
 
             .products-eyebrow {
                 font-size: 10px;
@@ -642,13 +789,11 @@
                 letter-spacing: 1.5px;
             }
 
-
             .products-hero h1 {
                 font-size: 43px;
 
                 letter-spacing: -2px;
             }
-
 
             .products-hero p {
                 font-size: 13px;
@@ -656,6 +801,8 @@
                 line-height: 1.6;
             }
 
+
+            /* PRODUCTS AREA */
 
             .products-section {
                 padding: 42px 15px;
@@ -675,11 +822,10 @@
                 margin-bottom: 20px;
             }
 
-
             .product-category-nav a {
                 width: 100%;
 
-                padding: 11px 5px;
+                padding: 12px 5px;
 
                 font-size: 10px;
 
@@ -694,9 +840,12 @@
 
                 padding: 0 16px;
 
-                margin-bottom: 40px;
-
                 border-radius: 14px;
+            }
+
+
+            .search-wrapper {
+                margin-bottom: 40px;
             }
 
 
@@ -708,13 +857,11 @@
                 gap: 12px;
             }
 
-
             .category-title {
                 font-size: 25px;
 
                 letter-spacing: -.6px;
             }
-
 
             .category-line {
                 display: none;
@@ -738,12 +885,9 @@
 
                 border-radius: 17px;
 
-                min-height: 0;
-
                 box-shadow:
                     0 5px 18px rgba(0,0,0,.045);
             }
-
 
             .product-card:hover {
                 transform: none;
@@ -768,7 +912,6 @@
 
                 object-fit: contain;
             }
-
 
             .product-card:hover > img {
                 transform: none;
@@ -808,7 +951,7 @@
             }
 
 
-            /* BUTTON AREA */
+            /* BUTTONS */
 
             .product-actions {
                 width: 100%;
@@ -822,9 +965,6 @@
                 margin-top: auto;
             }
 
-
-            /* ADD TO CART */
-
             .product-actions .add-cart-btn {
                 grid-column: 1 / -1 !important;
 
@@ -836,9 +976,6 @@
 
                 font-size: 9px;
             }
-
-
-            /* WHATSAPP */
 
             .product-actions .whatsapp-btn {
                 grid-column: 1 !important;
@@ -854,12 +991,7 @@
                 font-size: 9px;
 
                 border-radius: 10px;
-
-                box-sizing: border-box;
             }
-
-
-            /* CALL */
 
             .product-actions .call-btn {
                 grid-column: 2 !important;
@@ -875,8 +1007,6 @@
                 font-size: 9px;
 
                 border-radius: 10px;
-
-                box-sizing: border-box;
             }
 
         }
@@ -888,30 +1018,34 @@
 
         @media (max-width: 380px) {
 
+            .mobile-menu-btn {
+                width: 58px;
+                height: 58px;
+
+                border-radius: 17px;
+
+                font-size: 34px;
+            }
+
             .products-grid {
                 gap: 8px;
             }
-
 
             .product-card {
                 padding: 8px;
             }
 
-
             .product-card > img {
                 height: 140px;
             }
-
 
             .product-card h3 {
                 font-size: 11px;
             }
 
-
             .product-card > p:not(.price) {
                 font-size: 8.5px;
             }
-
 
             .product-actions a,
             .product-actions button {
@@ -932,16 +1066,33 @@
      HEADER
 ========================================== -->
 
-<header>
+<header class="site-header">
 
     <div class="logo">
 
-        <img
-            src="images/logo.png"
-            alt="4LJTek Logo"
-        >
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="4LJTek Logo"
+            >
+
+        </a>
 
     </div>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        type="button"
+        class="mobile-menu-btn"
+        id="products-mobile-menu"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
 
     <nav>
@@ -997,12 +1148,10 @@
             4LJTek Premium Electronics
         </span>
 
-
         <h1>
             Find Your<br>
             Next Upgrade.
         </h1>
-
 
         <p>
             Explore premium smartphones, PlayStation consoles
@@ -1053,7 +1202,6 @@
         Search products
     </label>
 
-
     <div class="search-wrapper">
 
         <input
@@ -1096,9 +1244,7 @@
                 alt="iPhone 17"
             >
 
-            <h3>
-                iPhone 17
-            </h3>
+            <h3>iPhone 17</h3>
 
             <p class="price">
                 Contact for Price
@@ -1140,9 +1286,7 @@
                 alt="iPhone 17 Air"
             >
 
-            <h3>
-                iPhone 17 Air
-            </h3>
+            <h3>iPhone 17 Air</h3>
 
             <p class="price">
                 Contact for Price
@@ -1184,9 +1328,7 @@
                 alt="iPhone 17 Pro"
             >
 
-            <h3>
-                iPhone 17 Pro
-            </h3>
+            <h3>iPhone 17 Pro</h3>
 
             <p class="price">
                 Contact for Price
@@ -1228,9 +1370,7 @@
                 alt="iPhone 17 Pro Max"
             >
 
-            <h3>
-                iPhone 17 Pro Max
-            </h3>
+            <h3>iPhone 17 Pro Max</h3>
 
             <p class="price">
                 Contact for Price
@@ -1272,9 +1412,7 @@
                 alt="Samsung Galaxy S25"
             >
 
-            <h3>
-                Samsung Galaxy S25
-            </h3>
+            <h3>Samsung Galaxy S25</h3>
 
             <p class="price">
                 Contact for Price
@@ -1315,9 +1453,7 @@
                 alt="Samsung Galaxy S25 Plus"
             >
 
-            <h3>
-                Samsung Galaxy S25+
-            </h3>
+            <h3>Samsung Galaxy S25+</h3>
 
             <p class="price">
                 Contact for Price
@@ -1359,9 +1495,7 @@
                 alt="Samsung Galaxy S25 Ultra"
             >
 
-            <h3>
-                Samsung Galaxy S25 Ultra
-            </h3>
+            <h3>Samsung Galaxy S25 Ultra</h3>
 
             <p class="price">
                 Contact for Price
@@ -1402,9 +1536,7 @@
                 alt="Samsung Galaxy S26"
             >
 
-            <h3>
-                Samsung Galaxy S26
-            </h3>
+            <h3>Samsung Galaxy S26</h3>
 
             <p class="price">
                 Contact for Price
@@ -1445,9 +1577,7 @@
                 alt="Samsung Galaxy S26 Plus"
             >
 
-            <h3>
-                Samsung Galaxy S26+
-            </h3>
+            <h3>Samsung Galaxy S26+</h3>
 
             <p class="price">
                 Contact for Price
@@ -1488,9 +1618,7 @@
                 alt="Samsung Galaxy S26 Ultra"
             >
 
-            <h3>
-                Samsung Galaxy S26 Ultra
-            </h3>
+            <h3>Samsung Galaxy S26 Ultra</h3>
 
             <p class="price">
                 Contact for Price
@@ -1531,9 +1659,7 @@
                 alt="Google Pixel 10"
             >
 
-            <h3>
-                Google Pixel 10
-            </h3>
+            <h3>Google Pixel 10</h3>
 
             <p class="price">
                 Contact for Price
@@ -1575,9 +1701,7 @@
                 alt="Google Pixel 10 Pro"
             >
 
-            <h3>
-                Google Pixel 10 Pro
-            </h3>
+            <h3>Google Pixel 10 Pro</h3>
 
             <p class="price">
                 Contact for Price
@@ -1619,9 +1743,7 @@
                 alt="Google Pixel 10 Pro XL"
             >
 
-            <h3>
-                Google Pixel 10 Pro XL
-            </h3>
+            <h3>Google Pixel 10 Pro XL</h3>
 
             <p class="price">
                 Contact for Price
@@ -1663,9 +1785,7 @@
                 alt="Google Pixel 10 Pro Fold"
             >
 
-            <h3>
-                Google Pixel 10 Pro Fold
-            </h3>
+            <h3>Google Pixel 10 Pro Fold</h3>
 
             <p class="price">
                 Contact for Price
@@ -1706,9 +1826,7 @@
                 alt="Google Pixel 11"
             >
 
-            <h3>
-                Google Pixel 11
-            </h3>
+            <h3>Google Pixel 11</h3>
 
             <p class="price">
                 Contact for Price
@@ -1749,9 +1867,7 @@
                 alt="Google Pixel 11 Pro"
             >
 
-            <h3>
-                Google Pixel 11 Pro
-            </h3>
+            <h3>Google Pixel 11 Pro</h3>
 
             <p class="price">
                 Contact for Price
@@ -1793,9 +1909,7 @@
                 alt="Google Pixel 11 Pro XL"
             >
 
-            <h3>
-                Google Pixel 11 Pro XL
-            </h3>
+            <h3>Google Pixel 11 Pro XL</h3>
 
             <p class="price">
                 Contact for Price
@@ -1837,9 +1951,7 @@
                 alt="Google Pixel 11 Pro Fold"
             >
 
-            <h3>
-                Google Pixel 11 Pro Fold
-            </h3>
+            <h3>Google Pixel 11 Pro Fold</h3>
 
             <p class="price">
                 Contact for Price
@@ -1905,9 +2017,7 @@
                 alt="PlayStation 5"
             >
 
-            <h3>
-                PlayStation 5
-            </h3>
+            <h3>PlayStation 5</h3>
 
             <p class="price">
                 Contact for Price
@@ -1991,9 +2101,7 @@
                 alt="PS5 Slim"
             >
 
-            <h3>
-                PS5 Slim
-            </h3>
+            <h3>PS5 Slim</h3>
 
             <p class="price">
                 Contact for Price
@@ -2034,9 +2142,7 @@
                 alt="PlayStation 5 Pro"
             >
 
-            <h3>
-                PlayStation 5 Pro
-            </h3>
+            <h3>PlayStation 5 Pro</h3>
 
             <p class="price">
                 Contact for Price
@@ -2181,15 +2287,95 @@
 
     </div>
 
-
 </section>
 
 
 <!-- ==========================================
-     JAVASCRIPT
+     MOBILE MENU
 ========================================== -->
 
-<script src="js/script.js?v=4"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const header =
+            document.querySelector(".site-header");
+
+        const button =
+            document.getElementById(
+                "products-mobile-menu"
+            );
+
+        const links =
+            document.querySelectorAll(
+                ".site-header nav a"
+            );
+
+        if (!header || !button) {
+            return;
+        }
+
+
+        button.addEventListener("click", function () {
+
+            const open =
+                header.classList.toggle(
+                    "mobile-menu-open"
+                );
+
+            button.innerHTML =
+                open ? "×" : "☰";
+
+            button.setAttribute(
+                "aria-expanded",
+                open ? "true" : "false"
+            );
+
+            button.setAttribute(
+                "aria-label",
+                open ? "Close menu" : "Open menu"
+            );
+
+        });
+
+
+        links.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    header.classList.remove(
+                        "mobile-menu-open"
+                    );
+
+                    button.innerHTML = "☰";
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                }
+            );
+
+        });
+
+    });
+
+</script>
+
+
+<!-- ==========================================
+     MAIN WEBSITE JAVASCRIPT
+========================================== -->
+
+<script src="js/script.js?v=5"></script>
 
 
 </body>
