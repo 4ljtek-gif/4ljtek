@@ -12,6 +12,243 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           HOMEPAGE PREMIUM SECTIONS
+        ========================================== */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+        }
+
+        .hero p {
+            max-width: 650px;
+        }
+
+        /* ==========================================
+           FEATURED PRODUCT
+        ========================================== */
+
+        .featured-product {
+            padding: 80px 25px;
+            background: #f7f7f7;
+        }
+
+        .featured-product-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-product-image {
+            background: #fff;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,.08);
+        }
+
+        .featured-product-image img {
+            width: 100%;
+            max-width: 480px;
+            height: 450px;
+            object-fit: contain;
+        }
+
+        .featured-product-content span {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #777;
+        }
+
+        .featured-product-content h2 {
+            margin: 0 0 20px;
+            font-size: 48px;
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .featured-product-content p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .featured-product-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .featured-product-buttons a {
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .pixel-shop-btn {
+            background: #111;
+            color: #fff;
+        }
+
+        .pixel-whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+        }
+
+        /* ==========================================
+           CATEGORIES
+        ========================================== */
+
+        .featured {
+            padding: 80px 25px;
+        }
+
+        .featured > h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-intro {
+            text-align: center;
+            color: #777;
+            max-width: 650px;
+            margin: -25px auto 45px;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           WHY 4LJTEK
+        ========================================== */
+
+        .why-4ljtek {
+            padding: 75px 25px;
+            background: #111;
+            color: #fff;
+        }
+
+        .why-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .why-container h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 45px;
+            font-weight: 800;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .why-card {
+            padding: 30px;
+            border: 1px solid #333;
+            border-radius: 18px;
+            background: #171717;
+        }
+
+        .why-card h3 {
+            margin: 0 0 12px;
+            font-size: 19px;
+        }
+
+        .why-card p {
+            margin: 0;
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 800px) {
+
+            .featured-product {
+                padding: 55px 18px;
+            }
+
+            .featured-product-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .featured-product-image {
+                padding: 20px;
+            }
+
+            .featured-product-image img {
+                height: 330px;
+            }
+
+            .featured-product-content h2 {
+                font-size: 38px;
+            }
+
+            .featured-product-content p {
+                font-size: 15px;
+            }
+
+            .featured-product-buttons {
+                flex-direction: column;
+            }
+
+            .featured-product-buttons a {
+                width: 100%;
+            }
+
+            .featured {
+                padding: 55px 18px;
+            }
+
+            .why-4ljtek {
+                padding: 55px 18px;
+            }
+
+            .why-container h2 {
+                font-size: 32px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +272,9 @@
 </header>
 
 
-<!-- HERO -->
+<!-- ==========================================
+     HERO
+========================================== -->
 
 <section class="hero">
 
@@ -68,18 +307,85 @@
 </section>
 
 
-<!-- FEATURED CATEGORIES -->
+<!-- ==========================================
+     FEATURED PIXEL 11 PRO
+========================================== -->
+
+<section class="featured-product">
+
+    <div class="featured-product-container">
+
+        <div class="featured-product-image">
+
+            <img
+                src="images/pixel11pro.jpg"
+                alt="Google Pixel 11 Pro"
+            >
+
+        </div>
+
+
+        <div class="featured-product-content">
+
+            <span>Featured Smartphone</span>
+
+            <h2>
+                Google Pixel 11 Pro.
+            </h2>
+
+            <p>
+                Experience premium Google Pixel design,
+                powerful performance and an advanced
+                smartphone experience with the Pixel 11 Pro.
+            </p>
+
+            <div class="featured-product-buttons">
+
+                <a
+                    href="products.html#smartphones"
+                    class="pixel-shop-btn"
+                >
+                    Shop Pixel 11 Pro
+                </a>
+
+                <a
+                    href="https://api.whatsapp.com/send?phone=254101984723&text=Hi%204LJTek%2C%20I'm%20interested%20in%20the%20Google%20Pixel%2011%20Pro.%20Please%20share%20the%20price%20and%20availability."
+                    class="pixel-whatsapp-btn"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     FEATURED CATEGORIES
+========================================== -->
 
 <section class="featured">
 
-    <h2>Featured Categories</h2>
+    <h2>Shop by Category</h2>
+
+    <p class="category-intro">
+        Explore premium electronics from some of the
+        world's leading technology brands.
+    </p>
 
     <div class="products">
 
         <a href="products.html#smartphones" class="card">
 
-            <img src="images/categories/iphone.png"
-                 alt="iPhone">
+            <img
+                src="images/categories/iphone.png"
+                alt="iPhone"
+            >
 
             <h3>iPhone</h3>
 
@@ -88,18 +394,34 @@
 
         <a href="products.html#smartphones" class="card">
 
-            <img src="images/categories/samsung.png"
-                 alt="Samsung">
+            <img
+                src="images/categories/samsung.png"
+                alt="Samsung"
+            >
 
             <h3>Samsung</h3>
 
         </a>
 
 
+        <a href="products.html#smartphones" class="card">
+
+            <img
+                src="images/pixel11pro.jpg"
+                alt="Google Pixel"
+            >
+
+            <h3>Google Pixel</h3>
+
+        </a>
+
+
         <a href="products.html#playstation" class="card">
 
-            <img src="images/categories/playstation.png"
-                 alt="PlayStation">
+            <img
+                src="images/categories/playstation.png"
+                alt="PlayStation"
+            >
 
             <h3>PlayStation</h3>
 
@@ -108,8 +430,10 @@
 
         <a href="products.html#smart-tvs" class="card">
 
-            <img src="images/categories/smart-tv.png"
-                 alt="Smart TVs">
+            <img
+                src="images/categories/smart-tv.png"
+                alt="Smart TVs"
+            >
 
             <h3>Smart TVs</h3>
 
@@ -120,14 +444,74 @@
 </section>
 
 
+<!-- ==========================================
+     WHY 4LJTEK
+========================================== -->
+
+<section class="why-4ljtek">
+
+    <div class="why-container">
+
+        <h2>Why 4LJTek?</h2>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+
+                <h3>Genuine Products</h3>
+
+                <p>
+                    Shop with confidence knowing we focus
+                    on genuine premium electronics.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <h3>Fast Delivery</h3>
+
+                <p>
+                    Convenient delivery options available
+                    across Kenya.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <h3>Easy Ordering</h3>
+
+                <p>
+                    Order quickly through WhatsApp and
+                    get assistance from our team.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
 <footer>
 
-    <p>© 2026 4LJTek. All Rights Reserved.</p>
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
 
 </footer>
 
 
-<script src="js/script.js"></script>
+<script src="js/script.js?v=4"></script>
 
 </body>
 </html>
