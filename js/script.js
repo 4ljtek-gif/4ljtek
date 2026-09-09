@@ -552,6 +552,74 @@ if (document.readyState === "loading") {
 
 } else {
 
-    start4LJTek();
+/* ==========================================
+   PREMIUM MOBILE MENU
+   ========================================== */
+
+function setupMobileMenu() {
+
+    const header = document.querySelector("header");
+    const nav = header ? header.querySelector("nav") : null;
+
+    if (!header || !nav) {
+        return;
+    }
+
+    if (header.querySelector(".mobile-menu-btn")) {
+        return;
+    }
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "mobile-menu-btn";
+    button.setAttribute("aria-label", "Open menu");
+    button.setAttribute("aria-expanded", "false");
+
+    button.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+
+    header.appendChild(button);
+
+    button.addEventListener("click", function() {
+
+        const open = header.classList.toggle("mobile-open");
+
+        button.setAttribute(
+            "aria-expanded",
+            open ? "true" : "false"
+        );
+
+        button.setAttribute(
+            "aria-label",
+            open ? "Close menu" : "Open menu"
+        );
+    });
+
+    nav.querySelectorAll("a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            header.classList.remove("mobile-open");
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            button.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        });
+
+    });
+}
+    function start4LJTek() {
+    setupMobileMenu();
+    setupProductSearch();
 
 }
