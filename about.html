@@ -1,14 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | 4LJTek</title>
+
+    <title>About 4LJTek | Premium Electronics</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ==========================================
+           4LJTEK PREMIUM ABOUT PAGE
+           ========================================== */
+
+        .about-page {
+            background: #f7f7f7;
+            color: #111;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(0, 112, 243, 0.22), transparent 35%),
+                linear-gradient(135deg, #000000, #111111 55%, #1a1a1a);
+            color: #fff;
+            padding: 110px 7% 100px;
+            text-align: center;
+        }
+
+        .about-hero span {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .about-hero h1 {
+            margin: 0 auto 20px;
+            max-width: 900px;
+            font-size: clamp(44px, 7vw, 82px);
+            line-height: .98;
+            letter-spacing: -3px;
+            font-weight: 900;
+        }
+
+        .about-hero h1 strong {
+            color: #0070f3;
+        }
+
+        .about-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: #cfcfcf;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+
+        /* MAIN */
+
+        .about-content {
+            max-width: 1180px;
+            margin: auto;
+            padding: 90px 24px;
+        }
+
+
+        /* INTRO */
+
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-intro h2 {
+            margin: 0 0 20px;
+            font-size: clamp(34px, 5vw, 55px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            font-weight: 900;
+        }
+
+        .about-intro h2 span {
+            color: #0070f3;
+        }
+
+        .about-intro p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+
+        /* BRAND CARD */
+
+        .about-brand-card {
+            min-height: 360px;
+            border-radius: 30px;
+            padding: 45px;
+            background:
+                radial-gradient(circle at top right, rgba(0,112,243,.25), transparent 40%),
+                linear-gradient(135deg, #050505, #171717);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,.14);
+        }
+
+        .about-brand-card .brand-mark {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin-bottom: 15px;
+        }
+
+        .about-brand-card .brand-mark span {
+            color: #0070f3;
+        }
+
+        .about-brand-card p {
+            color: #bdbdbd;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+
+        /* MISSION */
+
+        .mission-card {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 28px;
+            padding: 55px;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(0,0,0,.06);
+            margin-bottom: 80px;
+        }
+
+        .mission-card small {
+            display: block;
+            margin-bottom: 15px;
+            color: #0070f3;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .mission-card h2 {
+            margin: 0 0 18px;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .mission-card p {
+            max-width: 700px;
+            margin: auto;
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+
+        /* WHAT WE OFFER */
+
+        .offer-section {
+            margin-bottom: 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 12px;
+            font-size: clamp(34px, 5vw, 50px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            margin: 0 auto;
+            max-width: 600px;
+            color: #777;
+            line-height: 1.7;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .offer-card {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 24px;
+            padding: 32px;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(0,0,0,.08);
+        }
+
+        .offer-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: #111;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 22px;
+        }
+
+        .offer-card h3 {
+            margin: 0 0 10px;
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        .offer-card p {
+            margin: 0;
+            color: #777;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* WHY 4LJTEK */
+
+        .why-section {
+            background: #111;
+            color: #fff;
+            border-radius: 32px;
+            padding: 60px;
+            margin-bottom: 80px;
+        }
+
+        .why-section h2 {
+            margin: 0 0 35px;
+            font-size: clamp(34px, 5vw, 50px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .why-item {
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 18px;
+            background: rgba(255,255,255,.04);
+        }
+
+        .why-item h3 {
+            margin: 0 0 8px;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .why-item p {
+            margin: 0;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* CTA */
+
+        .about-cta {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        .about-cta h2 {
+            margin: 0 0 14px;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .about-cta p {
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        .about-cta a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 28px;
+            border-radius: 14px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform .2s ease;
+        }
+
+        .about-cta a:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .about-hero {
+                padding: 75px 22px 70px;
+            }
+
+            .about-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .about-hero p {
+                font-size: 15px;
+            }
+
+            .about-content {
+                padding: 60px 18px;
+            }
+
+            .about-intro {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                margin-bottom: 55px;
+            }
+
+            .about-intro h2 {
+                letter-spacing: -1.5px;
+            }
+
+            .about-brand-card {
+                min-height: 280px;
+                padding: 32px;
+                border-radius: 24px;
+            }
+
+            .about-brand-card .brand-mark {
+                font-size: 44px;
+            }
+
+            .mission-card {
+                padding: 35px 24px;
+                border-radius: 24px;
+                margin-bottom: 55px;
+            }
+
+            .offer-section {
+                margin-bottom: 55px;
+            }
+
+            .offer-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .offer-card {
+                padding: 26px;
+            }
+
+            .why-section {
+                padding: 35px 22px;
+                border-radius: 25px;
+                margin-bottom: 55px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-cta {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
 </head>
-<body>
+
+
+<body class="about-page">
+
 
 <header>
+
     <div class="logo">
         <img src="images/logo.png" alt="4LJTek Logo">
     </div>
@@ -21,58 +423,334 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+
 </header>
 
-<section class="about">
-    <h2>About 4LJTek</h2>
+
+<!-- ==========================================
+     HERO
+     ========================================== -->
+
+<section class="about-hero">
+
+    <span>About 4LJTek</span>
+
+    <h1>
+        Technology.<br>
+        <strong>Done Better.</strong>
+    </h1>
 
     <p>
-        Welcome to <strong>4LJTek</strong>, your trusted electronics store in Nairobi CBD.
-        We specialize in supplying genuine smartphones, televisions, gaming consoles,
-        sound systems, accessories, and other electronic devices at competitive prices.
+        4LJTek is a premium electronics store focused on
+        quality products, genuine devices and better deals.
     </p>
-
-    <br>
-
-    <p>
-        Our goal is simple:
-        <strong>Quality Over Quantity.</strong>
-        Every product we offer is carefully selected to ensure reliability,
-        performance, and customer satisfaction.
-    </p>
-
-    <br>
-
-    <h3>What We Sell</h3>
-
-    <ul style="max-width:600px;margin:20px auto;text-align:left;">
-        <li>📱 Apple iPhones</li>
-        <li>📱 Samsung Smartphones</li>
-        <li>🎮 PlayStation Consoles</li>
-        <li>📺 Smart TVs</li>
-        <li>🔊 Soundbars & Speakers</li>
-        <li>🎧 Electronics Accessories</li>
-    </ul>
-
-    <br>
-
-    <h3>Why Choose Us?</h3>
-
-    <ul style="max-width:600px;margin:20px auto;text-align:left;">
-        <li>✔ Genuine Products</li>
-        <li>✔ Competitive Prices</li>
-        <li>✔ Friendly Customer Support</li>
-        <li>✔ Fast Responses on WhatsApp</li>
-        <li>✔ Located in Nairobi CBD</li>
-    </ul>
 
 </section>
 
+
+<main class="about-content">
+
+
+    <!-- ==========================================
+         INTRO
+         ========================================== -->
+
+    <section class="about-intro">
+
+        <div>
+
+            <h2>
+                More than a store.<br>
+                <span>A better choice.</span>
+            </h2>
+
+            <p>
+                At 4LJTek, we believe buying electronics should
+                be simple, reliable and worth your money.
+            </p>
+
+            <p>
+                We specialize in quality electronics including
+                smartphones, televisions, gaming consoles,
+                accessories and more.
+            </p>
+
+            <p>
+                Our goal is to give customers access to products
+                they can trust while making the buying experience
+                straightforward from start to finish.
+            </p>
+
+        </div>
+
+
+        <div class="about-brand-card">
+
+            <div class="brand-mark">
+                4LJ<span>Tek</span>
+            </div>
+
+            <p>
+                Premium electronics for people who care about
+                quality, performance and getting genuine value
+                from every purchase.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MISSION
+         ========================================== -->
+
+    <section class="mission-card">
+
+        <small>Our Mission</small>
+
+        <h2>
+            Quality Over Quantity.
+        </h2>
+
+        <p>
+            We focus on offering quality electronics rather than
+            simply filling a catalogue. Every product category
+            is selected around what customers actually want,
+            from smartphones and gaming consoles to Smart TVs
+            and accessories.
+        </p>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         WHAT WE OFFER
+         ========================================== -->
+
+    <section class="offer-section">
+
+        <div class="section-heading">
+
+            <h2>What We Offer</h2>
+
+            <p>
+                Everything you need to upgrade your everyday
+                technology and entertainment experience.
+            </p>
+
+        </div>
+
+
+        <div class="offer-grid">
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    📱
+                </div>
+
+                <h3>Smartphones</h3>
+
+                <p>
+                    iPhone, Samsung Galaxy and Google Pixel
+                    devices for different needs and budgets.
+                </p>
+
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    🎮
+                </div>
+
+                <h3>Gaming</h3>
+
+                <p>
+                    PlayStation consoles and accessories
+                    built for serious gaming and entertainment.
+                </p>
+
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    📺
+                </div>
+
+                <h3>Smart TVs</h3>
+
+                <p>
+                    Smart entertainment solutions including
+                    TCL Smart TVs in different models and sizes.
+                </p>
+
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    ⚡
+                </div>
+
+                <h3>Quality Products</h3>
+
+                <p>
+                    We put quality and genuine products at the
+                    centre of what we offer.
+                </p>
+
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    💬
+                </div>
+
+                <h3>Easy Ordering</h3>
+
+                <p>
+                    Contact us directly through WhatsApp or
+                    phone to ask about products and availability.
+                </p>
+
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    ✦
+                </div>
+
+                <h3>Better Deals</h3>
+
+                <p>
+                    Our aim is to provide customers with quality
+                    electronics at competitive prices.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         WHY 4LJTEK
+         ========================================== -->
+
+    <section class="why-section">
+
+        <h2>
+            Why 4LJTek?
+        </h2>
+
+
+        <div class="why-grid">
+
+            <div class="why-item">
+
+                <h3>Quality First</h3>
+
+                <p>
+                    We believe quality should always come before
+                    simply having more products.
+                </p>
+
+            </div>
+
+
+            <div class="why-item">
+
+                <h3>Genuine Products</h3>
+
+                <p>
+                    We focus on providing genuine electronics
+                    customers can confidently purchase.
+                </p>
+
+            </div>
+
+
+            <div class="why-item">
+
+                <h3>Simple Experience</h3>
+
+                <p>
+                    Browse our products, choose what you want
+                    and contact us directly to order.
+                </p>
+
+            </div>
+
+
+            <div class="why-item">
+
+                <h3>Customer Focused</h3>
+
+                <p>
+                    We want every customer to feel confident
+                    about what they are buying.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CTA
+         ========================================== -->
+
+    <section class="about-cta">
+
+        <h2>
+            Ready to upgrade?
+        </h2>
+
+        <p>
+            Explore our latest electronics and find your next upgrade.
+        </p>
+
+        <a href="products.html">
+            Explore Products
+        </a>
+
+    </section>
+
+
+</main>
+
+
 <footer>
-    <p>&copy; <span id="year"></span> 4LJTek. Quality Over Quantity.</p>
+
+    <div class="logo">
+        <img src="images/logo.png" alt="4LJTek Logo">
+    </div>
+
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
+
 </footer>
 
-<script src="js/script.js"></script>
 
 </body>
 </html>
