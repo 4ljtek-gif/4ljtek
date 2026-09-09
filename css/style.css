@@ -2045,3 +2045,95 @@ footer p {
     }
 
 }
+/* ==========================================
+   4LJTEK MOBILE PRODUCT BUTTON FIX
+   ========================================== */
+
+@media (max-width: 600px) {
+
+    .product-card {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .product-card .product-actions {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 8px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /* Add to Cart */
+    .product-card .product-actions .add-cart-btn {
+        grid-column: 1 / -1 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box !important;
+
+        padding: 12px 8px !important;
+
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+
+        border-radius: 14px !important;
+    }
+
+    /* WhatsApp */
+    .product-card .product-actions .whatsapp-btn {
+        grid-column: 1 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box !important;
+
+        padding: 12px 4px !important;
+
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+
+        text-align: center !important;
+
+        border-radius: 14px !important;
+    }
+
+    /* Call */
+    .product-card .product-actions .call-btn {
+        grid-column: 2 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box !important;
+
+        padding: 12px 4px !important;
+
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+
+        text-align: center !important;
+
+        border-radius: 14px !important;
+    }
+
+}
