@@ -20,10 +20,6 @@
 
     <style>
 
-        /* ==========================================
-           PRODUCTS PAGE
-        ========================================== */
-
         * {
             box-sizing: border-box;
         }
@@ -36,25 +32,22 @@
         }
 
 
-        /* ==========================================
+        /* ==============================
            HEADER
-        ========================================== */
+        ============================== */
 
         .products-header {
             background: #fff;
             border-bottom: 1px solid #eee;
-            padding: 15px 5%;
+            padding: 12px 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
-            position: sticky;
-            top: 0;
-            z-index: 50;
+            gap: 20px;
         }
 
         .products-logo img {
-            width: 135px;
+            width: 120px;
             height: auto;
             display: block;
         }
@@ -62,7 +55,7 @@
         .products-nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 22px;
         }
 
         .products-nav a {
@@ -77,9 +70,9 @@
         }
 
 
-        /* ==========================================
-           PAGE INTRO
-        ========================================== */
+        /* ==============================
+           HERO
+        ============================== */
 
         .products-hero {
             background:
@@ -90,8 +83,9 @@
                     #020a13 75%,
                     #000 100%
                 );
+
             color: #fff;
-            padding: 75px 25px;
+            padding: 70px 25px;
         }
 
         .products-hero-inner {
@@ -128,23 +122,23 @@
         }
 
 
-        /* ==========================================
-           PRODUCTS CONTENT
-        ========================================== */
+        /* ==============================
+           CONTENT
+        ============================== */
 
         .products-page {
             max-width: 1250px;
             margin: auto;
-            padding: 55px 25px 90px;
+            padding: 50px 25px 80px;
         }
 
 
-        /* ==========================================
+        /* ==============================
            SEARCH
-        ========================================== */
+        ============================== */
 
         .search-box {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .search-box label {
@@ -157,7 +151,7 @@
         #search {
             width: 100%;
             height: 58px;
-            padding: 0 20px;
+            padding: 0 18px;
             border: 1px solid #ddd;
             border-radius: 15px;
             background: #fff;
@@ -165,7 +159,6 @@
             font-family: inherit;
             font-size: 15px;
             outline: none;
-            box-shadow: 0 8px 25px rgba(0,0,0,.04);
         }
 
         #search:focus {
@@ -173,9 +166,9 @@
         }
 
 
-        /* ==========================================
-           CATEGORY NAVIGATION
-        ========================================== */
+        /* ==============================
+           CATEGORY NAV
+        ============================== */
 
         .product-category-nav {
             display: flex;
@@ -193,22 +186,20 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 700;
-            transition: .25s ease;
         }
 
         .product-category-nav a:hover {
             background: #111;
             color: #fff;
-            border-color: #111;
         }
 
 
-        /* ==========================================
-           CATEGORY TITLES
-        ========================================== */
+        /* ==============================
+           TITLES
+        ============================== */
 
         .category-title {
-            margin: 65px 0 25px;
+            margin: 60px 0 25px;
             font-size: 32px;
             letter-spacing: -1.5px;
             font-weight: 800;
@@ -219,9 +210,9 @@
         }
 
 
-        /* ==========================================
+        /* ==============================
            PRODUCT GRID
-        ========================================== */
+        ============================== */
 
         .products-grid {
             display: grid;
@@ -230,22 +221,19 @@
         }
 
 
-        /* ==========================================
+        /* ==============================
            PRODUCT CARD
-        ========================================== */
+        ============================== */
 
         .product-card {
             background: #fff;
             border: 1px solid #e5e5e5;
             border-radius: 20px;
-            padding: 16px;
-            overflow: hidden;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            min-height: 480px;
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+            min-height: 455px;
+            transition: .25s ease;
         }
 
         .product-card:hover {
@@ -255,39 +243,39 @@
 
         .product-card > img {
             width: 100%;
-            height: 260px;
+            height: 245px;
             object-fit: contain;
             display: block;
             border-radius: 15px;
             background: #fafafa;
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
 
         .product-card h3 {
-            margin: 0 0 9px;
+            margin: 0 0 8px;
             font-size: 17px;
             line-height: 1.3;
             font-weight: 800;
         }
 
         .product-card .price {
-            margin: 0 0 10px;
+            margin: 0 0 9px;
             color: #0878ff;
             font-size: 13px;
             font-weight: 800;
         }
 
         .product-card > p:not(.price) {
-            margin: 0 0 18px;
+            margin: 0 0 17px;
             color: #777;
             font-size: 12px;
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
 
-        /* ==========================================
-           PRODUCT BUTTONS
-        ========================================== */
+        /* ==============================
+           BUTTONS
+        ============================== */
 
         .product-actions {
             display: grid;
@@ -298,7 +286,7 @@
 
         .product-actions a,
         .product-actions button {
-            min-height: 48px;
+            min-height: 46px;
             border: 0;
             border-radius: 12px;
             display: flex;
@@ -337,13 +325,12 @@
         .product-actions a:hover,
         .product-actions button:hover {
             transform: translateY(-2px);
-            opacity: .92;
         }
 
 
-        /* ==========================================
-           EMPTY SEARCH
-        ========================================== */
+        /* ==============================
+           NO RESULTS
+        ============================== */
 
         .no-results {
             display: none;
@@ -351,14 +338,13 @@
             text-align: center;
             color: #777;
             background: #fff;
-            border: 1px solid #eee;
             border-radius: 20px;
         }
 
 
-        /* ==========================================
+        /* ==============================
            FOOTER
-        ========================================== */
+        ============================== */
 
         .products-footer {
             background: #05090d;
@@ -380,9 +366,9 @@
         }
 
 
-        /* ==========================================
+        /* ==============================
            TABLET
-        ========================================== */
+        ============================== */
 
         @media (max-width: 1050px) {
 
@@ -393,27 +379,26 @@
         }
 
 
-        /* ==========================================
+        /* ==============================
            MOBILE
-        ========================================== */
+        ============================== */
 
         @media (max-width: 700px) {
 
             .products-header {
-                position: relative;
-                padding: 15px 18px;
+                padding: 10px 16px 14px;
                 flex-direction: column;
-                gap: 14px;
+                gap: 10px;
             }
 
             .products-logo img {
-                width: 120px;
+                width: 105px;
             }
 
             .products-nav {
                 width: 100%;
                 justify-content: center;
-                gap: 12px;
+                gap: 16px;
                 flex-wrap: wrap;
             }
 
@@ -422,76 +407,112 @@
             }
 
 
+            /* HERO */
+
             .products-hero {
-                padding: 55px 22px;
+                padding: 55px 24px 60px;
+            }
+
+            .products-label {
+                font-size: 11px;
+                letter-spacing: 3px;
             }
 
             .products-hero h1 {
-                font-size: 50px;
-                letter-spacing: -3px;
+                font-size: 48px;
+                letter-spacing: -2.5px;
+                line-height: .98;
             }
 
             .products-hero p {
                 font-size: 15px;
+                line-height: 1.6;
             }
 
+
+            /* CONTENT */
 
             .products-page {
-                padding: 40px 18px 65px;
+                padding: 38px 16px 65px;
             }
 
 
+            /* SEARCH */
+
+            #search {
+                height: 55px;
+                padding: 0 16px;
+                font-size: 14px;
+            }
+
+
+            /* CATEGORY BUTTONS */
+
             .product-category-nav {
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                padding-bottom: 5px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                margin-bottom: 45px;
             }
 
             .product-category-nav a {
+                padding: 13px 5px;
+                text-align: center;
+                font-size: 12px;
                 white-space: nowrap;
             }
 
 
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 13px;
-            }
-
+            /* TITLES */
 
             .category-title {
-                margin: 50px 0 20px;
+                margin: 45px 0 20px;
                 font-size: 29px;
             }
 
 
+            /* PRODUCT GRID */
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+
+            /* CARDS */
+
             .product-card {
-                min-height: 410px;
-                padding: 11px;
+                min-height: 390px;
+                padding: 10px;
                 border-radius: 17px;
             }
 
             .product-card > img {
-                height: 185px;
-                margin-bottom: 14px;
+                height: 175px;
+                margin-bottom: 13px;
                 border-radius: 12px;
             }
 
             .product-card h3 {
                 font-size: 14px;
+                line-height: 1.3;
             }
 
             .product-card .price {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .product-card > p:not(.price) {
                 font-size: 10px;
-                line-height: 1.5;
+                line-height: 1.45;
             }
+
+
+            /* BUTTONS */
 
             .product-actions {
                 grid-template-columns: 1fr;
-                gap: 7px;
+                gap: 6px;
             }
 
             .product-actions .add-cart-btn {
@@ -500,33 +521,55 @@
 
             .product-actions a,
             .product-actions button {
-                min-height: 44px;
+                min-height: 43px;
                 font-size: 11px;
             }
 
         }
 
 
+        /* ==============================
+           SMALL PHONES
+        ============================== */
+
         @media (max-width: 400px) {
 
+            .products-nav {
+                gap: 12px;
+            }
+
+            .products-nav a {
+                font-size: 11px;
+            }
+
+            .products-hero {
+                padding: 48px 20px 52px;
+            }
+
+            .products-hero h1 {
+                font-size: 43px;
+            }
+
+            .products-page {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+
             .products-grid {
-                gap: 10px;
+                gap: 9px;
             }
 
             .product-card {
-                min-height: 390px;
+                min-height: 375px;
+                padding: 9px;
             }
 
             .product-card > img {
-                height: 165px;
+                height: 155px;
             }
 
             .product-card h3 {
                 font-size: 13px;
-            }
-
-            .products-hero h1 {
-                font-size: 44px;
             }
 
         }
@@ -539,9 +582,7 @@
 <body>
 
 
-<!-- ==========================================
-     HEADER
-========================================== -->
+<!-- HEADER -->
 
 <header class="products-header">
 
@@ -561,25 +602,15 @@
 
     <nav class="products-nav">
 
-        <a href="index.html">
-            Home
-        </a>
+        <a href="index.html">Home</a>
 
-        <a href="products.html">
-            Products
-        </a>
+        <a href="products.html">Products</a>
 
-        <a href="about.html">
-            About
-        </a>
+        <a href="about.html">About</a>
 
-        <a href="contact.html">
-            Contact
-        </a>
+        <a href="contact.html">Contact</a>
 
-        <a href="cart.html">
-            Cart
-        </a>
+        <a href="cart.html">Cart</a>
 
     </nav>
 
@@ -587,9 +618,7 @@
 
 
 
-<!-- ==========================================
-     PRODUCTS HERO
-========================================== -->
+<!-- HERO -->
 
 <section class="products-hero">
 
@@ -605,9 +634,9 @@
         </h1>
 
         <p>
-            Explore premium smartphones, PlayStation consoles
-            and Smart TVs from 4LJTek. Genuine products,
-            better deals and easy ordering.
+            Explore premium smartphones, PlayStation
+            consoles and Smart TVs from 4LJTek.
+            Genuine products, better deals and easy ordering.
         </p>
 
     </div>
@@ -616,9 +645,7 @@
 
 
 
-<!-- ==========================================
-     PRODUCTS
-========================================== -->
+<!-- PRODUCTS -->
 
 <main class="products-page">
 
@@ -634,7 +661,7 @@
         <input
             type="search"
             id="search"
-            placeholder="Search iPhone, Samsung, Pixel, PlayStation..."
+            placeholder="Search products..."
             autocomplete="off"
         >
 
@@ -642,12 +669,9 @@
 
 
 
-    <!-- CATEGORY NAVIGATION -->
+    <!-- CATEGORY NAV -->
 
-    <div
-        class="product-category-nav"
-        aria-label="Product categories"
-    >
+    <div class="product-category-nav">
 
         <a href="#smartphones">
             Phones
@@ -665,9 +689,9 @@
 
 
 
-    <!-- ==========================================
+    <!-- ==============================
          SMARTPHONES
-    =========================================== -->
+    ============================== -->
 
     <h2
         id="smartphones"
@@ -684,18 +708,11 @@
 
         <div class="product-card">
 
-            <img
-                src="images/iphone17.jpg"
-                alt="iPhone 17"
-            >
+            <img src="images/iphone17.jpg" alt="iPhone 17">
 
-            <h3>
-                iPhone 17
-            </h3>
+            <h3>iPhone 17</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Next-generation iPhone with premium
@@ -704,63 +721,47 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
             </div>
 
         </div>
-
 
 
         <!-- iPHONE 17 AIR -->
 
         <div class="product-card">
 
-            <img
-                src="images/iphone17air.jpg"
-                alt="iPhone 17 Air"
-            >
+            <img src="images/iphone17air.jpg" alt="iPhone 17 Air">
 
-            <h3>
-                iPhone 17 Air
-            </h3>
+            <h3>iPhone 17 Air</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
-                Slim, elegant iPhone designed for a
-                premium everyday experience.
+                Slim, elegant iPhone designed for
+                a premium everyday experience.
             </p>
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -769,23 +770,15 @@
         </div>
 
 
-
         <!-- iPHONE 17 PRO -->
 
         <div class="product-card">
 
-            <img
-                src="images/iphone17pro.jpg"
-                alt="iPhone 17 Pro"
-            >
+            <img src="images/iphone17pro.jpg" alt="iPhone 17 Pro">
 
-            <h3>
-                iPhone 17 Pro
-            </h3>
+            <h3>iPhone 17 Pro</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Pro-level performance, cameras and
@@ -794,18 +787,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -814,23 +803,15 @@
         </div>
 
 
-
         <!-- iPHONE 17 PRO MAX -->
 
         <div class="product-card">
 
-            <img
-                src="images/iphone17promax.jpg"
-                alt="iPhone 17 Pro Max"
-            >
+            <img src="images/iphone17promax.jpg" alt="iPhone 17 Pro Max">
 
-            <h3>
-                iPhone 17 Pro Max
-            </h3>
+            <h3>iPhone 17 Pro Max</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Ultimate iPhone performance with
@@ -839,18 +820,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -859,23 +836,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S25 -->
+        <!-- S25 -->
 
         <div class="product-card">
 
-            <img
-                src="images/s25.jpg"
-                alt="Samsung Galaxy S25"
-            >
+            <img src="images/s25.jpg" alt="Samsung Galaxy S25">
 
-            <h3>
-                Samsung Galaxy S25
-            </h3>
+            <h3>Samsung Galaxy S25</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium Galaxy S-series smartphone.
@@ -883,18 +852,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -903,23 +868,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S25+ -->
+        <!-- S25+ -->
 
         <div class="product-card">
 
-            <img
-                src="images/s25plus.jpg"
-                alt="Samsung Galaxy S25 Plus"
-            >
+            <img src="images/s25plus.jpg" alt="Samsung Galaxy S25+">
 
-            <h3>
-                Samsung Galaxy S25+
-            </h3>
+            <h3>Samsung Galaxy S25+</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Large-screen Galaxy flagship with
@@ -928,18 +885,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -948,23 +901,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S25 ULTRA -->
+        <!-- S25 ULTRA -->
 
         <div class="product-card">
 
-            <img
-                src="images/s25ultra.jpg"
-                alt="Samsung Galaxy S25 Ultra"
-            >
+            <img src="images/s25ultra.jpg" alt="Samsung Galaxy S25 Ultra">
 
-            <h3>
-                Samsung Galaxy S25 Ultra
-            </h3>
+            <h3>Samsung Galaxy S25 Ultra</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Ultra-premium Samsung Galaxy flagship.
@@ -972,18 +917,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -992,23 +933,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S26 -->
+        <!-- S26 -->
 
         <div class="product-card">
 
-            <img
-                src="images/s26.jpg"
-                alt="Samsung Galaxy S26"
-            >
+            <img src="images/s26.jpg" alt="Samsung Galaxy S26">
 
-            <h3>
-                Samsung Galaxy S26
-            </h3>
+            <h3>Samsung Galaxy S26</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Latest Galaxy S-series smartphone.
@@ -1016,18 +949,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1036,23 +965,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S26+ -->
+        <!-- S26+ -->
 
         <div class="product-card">
 
-            <img
-                src="images/s26plus.jpg"
-                alt="Samsung Galaxy S26 Plus"
-            >
+            <img src="images/s26plus.jpg" alt="Samsung Galaxy S26+">
 
-            <h3>
-                Samsung Galaxy S26+
-            </h3>
+            <h3>Samsung Galaxy S26+</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium large-screen Galaxy smartphone.
@@ -1060,18 +981,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1080,23 +997,15 @@
         </div>
 
 
-
-        <!-- SAMSUNG S26 ULTRA -->
+        <!-- S26 ULTRA -->
 
         <div class="product-card">
 
-            <img
-                src="images/s26ultra.jpg"
-                alt="Samsung Galaxy S26 Ultra"
-            >
+            <img src="images/s26ultra.jpg" alt="Samsung Galaxy S26 Ultra">
 
-            <h3>
-                Samsung Galaxy S26 Ultra
-            </h3>
+            <h3>Samsung Galaxy S26 Ultra</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Ultra-premium Galaxy flagship.
@@ -1104,18 +1013,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1124,23 +1029,15 @@
         </div>
 
 
-
         <!-- PIXEL 10 -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel10.jpg"
-                alt="Google Pixel 10"
-            >
+            <img src="images/pixel10.jpg" alt="Google Pixel 10">
 
-            <h3>
-                Google Pixel 10
-            </h3>
+            <h3>Google Pixel 10</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium Google Pixel smartphone with
@@ -1149,18 +1046,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1169,23 +1062,15 @@
         </div>
 
 
-
         <!-- PIXEL 10 PRO -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel10pro.jpg"
-                alt="Google Pixel 10 Pro"
-            >
+            <img src="images/pixel10pro.jpg" alt="Google Pixel 10 Pro">
 
-            <h3>
-                Google Pixel 10 Pro
-            </h3>
+            <h3>Google Pixel 10 Pro</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium Pixel flagship with advanced
@@ -1194,18 +1079,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1214,23 +1095,15 @@
         </div>
 
 
-
         <!-- PIXEL 10 PRO XL -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel10proxl.jpg"
-                alt="Google Pixel 10 Pro XL"
-            >
+            <img src="images/pixel10proxl.jpg" alt="Google Pixel 10 Pro XL">
 
-            <h3>
-                Google Pixel 10 Pro XL
-            </h3>
+            <h3>Google Pixel 10 Pro XL</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Large premium Pixel flagship with
@@ -1239,18 +1112,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1259,23 +1128,15 @@
         </div>
 
 
-
         <!-- PIXEL 10 PRO FOLD -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel10profold.jpg"
-                alt="Google Pixel 10 Pro Fold"
-            >
+            <img src="images/pixel10profold.jpg" alt="Google Pixel 10 Pro Fold">
 
-            <h3>
-                Google Pixel 10 Pro Fold
-            </h3>
+            <h3>Google Pixel 10 Pro Fold</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium foldable Pixel smartphone.
@@ -1283,18 +1144,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1303,23 +1160,15 @@
         </div>
 
 
-
         <!-- PIXEL 11 -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel11.jpg"
-                alt="Google Pixel 11"
-            >
+            <img src="images/pixel11.jpg" alt="Google Pixel 11">
 
-            <h3>
-                Google Pixel 11
-            </h3>
+            <h3>Google Pixel 11</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Next-generation Google Pixel smartphone.
@@ -1327,18 +1176,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1347,23 +1192,15 @@
         </div>
 
 
-
         <!-- PIXEL 11 PRO -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel11pro.jpg"
-                alt="Google Pixel 11 Pro"
-            >
+            <img src="images/pixel11pro.jpg" alt="Google Pixel 11 Pro">
 
-            <h3>
-                Google Pixel 11 Pro
-            </h3>
+            <h3>Google Pixel 11 Pro</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium Pixel flagship with advanced
@@ -1372,18 +1209,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1392,23 +1225,15 @@
         </div>
 
 
-
         <!-- PIXEL 11 PRO XL -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel11proxl.jpg"
-                alt="Google Pixel 11 Pro XL"
-            >
+            <img src="images/pixel11proxl.jpg" alt="Google Pixel 11 Pro XL">
 
-            <h3>
-                Google Pixel 11 Pro XL
-            </h3>
+            <h3>Google Pixel 11 Pro XL</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Large premium Pixel flagship with
@@ -1417,18 +1242,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1437,23 +1258,15 @@
         </div>
 
 
-
         <!-- PIXEL 11 PRO FOLD -->
 
         <div class="product-card">
 
-            <img
-                src="images/pixel11profold.jpg"
-                alt="Google Pixel 11 Pro Fold"
-            >
+            <img src="images/pixel11profold.jpg" alt="Google Pixel 11 Pro Fold">
 
-            <h3>
-                Google Pixel 11 Pro Fold
-            </h3>
+            <h3>Google Pixel 11 Pro Fold</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Premium foldable Pixel smartphone
@@ -1462,18 +1275,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1481,14 +1290,13 @@
 
         </div>
 
-
     </div>
 
 
 
-    <!-- ==========================================
+    <!-- ==============================
          PLAYSTATION
-    =========================================== -->
+    ============================== -->
 
     <h2
         id="playstation"
@@ -1501,22 +1309,13 @@
     <div class="products-grid">
 
 
-        <!-- PS5 -->
-
         <div class="product-card">
 
-            <img
-                src="images/ps5.jpg"
-                alt="PlayStation 5"
-            >
+            <img src="images/ps5.jpg" alt="PlayStation 5">
 
-            <h3>
-                PlayStation 5
-            </h3>
+            <h3>PlayStation 5</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Next-generation gaming console.
@@ -1524,18 +1323,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1544,23 +1339,14 @@
         </div>
 
 
-
-        <!-- PS5 DIGITAL -->
-
         <div class="product-card">
 
-            <img
-                src="images/ps5digital.jpg"
-                alt="PlayStation 5 Digital Edition"
-            >
+            <img src="images/ps5digital.jpg"
+                 alt="PlayStation 5 Digital Edition">
 
-            <h3>
-                PlayStation 5 Digital Edition
-            </h3>
+            <h3>PlayStation 5 Digital Edition</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Digital edition of the PS5 console.
@@ -1568,18 +1354,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1588,23 +1370,13 @@
         </div>
 
 
-
-        <!-- PS5 SLIM -->
-
         <div class="product-card">
 
-            <img
-                src="images/ps5slim.jpg"
-                alt="PS5 Slim"
-            >
+            <img src="images/ps5slim.jpg" alt="PS5 Slim">
 
-            <h3>
-                PS5 Slim
-            </h3>
+            <h3>PS5 Slim</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Slimmer PlayStation 5 design.
@@ -1612,18 +1384,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1632,23 +1400,14 @@
         </div>
 
 
-
-        <!-- PS5 PRO -->
-
         <div class="product-card">
 
-            <img
-                src="images/ps5pro.jpg"
-                alt="PlayStation 5 Pro"
-            >
+            <img src="images/ps5pro.jpg"
+                 alt="PlayStation 5 Pro">
 
-            <h3>
-                PlayStation 5 Pro
-            </h3>
+            <h3>PlayStation 5 Pro</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Enhanced PlayStation gaming performance.
@@ -1656,18 +1415,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1676,23 +1431,14 @@
         </div>
 
 
-
-        <!-- DUALSENSE -->
-
         <div class="product-card">
 
-            <img
-                src="images/dualsense.jpg"
-                alt="DualSense Wireless Controller"
-            >
+            <img src="images/dualsense.jpg"
+                 alt="DualSense Wireless Controller">
 
-            <h3>
-                DualSense Wireless Controller
-            </h3>
+            <h3>DualSense Wireless Controller</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 Official PlayStation wireless controller.
@@ -1700,18 +1446,14 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
@@ -1719,14 +1461,13 @@
 
         </div>
 
-
     </div>
 
 
 
-    <!-- ==========================================
+    <!-- ==============================
          SMART TVs
-    =========================================== -->
+    ============================== -->
 
     <h2
         id="smart-tvs"
@@ -1739,8 +1480,6 @@
     <div class="products-grid">
 
 
-        <!-- TCL -->
-
         <div class="product-card">
 
             <img
@@ -1748,13 +1487,9 @@
                 alt="TCL Smart TVs"
             >
 
-            <h3>
-                TCL Smart TVs
-            </h3>
+            <h3>TCL Smart TVs</h3>
 
-            <p class="price">
-                Contact for Price
-            </p>
+            <p class="price">Contact for Price</p>
 
             <p>
                 TCL Smart TVs available in multiple
@@ -1763,25 +1498,20 @@
 
             <div class="product-actions">
 
-                <a
-                    class="whatsapp-btn"
-                    href="https://wa.me/254101984723"
-                    target="_blank"
-                >
+                <a class="whatsapp-btn"
+                   href="https://wa.me/254101984723"
+                   target="_blank">
                     WhatsApp
                 </a>
 
-                <a
-                    class="call-btn"
-                    href="tel:+254101984723"
-                >
+                <a class="call-btn"
+                   href="tel:+254101984723">
                     Call
                 </a>
 
             </div>
 
         </div>
-
 
     </div>
 
@@ -1793,14 +1523,11 @@
         No products found. Try another search.
     </div>
 
-
 </main>
 
 
 
-<!-- ==========================================
-     FOOTER
-========================================== -->
+<!-- FOOTER -->
 
 <footer class="products-footer">
 
@@ -1825,9 +1552,7 @@
 
 
 
-<!-- ==========================================
-     SEARCH ENHANCEMENT
-========================================== -->
+<!-- SEARCH -->
 
 <script>
 
@@ -1865,7 +1590,6 @@ document.addEventListener(
                         if (text.includes(term)) {
 
                             card.style.display = "";
-
                             visible++;
 
                         } else {
@@ -1876,7 +1600,6 @@ document.addEventListener(
 
                     }
                 );
-
 
                 noResults.style.display =
                     visible === 0
@@ -1891,6 +1614,8 @@ document.addEventListener(
 
 </script>
 
+
+<!-- MAIN WEBSITE JAVASCRIPT -->
 
 <script src="js/script.js?v=4"></script>
 
