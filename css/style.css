@@ -1904,3 +1904,144 @@ footer p {
     }
 
 }
+/* ==========================================
+   4LJTEK - FINAL MOBILE BUTTON FIX
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .product-actions {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 7px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: auto !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =========================
+       ADD TO CART
+    ========================= */
+
+    .product-actions .add-cart-btn {
+        grid-column: 1 / -1 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        height: 50px !important;
+        min-height: 50px !important;
+
+        padding: 5px 3px !important;
+
+        border-radius: 14px !important;
+
+        font-size: 13px !important;
+        line-height: 1 !important;
+        font-weight: 800 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .product-actions .whatsapp-btn {
+        grid-column: 1 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        height: 50px !important;
+        min-height: 50px !important;
+
+        padding: 4px 2px !important;
+
+        border-radius: 13px !important;
+
+        font-size: 9px !important;
+        line-height: 1 !important;
+        font-weight: 800 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* =========================
+       CALL
+    ========================= */
+
+    .product-actions .call-btn {
+        grid-column: 2 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        height: 50px !important;
+        min-height: 50px !important;
+
+        padding: 4px 2px !important;
+
+        border-radius: 13px !important;
+
+        font-size: 12px !important;
+        line-height: 1 !important;
+        font-weight: 800 !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+   ========================================== */
+
+@media (max-width: 380px) {
+
+    .product-actions {
+        gap: 5px !important;
+    }
+
+    .product-actions .add-cart-btn {
+        font-size: 12px !important;
+    }
+
+    .product-actions .whatsapp-btn {
+        font-size: 8px !important;
+    }
+
+    .product-actions .call-btn {
+        font-size: 11px !important;
+    }
+
+}
