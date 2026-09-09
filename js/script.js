@@ -618,15 +618,44 @@ function setupMobileMenu() {
 
     });
 }
- function start4LJTek() {
+
+function start4LJTek() {
+
     setupMobileMenu();
+
     setupProductSearch();
+
     setupAddToCartButtons();
+
     setupWhatsAppButtons();
+
     setupHomeWhatsApp();
+
     displayCart();
+
     updateCartCount();
+
     setupClearCart();
+
     setupCartWhatsApp();
+
     setupCartCall();
+}
+
+
+/* ==========================================
+   START 4LJTEK
+   ========================================== */
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        start4LJTek
+    );
+
+} else {
+
+    start4LJTek();
+
 }
