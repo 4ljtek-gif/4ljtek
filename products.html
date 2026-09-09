@@ -2,91 +2,685 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Products | 4LJTek</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* ==========================================
+           PRODUCTS PAGE
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f7f8fa;
+            color: #111;
+            font-family: "Montserrat", sans-serif;
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .products-header {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .products-logo img {
+            width: 135px;
+            height: auto;
+            display: block;
+        }
+
+        .products-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .products-nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .products-nav a:hover {
+            color: #0878ff;
+        }
+
+
+        /* ==========================================
+           PAGE INTRO
+        ========================================== */
+
+        .products-hero {
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    #123e68 0%,
+                    #061b31 35%,
+                    #020a13 75%,
+                    #000 100%
+                );
+            color: #fff;
+            padding: 75px 25px;
+        }
+
+        .products-hero-inner {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .products-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .products-hero h1 {
+            margin: 0 0 18px;
+            font-size: clamp(45px, 6vw, 70px);
+            line-height: .95;
+            letter-spacing: -3px;
+            font-weight: 800;
+        }
+
+        .products-hero h1 span {
+            color: #0878ff;
+        }
+
+        .products-hero p {
+            max-width: 650px;
+            margin: 0;
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        /* ==========================================
+           PRODUCTS CONTENT
+        ========================================== */
+
+        .products-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 55px 25px 90px;
+        }
+
+
+        /* ==========================================
+           SEARCH
+        ========================================== */
+
+        .search-box {
+            margin-bottom: 35px;
+        }
+
+        .search-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        #search {
+            width: 100%;
+            height: 58px;
+            padding: 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            background: #fff;
+            color: #111;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,.04);
+        }
+
+        #search:focus {
+            border-color: #0878ff;
+        }
+
+
+        /* ==========================================
+           CATEGORY NAVIGATION
+        ========================================== */
+
+        .product-category-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .product-category-nav a {
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #111;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s ease;
+        }
+
+        .product-category-nav a:hover {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+
+        /* ==========================================
+           CATEGORY TITLES
+        ========================================== */
+
+        .category-title {
+            margin: 65px 0 25px;
+            font-size: 32px;
+            letter-spacing: -1.5px;
+            font-weight: 800;
+        }
+
+        .category-title:first-of-type {
+            margin-top: 0;
+        }
+
+
+        /* ==========================================
+           PRODUCT GRID
+        ========================================== */
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+
+        /* ==========================================
+           PRODUCT CARD
+        ========================================== */
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 480px;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0,0,0,.09);
+        }
+
+        .product-card > img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            display: block;
+            border-radius: 15px;
+            background: #fafafa;
+            margin-bottom: 18px;
+        }
+
+        .product-card h3 {
+            margin: 0 0 9px;
+            font-size: 17px;
+            line-height: 1.3;
+            font-weight: 800;
+        }
+
+        .product-card .price {
+            margin: 0 0 10px;
+            color: #0878ff;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .product-card > p:not(.price) {
+            margin: 0 0 18px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* ==========================================
+           PRODUCT BUTTONS
+        ========================================== */
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .product-actions a,
+        .product-actions button {
+            min-height: 48px;
+            border: 0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .product-actions .add-cart-btn {
+            grid-column: 1 / -1;
+            background: #f1f1f1 !important;
+            color: #111 !important;
+            border: 1px solid #ddd !important;
+        }
+
+        .product-actions .add-cart-btn:hover {
+            background: #111 !important;
+            color: #fff !important;
+        }
+
+        .product-actions .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .product-actions .call-btn {
+            background: #111;
+            color: #fff;
+        }
+
+        .product-actions a:hover,
+        .product-actions button:hover {
+            transform: translateY(-2px);
+            opacity: .92;
+        }
+
+
+        /* ==========================================
+           EMPTY SEARCH
+        ========================================== */
+
+        .no-results {
+            display: none;
+            padding: 50px 20px;
+            text-align: center;
+            color: #777;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+        }
+
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+
+        .products-footer {
+            background: #05090d;
+            color: #fff;
+            padding: 45px 25px 25px;
+            text-align: center;
+        }
+
+        .products-footer img {
+            width: 130px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .products-footer p {
+            margin: 5px 0;
+            color: #999;
+            font-size: 12px;
+        }
+
+
+        /* ==========================================
+           TABLET
+        ========================================== */
+
+        @media (max-width: 1050px) {
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .products-header {
+                position: relative;
+                padding: 15px 18px;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .products-logo img {
+                width: 120px;
+            }
+
+            .products-nav {
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .products-nav a {
+                font-size: 12px;
+            }
+
+
+            .products-hero {
+                padding: 55px 22px;
+            }
+
+            .products-hero h1 {
+                font-size: 50px;
+                letter-spacing: -3px;
+            }
+
+            .products-hero p {
+                font-size: 15px;
+            }
+
+
+            .products-page {
+                padding: 40px 18px 65px;
+            }
+
+
+            .product-category-nav {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+            }
+
+            .product-category-nav a {
+                white-space: nowrap;
+            }
+
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 13px;
+            }
+
+
+            .category-title {
+                margin: 50px 0 20px;
+                font-size: 29px;
+            }
+
+
+            .product-card {
+                min-height: 410px;
+                padding: 11px;
+                border-radius: 17px;
+            }
+
+            .product-card > img {
+                height: 185px;
+                margin-bottom: 14px;
+                border-radius: 12px;
+            }
+
+            .product-card h3 {
+                font-size: 14px;
+            }
+
+            .product-card .price {
+                font-size: 12px;
+            }
+
+            .product-card > p:not(.price) {
+                font-size: 10px;
+                line-height: 1.5;
+            }
+
+            .product-actions {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .product-actions .add-cart-btn {
+                grid-column: auto;
+            }
+
+            .product-actions a,
+            .product-actions button {
+                min-height: 44px;
+                font-size: 11px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .products-grid {
+                gap: 10px;
+            }
+
+            .product-card {
+                min-height: 390px;
+            }
+
+            .product-card > img {
+                height: 165px;
+            }
+
+            .product-card h3 {
+                font-size: 13px;
+            }
+
+            .products-hero h1 {
+                font-size: 44px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<header>
 
-    <div class="logo">
-        <img src="images/logo.png" alt="4LJTek Logo">
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header class="products-header">
+
+    <div class="products-logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="4LJTek"
+            >
+
+        </a>
+
     </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+
+    <nav class="products-nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="cart.html">
+            Cart
+        </a>
+
     </nav>
 
 </header>
 
 
-<section class="products-section">
 
-    <h2>Our Products</h2>
+<!-- ==========================================
+     PRODUCTS HERO
+========================================== -->
 
-    <p class="products-intro">
-        Premium electronics, genuine products and better deals from 4LJTek.
-    </p>
+<section class="products-hero">
+
+    <div class="products-hero-inner">
+
+        <div class="products-label">
+            4LJTEK COLLECTION
+        </div>
+
+        <h1>
+            Find Your<br>
+            Next <span>Upgrade.</span>
+        </h1>
+
+        <p>
+            Explore premium smartphones, PlayStation consoles
+            and Smart TVs from 4LJTek. Genuine products,
+            better deals and easy ordering.
+        </p>
+
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         CATEGORY NAVIGATION
-    ========================== -->
 
-    <div class="product-category-nav" aria-label="Product categories">
+<!-- ==========================================
+     PRODUCTS
+========================================== -->
 
-        <a href="#smartphones">Phones</a>
+<main class="products-page">
 
-        <a href="#playstation">PlayStation</a>
 
-        <a href="#smart-tvs">Smart TVs</a>
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <label for="search">
+            Search products
+        </label>
+
+        <input
+            type="search"
+            id="search"
+            placeholder="Search iPhone, Samsung, Pixel, PlayStation..."
+            autocomplete="off"
+        >
 
     </div>
 
 
-    <!-- =========================
-         SEARCH
-    ========================== -->
 
-    <label for="search" class="sr-only">
-        Search products
-    </label>
+    <!-- CATEGORY NAVIGATION -->
 
-    <input
-        type="search"
-        id="search"
-        placeholder="Search products..."
-        style="width:100%;padding:12px;margin-bottom:35px;border-radius:8px;border:1px solid #ccc;"
+    <div
+        class="product-category-nav"
+        aria-label="Product categories"
     >
 
+        <a href="#smartphones">
+            Phones
+        </a>
 
-    <!-- =========================
+        <a href="#playstation">
+            PlayStation
+        </a>
+
+        <a href="#smart-tvs">
+            Smart TVs
+        </a>
+
+    </div>
+
+
+
+    <!-- ==========================================
          SMARTPHONES
-    ========================== -->
+    =========================================== -->
 
-    <h2 id="smartphones" class="category-title">
+    <h2
+        id="smartphones"
+        class="category-title"
+    >
         Smartphones
     </h2>
+
 
     <div class="products-grid">
 
 
-        <!-- =========================
-             IPHONE
-        ========================== -->
-
-
-        <!-- iPhone 17 -->
+        <!-- iPHONE 17 -->
 
         <div class="product-card">
 
@@ -95,7 +689,9 @@
                 alt="iPhone 17"
             >
 
-            <h3>iPhone 17</h3>
+            <h3>
+                iPhone 17
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -128,7 +724,8 @@
         </div>
 
 
-        <!-- iPhone 17 Air -->
+
+        <!-- iPHONE 17 AIR -->
 
         <div class="product-card">
 
@@ -137,7 +734,9 @@
                 alt="iPhone 17 Air"
             >
 
-            <h3>iPhone 17 Air</h3>
+            <h3>
+                iPhone 17 Air
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -170,7 +769,8 @@
         </div>
 
 
-        <!-- iPhone 17 Pro -->
+
+        <!-- iPHONE 17 PRO -->
 
         <div class="product-card">
 
@@ -179,7 +779,9 @@
                 alt="iPhone 17 Pro"
             >
 
-            <h3>iPhone 17 Pro</h3>
+            <h3>
+                iPhone 17 Pro
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -212,7 +814,8 @@
         </div>
 
 
-        <!-- iPhone 17 Pro Max -->
+
+        <!-- iPHONE 17 PRO MAX -->
 
         <div class="product-card">
 
@@ -221,7 +824,9 @@
                 alt="iPhone 17 Pro Max"
             >
 
-            <h3>iPhone 17 Pro Max</h3>
+            <h3>
+                iPhone 17 Pro Max
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -254,12 +859,8 @@
         </div>
 
 
-        <!-- =========================
-             SAMSUNG
-        ========================== -->
 
-
-        <!-- Samsung Galaxy S25 -->
+        <!-- SAMSUNG S25 -->
 
         <div class="product-card">
 
@@ -268,7 +869,9 @@
                 alt="Samsung Galaxy S25"
             >
 
-            <h3>Samsung Galaxy S25</h3>
+            <h3>
+                Samsung Galaxy S25
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -300,7 +903,8 @@
         </div>
 
 
-        <!-- Samsung Galaxy S25+ -->
+
+        <!-- SAMSUNG S25+ -->
 
         <div class="product-card">
 
@@ -309,7 +913,9 @@
                 alt="Samsung Galaxy S25 Plus"
             >
 
-            <h3>Samsung Galaxy S25+</h3>
+            <h3>
+                Samsung Galaxy S25+
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -342,7 +948,8 @@
         </div>
 
 
-        <!-- Samsung Galaxy S25 Ultra -->
+
+        <!-- SAMSUNG S25 ULTRA -->
 
         <div class="product-card">
 
@@ -351,15 +958,16 @@
                 alt="Samsung Galaxy S25 Ultra"
             >
 
-            <h3>Samsung Galaxy S25 Ultra</h3>
+            <h3>
+                Samsung Galaxy S25 Ultra
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Ultra-premium Samsung Galaxy
-                flagship.
+                Ultra-premium Samsung Galaxy flagship.
             </p>
 
             <div class="product-actions">
@@ -384,7 +992,8 @@
         </div>
 
 
-        <!-- Samsung Galaxy S26 -->
+
+        <!-- SAMSUNG S26 -->
 
         <div class="product-card">
 
@@ -393,7 +1002,9 @@
                 alt="Samsung Galaxy S26"
             >
 
-            <h3>Samsung Galaxy S26</h3>
+            <h3>
+                Samsung Galaxy S26
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -425,7 +1036,8 @@
         </div>
 
 
-        <!-- Samsung Galaxy S26+ -->
+
+        <!-- SAMSUNG S26+ -->
 
         <div class="product-card">
 
@@ -434,15 +1046,16 @@
                 alt="Samsung Galaxy S26 Plus"
             >
 
-            <h3>Samsung Galaxy S26+</h3>
+            <h3>
+                Samsung Galaxy S26+
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Premium large-screen Galaxy
-                smartphone.
+                Premium large-screen Galaxy smartphone.
             </p>
 
             <div class="product-actions">
@@ -467,7 +1080,8 @@
         </div>
 
 
-        <!-- Samsung Galaxy S26 Ultra -->
+
+        <!-- SAMSUNG S26 ULTRA -->
 
         <div class="product-card">
 
@@ -476,7 +1090,9 @@
                 alt="Samsung Galaxy S26 Ultra"
             >
 
-            <h3>Samsung Galaxy S26 Ultra</h3>
+            <h3>
+                Samsung Galaxy S26 Ultra
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -508,12 +1124,8 @@
         </div>
 
 
-        <!-- =========================
-             GOOGLE PIXEL
-        ========================== -->
 
-
-        <!-- Google Pixel 10 -->
+        <!-- PIXEL 10 -->
 
         <div class="product-card">
 
@@ -522,15 +1134,17 @@
                 alt="Google Pixel 10"
             >
 
-            <h3>Google Pixel 10</h3>
+            <h3>
+                Google Pixel 10
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Premium Google Pixel smartphone
-                with advanced camera and performance.
+                Premium Google Pixel smartphone with
+                advanced camera and performance.
             </p>
 
             <div class="product-actions">
@@ -555,7 +1169,8 @@
         </div>
 
 
-        <!-- Google Pixel 10 Pro -->
+
+        <!-- PIXEL 10 PRO -->
 
         <div class="product-card">
 
@@ -564,7 +1179,9 @@
                 alt="Google Pixel 10 Pro"
             >
 
-            <h3>Google Pixel 10 Pro</h3>
+            <h3>
+                Google Pixel 10 Pro
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -597,7 +1214,8 @@
         </div>
 
 
-        <!-- Google Pixel 10 Pro XL -->
+
+        <!-- PIXEL 10 PRO XL -->
 
         <div class="product-card">
 
@@ -606,7 +1224,9 @@
                 alt="Google Pixel 10 Pro XL"
             >
 
-            <h3>Google Pixel 10 Pro XL</h3>
+            <h3>
+                Google Pixel 10 Pro XL
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -639,7 +1259,8 @@
         </div>
 
 
-        <!-- Google Pixel 10 Pro Fold -->
+
+        <!-- PIXEL 10 PRO FOLD -->
 
         <div class="product-card">
 
@@ -648,7 +1269,9 @@
                 alt="Google Pixel 10 Pro Fold"
             >
 
-            <h3>Google Pixel 10 Pro Fold</h3>
+            <h3>
+                Google Pixel 10 Pro Fold
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -680,7 +1303,8 @@
         </div>
 
 
-        <!-- Google Pixel 11 -->
+
+        <!-- PIXEL 11 -->
 
         <div class="product-card">
 
@@ -689,15 +1313,16 @@
                 alt="Google Pixel 11"
             >
 
-            <h3>Google Pixel 11</h3>
+            <h3>
+                Google Pixel 11
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Next-generation Google Pixel
-                smartphone.
+                Next-generation Google Pixel smartphone.
             </p>
 
             <div class="product-actions">
@@ -722,7 +1347,8 @@
         </div>
 
 
-        <!-- Google Pixel 11 Pro -->
+
+        <!-- PIXEL 11 PRO -->
 
         <div class="product-card">
 
@@ -731,15 +1357,17 @@
                 alt="Google Pixel 11 Pro"
             >
 
-            <h3>Google Pixel 11 Pro</h3>
+            <h3>
+                Google Pixel 11 Pro
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Premium Pixel flagship with
-                advanced cameras.
+                Premium Pixel flagship with advanced
+                cameras.
             </p>
 
             <div class="product-actions">
@@ -764,7 +1392,8 @@
         </div>
 
 
-        <!-- Google Pixel 11 Pro XL -->
+
+        <!-- PIXEL 11 PRO XL -->
 
         <div class="product-card">
 
@@ -773,7 +1402,9 @@
                 alt="Google Pixel 11 Pro XL"
             >
 
-            <h3>Google Pixel 11 Pro XL</h3>
+            <h3>
+                Google Pixel 11 Pro XL
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -806,7 +1437,8 @@
         </div>
 
 
-        <!-- Google Pixel 11 Pro Fold -->
+
+        <!-- PIXEL 11 PRO FOLD -->
 
         <div class="product-card">
 
@@ -815,7 +1447,9 @@
                 alt="Google Pixel 11 Pro Fold"
             >
 
-            <h3>Google Pixel 11 Pro Fold</h3>
+            <h3>
+                Google Pixel 11 Pro Fold
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -851,18 +1485,23 @@
     </div>
 
 
-    <!-- =========================
-         PLAYSTATION
-    ========================== -->
 
-    <h2 id="playstation" class="category-title">
+    <!-- ==========================================
+         PLAYSTATION
+    =========================================== -->
+
+    <h2
+        id="playstation"
+        class="category-title"
+    >
         PlayStation
     </h2>
+
 
     <div class="products-grid">
 
 
-        <!-- PlayStation 5 -->
+        <!-- PS5 -->
 
         <div class="product-card">
 
@@ -871,7 +1510,9 @@
                 alt="PlayStation 5"
             >
 
-            <h3>PlayStation 5</h3>
+            <h3>
+                PlayStation 5
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -903,7 +1544,8 @@
         </div>
 
 
-        <!-- PlayStation 5 Digital Edition -->
+
+        <!-- PS5 DIGITAL -->
 
         <div class="product-card">
 
@@ -912,7 +1554,9 @@
                 alt="PlayStation 5 Digital Edition"
             >
 
-            <h3>PlayStation 5 Digital Edition</h3>
+            <h3>
+                PlayStation 5 Digital Edition
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -944,7 +1588,8 @@
         </div>
 
 
-        <!-- PS5 Slim -->
+
+        <!-- PS5 SLIM -->
 
         <div class="product-card">
 
@@ -953,7 +1598,9 @@
                 alt="PS5 Slim"
             >
 
-            <h3>PS5 Slim</h3>
+            <h3>
+                PS5 Slim
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -985,7 +1632,8 @@
         </div>
 
 
-        <!-- PS5 Pro -->
+
+        <!-- PS5 PRO -->
 
         <div class="product-card">
 
@@ -994,15 +1642,16 @@
                 alt="PlayStation 5 Pro"
             >
 
-            <h3>PlayStation 5 Pro</h3>
+            <h3>
+                PlayStation 5 Pro
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Enhanced PlayStation gaming
-                performance.
+                Enhanced PlayStation gaming performance.
             </p>
 
             <div class="product-actions">
@@ -1027,7 +1676,8 @@
         </div>
 
 
-        <!-- DualSense Wireless Controller -->
+
+        <!-- DUALSENSE -->
 
         <div class="product-card">
 
@@ -1036,15 +1686,16 @@
                 alt="DualSense Wireless Controller"
             >
 
-            <h3>DualSense Wireless Controller</h3>
+            <h3>
+                DualSense Wireless Controller
+            </h3>
 
             <p class="price">
                 Contact for Price
             </p>
 
             <p>
-                Official PlayStation wireless
-                controller.
+                Official PlayStation wireless controller.
             </p>
 
             <div class="product-actions">
@@ -1072,18 +1723,23 @@
     </div>
 
 
-    <!-- =========================
-         SMART TVs
-    ========================== -->
 
-    <h2 id="smart-tvs" class="category-title">
+    <!-- ==========================================
+         SMART TVs
+    =========================================== -->
+
+    <h2
+        id="smart-tvs"
+        class="category-title"
+    >
         Smart TVs
     </h2>
+
 
     <div class="products-grid">
 
 
-        <!-- TCL Smart TVs -->
+        <!-- TCL -->
 
         <div class="product-card">
 
@@ -1092,7 +1748,9 @@
                 alt="TCL Smart TVs"
             >
 
-            <h3>TCL Smart TVs</h3>
+            <h3>
+                TCL Smart TVs
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -1128,14 +1786,114 @@
     </div>
 
 
-</section>
+    <div
+        id="no-results"
+        class="no-results"
+    >
+        No products found. Try another search.
+    </div>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+</main>
 
-<script src="js/script.js?v=3"></script>
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="products-footer">
+
+    <img
+        src="images/logo.png"
+        alt="4LJTek"
+    >
+
+    <p>
+        More Than Tech.
+    </p>
+
+    <p>
+        Premium electronics. Better experiences.
+    </p>
+
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- ==========================================
+     SEARCH ENHANCEMENT
+========================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const search =
+            document.getElementById("search");
+
+        const cards =
+            document.querySelectorAll(".product-card");
+
+        const noResults =
+            document.getElementById("no-results");
+
+        search.addEventListener(
+            "input",
+            function () {
+
+                const term =
+                    search.value
+                        .toLowerCase()
+                        .trim();
+
+                let visible = 0;
+
+                cards.forEach(
+                    function (card) {
+
+                        const text =
+                            card.textContent
+                                .toLowerCase();
+
+                        if (text.includes(term)) {
+
+                            card.style.display = "";
+
+                            visible++;
+
+                        } else {
+
+                            card.style.display = "none";
+
+                        }
+
+                    }
+                );
+
+
+                noResults.style.display =
+                    visible === 0
+                        ? "block"
+                        : "none";
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+<script src="js/script.js?v=4"></script>
+
 
 </body>
 </html>
