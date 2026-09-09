@@ -25,7 +25,6 @@
         rel="stylesheet"
     >
 
-
     <style>
 
         /* ==========================================
@@ -35,7 +34,6 @@
         * {
             box-sizing: border-box;
         }
-
 
         body {
             margin: 0;
@@ -50,9 +48,40 @@
         ========================================== */
 
         header {
+            min-height: 76px;
+            padding: 10px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
             position: relative;
             z-index: 100;
-            background: #fff;
+        }
+
+        header .logo img {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+
+        header nav ul {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav a {
+            color: #111;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        header nav a:hover {
+            color: #006eff;
         }
 
 
@@ -61,15 +90,10 @@
         ========================================== */
 
         .products-hero {
-
             position: relative;
-
             min-height: 390px;
-
             display: flex;
-
             align-items: center;
-
             overflow: hidden;
 
             background:
@@ -88,9 +112,7 @@
             color: #fff;
         }
 
-
         .products-hero::after {
-
             content: "";
 
             position: absolute;
@@ -103,21 +125,16 @@
 
             border-radius: 50%;
 
-            background:
-                rgba(0,112,243,.15);
+            background: rgba(0,112,243,.15);
 
             filter: blur(20px);
         }
 
-
         .products-hero-content {
-
             position: relative;
-
             z-index: 2;
 
             width: 100%;
-
             max-width: 1400px;
 
             margin: 0 auto;
@@ -125,9 +142,7 @@
             padding: 70px 5%;
         }
 
-
         .products-eyebrow {
-
             display: inline-block;
 
             margin-bottom: 15px;
@@ -135,23 +150,22 @@
             color: #4da3ff;
 
             font-size: 12px;
-
             font-weight: 800;
 
             text-transform: uppercase;
-
             letter-spacing: 2px;
         }
 
-
         .products-hero h1 {
-
             max-width: 760px;
 
             margin: 0 0 18px;
 
-            font-size:
-                clamp(42px, 6vw, 76px);
+            font-size: clamp(
+                42px,
+                6vw,
+                76px
+            );
 
             line-height: .98;
 
@@ -160,9 +174,7 @@
             letter-spacing: -3px;
         }
 
-
         .products-hero p {
-
             max-width: 650px;
 
             margin: 0;
@@ -170,7 +182,6 @@
             color: #c7c7c7;
 
             font-size: 16px;
-
             line-height: 1.7;
         }
 
@@ -180,7 +191,6 @@
         ========================================== */
 
         .products-section {
-
             max-width: 1400px;
 
             margin: 0 auto;
@@ -194,23 +204,17 @@
         ========================================== */
 
         .product-category-nav {
-
             display: flex;
-
             gap: 10px;
-
             flex-wrap: wrap;
 
             margin-bottom: 25px;
         }
 
-
         .product-category-nav a {
-
             display: inline-flex;
 
             align-items: center;
-
             justify-content: center;
 
             padding: 12px 20px;
@@ -226,19 +230,14 @@
             text-decoration: none;
 
             font-size: 12px;
-
             font-weight: 800;
 
             transition: .25s ease;
         }
 
-
         .product-category-nav a:hover {
-
             background: #111;
-
             color: #fff;
-
             border-color: #111;
 
             transform: translateY(-2px);
@@ -250,17 +249,12 @@
         ========================================== */
 
         .search-wrapper {
-
             position: relative;
-
             margin-bottom: 55px;
         }
 
-
         #search {
-
             width: 100%;
-
             height: 58px;
 
             padding: 0 20px;
@@ -270,22 +264,20 @@
             border-radius: 16px;
 
             background: #fff;
-
             color: #111;
 
             font-family: inherit;
-
             font-size: 14px;
 
             outline: none;
 
             box-shadow:
                 0 8px 25px rgba(0,0,0,.04);
+
+            transition: .25s ease;
         }
 
-
         #search:focus {
-
             border-color: #111;
 
             box-shadow:
@@ -298,11 +290,9 @@
         ========================================== */
 
         .category-heading {
-
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
 
             gap: 20px;
@@ -310,9 +300,7 @@
             margin: 70px 0 28px;
         }
 
-
         .category-title {
-
             margin: 0;
 
             color: #111;
@@ -326,9 +314,7 @@
             letter-spacing: -1px;
         }
 
-
         .category-line {
-
             flex: 1;
 
             height: 1px;
@@ -342,7 +328,6 @@
         ========================================== */
 
         .products-grid {
-
             display: grid;
 
             grid-template-columns:
@@ -357,12 +342,12 @@
         ========================================== */
 
         .product-card {
-
             position: relative;
 
             display: flex;
-
             flex-direction: column;
+
+            overflow: hidden;
 
             min-width: 0;
 
@@ -379,13 +364,14 @@
 
             transition:
                 transform .3s ease,
-                box-shadow .3s ease;
+                box-shadow .3s ease,
+                border-color .3s ease;
         }
 
-
         .product-card:hover {
-
             transform: translateY(-6px);
+
+            border-color: #d5d5d5;
 
             box-shadow:
                 0 22px 55px rgba(0,0,0,.11);
@@ -397,18 +383,15 @@
         ========================================== */
 
         .product-card > img {
-
             width: 100%;
 
             height: 250px;
 
-            padding: 12px;
-
-            margin-bottom: 18px;
+            object-fit: contain;
 
             display: block;
 
-            object-fit: contain;
+            padding: 12px;
 
             border-radius: 17px;
 
@@ -419,13 +402,13 @@
                     #eeeeee
                 );
 
+            margin-bottom: 18px;
+
             transition:
                 transform .35s ease;
         }
 
-
         .product-card:hover > img {
-
             transform: scale(1.04);
         }
 
@@ -435,7 +418,6 @@
         ========================================== */
 
         .product-card h3 {
-
             margin: 0 0 8px;
 
             color: #111;
@@ -449,9 +431,7 @@
             letter-spacing: -.35px;
         }
 
-
         .product-card .price {
-
             margin: 0 0 10px;
 
             color: #0878ff;
@@ -461,9 +441,7 @@
             font-weight: 850;
         }
 
-
         .product-card > p:not(.price) {
-
             margin: 0 0 20px;
 
             color: #777;
@@ -475,15 +453,15 @@
 
 
         /* ==========================================
-           BUTTON AREA
+           BUTTONS
         ========================================== */
 
         .product-actions {
-
             display: grid;
 
             grid-template-columns:
-                1fr 1fr;
+                minmax(0, 1fr)
+                minmax(0, 1fr);
 
             gap: 7px;
 
@@ -492,23 +470,19 @@
             margin-top: auto;
         }
 
-
         .product-actions a,
         .product-actions button {
-
             display: flex;
 
             align-items: center;
-
             justify-content: center;
-
-            width: 100%;
-
-            min-width: 0;
 
             min-height: 46px;
 
-            padding: 10px 8px;
+            width: 100%;
+            min-width: 0;
+
+            padding: 10px;
 
             border-radius: 12px;
 
@@ -524,10 +498,6 @@
 
             cursor: pointer;
 
-            white-space: nowrap;
-
-            overflow: hidden;
-
             transition:
                 transform .2s ease,
                 background .2s ease,
@@ -540,12 +510,7 @@
         ========================================== */
 
         .product-actions .add-cart-btn {
-
             grid-column: 1 / -1;
-
-            width: 100%;
-
-            min-height: 46px;
 
             background: #111 !important;
 
@@ -554,14 +519,10 @@
             border: 1px solid #111 !important;
         }
 
-
         .product-actions .add-cart-btn:hover {
-
             background: #0878ff !important;
 
             border-color: #0878ff !important;
-
-            transform: translateY(-2px);
         }
 
 
@@ -570,23 +531,16 @@
         ========================================== */
 
         .product-actions .whatsapp-btn {
-
             grid-column: 1;
 
             background: #25D366;
 
             color: #fff;
 
-            border: 1px solid #25D366;
-
-            width: 100% !important;
-
-            min-width: 0 !important;
+            min-width: 0;
         }
 
-
         .product-actions .whatsapp-btn:hover {
-
             background: #1ebe5d;
 
             transform: translateY(-2px);
@@ -598,7 +552,6 @@
         ========================================== */
 
         .product-actions .call-btn {
-
             grid-column: 2;
 
             background: #f2f2f2;
@@ -607,14 +560,10 @@
 
             border: 1px solid #ddd;
 
-            width: 100% !important;
-
-            min-width: 0 !important;
+            min-width: 0;
         }
 
-
         .product-actions .call-btn:hover {
-
             background: #111;
 
             color: #fff;
@@ -624,19 +573,31 @@
 
 
         /* ==========================================
+           NO RESULTS
+        ========================================== */
+
+        .no-results {
+            display: none;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            color: #777;
+        }
+
+
+        /* ==========================================
            SCREEN READER
         ========================================== */
 
         .sr-only {
-
             position: absolute;
 
             width: 1px;
-
             height: 1px;
 
             padding: 0;
-
             margin: -1px;
 
             overflow: hidden;
@@ -656,10 +617,10 @@
         @media (max-width: 1100px) {
 
             .products-grid {
-
                 grid-template-columns:
                     repeat(3, minmax(0, 1fr));
             }
+
         }
 
 
@@ -669,44 +630,55 @@
 
         @media (max-width: 700px) {
 
-            .products-hero {
+            /* HEADER */
 
+            header {
+                min-height: 76px;
+
+                padding: 12px 18px;
+
+                position: relative;
+            }
+
+            header .logo img {
+                width: 120px;
+            }
+
+
+            /* HERO */
+
+            .products-hero {
                 min-height: 330px;
             }
 
-
             .products-hero-content {
-
                 padding: 55px 20px;
             }
 
-
             .products-eyebrow {
-
                 font-size: 10px;
 
                 letter-spacing: 1.5px;
             }
 
-
             .products-hero h1 {
-
                 font-size: 43px;
+
+                line-height: .98;
 
                 letter-spacing: -2px;
             }
 
-
             .products-hero p {
-
                 font-size: 13px;
 
                 line-height: 1.6;
             }
 
 
-            .products-section {
+            /* PRODUCTS */
 
+            .products-section {
                 padding: 42px 15px;
             }
 
@@ -714,43 +686,39 @@
             /* CATEGORY NAV */
 
             .product-category-nav {
-
                 display: grid;
 
                 grid-template-columns:
-                    repeat(3, 1fr);
+                    repeat(3, minmax(0, 1fr));
 
                 gap: 7px;
 
                 margin-bottom: 20px;
             }
 
-
             .product-category-nav a {
-
                 width: 100%;
 
-                padding: 12px 4px;
+                min-width: 0;
+
+                padding: 11px 3px;
 
                 font-size: 10px;
 
                 white-space: nowrap;
+
+                text-align: center;
             }
 
 
             /* SEARCH */
 
-            .search-wrapper {
-
-                margin-bottom: 40px;
-            }
-
-
             #search {
-
                 height: 54px;
 
                 padding: 0 16px;
+
+                margin-bottom: 40px;
 
                 border-radius: 14px;
 
@@ -761,31 +729,25 @@
             /* CATEGORY */
 
             .category-heading {
-
                 margin: 45px 0 22px;
 
                 gap: 12px;
             }
 
-
             .category-title {
-
                 font-size: 25px;
 
                 letter-spacing: -.6px;
             }
 
-
             .category-line {
-
                 display: none;
             }
 
 
-            /* PRODUCT GRID */
+            /* GRID */
 
             .products-grid {
-
                 grid-template-columns:
                     repeat(2, minmax(0, 1fr));
 
@@ -793,10 +755,9 @@
             }
 
 
-            /* PRODUCT CARD */
+            /* CARD */
 
             .product-card {
-
                 padding: 9px;
 
                 border-radius: 17px;
@@ -807,9 +768,7 @@
                     0 5px 18px rgba(0,0,0,.045);
             }
 
-
             .product-card:hover {
-
                 transform: none;
 
                 box-shadow:
@@ -820,7 +779,6 @@
             /* IMAGE */
 
             .product-card > img {
-
                 width: 100%;
 
                 height: 155px;
@@ -834,17 +792,14 @@
                 object-fit: contain;
             }
 
-
             .product-card:hover > img {
-
                 transform: none;
             }
 
 
-            /* PRODUCT NAME */
+            /* NAME */
 
             .product-card h3 {
-
                 min-height: 34px;
 
                 margin-bottom: 6px;
@@ -858,17 +813,17 @@
             /* PRICE */
 
             .product-card .price {
-
                 margin-bottom: 7px;
 
                 font-size: 10px;
+
+                line-height: 1.4;
             }
 
 
             /* DESCRIPTION */
 
             .product-card > p:not(.price) {
-
                 margin-bottom: 13px;
 
                 font-size: 9px;
@@ -880,76 +835,100 @@
             /* BUTTON AREA */
 
             .product-actions {
-
-                display: grid;
+                display: grid !important;
 
                 grid-template-columns:
                     minmax(0, 1fr)
-                    minmax(0, 1fr);
+                    minmax(0, 1fr) !important;
 
-                gap: 5px;
+                gap: 6px !important;
 
-                width: 100%;
+                width: 100% !important;
 
-                margin-top: auto;
+                margin-top: auto !important;
             }
 
 
             /* ADD TO CART */
 
             .product-actions .add-cart-btn {
-
                 grid-column: 1 / -1 !important;
 
                 width: 100% !important;
 
-                min-height: 40px;
+                min-width: 0 !important;
 
-                padding: 7px 3px;
+                min-height: 42px !important;
 
-                font-size: 9px;
+                padding: 8px 4px !important;
 
-                border-radius: 10px;
+                font-size: 10px !important;
+
+                border-radius: 11px !important;
+
+                white-space: nowrap !important;
+
+                overflow: hidden !important;
+
+                text-overflow: clip !important;
             }
 
 
             /* WHATSAPP */
 
             .product-actions .whatsapp-btn {
-
                 grid-column: 1 !important;
 
                 width: 100% !important;
 
                 min-width: 0 !important;
 
-                min-height: 40px;
+                min-height: 40px !important;
 
-                padding: 7px 2px;
+                padding: 7px 2px !important;
 
-                font-size: 8px;
+                font-size: 8px !important;
 
-                border-radius: 10px;
+                border-radius: 10px !important;
+
+                white-space: nowrap !important;
+
+                overflow: hidden !important;
+
+                text-overflow: clip !important;
+
+                text-align: center !important;
+
+                box-sizing: border-box !important;
             }
 
 
             /* CALL */
 
             .product-actions .call-btn {
-
                 grid-column: 2 !important;
 
                 width: 100% !important;
 
                 min-width: 0 !important;
 
-                min-height: 40px;
+                min-height: 40px !important;
 
-                padding: 7px 2px;
+                padding: 7px 2px !important;
 
-                font-size: 9px;
+                font-size: 9px !important;
 
-                border-radius: 10px;
+                border-radius: 10px !important;
+
+                white-space: nowrap !important;
+
+                overflow: hidden !important;
+
+                text-overflow: clip !important;
+
+                text-align: center !important;
+
+                box-sizing: border-box !important;
             }
 
         }
@@ -961,47 +940,54 @@
 
         @media (max-width: 380px) {
 
-            .products-grid {
+            .products-section {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
 
+            .products-grid {
                 gap: 8px;
             }
 
-
             .product-card {
-
                 padding: 8px;
             }
 
-
             .product-card > img {
-
                 height: 140px;
             }
 
-
             .product-card h3 {
-
                 font-size: 11px;
             }
 
+            .product-card .price {
+                font-size: 9px;
+            }
 
             .product-card > p:not(.price) {
-
                 font-size: 8.5px;
             }
 
+            .product-actions {
+                gap: 5px !important;
+            }
 
             .product-actions .add-cart-btn {
-
-                font-size: 8px;
+                font-size: 9px !important;
+                min-height: 40px !important;
             }
 
+            .product-actions .whatsapp-btn {
+                font-size: 7.5px !important;
+                min-height: 38px !important;
+            }
 
-            .product-actions .whatsapp-btn,
             .product-actions .call-btn {
-
-                font-size: 8px;
+                font-size: 8px !important;
+                min-height: 38px !important;
             }
+
         }
 
     </style>
@@ -1016,7 +1002,7 @@
      HEADER
 ========================================== -->
 
-<header class="site-header">
+<header>
 
     <div class="logo">
 
@@ -1073,7 +1059,6 @@
 </header>
 
 
-
 <!-- ==========================================
      PREMIUM HERO
 ========================================== -->
@@ -1086,24 +1071,20 @@
             4LJTek Premium Electronics
         </span>
 
-
         <h1>
             Find Your<br>
             Next Upgrade.
         </h1>
 
-
         <p>
-            Explore premium smartphones,
-            PlayStation consoles and Smart TVs —
-            genuine products, great deals,
+            Explore premium smartphones, PlayStation consoles
+            and Smart TVs — genuine products, great deals,
             and easy ordering through 4LJTek.
         </p>
 
     </div>
 
 </section>
-
 
 
 <!-- ==========================================
@@ -1135,7 +1116,6 @@
     </div>
 
 
-
     <!-- SEARCH -->
 
     <label
@@ -1144,7 +1124,6 @@
     >
         Search products
     </label>
-
 
     <div class="search-wrapper">
 
@@ -1156,7 +1135,6 @@
         >
 
     </div>
-
 
 
     <!-- ==========================================
@@ -1202,13 +1180,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1227,7 +1198,6 @@
             </div>
 
         </div>
-
 
 
         <!-- iPhone 17 Air -->
@@ -1252,13 +1222,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1277,7 +1240,6 @@
             </div>
 
         </div>
-
 
 
         <!-- iPhone 17 Pro -->
@@ -1302,13 +1264,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1327,7 +1282,6 @@
             </div>
 
         </div>
-
 
 
         <!-- iPhone 17 Pro Max -->
@@ -1352,13 +1306,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1377,7 +1324,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S25 -->
@@ -1401,13 +1347,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1426,7 +1365,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S25+ -->
@@ -1451,13 +1389,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1476,7 +1407,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S25 Ultra -->
@@ -1500,13 +1430,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1525,7 +1448,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S26 -->
@@ -1549,13 +1471,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1574,7 +1489,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S26+ -->
@@ -1598,13 +1512,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1623,7 +1530,6 @@
             </div>
 
         </div>
-
 
 
         <!-- Samsung Galaxy S26 Ultra -->
@@ -1647,13 +1553,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1674,8 +1573,7 @@
         </div>
 
 
-
-        <!-- Pixel 10 -->
+        <!-- Google Pixel 10 -->
 
         <div class="product-card">
 
@@ -1697,13 +1595,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1724,8 +1615,7 @@
         </div>
 
 
-
-        <!-- Pixel 10 Pro -->
+        <!-- Google Pixel 10 Pro -->
 
         <div class="product-card">
 
@@ -1747,13 +1637,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1774,8 +1657,7 @@
         </div>
 
 
-
-        <!-- Pixel 10 Pro XL -->
+        <!-- Google Pixel 10 Pro XL -->
 
         <div class="product-card">
 
@@ -1797,13 +1679,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1824,8 +1699,7 @@
         </div>
 
 
-
-        <!-- Pixel 10 Pro Fold -->
+        <!-- Google Pixel 10 Pro Fold -->
 
         <div class="product-card">
 
@@ -1846,13 +1720,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1873,8 +1740,7 @@
         </div>
 
 
-
-        <!-- Pixel 11 -->
+        <!-- Google Pixel 11 -->
 
         <div class="product-card">
 
@@ -1895,13 +1761,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1922,8 +1781,7 @@
         </div>
 
 
-
-        <!-- Pixel 11 Pro -->
+        <!-- Google Pixel 11 Pro -->
 
         <div class="product-card">
 
@@ -1945,13 +1803,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -1972,8 +1823,7 @@
         </div>
 
 
-
-        <!-- Pixel 11 Pro XL -->
+        <!-- Google Pixel 11 Pro XL -->
 
         <div class="product-card">
 
@@ -1995,13 +1845,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -2022,8 +1865,7 @@
         </div>
 
 
-
-        <!-- Pixel 11 Pro Fold -->
+        <!-- Google Pixel 11 Pro Fold -->
 
         <div class="product-card">
 
@@ -2044,13 +1886,6 @@
             </p>
 
             <div class="product-actions">
-
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
 
                 <a
                     class="whatsapp-btn"
@@ -2073,7 +1908,6 @@
 
 
     </div>
-
 
 
     <!-- ==========================================
@@ -2118,13 +1952,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -2143,7 +1970,6 @@
             </div>
 
         </div>
-
 
 
         <!-- PS5 Digital -->
@@ -2155,7 +1981,9 @@
                 alt="PlayStation 5 Digital Edition"
             >
 
-            <h3>PlayStation 5 Digital Edition</h3>
+            <h3>
+                PlayStation 5 Digital Edition
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -2166,13 +1994,6 @@
             </p>
 
             <div class="product-actions">
-
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
 
                 <a
                     class="whatsapp-btn"
@@ -2192,7 +2013,6 @@
             </div>
 
         </div>
-
 
 
         <!-- PS5 Slim -->
@@ -2216,13 +2036,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -2241,7 +2054,6 @@
             </div>
 
         </div>
-
 
 
         <!-- PS5 Pro -->
@@ -2265,13 +2077,6 @@
 
             <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
-
                 <a
                     class="whatsapp-btn"
                     href="https://wa.me/254101984723"
@@ -2292,7 +2097,6 @@
         </div>
 
 
-
         <!-- DualSense -->
 
         <div class="product-card">
@@ -2302,7 +2106,9 @@
                 alt="DualSense Wireless Controller"
             >
 
-            <h3>DualSense Wireless Controller</h3>
+            <h3>
+                DualSense Wireless Controller
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -2313,13 +2119,6 @@
             </p>
 
             <div class="product-actions">
-
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
 
                 <a
                     class="whatsapp-btn"
@@ -2342,7 +2141,6 @@
 
 
     </div>
-
 
 
     <!-- ==========================================
@@ -2375,7 +2173,9 @@
                 alt="TCL Smart TVs"
             >
 
-            <h3>TCL Smart TVs</h3>
+            <h3>
+                TCL Smart TVs
+            </h3>
 
             <p class="price">
                 Contact for Price
@@ -2387,13 +2187,6 @@
             </p>
 
             <div class="product-actions">
-
-                <button
-                    type="button"
-                    class="add-cart-btn"
-                >
-                    Add to Cart
-                </button>
 
                 <a
                     class="whatsapp-btn"
@@ -2417,9 +2210,7 @@
 
     </div>
 
-
 </section>
-
 
 
 <!-- ==========================================
