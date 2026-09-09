@@ -1328,3 +1328,134 @@ footer p {
         font-size: 11px;
     }
 }
+/* ==========================================
+   4LJTEK PREMIUM MOBILE MENU
+   ========================================== */
+
+.mobile-menu-btn {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #e5e5e5;
+    border-radius: 13px;
+    background: #fff;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 21px;
+    height: 2px;
+    background: #111;
+    margin: 5px auto;
+    border-radius: 10px;
+    transition: .3s ease;
+}
+
+/* X animation */
+
+header.mobile-open .mobile-menu-btn span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+header.mobile-open .mobile-menu-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+header.mobile-open .mobile-menu-btn span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        position: relative;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    header nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+
+        background: rgba(255,255,255,.97);
+        backdrop-filter: blur(15px);
+
+        border: 1px solid #e5e5e5;
+        border-radius: 20px;
+
+        padding: 10px;
+
+        box-shadow: 0 20px 50px rgba(0,0,0,.12);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+
+        transition: .25s ease;
+    }
+
+    header.mobile-open nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    header nav ul li {
+        width: 100%;
+    }
+
+    header nav ul li a {
+        display: flex !important;
+        align-items: center;
+        width: 100%;
+        min-height: 52px;
+
+        padding: 0 18px;
+
+        border-radius: 13px;
+
+        font-size: 15px;
+        font-weight: 800;
+
+        color: #111 !important;
+        text-decoration: none;
+
+        transition: .2s ease;
+    }
+
+    header nav ul li a:hover,
+    header nav ul li a:active {
+        background: #f2f2f2;
+    }
+
+    /* Cart stands out */
+
+    header nav ul li:last-child a {
+        background: #111;
+        color: #fff !important;
+        margin-top: 4px;
+    }
+}
