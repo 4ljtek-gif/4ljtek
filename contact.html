@@ -1,15 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | 4LJTek</title>
+
+    <title>Contact 4LJTek | Premium Electronics</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ==========================================
+           4LJTEK PREMIUM CONTACT PAGE
+           ========================================== */
+
+        .contact-page {
+            background: #f7f7f7;
+            color: #111;
+        }
+
+        /* HERO */
+
+        .contact-hero {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(0,112,243,.22), transparent 35%),
+                linear-gradient(135deg, #000, #111 55%, #1a1a1a);
+            color: #fff;
+            text-align: center;
+            padding: 100px 22px 90px;
+        }
+
+        .contact-hero span {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .contact-hero h1 {
+            margin: 0 auto 20px;
+            max-width: 850px;
+            font-size: clamp(45px, 7vw, 78px);
+            line-height: .98;
+            letter-spacing: -3px;
+            font-weight: 900;
+        }
+
+        .contact-hero h1 strong {
+            color: #0070f3;
+        }
+
+        .contact-hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #c8c8c8;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+
+        /* CONTENT */
+
+        .contact-content {
+            max-width: 1180px;
+            margin: auto;
+            padding: 80px 24px;
+        }
+
+
+        /* CONTACT GRID */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 25px;
+            margin-bottom: 70px;
+        }
+
+
+        /* CONTACT CARD */
+
+        .contact-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 28px;
+            padding: 38px;
+            box-shadow: 0 15px 45px rgba(0,0,0,.06);
+        }
+
+        .contact-card h2 {
+            margin: 0 0 12px;
+            font-size: 35px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .contact-card > p {
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+
+        /* CONTACT OPTIONS */
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-option:last-child {
+            border-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: 15px;
+            background: #111;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .contact-option h3 {
+            margin: 0 0 4px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .contact-option p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .contact-option a {
+            color: #0070f3;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+
+        /* DARK CARD */
+
+        .contact-dark-card {
+            border-radius: 28px;
+            padding: 42px;
+            background:
+                radial-gradient(circle at top right, rgba(0,112,243,.28), transparent 40%),
+                linear-gradient(135deg, #050505, #171717);
+            color: #fff;
+            box-shadow: 0 25px 60px rgba(0,0,0,.14);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-dark-card small {
+            color: #0070f3;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .contact-dark-card h2 {
+            margin: 0 0 15px;
+            font-size: 42px;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            font-weight: 900;
+        }
+
+        .contact-dark-card p {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+
+        /* BUTTONS */
+
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .contact-buttons a {
+            min-height: 54px;
+            padding: 0 15px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        .contact-buttons a:hover {
+            transform: translateY(-3px);
+            opacity: .9;
+        }
+
+        .contact-whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .contact-call {
+            background: #fff;
+            color: #111;
+        }
+
+
+        /* LOCATION */
+
+        .location-section {
+            margin-bottom: 70px;
+        }
+
+        .location-section h2 {
+            text-align: center;
+            margin: 0 0 12px;
+            font-size: clamp(35px, 5vw, 50px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .location-section > p {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #777;
+            line-height: 1.7;
+        }
+
+        .location-card {
+            background: #111;
+            color: #fff;
+            border-radius: 28px;
+            padding: 45px;
+            text-align: center;
+        }
+
+        .location-card .location-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .location-card h3 {
+            margin: 0 0 10px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .location-card p {
+            margin: 0;
+            color: #aaa;
+        }
+
+
+        /* CTA */
+
+        .contact-cta {
+            text-align: center;
+            padding: 10px 0 30px;
+        }
+
+        .contact-cta h2 {
+            margin: 0 0 14px;
+            font-size: clamp(35px, 5vw, 52px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .contact-cta p {
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        .contact-cta a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 30px;
+            border-radius: 14px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform .2s ease;
+        }
+
+        .contact-cta a:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .contact-hero {
+                padding: 75px 22px 70px;
+            }
+
+            .contact-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .contact-hero p {
+                font-size: 15px;
+            }
+
+            .contact-content {
+                padding: 60px 18px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                margin-bottom: 55px;
+            }
+
+            .contact-card {
+                padding: 28px 22px;
+                border-radius: 24px;
+            }
+
+            .contact-card h2 {
+                font-size: 31px;
+            }
+
+            .contact-dark-card {
+                padding: 32px 24px;
+                border-radius: 24px;
+            }
+
+            .contact-dark-card h2 {
+                font-size: 37px;
+            }
+
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons a {
+                width: 100%;
+            }
+
+            .location-section {
+                margin-bottom: 55px;
+            }
+
+            .location-card {
+                padding: 35px 22px;
+                border-radius: 24px;
+            }
+
+            .contact-cta {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
 </head>
-<body>
+
+
+<body class="contact-page">
+
 
 <header>
+
     <div class="logo">
         <img src="images/logo.png" alt="4LJTek Logo">
     </div>
@@ -22,43 +400,245 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+
 </header>
 
-<section class="contact">
-    <h2>Contact 4LJTek</h2>
 
-    <p><strong>📍 Location:</strong> Nairobi CBD, Kenya</p>
-    <p><strong>📞 Phone:</strong> <a href="tel:+254101984723">0101 984 723</a></p>
-    <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/254101984723" target="_blank">Chat with us</a></p>
-    <p><strong>📧 Email:</strong> <a href="mailto:4ljtek@gmail.com">4ljtek@gmail.com</a></p>
+<!-- ==========================================
+     HERO
+     ========================================== -->
 
-    <br>
+<section class="contact-hero">
 
-    <h3>Send Us a Message</h3>
+    <span>Contact 4LJTek</span>
 
-    <form action="#" method="post" style="max-width:600px;margin:auto;">
-        <input type="text" placeholder="Your Name" required
-            style="width:100%;padding:12px;margin:10px 0;">
+    <h1>
+        Let's talk<br>
+        <strong>technology.</strong>
+    </h1>
 
-        <input type="email" placeholder="Your Email" required
-            style="width:100%;padding:12px;margin:10px 0;">
-
-        <textarea rows="6" placeholder="Your Message" required
-            style="width:100%;padding:12px;margin:10px 0;"></textarea>
-
-        <button class="btn" type="submit">
-            Send Message
-        </button>
-    </form>
-
-    <br><br>
-
-    <h3>Business Hours</h3>
-
-    <p>Monday - Saturday: 8:00 AM - 7:00 PM</p>
-    <p>Sunday: Closed</p>
+    <p>
+        Have a question about a product, price or availability?
+        Get in touch with 4LJTek and we'll be happy to help.
+    </p>
 
 </section>
 
+
+<main class="contact-content">
+
+
+    <!-- ==========================================
+         CONTACT INFORMATION
+         ========================================== -->
+
+    <section class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <h2>Get in touch.</h2>
+
+            <p>
+                Reach us directly through any of the options below.
+                We're here to help you find the right electronics
+                for your needs.
+            </p>
+
+
+            <div class="contact-option">
+
+                <div class="contact-icon">
+                    💬
+                </div>
+
+                <div>
+
+                    <h3>WhatsApp</h3>
+
+                    <p>
+                        <a href="https://wa.me/254101984723"
+                           target="_blank">
+                            0101984723
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-option">
+
+                <div class="contact-icon">
+                    📞
+                </div>
+
+                <div>
+
+                    <h3>Phone</h3>
+
+                    <p>
+                        <a href="tel:+254101984723">
+                            0101984723
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-option">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+                <div>
+
+                    <h3>Email</h3>
+
+                    <p>
+                        <a href="mailto:4ljtek@gmail.com">
+                            4ljtek@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-option">
+
+                <div class="contact-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <h3>Location</h3>
+
+                    <p>
+                        Nairobi CBD, Kenya
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DARK CARD -->
+
+        <div class="contact-dark-card">
+
+            <small>Need an upgrade?</small>
+
+            <h2>
+                Find your next device.
+            </h2>
+
+            <p>
+                Browse our latest smartphones, PlayStation consoles
+                and Smart TVs, then contact us for price and
+                availability.
+            </p>
+
+
+            <div class="contact-buttons">
+
+                <a
+                    class="contact-whatsapp"
+                    href="https://wa.me/254101984723"
+                    target="_blank">
+                    WhatsApp Us
+                </a>
+
+                <a
+                    class="contact-call"
+                    href="tel:+254101984723">
+                    Call Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         LOCATION
+         ========================================== -->
+
+    <section class="location-section">
+
+        <h2>Find Us</h2>
+
+        <p>
+            4LJTek is based in Nairobi CBD, Kenya,
+            serving customers looking for quality electronics.
+        </p>
+
+
+        <div class="location-card">
+
+            <div class="location-icon">
+                📍
+            </div>
+
+            <h3>Nairobi CBD</h3>
+
+            <p>
+                Nairobi, Kenya
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CTA
+         ========================================== -->
+
+    <section class="contact-cta">
+
+        <h2>
+            Ready to upgrade?
+        </h2>
+
+        <p>
+            Explore our products and find your next upgrade.
+        </p>
+
+        <a href="products.html">
+            Explore Products
+        </a>
+
+    </section>
+
+
+</main>
+
+
 <footer>
-    <p>&copy
+
+    <div class="logo">
+        <img src="images/logo.png" alt="4LJTek Logo">
+    </div>
+
+    <p>
+        © 2026 4LJTek. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>
