@@ -1668,3 +1668,114 @@ footer p {
     }
 
 }
+/* ==========================================
+   4LJTEK MOBILE MENU - FINAL FIX
+========================================== */
+
+.mobile-menu-btn {
+    display: none;
+
+    width: 54px !important;
+    height: 54px !important;
+
+    position: relative;
+
+    padding: 0 !important;
+    margin: 0;
+
+    border: none !important;
+    border-radius: 16px !important;
+
+    background: #111 !important;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 99999 !important;
+
+    font-size: 0 !important;
+}
+
+
+/* HAMBURGER ICON */
+
+.mobile-menu-btn::before {
+    content: "☰";
+
+    display: block;
+
+    color: #fff !important;
+
+    font-size: 34px !important;
+
+    line-height: 1;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: 400;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -53%);
+}
+
+
+/* HIDE OLD BARS */
+
+.mobile-menu-btn span {
+    display: none !important;
+}
+
+
+/* X ICON WHEN OPEN */
+
+.mobile-menu-btn.active::before {
+    content: "×";
+
+    font-size: 42px !important;
+
+    font-weight: 300;
+
+    transform: translate(-50%, -54%);
+}
+
+
+/* MOBILE ONLY */
+
+@media (max-width: 700px) {
+
+    .mobile-menu-btn {
+        display: flex !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+    .site-header {
+        position: relative !important;
+        z-index: 99999 !important;
+    }
+
+    header {
+        position: relative !important;
+        z-index: 99999 !important;
+    }
+
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 701px) {
+
+    .mobile-menu-btn {
+        display: none !important;
+    }
+
+}
