@@ -8,7 +8,7 @@
 
     <title>4LJTek | Premium Electronics</title>
 
-    <link rel="stylesheet" href="./css/style.css?v=6">
+    <link rel="stylesheet" href="./css/style.css?v=7">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,11 +76,13 @@
 
 
         /* ==========================================
-           MOBILE MENU BUTTON
+           HAMBURGER
         ========================================== */
 
         .mobile-menu-btn {
             display: none;
+            border: 0;
+            cursor: pointer;
         }
 
 
@@ -555,7 +557,6 @@
                 flex-direction: row !important;
                 align-items: center !important;
                 justify-content: space-between !important;
-                gap: 0 !important;
             }
 
             .site-header .logo img {
@@ -567,55 +568,74 @@
                 display: none !important;
             }
 
-            /* HAMBURGER */
+            /* HAMBURGER BUTTON */
+
             .mobile-menu-btn {
                 display: flex !important;
                 width: 48px !important;
                 height: 48px !important;
                 align-items: center !important;
                 justify-content: center !important;
+
                 position: absolute !important;
                 right: 18px !important;
                 top: 50% !important;
                 transform: translateY(-50%) !important;
+
                 background: #111 !important;
                 color: #fff !important;
-                border: none !important;
-                border-radius: 12px !important;
+
+                border: 0 !important;
+                border-radius: 13px !important;
+
                 font-size: 27px !important;
                 font-weight: 700 !important;
                 line-height: 1 !important;
-                z-index: 99999 !important;
-                cursor: pointer !important;
+
+                z-index: 100000 !important;
+
                 opacity: 1 !important;
                 visibility: visible !important;
             }
 
+
             /* OPEN MENU */
+
             .site-header.mobile-menu-open nav {
                 display: flex !important;
+
                 position: absolute !important;
                 top: 76px !important;
                 left: 0 !important;
                 right: 0 !important;
+
                 width: 100% !important;
+
                 flex-direction: column !important;
                 align-items: stretch !important;
+
                 gap: 0 !important;
+
                 padding: 10px 18px 20px !important;
+
                 background: #fff !important;
+
                 box-shadow: 0 15px 35px rgba(0,0,0,.18) !important;
-                z-index: 99998 !important;
+
+                z-index: 99999 !important;
             }
 
             .site-header.mobile-menu-open nav a {
                 display: block !important;
                 width: 100% !important;
-                padding: 16px 10px !important;
+                padding: 17px 10px !important;
+
                 color: #111 !important;
                 text-decoration: none !important;
+
                 font-size: 15px !important;
                 font-weight: 700 !important;
+
                 border-bottom: 1px solid #eee !important;
             }
 
@@ -914,6 +934,10 @@
 <body>
 
 
+<!-- ==========================================
+     HEADER
+========================================== -->
+
 <header class="site-header">
 
     <div class="logo">
@@ -945,19 +969,19 @@
     </nav>
 
 
-    <!-- MOBILE HAMBURGER -->
-
     <button
         type="button"
         class="mobile-menu-btn"
         aria-label="Open menu"
         aria-expanded="false"
-    >
-        ☰
-    </button>
+    >☰</button>
 
 </header>
 
+
+<!-- ==========================================
+     HERO
+========================================== -->
 
 <section class="premium-hero">
 
@@ -1042,6 +1066,8 @@
         </div>
 
 
+        <!-- HERO PRODUCT SHOWCASE -->
+
         <div class="hero-products">
 
             <img
@@ -1053,13 +1079,13 @@
             <img
                 class="hero-product hero-iphone"
                 src="images/iphone17pro.jpg"
-                alt="iPhone"
+                alt="iPhone 17 Pro"
             >
 
             <img
                 class="hero-product hero-samsung"
                 src="images/s26ultra.jpg"
-                alt="Samsung Galaxy"
+                alt="Samsung Galaxy S26 Ultra"
             >
 
             <img
@@ -1081,6 +1107,10 @@
 </section>
 
 
+<!-- ==========================================
+     SHOP BY CATEGORY
+========================================== -->
+
 <section class="category-section">
 
     <div class="category-container">
@@ -1089,7 +1119,9 @@
 
             <div>
 
-                <h2>Shop by Category</h2>
+                <h2>
+                    Shop by Category
+                </h2>
 
                 <p>
                     Explore premium electronics from some
@@ -1111,6 +1143,8 @@
         <div class="category-grid">
 
 
+            <!-- iPHONE -->
+
             <a
                 href="products.html#smartphones"
                 class="category-card"
@@ -1125,16 +1159,22 @@
 
                 </div>
 
-                <h3>iPhone</h3>
+                <h3>
+                    iPhone
+                </h3>
 
                 <p>
                     Latest models. Endless possibilities.
                 </p>
 
-                <div class="category-arrow">→</div>
+                <div class="category-arrow">
+                    →
+                </div>
 
             </a>
 
+
+            <!-- SAMSUNG -->
 
             <a
                 href="products.html#smartphones"
@@ -1150,16 +1190,22 @@
 
                 </div>
 
-                <h3>Samsung</h3>
+                <h3>
+                    Samsung
+                </h3>
 
                 <p>
                     Innovation for a better tomorrow.
                 </p>
 
-                <div class="category-arrow">→</div>
+                <div class="category-arrow">
+                    →
+                </div>
 
             </a>
 
+
+            <!-- GOOGLE PIXEL -->
 
             <a
                 href="products.html#smartphones"
@@ -1175,16 +1221,22 @@
 
                 </div>
 
-                <h3>Google Pixel</h3>
+                <h3>
+                    Google Pixel
+                </h3>
 
                 <p>
                     Pure Google. Powerful possibilities.
                 </p>
 
-                <div class="category-arrow">→</div>
+                <div class="category-arrow">
+                    →
+                </div>
 
             </a>
 
+
+            <!-- PLAYSTATION -->
 
             <a
                 href="products.html#playstation"
@@ -1200,16 +1252,22 @@
 
                 </div>
 
-                <h3>PlayStation</h3>
+                <h3>
+                    PlayStation
+                </h3>
 
                 <p>
                     Play without limits.
                 </p>
 
-                <div class="category-arrow">→</div>
+                <div class="category-arrow">
+                    →
+                </div>
 
             </a>
 
+
+            <!-- SMART TVs -->
 
             <a
                 href="products.html#smart-tvs"
@@ -1225,13 +1283,17 @@
 
                 </div>
 
-                <h3>Smart TVs</h3>
+                <h3>
+                    Smart TVs
+                </h3>
 
                 <p>
                     Bigger screens. Brighter moments.
                 </p>
 
-                <div class="category-arrow">→</div>
+                <div class="category-arrow">
+                    →
+                </div>
 
             </a>
 
@@ -1242,13 +1304,19 @@
 </section>
 
 
+<!-- ==========================================
+     BENEFITS
+========================================== -->
+
 <section class="benefits">
 
     <div class="benefits-container">
 
         <div class="benefit">
 
-            <div class="benefit-icon">◇</div>
+            <div class="benefit-icon">
+                ◇
+            </div>
 
             <div>
                 <strong>Top Brands</strong>
@@ -1260,7 +1328,9 @@
 
         <div class="benefit">
 
-            <div class="benefit-icon">🚚</div>
+            <div class="benefit-icon">
+                🚚
+            </div>
 
             <div>
                 <strong>Fast Delivery</strong>
@@ -1272,7 +1342,9 @@
 
         <div class="benefit">
 
-            <div class="benefit-icon">🔒</div>
+            <div class="benefit-icon">
+                🔒
+            </div>
 
             <div>
                 <strong>Secure Payments</strong>
@@ -1284,7 +1356,9 @@
 
         <div class="benefit">
 
-            <div class="benefit-icon">♧</div>
+            <div class="benefit-icon">
+                ♧
+            </div>
 
             <div>
                 <strong>Customer Support</strong>
@@ -1297,6 +1371,10 @@
 
 </section>
 
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
 
 <footer>
 
@@ -1319,35 +1397,55 @@
 
         <div class="footer-column">
 
-            <h3>Quick Links</h3>
+            <h3>
+                Quick Links
+            </h3>
 
-            <a href="index.html">Home</a>
+            <a href="index.html">
+                Home
+            </a>
 
-            <a href="products.html">Products</a>
+            <a href="products.html">
+                Products
+            </a>
 
-            <a href="about.html">About</a>
+            <a href="about.html">
+                About
+            </a>
 
-            <a href="contact.html">Contact</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Customer Support</h3>
-
-            <a href="contact.html">Contact Us</a>
-
-            <a href="products.html">Products</a>
-
-            <a href="cart.html">Shopping Cart</a>
+            <a href="contact.html">
+                Contact
+            </a>
 
         </div>
 
 
         <div class="footer-column">
 
-            <h3>Contact</h3>
+            <h3>
+                Customer Support
+            </h3>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="cart.html">
+                Shopping Cart
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Contact
+            </h3>
 
             <div class="footer-contact">
 
@@ -1380,11 +1478,11 @@
 </footer>
 
 
-<script src="js/script.js?v=6"></script>
+<script src="js/script.js?v=7"></script>
 
 
 <!-- ==========================================
-     MOBILE MENU BACKUP CONTROLLER
+     MOBILE MENU
 ========================================== -->
 
 <script>
@@ -1399,32 +1497,23 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    button.addEventListener("click", function () {
 
-        const isOpen =
-            header.classList.toggle("mobile-menu-open");
+    button.addEventListener("click", function (event) {
 
-        button.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
+        event.preventDefault();
+        event.stopImmediatePropagation();
 
-        button.setAttribute(
-            "aria-label",
-            isOpen ? "Close menu" : "Open menu"
-        );
-
-        button.textContent =
-            isOpen ? "✕" : "☰";
-
-    });
+        const open =
+            header.classList.contains("mobile-menu-open");
 
 
-    nav.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", function () {
+        if (open) {
 
             header.classList.remove("mobile-menu-open");
+
+            nav.style.cssText = "";
+
+            button.textContent = "☰";
 
             button.setAttribute(
                 "aria-expanded",
@@ -1436,7 +1525,62 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Open menu"
             );
 
+        } else {
+
+            header.classList.add("mobile-menu-open");
+
+            nav.style.cssText = `
+                display: flex !important;
+                position: absolute !important;
+                top: 76px !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 10px 18px 20px !important;
+                background: #fff !important;
+                box-shadow: 0 15px 35px rgba(0,0,0,.18) !important;
+                z-index: 99999 !important;
+            `;
+
+            button.textContent = "✕";
+
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+            button.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        }
+
+    }, true);
+
+
+    nav.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            header.classList.remove("mobile-menu-open");
+
+            nav.style.cssText = "";
+
             button.textContent = "☰";
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            button.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
 
         });
 
