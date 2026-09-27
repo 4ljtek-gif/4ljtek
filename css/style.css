@@ -1,21 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-
-:root {
-    --black: #000;
-    --dark: #111;
-    --white: #fff;
-    --gray: #777;
-    --light: #f7f7f7;
-    --border: #ddd;
-    --green: #25D366;
-    --radius: 22px;
-    --transition: .25s ease;
-}
+/* ==========================================
+   4LJTEK PREMIUM WEBSITE CSS
+   ========================================== */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -23,10 +13,9 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: #fff;
-    color: #000;
-    line-height: 1.6;
+    font-family: "Montserrat", Arial, sans-serif;
+    background: #f7f7f7;
+    color: #111;
     overflow-x: hidden;
 }
 
@@ -36,1848 +25,528 @@ img {
 }
 
 a {
-    color: inherit;
     text-decoration: none;
+    color: inherit;
 }
 
 button,
 input {
-    font: inherit;
+    font-family: inherit;
 }
 
-/* =========================
+
+/* ==========================================
    HEADER
-   ========================= */
+   ========================================== */
 
 .site-header,
 header {
+    position: relative;
+    z-index: 1000;
     width: 100%;
-    min-height: 95px;
-    padding: 10px 4%;
-
     background: #fff;
     border-bottom: 1px solid #eee;
+}
 
+.site-header .header-inner,
+header .header-inner {
+    min-height: 110px;
+    padding: 15px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
 }
 
-.logo {
-    flex: 0 0 auto;
-}
-
-.logo img {
-    width: 165px;
-    height: auto;
-    max-height: 75px;
-    object-fit: contain;
-}
-
-nav {
-    flex: 0 0 auto;
+.site-header img,
+header img {
+    max-height: 65px;
+    width: auto;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
     display: flex;
     align-items: center;
-    gap: 28px;
-}
-
-nav ul li {
-    margin: 0;
-    padding: 0;
+    gap: 32px;
+    list-style: none;
 }
 
 nav a {
-    display: inline-block;
-    white-space: nowrap;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    transition: var(--transition);
-}
-
-nav a:hover {
-    opacity: .55;
-}
-
-/* =========================
-   HERO
-   ========================= */
-
-.hero {
-    background: linear-gradient(135deg, #000, #191919);
-    color: #fff;
-
-    padding: 100px 6%;
-}
-
-.hero-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    max-width: 800px;
-
-    font-size: clamp(55px, 8vw, 100px);
-    line-height: .94;
-    letter-spacing: -4px;
-    font-weight: 800;
-
-    margin-bottom: 32px;
-}
-
-.hero p {
-    max-width: 720px;
-
-    color: #ccc;
-
-    font-size: 21px;
-    line-height: 1.55;
-
-    margin-bottom: 38px;
-}
-
-.hero-buttons {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.shop-btn,
-.hero-buttons .whatsapp-btn {
-    min-height: 58px;
-    padding: 0 34px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 30px;
-
-    font-size: 17px;
     font-weight: 700;
-
-    transition: var(--transition);
-}
-
-.shop-btn {
-    background: #fff;
-    color: #000;
-}
-
-.hero-buttons .whatsapp-btn {
-    background: var(--green);
-    color: #fff;
-}
-
-.shop-btn:hover,
-.hero-buttons .whatsapp-btn:hover {
-    transform: translateY(-2px);
-}
-
-/* =========================
-   FEATURED
-   ========================= */
-
-.featured {
-    padding: 75px 4%;
-}
-
-.featured > h2 {
-    max-width: 1200px;
-    margin: 0 auto 32px;
-
-    font-size: clamp(48px, 7vw, 76px);
-    line-height: .95;
-    letter-spacing: -3px;
-    font-weight: 800;
-}
-
-.products {
-    max-width: 1200px;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.card {
-    background: #fafafa;
-
-    border: 1px solid #e2e2e2;
-    border-radius: var(--radius);
-
-    overflow: hidden;
-    padding: 18px;
-
-    text-align: center;
-
-    transition: var(--transition);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 210px;
-
-    object-fit: contain;
-
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-/* =========================
-   PRODUCTS PAGE
-   ========================= */
-
-.products-section {
-    width: min(1200px, 92%);
-    margin: 0 auto;
-
-    padding: 65px 0 80px;
-}
-
-.products-section > h2:first-child {
-    font-size: clamp(48px, 7vw, 78px);
-    line-height: 1;
-
-    letter-spacing: -3px;
-    font-weight: 800;
-
-    margin-bottom: 20px;
-}
-
-.products-intro {
-    max-width: 800px;
-
-    color: var(--gray);
-
-    font-size: 19px;
-    line-height: 1.55;
-
-    margin-bottom: 25px;
-}
-
-/* =========================
-   CATEGORY NAV
-   ========================= */
-
-.product-category-nav {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 9px;
-
-    margin-bottom: 22px;
-}
-
-.product-category-nav a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 9px 21px;
-
-    border: 1px solid #d7d7d7;
-    border-radius: 30px;
-
-    background: #fff;
-
     font-size: 15px;
-    font-weight: 500;
-
-    transition: var(--transition);
-}
-
-.product-category-nav a:hover {
-    background: #000;
-    color: #fff;
-    border-color: #000;
-}
-
-/* =========================
-   SEARCH
-   ========================= */
-
-#search {
-    width: 100% !important;
-    height: 68px;
-
-    padding: 0 24px !important;
-
-    margin-bottom: 48px !important;
-
-    border: 1px solid #ddd !important;
-    border-radius: 18px !important;
-
-    background: #fff;
-
-    font-size: 18px;
-
-    outline: none;
-}
-
-#search:focus {
-    border-color: #000 !important;
-}
-
-/* =========================
-   CATEGORY TITLES
-   ========================= */
-
-.category-title {
-    font-size: clamp(42px, 6vw, 58px);
-
-    line-height: 1;
-    letter-spacing: -2px;
-
-    font-weight: 800;
-
-    margin: 0 0 25px;
-}
-
-#smartphones,
-#playstation,
-#smart-tvs,
-#soundbars {
-    scroll-margin-top: 25px;
-}
-
-.category-title:not(:first-of-type) {
-    margin-top: 65px;
-}
-
-/* =========================
-   PRODUCT GRID
-   ========================= */
-
-.products-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 22px;
-}
-
-/* =========================
-   PRODUCT CARD
-   ========================= */
-
-.product-card {
-    min-width: 0;
-
-    background: #fff;
-
-    border: 1px solid #ddd;
-    border-radius: 22px;
-
-    overflow: hidden;
-
-    transition: var(--transition);
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-
-    box-shadow: 0 15px 35px rgba(0,0,0,.08);
-}
-
-.product-card > img {
-    width: 100%;
-
-    height: 270px;
-
-    object-fit: contain;
-
-    background: #f8f8f8;
-
-    padding: 22px;
-}
-
-.product-card h3 {
-    padding: 20px 22px 0;
-
-    font-size: 24px;
-    line-height: 1.2;
-
-    font-weight: 800;
-}
-
-.product-card .price {
-    padding: 10px 22px 0;
-
-    font-size: 20px;
-
-    font-weight: 700;
-}
-
-.product-card > p:not(.price) {
-    padding: 10px 22px 0;
-
-    color: var(--gray);
-
-    font-size: 16px;
-
-    line-height: 1.5;
-}
-
-/* =========================
-   PRODUCT BUTTONS
-   ========================= */
-
-.product-actions {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 10px;
-
-    padding: 20px 22px 22px;
-}
-
-.product-actions a {
-    min-height: 52px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    font-size: 15px;
-    font-weight: 700;
-
-    transition: var(--transition);
-}
-
-.product-actions a:hover {
-    transform: translateY(-2px);
-}
-
-.product-actions .whatsapp-btn {
-    background: var(--green);
-    color: #fff;
-}
-
-.product-actions .call-btn {
-    background: #000;
-    color: #fff;
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer {
-    background: #000;
-
-    color: #fff;
-
-    padding: 45px 20px;
-
-    text-align: center;
-}
-
-footer p {
-    color: #aaa;
-
-    font-size: 14px;
-}
-
-/* =========================
-   TABLET
-   ========================= */
-
-@media (max-width: 900px) {
-
-    .site-header,
-    header {
-        padding: 12px 3%;
-        gap: 20px;
-    }
-
-    .logo img {
-        width: 145px;
-    }
-
-    nav ul {
-        gap: 18px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .hero {
-        padding: 85px 5%;
-    }
-}
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    /* HEADER */
-
-    .site-header,
-    header {
-        min-height: auto;
-
-        padding: 10px 12px 14px;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 8px;
-    }
-
-    .logo {
-        width: 100%;
-
-        display: flex;
-
-        justify-content: center;
-    }
-
-    .logo img {
-        width: 135px;
-        max-height: 65px;
-    }
-
-    nav {
-        width: 100%;
-    }
-
-    nav ul {
-        width: 100%;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        gap: 20px;
-    }
-
-    nav a {
-        font-size: 13px;
-        font-weight: 600;
-    }
-
-    /* HERO */
-
-    .hero {
-        padding: 68px 28px 70px;
-    }
-
-    .hero h1 {
-        font-size: 52px;
-
-        line-height: .94;
-
-        letter-spacing: -3px;
-
-        margin-bottom: 26px;
-    }
-
-    .hero p {
-        font-size: 18px;
-
-        line-height: 1.55;
-
-        margin-bottom: 32px;
-    }
-
-    .hero-buttons {
-        width: 100%;
-
-        flex-direction: column;
-
-        gap: 12px;
-    }
-
-    .shop-btn,
-    .hero-buttons .whatsapp-btn {
-        width: 100%;
-
-        min-height: 58px;
-
-        padding: 0 20px;
-    }
-
-    /* FEATURED */
-
-    .featured {
-        padding: 58px 20px;
-    }
-
-    .featured > h2 {
-        margin-bottom: 28px;
-
-        font-size: 46px;
-
-        line-height: .95;
-
-        letter-spacing: -2.5px;
-    }
-
-    .products {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 12px;
-    }
-
-    .card {
-        padding: 10px;
-
-        border-radius: 17px;
-    }
-
-    .card img {
-        height: 140px;
-    }
-
-    .card h3 {
-        font-size: 15px;
-    }
-
-    /* PRODUCTS */
-
-    .products-section {
-        width: calc(100% - 32px);
-
-        padding: 48px 0 60px;
-    }
-
-    .products-section > h2:first-child {
-        font-size: 47px;
-
-        line-height: .98;
-
-        letter-spacing: -2.5px;
-
-        margin-bottom: 18px;
-    }
-
-    .products-intro {
-        font-size: 17px;
-
-        line-height: 1.55;
-
-        margin-bottom: 22px;
-    }
-
-    /* CATEGORY BUTTONS */
-
-    .product-category-nav {
-        gap: 8px;
-
-        margin-bottom: 20px;
-    }
-
-    .product-category-nav a {
-        padding: 9px 16px;
-
-        font-size: 14px;
-    }
-
-    /* SEARCH */
-
-    #search {
-        height: 65px;
-
-        padding: 0 20px !important;
-
-        margin-bottom: 40px !important;
-
-        border-radius: 17px !important;
-
-        font-size: 17px;
-    }
-
-    /* CATEGORY TITLE */
-
-    .category-title {
-        font-size: 40px;
-
-        letter-spacing: -2px;
-
-        margin-bottom: 22px;
-    }
-
-    .category-title:not(:first-of-type) {
-        margin-top: 55px;
-    }
-
-    /* PRODUCT GRID */
-
-    .products-grid {
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-    }
-
-    /* PRODUCT CARD */
-
-    .product-card {
-        border-radius: 20px;
-    }
-
-    .product-card > img {
-        height: 270px;
-
-        padding: 18px;
-    }
-
-    .product-card h3 {
-        padding: 19px 20px 0;
-
-        font-size: 24px;
-    }
-
-    .product-card .price {
-        padding: 9px 20px 0;
-
-        font-size: 20px;
-    }
-
-    .product-card > p:not(.price) {
-        padding: 9px 20px 0;
-
-        font-size: 16px;
-    }
-
-    .product-actions {
-        padding: 18px 20px 20px;
-
-        gap: 9px;
-    }
-
-    .product-actions a {
-        min-height: 50px;
-
-        font-size: 14px;
-    }
-
-    /* FOOTER */
-
-    footer {
-        padding: 38px 20px;
-    }
-}
-
-/* =========================
-   SMALL PHONES
-   ========================= */
-
-@media (max-width: 380px) {
-
-    .logo img {
-        width: 125px;
-    }
-
-    nav ul {
-        gap: 13px;
-    }
-
-    nav a {
-        font-size: 11px;
-    }
-
-    .hero {
-        padding: 58px 22px 62px;
-    }
-
-    .hero h1 {
-        font-size: 45px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .featured > h2 {
-        font-size: 41px;
-    }
-
-    .products-section > h2:first-child {
-        font-size: 42px;
-    }
-
-    .category-title {
-        font-size: 36px;
-    }
-
-    .product-card > img {
-        height: 250px;
-    }
-}
-/* =========================================================
-   4LJTEK - FINAL MOBILE POLISH
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    /* Compact mobile header */
-    .site-header,
-    header {
-        padding: 8px 12px 12px;
-        gap: 5px;
-    }
-
-    .logo img {
-        width: 125px;
-        max-height: 58px;
-    }
-
-    nav ul {
-        gap: 17px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    /* Products page - tighter spacing */
-    .products-section {
-        padding-top: 42px;
-    }
-
-    .products-section > h2:first-child {
-        margin-bottom: 15px;
-    }
-
-    .products-intro {
-        margin-bottom: 18px;
-    }
-
-    .product-category-nav {
-        margin-bottom: 16px;
-    }
-
-    #search {
-        height: 62px;
-        margin-bottom: 28px !important;
-    }
-
-    /* Bring Smartphones closer to search */
-    .category-title {
-        margin-bottom: 20px;
-    }
-
-    .category-title:not(:first-of-type) {
-        margin-top: 48px;
-    }
-
-    /* Slightly shorter product image area */
-    .product-card > img {
-        height: 250px;
-        padding: 16px;
-    }
-
-    .product-card h3 {
-        font-size: 23px;
-    }
-}
-
-/* Extra-small phones */
-@media (max-width: 380px) {
-
-    .logo img {
-        width: 115px;
-    }
-
-    nav ul {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 11px;
-    }
-
-    .product-card > img {
-        height: 235px;
-    }
-}
-@media (max-width: 600px) {
-
-    #search {
-        margin-bottom: 15px !important;
-    }
-
-    .category-title {
-        margin-top: 0 !important;
-        margin-bottom: 20px;
-    }
-
-    .category-title:not(:first-of-type) {
-        margin-top: 45px !important;
-    }
-
-}
-/* =========================================================
-   4LJTEK - PRODUCT CARD FINAL POLISH
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    /* Product grid */
-    .products-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Product card */
-    .product-card {
-        width: 100%;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    /* Product image */
-    .product-card > img {
-        width: 100%;
-        height: 240px;
-        padding: 15px;
-
-        object-fit: contain;
-
-        background: #f7f7f7;
-    }
-
-    /* Product name */
-    .product-card h3 {
-        padding: 18px 20px 0;
-
-        font-size: 22px;
-        line-height: 1.25;
-
-        font-weight: 800;
-    }
-
-    /* Price */
-    .product-card .price {
-        padding: 8px 20px 0;
-
-        font-size: 19px;
-        font-weight: 700;
-    }
-
-    /* Description */
-    .product-card > p:not(.price) {
-        padding: 8px 20px 0;
-
-        font-size: 15px;
-        line-height: 1.5;
-
-        color: #777;
-    }
-
-    /* Buttons */
-    .product-actions {
-        display: grid;
-
-        grid-template-columns: 1fr 1fr;
-
-        gap: 10px;
-
-        padding: 18px 20px 20px;
-    }
-
-    .product-actions a {
-        min-height: 50px;
-
-        border-radius: 13px;
-
-        font-size: 14px;
-        font-weight: 700;
-    }
-
 }
 
 
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    .product-card > img {
-        height: 220px;
-    }
-
-    .product-card h3 {
-        font-size: 21px;
-    }
-
-    .product-card .price {
-        font-size: 18px;
-    }
-
-    .product-actions a {
-        font-size: 13px;
-    }
-
-}
-/* =========================================================
-   4LJTEK - CATEGORY NAVIGATION POLISH
-   ========================================================= */
-
-.product-category-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.product-category-nav a {
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-.product-category-nav a:active {
-    transform: scale(.96);
-}
-
-@media (max-width: 600px) {
-
-    .product-category-nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 9px;
-    }
-
-    .product-category-nav a {
-        width: 100%;
-        min-height: 44px;
-        padding: 8px 10px;
-
-        font-size: 13px;
-        text-align: center;
-    }
-
-}
 /* ==========================================
-   4LJTEK PRODUCTS PAGE — FINAL PREMIUM POLISH
+   MOBILE MENU BUTTON
    ========================================== */
 
-/* Product cards */
-.product-card {
-    border: 1px solid #e8e8e8;
-    border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.mobile-menu-btn {
+    display: none;
+    width: 76px;
+    height: 76px;
+    border: 0;
+    border-radius: 22px;
+    background: #111;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7px;
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
 }
 
-.product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+.mobile-menu-btn span {
+    display: block;
+    width: 38px;
+    height: 4px;
+    border-radius: 10px;
+    background: #fff;
 }
 
-/* Product images */
-.product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    background: #f7f7f7;
-    border-radius: 18px;
-    padding: 18px;
+
+/* ==========================================
+   MOBILE MENU
+   ========================================== */
+
+.mobile-nav {
+    display: none;
+}
+
+.mobile-nav.active {
     display: block;
 }
 
-/* Product name */
-.product-card h3 {
-    font-size: 19px;
-    font-weight: 800;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    line-height: 1.25;
+
+/* ==========================================
+   HERO
+   ========================================== */
+
+.premium-hero {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(20, 105, 190, 0.55),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #050505 0%,
+            #07101a 55%,
+            #062849 100%
+        );
+    color: #fff;
 }
 
-/* Price */
-.product-card .price {
-    color: #0070f3;
+.premium-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 6%;
+}
+
+.premium-hero .eyebrow {
+    color: #3185ff;
     font-size: 16px;
     font-weight: 800;
-    margin-bottom: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 28px;
 }
 
-/* Description */
-.product-card > p:not(.price) {
-    color: #777;
-    font-size: 14px;
+.premium-hero h1 {
+    max-width: 850px;
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: .92;
+    letter-spacing: -5px;
+    font-weight: 900;
+    margin-bottom: 38px;
+}
+
+.premium-hero p {
+    max-width: 760px;
+    font-size: 21px;
     line-height: 1.6;
+    color: #c9c9c9;
 }
 
-/* Buttons */
+
+/* ==========================================
+   PRODUCT PAGE CONTROLS
+   ========================================== */
+
+.product-controls {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 6% 0;
+}
+
+.category-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.category-nav a,
+.category-nav button {
+    min-height: 82px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#search {
+    width: 100%;
+    min-height: 125px;
+    padding: 25px 38px;
+    border: 1px solid #ddd;
+    border-radius: 35px;
+    background: #fff;
+    outline: none;
+    font-size: 28px;
+    color: #111;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .04);
+}
+
+#search::placeholder {
+    color: #999;
+}
+
+
+/* ==========================================
+   PRODUCT SECTIONS
+   ========================================== */
+
+.products-section,
+.products-container,
+#products {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 6%;
+}
+
+.category-heading {
+    margin-bottom: 45px;
+}
+
+.category-heading h2,
+.products-section h2 {
+    font-size: clamp(48px, 7vw, 76px);
+    line-height: 1;
+    letter-spacing: -3px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.category-heading::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    margin-top: 28px;
+}
+
+
+/* ==========================================
+   PRODUCT GRID
+   ========================================== */
+
+.product-grid,
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+
+/* ==========================================
+   PRODUCT CARD
+   ========================================== */
+
+.product-card {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-radius: 30px;
+    padding: 28px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .035);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: contain;
+    background: #f8f8f8;
+    border-radius: 22px;
+    margin-bottom: 35px;
+}
+
+.product-card h3 {
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 22px;
+}
+
+.product-card .price {
+    color: #1681e8;
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 900;
+    margin-bottom: 22px;
+}
+
+.product-card p {
+    color: #888;
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 30px;
+}
+
+
+/* ==========================================
+   PRODUCT ACTIONS
+   ========================================== */
+
 .product-actions {
+    margin-top: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 22px;
+}
+
+.product-actions .add-cart-btn {
+    grid-column: 1 / -1;
+    width: 100% !important;
+    min-height: 72px !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    background: #111 !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    padding: 14px 10px !important;
+    white-space: nowrap;
 }
 
 .product-actions .whatsapp-btn,
 .product-actions .call-btn {
-    min-height: 48px;
-    border-radius: 13px;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 64px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
-    text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding: 10px;
+    white-space: nowrap;
 }
 
 .product-actions .whatsapp-btn {
     background: #25d366;
-    color: #ffffff;
+    color: #fff;
+    border: 0;
 }
 
 .product-actions .call-btn {
-    background: #f1f1f1;
-    color: #111111;
-    border: 1px solid #dddddd;
-}
-
-.product-actions .whatsapp-btn:hover,
-.product-actions .call-btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-/* Add to Cart button created by JavaScript */
-.product-actions .add-cart-btn {
-    grid-column: 1 / -1;
-    width: 100%;
-    min-height: 52px !important;
-    border-radius: 14px !important;
-    background: #111111 !important;
-    color: #ffffff !important;
-    border: none !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.product-actions .add-cart-btn:hover {
-    transform: translateY(-2px);
-    background: #222222 !important;
+    background: #f3f3f3;
+    color: #111;
+    border: 1px solid #ddd;
 }
 
 
 /* ==========================================
-   MOBILE PREMIUM POLISH
+   FOOTER
    ========================================== */
 
-@media (max-width: 600px) {
+footer {
+    background: #080808;
+    color: #fff;
+    padding: 70px 6%;
+}
 
-    .products-section {
-        padding-left: 18px;
-        padding-right: 18px;
+footer img {
+    max-width: 150px;
+    margin-bottom: 25px;
+}
+
+footer p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* HEADER */
+
+    .site-header .header-inner,
+    header .header-inner {
+        min-height: 120px;
+        padding: 15px 30px;
     }
 
-    .product-category-nav {
+    .site-header img,
+    header img {
+        max-width: 105px;
+        max-height: 60px;
+    }
+
+    header nav,
+    .site-header nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex !important;
+    }
+
+
+    /* HERO */
+
+    .premium-hero-content {
+        padding: 110px 35px 100px;
+    }
+
+    .premium-hero .eyebrow {
+        font-size: 13px;
+        letter-spacing: 3px;
+        margin-bottom: 28px;
+    }
+
+    .premium-hero h1 {
+        font-size: 58px;
+        line-height: .96;
+        letter-spacing: -3px;
+        margin-bottom: 32px;
+    }
+
+    .premium-hero p {
+        font-size: 18px;
+        line-height: 1.55;
+    }
+
+
+    /* CONTROLS */
+
+    .product-controls {
+        padding: 70px 30px 0;
+    }
+
+    .category-nav {
         gap: 10px;
         margin-bottom: 28px;
     }
 
-    .product-category-nav a {
-        min-height: 58px;
-        padding: 0 16px;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .category-nav a,
+    .category-nav button {
+        min-height: 72px;
         font-size: 14px;
-        font-weight: 800;
+        padding: 10px;
     }
 
     #search {
-        height: 74px !important;
-        padding: 0 22px !important;
-        border-radius: 24px !important;
-        font-size: 17px !important;
-        margin-bottom: 55px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        min-height: 125px;
+        border-radius: 32px;
+        padding: 25px 38px;
+        font-size: 25px;
     }
 
-    .category-title {
-        font-size: 38px !important;
-        line-height: 1.05;
-        margin-bottom: 28px !important;
-        letter-spacing: -1.5px;
+
+    /* PRODUCTS */
+
+    .products-section,
+    .products-container,
+    #products {
+        padding: 75px 30px;
     }
 
+    .category-heading {
+        margin-bottom: 38px;
+    }
+
+    .category-heading h2,
+    .products-section h2 {
+        font-size: 53px;
+        letter-spacing: -3px;
+    }
+
+    .category-heading::after {
+        margin-top: 22px;
+    }
+
+    .product-grid,
     .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 16px !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px;
     }
+
+
+    /* CARDS */
 
     .product-card {
-        padding: 16px !important;
-        border-radius: 22px;
+        padding: 28px 28px 25px;
+        border-radius: 28px;
+        min-height: 0;
     }
 
     .product-card img {
-        height: 220px;
-        padding: 12px;
-        border-radius: 17px;
+        height: 255px;
+        margin-bottom: 35px;
+        border-radius: 20px;
     }
 
     .product-card h3 {
-        font-size: 17px;
-        margin-top: 17px;
-        min-height: 43px;
+        font-size: 19px;
+        margin-bottom: 20px;
     }
 
     .product-card .price {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+
+    .product-card p {
+        font-size: 15px;
+        line-height: 1.55;
+        margin-bottom: 28px;
+    }
+
+    .product-actions {
+        gap: 9px;
+    }
+
+    .product-actions .add-cart-btn {
+        min-height: 64px !important;
+        border-radius: 18px !important;
+        font-size: 17px !important;
+        padding: 10px 5px !important;
+    }
+
+    .product-actions .whatsapp-btn,
+    .product-actions .call-btn {
+        min-height: 62px;
+        border-radius: 17px;
         font-size: 14px;
-        margin-top: 6px;
     }
-
-    .product-card > p:not(.price) {
-        font-size: 13px;
-        line-height: 1.5;
-        min-height: 78px;
-    }
-
-    .product-actions {
-        gap: 8px;
-        margin-top: 16px;
-    }
-
-    .product-actions .add-cart-btn {
-        min-height: 54px !important;
-        font-size: 14px !important;
-        padding: 8px !important;
-    }
-
-    .product-actions .whatsapp-btn,
-    .product-actions .call-btn {
-        width: 100% !important;
-        min-width: 0 !important;
-        min-height: 50px;
-        padding: 8px 4px;
-        font-size: 12px;
-        border-radius: 13px;
-    }
-}
-
-
-/* Extra-small phones */
-@media (max-width: 380px) {
-
-    .products-grid {
-        gap: 12px !important;
-    }
-
-    .product-card {
-        padding: 12px !important;
-    }
-
-    .product-card img {
-        height: 185px;
-    }
-
-    .product-card h3 {
-        font-size: 15px;
-    }
-
-    .product-card > p:not(.price) {
-        font-size: 12px;
-    }
-
-    .product-actions .whatsapp-btn,
-    .product-actions .call-btn {
-        font-size: 11px;
-    }
-}
-
-        border-radius: 13px;
-
-        font-size: 15px;
-        font-weight: 800;
-
-        color: #111 !important;
-        text-decoration: none;
-
-        transition: .2s ease;
-    }
-
-    header nav ul li a:hover,
-    header nav ul li a:active {
-        background: #f2f2f2;
-    }
-
-    /* Cart stands out */
-
-    header nav ul li:last-child a {
-        background: #111;
-        color: #fff !important;
-        margin-top: 4px;
-    }
-}
-
-/* ==========================================
-   4LJTEK MOBILE MENU — FINAL FIX
-   ========================================== */
-
-.mobile-menu-btn {
-    display: none;
-}
-
-
-/* ==========================================
-   MOBILE HEADER
-   ========================================== */
-
-@media (max-width: 700px) {
-
-    header {
-        position: relative !important;
-        z-index: 9999 !important;
-
-        min-height: 82px !important;
-        height: auto !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-
-        padding: 14px 20px !important;
-        box-sizing: border-box;
-    }
-
-    header .logo {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    header .logo img {
-        max-width: 105px !important;
-        height: auto !important;
-        display: block !important;
-    }
-
-
-    /* HAMBURGER */
-
-    .mobile-menu-btn {
-        display: flex !important;
-
-        position: absolute !important;
-        right: 20px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-
-        width: 46px !important;
-        height: 46px !important;
-
-        padding: 0 !important;
-        margin: 0 !important;
-
-        border: 1px solid #dedede !important;
-        border-radius: 14px !important;
-
-        background: #ffffff !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-        flex-direction: column !important;
-
-        cursor: pointer !important;
-        z-index: 10000 !important;
-
-        box-shadow: 0 5px 18px rgba(0,0,0,.08);
-    }
-
-    .mobile-menu-btn span {
-        display: block !important;
-
-        width: 21px !important;
-        height: 2px !important;
-
-        margin: 3px 0 !important;
-
-        background: #111111 !important;
-
-        border-radius: 10px !important;
-
-        transition: .25s ease !important;
-    }
-
-
-    /* HAMBURGER → X */
-
-    header.mobile-open .mobile-menu-btn span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg) !important;
-    }
-
-    header.mobile-open .mobile-menu-btn span:nth-child(2) {
-        opacity: 0 !important;
-    }
-
-    header.mobile-open .mobile-menu-btn span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg) !important;
-    }
-
-
-    /* MOBILE NAV */
-
-    header nav {
-        position: absolute !important;
-
-        top: calc(100% + 8px) !important;
-        left: 15px !important;
-        right: 15px !important;
-
-        width: auto !important;
-
-        padding: 10px !important;
-
-        background: rgba(255,255,255,.98) !important;
-
-        border: 1px solid #e5e5e5 !important;
-        border-radius: 20px !important;
-
-        box-shadow: 0 20px 50px rgba(0,0,0,.15) !important;
-
-        opacity: 0 !important;
-        visibility: hidden !important;
-
-        transform: translateY(-10px) !important;
-
-        transition: .25s ease !important;
-
-        z-index: 9998 !important;
-    }
-
-
-    header.mobile-open nav {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: translateY(0) !important;
-    }
-
-
-    header nav ul {
-        display: flex !important;
-        flex-direction: column !important;
-
-        width: 100% !important;
-
-        gap: 4px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-
-    header nav ul li {
-        width: 100% !important;
-        list-style: none !important;
-    }
-
-
-    header nav ul li a {
-        display: flex !important;
-
-        align-items: center !important;
-
-        width: 100% !important;
-        min-height: 52px !important;
-
-        padding: 0 18px !important;
-
-        box-sizing: border-box !important;
-
-        border-radius: 13px !important;
-
-        color: #111111 !important;
-
-        font-size: 15px !important;
-        font-weight: 800 !important;
-
-        text-decoration: none !important;
-    }
-
-
-    header nav ul li a:active,
-    header nav ul li a:hover {
-        background: #f2f2f2 !important;
-    }
-
-
-    /* CART */
-
-    header nav ul li:last-child a {
-        background: #111111 !important;
-        color: #ffffff !important;
-    }
-
-}
-/* ==========================================
-   4LJTEK MOBILE HAMBURGER MENU FIX
-   ========================================== */
-
-@media (max-width: 768px) {
-
-    .site-header {
-        position: relative !important;
-        min-height: 76px !important;
-        padding: 10px 18px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        z-index: 9999 !important;
-    }
-
-    .site-header .logo {
-        display: block !important;
-        margin: 0 !important;
-    }
-
-    .site-header .logo img {
-        width: 130px !important;
-        height: auto !important;
-    }
-
-    /* Hide normal navigation */
-    .site-header nav {
-        display: none !important;
-    }
-
-    /* Hamburger button */
-    .mobile-menu-btn {
-        display: flex !important;
-        position: absolute !important;
-        right: 18px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-
-        width: 48px !important;
-        height: 48px !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        background: #111 !important;
-        color: #fff !important;
-
-        border: 0 !important;
-        border-radius: 12px !important;
-
-        font-size: 26px !important;
-        line-height: 1 !important;
-
-        cursor: pointer !important;
-        z-index: 10000 !important;
-
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    /* Mobile navigation when opened */
-    .site-header.mobile-menu-open nav {
-        display: flex !important;
-
-        position: absolute !important;
-        top: 76px !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-
-        flex-direction: column !important;
-        align-items: stretch !important;
-
-        gap: 0 !important;
-
-        background: #fff !important;
-
-        padding: 10px 18px 20px !important;
-
-        box-shadow: 0 15px 35px rgba(0,0,0,.15) !important;
-
-        z-index: 9998 !important;
-    }
-
-    .site-header.mobile-menu-open nav a {
-        display: block !important;
-
-        width: 100% !important;
-
-        padding: 16px 10px !important;
-
-        color: #111 !important;
-        text-decoration: none !important;
-
-        font-size: 15px !important;
-        font-weight: 700 !important;
-
-        border-bottom: 1px solid #eee !important;
-    }
-
-    .site-header.mobile-menu-open nav a:last-child {
-        border-bottom: 0 !important;
-    }
-}
-
-
-/* Desktop */
-@media (min-width: 769px) {
-
-    .mobile-menu-btn {
-        display: none !important;
-    }
-
-}
-/* ==========================================
-   4LJTEK MOBILE MENU - FINAL FIX
-========================================== */
-
-.mobile-menu-btn {
-    display: none;
-
-    width: 54px !important;
-    height: 54px !important;
-
-    position: relative;
-
-    padding: 0 !important;
-    margin: 0;
-
-    border: none !important;
-    border-radius: 16px !important;
-
-    background: #111 !important;
-
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    z-index: 99999 !important;
-
-    font-size: 0 !important;
-}
-
-
-/* HAMBURGER ICON */
-
-.mobile-menu-btn::before {
-    content: "☰";
-
-    display: block;
-
-    color: #fff !important;
-
-    font-size: 34px !important;
-
-    line-height: 1;
-
-    font-family: Arial, sans-serif;
-
-    font-weight: 400;
-
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -53%);
-}
-
-
-/* HIDE OLD BARS */
-
-.mobile-menu-btn span {
-    display: none !important;
-}
-
-
-/* X ICON WHEN OPEN */
-
-.mobile-menu-btn.active::before {
-    content: "×";
-
-    font-size: 42px !important;
-
-    font-weight: 300;
-
-    transform: translate(-50%, -54%);
-}
-
-
-/* MOBILE ONLY */
-
-@media (max-width: 700px) {
-
-    .mobile-menu-btn {
-        display: flex !important;
-
-        visibility: visible !important;
-
-        opacity: 1 !important;
-    }
-
-    .site-header {
-        position: relative !important;
-        z-index: 99999 !important;
-    }
-
-    header {
-        position: relative !important;
-        z-index: 99999 !important;
-    }
-
-}
-
-
-/* DESKTOP */
-
-@media (min-width: 701px) {
-
-    .mobile-menu-btn {
-        display: none !important;
-    }
-
-}
-/* ==========================================
-   4LJTEK - FINAL MOBILE PRODUCT BUTTON FIX
-   ========================================== */
-
-@media (max-width: 768px) {
-
-    .product-actions {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-        gap: 8px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: visible !important;
-    }
-
-    /* ADD TO CART */
-    .product-actions .add-cart-btn {
-        grid-column: 1 / -1 !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 52px !important;
-        min-height: 52px !important;
-
-        padding: 8px 6px !important;
-
-        border-radius: 14px !important;
-
-        font-size: 16px !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-
-        box-sizing: border-box !important;
-    }
-
-
-    /* WHATSAPP */
-    .product-actions .whatsapp-btn {
-        grid-column: 1 !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 52px !important;
-        min-height: 52px !important;
-
-        padding: 8px 4px !important;
-
-        border-radius: 14px !important;
-
-        font-size: 12px !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-
-        box-sizing: border-box !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-
-    /* CALL */
-    .product-actions .call-btn {
-        grid-column: 2 !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 52px !important;
-        min-height: 52px !important;
-
-        padding: 8px 4px !important;
-
-        border-radius: 14px !important;
-
-        font-size: 13px !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-
-        box-sizing: border-box !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
 }
 
 
@@ -1885,326 +554,114 @@ footer p {
    SMALL PHONES
    ========================================== */
 
-@media (max-width: 380px) {
+@media (max-width: 430px) {
 
-    .product-actions {
-        gap: 6px !important;
+    .site-header .header-inner,
+    header .header-inner {
+        min-height: 105px;
+        padding: 12px 20px;
     }
 
-    .product-actions .add-cart-btn {
-        font-size: 15px !important;
+    .site-header img,
+    header img {
+        max-width: 95px;
     }
 
-    .product-actions .whatsapp-btn {
-        font-size: 11px !important;
+    .mobile-menu-btn {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
     }
 
-    .product-actions .call-btn {
-        font-size: 12px !important;
-    }
-
-}
-/* ==========================================
-   4LJTEK - FINAL MOBILE BUTTON FIX
-   ========================================== */
-
-@media (max-width: 768px) {
-
-    .product-actions {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-        gap: 7px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: auto !important;
-        box-sizing: border-box !important;
+    .mobile-menu-btn span {
+        width: 35px;
+        height: 4px;
     }
 
 
-    /* =========================
-       ADD TO CART
-    ========================= */
+    .premium-hero-content {
+        padding: 100px 35px 90px;
+    }
 
-    .product-actions .add-cart-btn {
-        grid-column: 1 / -1 !important;
+    .premium-hero h1 {
+        font-size: 53px;
+        letter-spacing: -3px;
+    }
 
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 50px !important;
-        min-height: 50px !important;
-
-        padding: 5px 3px !important;
-
-        border-radius: 14px !important;
-
-        font-size: 13px !important;
-        line-height: 1 !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-
-        box-sizing: border-box !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+    .premium-hero p {
+        font-size: 17px;
     }
 
 
-    /* =========================
-       WHATSAPP
-    ========================= */
+    .product-controls {
+        padding: 60px 25px 0;
+    }
 
-    .product-actions .whatsapp-btn {
-        grid-column: 1 !important;
+    .category-nav {
+        gap: 8px;
+    }
 
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
+    .category-nav a,
+    .category-nav button {
+        min-height: 68px;
+        font-size: 13px;
+    }
 
-        height: 50px !important;
-        min-height: 50px !important;
-
-        padding: 4px 2px !important;
-
-        border-radius: 13px !important;
-
-        font-size: 9px !important;
-        line-height: 1 !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-
-        box-sizing: border-box !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+    #search {
+        min-height: 115px;
+        padding: 22px 30px;
+        font-size: 23px;
     }
 
 
-    /* =========================
-       CALL
-    ========================= */
-
-    .product-actions .call-btn {
-        grid-column: 2 !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 50px !important;
-        min-height: 50px !important;
-
-        padding: 4px 2px !important;
-
-        border-radius: 13px !important;
-
-        font-size: 12px !important;
-        line-height: 1 !important;
-        font-weight: 800 !important;
-
-        white-space: nowrap !important;
-        overflow: hidden !important;
-
-        box-sizing: border-box !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+    .products-section,
+    .products-container,
+    #products {
+        padding: 55px 25px;
     }
 
-}
-
-
-/* ==========================================
-   VERY SMALL PHONES
-   ========================================== */
-
-@media (max-width: 380px) {
-
-    .product-actions {
-        gap: 5px !important;
+    .category-heading h2,
+    .products-section h2 {
+        font-size: 47px;
     }
 
-    .product-actions .add-cart-btn {
-        font-size: 12px !important;
+    .product-grid,
+    .products-grid {
+        gap: 20px;
     }
-
-    .product-actions .whatsapp-btn {
-        font-size: 8px !important;
-    }
-
-    .product-actions .call-btn {
-        font-size: 11px !important;
-    }
-
-}
-/* ==========================================
-   4LJTEK - FINAL MOBILE BUTTON OVERRIDE
-   ========================================== */
-
-@media (max-width: 600px) {
 
     .product-card {
-        overflow: hidden !important;
+        padding: 22px 20px 20px;
+        border-radius: 24px;
     }
 
-    .product-card .product-actions {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-        gap: 8px !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        box-sizing: border-box !important;
-        overflow: hidden !important;
+    .product-card img {
+        height: 220px;
+        margin-bottom: 30px;
+        border-radius: 18px;
     }
 
-    /* ==============================
-       ADD TO CART
-       ============================== */
-
-    .product-card .product-actions .add-cart-btn {
-
-        grid-column: 1 / 3 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        position: static !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 58px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        box-sizing: border-box !important;
-
-        font-family: inherit !important;
-        font-size: 12px !important;
-        font-weight: 700 !important;
-
-        line-height: 1 !important;
-        letter-spacing: 0 !important;
-        text-indent: 0 !important;
-
-        text-align: center !important;
-        white-space: nowrap !important;
-
-        overflow: hidden !important;
-
-        border-radius: 14px !important;
+    .product-card h3 {
+        font-size: 17px;
     }
 
-
-    /* ==============================
-       WHATSAPP
-       ============================== */
-
-    .product-card .product-actions .whatsapp-btn {
-
-        grid-column: 1 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        position: static !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 54px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        box-sizing: border-box !important;
-
-        font-family: inherit !important;
-        font-size: 9px !important;
-        font-weight: 700 !important;
-
-        line-height: 1 !important;
-        letter-spacing: 0 !important;
-        text-indent: 0 !important;
-
-        text-align: center !important;
-        white-space: nowrap !important;
-
-        overflow: hidden !important;
-
-        border-radius: 14px !important;
+    .product-card .price {
+        font-size: 16px;
     }
 
-
-    /* ==============================
-       CALL
-       ============================== */
-
-    .product-card .product-actions .call-btn {
-
-        grid-column: 2 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        position: static !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-
-        height: 54px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        box-sizing: border-box !important;
-
-        font-family: inherit !important;
-        font-size: 12px !important;
-        font-weight: 700 !important;
-
-        line-height: 1 !important;
-        letter-spacing: 0 !important;
-        text-indent: 0 !important;
-
-        text-align: center !important;
-        white-space: nowrap !important;
-
-        overflow: hidden !important;
-
-        border-radius: 14px !important;
+    .product-card p {
+        font-size: 14px;
     }
 
+    .product-actions .add-cart-btn {
+        min-height: 60px !important;
+        font-size: 15px !important;
+        border-radius: 17px !important;
+    }
+
+    .product-actions .whatsapp-btn,
+    .product-actions .call-btn {
+        min-height: 58px;
+        font-size: 13px;
+    }
 }
