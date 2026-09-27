@@ -34,10 +34,9 @@ function updateCartCount() {
 
     document.querySelectorAll('a[href="cart.html"]').forEach(function(link) {
 
-        link.textContent =
-            total > 0
-                ? "Cart (" + total + ")"
-                : "Cart";
+        link.textContent = total > 0
+            ? "Cart (" + total + ")"
+            : "Cart";
 
     });
 }
@@ -47,12 +46,16 @@ function updateCartCount() {
 // ADD TO CART
 // ==========================================
 
-function addToCart(productName) {
+function addToCart(productName, storage) {
 
     const cart = getCart();
 
+    const fullName = storage
+        ? productName + " — " + storage
+        : productName;
+
     const existing = cart.find(function(item) {
-        return item.name === productName;
+        return item.name === fullName;
     });
 
     if (existing) {
@@ -62,7 +65,7 @@ function addToCart(productName) {
     } else {
 
         cart.push({
-            name: productName,
+            name: fullName,
             quantity: 1
         });
 
@@ -72,26 +75,38 @@ function addToCart(productName) {
 
     updateCartCount();
 
-    alert(productName + " has been added to your cart.");
+    alert(fullName + " has been added to your cart.");
 }
 
 
 // ==========================================
-// PRODUCT CART BUTTONS
+// PRODUCT STORAGE
+// ==========================================
+
+function getSelectedStorage(card) {
+
+    const select = card.querySelector(".storage-select");
+
+    if (!select) {
+        return "";
+    }
+
+    return select.value;
+}
+
+
+// ==========================================
+// ADD TO CART BUTTONS
 // ==========================================
 
 function setupAddToCartButtons() {
 
-    const products =
-        document.querySelectorAll(".product-card");
+    const products = document.querySelectorAll(".product-card");
 
     products.forEach(function(card) {
 
-        const actions =
-            card.querySelector(".product-actions");
-
-        const name =
-            card.querySelector("h3");
+        const actions = card.querySelector(".product-actions");
+        const name = card.querySelector("h3");
 
         if (!actions || !name) {
             return;
@@ -101,8 +116,7 @@ function setupAddToCartButtons() {
             return;
         }
 
-        const button =
-            document.createElement("button");
+        const button = document.createElement("button");
 
         button.type = "button";
 
@@ -110,17 +124,15 @@ function setupAddToCartButtons() {
 
         button.textContent = "Add to Cart";
 
-        /*
-         * Important:
-         * Keep the button simple.
-         * No inline font-size or positioning.
-         */
-
         button.addEventListener("click", function() {
 
-            addToCart(
-                name.textContent.trim()
-            );
+            const productName =
+                name.textContent.trim();
+
+            const storage =
+                getSelectedStorage(card);
+
+            addToCart(productName, storage);
 
         });
 
@@ -149,22 +161,27 @@ function setupProductSearch() {
     search.addEventListener("input", function() {
 
         const term =
-            search.value
-                .toLowerCase()
-                .trim();
+            search.value.toLowerCase().trim();
 
-        document
-            .querySelectorAll(".product-card")
+        document.querySelectorAll(".product-card")
             .forEach(function(card) {
 
                 const text =
-                    card.textContent
-                        .toLowerCase();
+                    card.textContent.toLowerCase();
 
-                card.style.display =
-                    text.includes(term)
-                        ? ""
-                        : "none";
+                if (text.includes(term)) {
+
+                    card.classList.remove(
+                        "hidden-product"
+                    );
+
+                } else {
+
+                    card.classList.add(
+                        "hidden-product"
+                    );
+
+                }
 
             });
 
@@ -178,57 +195,68 @@ function setupProductSearch() {
 
 function setupWhatsAppButtons() {
 
-    document
-        .querySelectorAll(".product-card .whatsapp-btn")
-        .forEach(function(button) {
+    document.querySelectorAll(
+        ".product-card .whatsapp-btn"
+    ).forEach(function(button) {
 
-            button.textContent = "WhatsApp";
+        button.addEventListener(
+            "click",
+            function(event) {
 
-            button.addEventListener(
-                "click",
-                function(event) {
+                event.preventDefault();
 
-                    event.preventDefault();
+                const card =
+                    button.closest(".product-card");
 
-                    const card =
-                        button.closest(".product-card");
+                if (!card) {
+                    return;
+                }
 
-                    if (!card) {
-                        return;
-                    }
+                const name =
+                    card.querySelector("h3");
 
-                    const name =
-                        card.querySelector("h3");
+                if (!name) {
+                    return;
+                }
 
-                    if (!name) {
-                        return;
-                    }
+                const productName =
+                    name.textContent.trim();
 
-                    const productName =
-                        name.textContent.trim();
+                const storage =
+                    getSelectedStorage(card);
 
-                    const message =
-                        "Hi 4LJTek, I'm interested in the " +
-                        productName +
-                        ". Please share the price and availability.";
+                let message =
+                    "Hi 4LJTek, I'm interested in the " +
+                    productName;
 
-                    const url =
-                        "https://api.whatsapp.com/send?phone=" +
-                        WHATSAPP_NUMBER +
-                        "&text=" +
-                        encodeURIComponent(message);
+                if (storage) {
 
-                    window.location.href = url;
+                    message +=
+                        " — " +
+                        storage;
 
                 }
-            );
 
-        });
+                message +=
+                    ". Please share the price and availability.";
+
+                const url =
+                    "https://api.whatsapp.com/send?phone=" +
+                    WHATSAPP_NUMBER +
+                    "&text=" +
+                    encodeURIComponent(message);
+
+                window.location.href = url;
+
+            }
+        );
+
+    });
 }
 
 
 // ==========================================
-// HOME WHATSAPP
+// HOMEPAGE WHATSAPP
 // ==========================================
 
 function setupHomeWhatsApp() {
@@ -263,130 +291,26 @@ function setupHomeWhatsApp() {
 
 
 // ==========================================
-// MOBILE MENU
-// ==========================================
-
-function setupMobileMenu() {
-
-    const header =
-        document.querySelector("header");
-
-    if (!header) {
-        return;
-    }
-
-    let button =
-        header.querySelector(".mobile-menu-btn");
-
-    if (!button) {
-
-        button =
-            document.createElement("button");
-
-        button.type = "button";
-
-        button.className =
-            "mobile-menu-btn";
-
-        button.setAttribute(
-            "aria-label",
-            "Open menu"
-        );
-
-        button.innerHTML = `
-            <span></span>
-            <span></span>
-            <span></span>
-        `;
-
-        header.appendChild(button);
-    }
-
-
-    const nav =
-        header.querySelector("nav");
-
-    if (!nav) {
-        return;
-    }
-
-
-    button.addEventListener(
-        "click",
-        function() {
-
-            const isOpen =
-                header.classList.toggle(
-                    "menu-open"
-                );
-
-            button.classList.toggle(
-                "active",
-                isOpen
-            );
-
-            button.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close menu"
-                    : "Open menu"
-            );
-
-        }
-    );
-
-
-    nav.querySelectorAll("a")
-        .forEach(function(link) {
-
-            link.addEventListener(
-                "click",
-                function() {
-
-                    header.classList.remove(
-                        "menu-open"
-                    );
-
-                    button.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
-
-        });
-
-}
-
-
-// ==========================================
-// DISPLAY CART
+// CART DISPLAY
 // ==========================================
 
 function displayCart() {
 
     const container =
-        document.getElementById(
-            "cart-items"
-        );
+        document.getElementById("cart-items");
 
     if (!container) {
         return;
     }
 
     const summary =
-        document.getElementById(
-            "cart-summary"
-        );
+        document.getElementById("cart-summary");
 
     const empty =
-        document.getElementById(
-            "empty-cart"
-        );
+        document.getElementById("empty-cart");
 
     const cart =
         getCart();
-
 
     if (cart.length === 0) {
 
@@ -398,9 +322,10 @@ function displayCart() {
             summary.style.display = "none";
         }
 
+        container.innerHTML = "";
+
         return;
     }
-
 
     if (empty) {
         empty.style.display = "none";
@@ -410,7 +335,6 @@ function displayCart() {
         summary.style.display = "block";
     }
 
-
     container.innerHTML = "";
 
 
@@ -418,7 +342,6 @@ function displayCart() {
 
         const div =
             document.createElement("div");
-
 
         div.innerHTML = `
 
@@ -494,7 +417,6 @@ function displayCart() {
             >
                 Remove
             </button>
-
         `;
 
         container.appendChild(div);
@@ -502,106 +424,101 @@ function displayCart() {
     });
 
 
-    document
-        .querySelectorAll(".quantity-btn")
-        .forEach(function(button) {
+    // Quantity buttons
 
-            button.addEventListener(
-                "click",
-                function() {
+    document.querySelectorAll(
+        ".quantity-btn"
+    ).forEach(function(button) {
 
-                    const index =
-                        Number(
-                            button.dataset.index
-                        );
+        button.addEventListener(
+            "click",
+            function() {
 
-                    const action =
-                        button.dataset.action;
+                const index =
+                    Number(button.dataset.index);
 
-                    const cart =
-                        getCart();
+                const action =
+                    button.dataset.action;
 
-                    if (!cart[index]) {
-                        return;
-                    }
+                const cart =
+                    getCart();
 
+                if (!cart[index]) {
+                    return;
+                }
 
-                    if (action === "plus") {
-                        cart[index].quantity++;
-                    }
+                if (action === "plus") {
+                    cart[index].quantity++;
+                }
 
+                if (action === "minus") {
 
-                    if (action === "minus") {
+                    cart[index].quantity--;
 
-                        cart[index].quantity--;
+                    if (cart[index].quantity <= 0) {
 
-                        if (
-                            cart[index].quantity <= 0
-                        ) {
-                            cart.splice(index, 1);
-                        }
+                        cart.splice(index, 1);
 
                     }
-
-
-                    saveCart(cart);
-
-                    displayCart();
-
-                    updateCartCount();
 
                 }
-            );
 
-        });
+                saveCart(cart);
+
+                displayCart();
+
+                updateCartCount();
+
+            }
+        );
+
+    });
 
 
-    document
-        .querySelectorAll(".remove-cart-btn")
-        .forEach(function(button) {
+    // Remove buttons
 
-            button.addEventListener(
-                "click",
-                function() {
+    document.querySelectorAll(
+        ".remove-cart-btn"
+    ).forEach(function(button) {
 
-                    const index =
-                        Number(
-                            button.dataset.index
-                        );
+        button.addEventListener(
+            "click",
+            function() {
 
-                    const cart =
-                        getCart();
+                const index =
+                    Number(button.dataset.index);
 
-                    cart.splice(index, 1);
+                const cart =
+                    getCart();
 
-                    saveCart(cart);
+                cart.splice(index, 1);
 
-                    displayCart();
+                saveCart(cart);
 
-                    updateCartCount();
+                displayCart();
 
-                }
-            );
+                updateCartCount();
 
-        });
+            }
+        );
+
+    });
 
 
     const count =
-        document.getElementById(
-            "cart-count"
-        );
+        document.getElementById("cart-count");
 
     if (count) {
 
         const total =
-            cart.reduce(
-                function(sum, item) {
-                    return sum + item.quantity;
-                },
-                0
-            );
+            cart.reduce(function(sum, item) {
+
+                return sum + item.quantity;
+
+            }, 0);
 
         count.textContent = total;
+
     }
 
 }
@@ -614,9 +531,7 @@ function displayCart() {
 function setupClearCart() {
 
     const button =
-        document.getElementById(
-            "clear-cart"
-        );
+        document.getElementById("clear-cart");
 
     if (!button) {
         return;
@@ -646,9 +561,7 @@ function setupClearCart() {
 function setupCartWhatsApp() {
 
     const button =
-        document.getElementById(
-            "cart-whatsapp"
-        );
+        document.getElementById("cart-whatsapp");
 
     if (!button) {
         return;
@@ -668,8 +581,8 @@ function setupCartWhatsApp() {
                 );
 
                 return;
-            }
 
+            }
 
             let message =
                 "Hi 4LJTek, I'd like to order:%0A%0A";
@@ -699,7 +612,6 @@ function setupCartWhatsApp() {
 
         }
     );
-
 }
 
 
@@ -710,9 +622,7 @@ function setupCartWhatsApp() {
 function setupCartCall() {
 
     const button =
-        document.getElementById(
-            "cart-call"
-        );
+        document.getElementById("cart-call");
 
     if (!button) {
         return;
@@ -727,6 +637,101 @@ function setupCartCall() {
 
         }
     );
+}
+
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+
+function setupMobileMenu() {
+
+    if (
+        document.querySelector(
+            ".mobile-menu-btn"
+        )
+    ) {
+        return;
+    }
+
+
+    const header =
+        document.querySelector(
+            "header, .site-header"
+        );
+
+    if (!header) {
+        return;
+    }
+
+
+    const nav =
+        header.querySelector("nav");
+
+    if (!nav) {
+        return;
+    }
+
+
+    const button =
+        document.createElement("button");
+
+    button.type = "button";
+
+    button.className =
+        "mobile-menu-btn";
+
+    button.setAttribute(
+        "aria-label",
+        "Open menu"
+    );
+
+
+    button.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+
+
+    header.appendChild(button);
+
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            nav.classList.toggle(
+                "mobile-nav-open"
+            );
+
+            button.classList.toggle(
+                "menu-open"
+            );
+
+        }
+    );
+
+
+    nav.querySelectorAll("a")
+        .forEach(function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    nav.classList.remove(
+                        "mobile-nav-open"
+                    );
+
+                    button.classList.remove(
+                        "menu-open"
+                    );
+
+                }
+            );
+
+        });
 
 }
 
@@ -760,9 +765,7 @@ function start4LJTek() {
 }
 
 
-if (
-    document.readyState === "loading"
-) {
+if (document.readyState === "loading") {
 
     document.addEventListener(
         "DOMContentLoaded",
