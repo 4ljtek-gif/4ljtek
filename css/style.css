@@ -1,5 +1,6 @@
 /* ==========================================
    4LJTEK PREMIUM WEBSITE
+   COMPLETE STYLE.CSS
    ========================================== */
 
 * {
@@ -94,7 +95,7 @@ nav a {
     flex-direction: column;
     gap: 7px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 99999;
 }
 
 .mobile-menu-btn span {
@@ -107,7 +108,7 @@ nav a {
 
 
 /* ==========================================
-   MOBILE NAVIGATION
+   MOBILE NAV
    ========================================== */
 
 .mobile-nav {
@@ -194,8 +195,10 @@ nav a {
 .category-nav a,
 .category-nav button {
     min-height: 82px;
+
     border: 1px solid #ddd;
     border-radius: 50px;
+
     background: #fff;
 
     display: flex;
@@ -204,18 +207,21 @@ nav a {
 
     font-size: 16px;
     font-weight: 800;
+
     cursor: pointer;
 }
 
 #search {
     width: 100%;
     min-height: 125px;
+
     padding: 25px 38px;
 
     border: 1px solid #ddd;
     border-radius: 35px;
 
     background: #fff;
+
     outline: none;
 
     font-size: 28px;
@@ -230,7 +236,7 @@ nav a {
 
 
 /* ==========================================
-   PRODUCTS
+   PRODUCTS SECTION
    ========================================== */
 
 .products-section,
@@ -257,9 +263,12 @@ nav a {
 .category-heading::after {
     content: "";
     display: block;
+
     width: 100%;
     height: 1px;
+
     background: #ddd;
+
     margin-top: 28px;
 }
 
@@ -271,7 +280,10 @@ nav a {
 .product-grid,
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 28px;
 }
 
@@ -284,6 +296,7 @@ nav a {
     min-width: 0;
 
     background: #fff;
+
     border: 1px solid #dedede;
     border-radius: 30px;
 
@@ -291,7 +304,8 @@ nav a {
 
     overflow: hidden;
 
-    box-shadow: 0 10px 35px rgba(0, 0, 0, .035);
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, .035);
 
     display: flex;
     flex-direction: column;
@@ -304,6 +318,7 @@ nav a {
     object-fit: contain;
 
     background: #f8f8f8;
+
     border-radius: 22px;
 
     margin-bottom: 35px;
@@ -338,17 +353,22 @@ nav a {
 
 
 /* ==========================================
-   PRODUCT BUTTONS
+   PRODUCT ACTIONS
    ========================================== */
 
 .product-actions {
     margin-top: auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 10px;
 }
+
+
+/* ADD TO CART */
 
 .product-actions .add-cart-btn {
     grid-column: 1 / -1;
@@ -369,16 +389,27 @@ nav a {
     padding: 14px 10px !important;
 
     white-space: nowrap;
+
+    cursor: pointer;
 }
 
-.product-actions .whatsapp-btn,
-.product-actions .call-btn {
+
+/* WHATSAPP */
+
+.product-actions .whatsapp-btn {
+    grid-column: 1;
+
     width: 100% !important;
     min-width: 0 !important;
 
     min-height: 64px;
 
+    border: 0;
+
     border-radius: 18px;
+
+    background: #25d366;
+    color: #fff;
 
     display: flex;
     align-items: center;
@@ -390,18 +421,40 @@ nav a {
     padding: 10px;
 
     white-space: nowrap;
+
+    cursor: pointer;
 }
 
-.product-actions .whatsapp-btn {
-    background: #25d366;
-    color: #fff;
-    border: 0;
-}
+
+/* CALL */
 
 .product-actions .call-btn {
+    grid-column: 2;
+
+    width: 100% !important;
+    min-width: 0 !important;
+
+    min-height: 64px;
+
+    border-radius: 18px;
+
     background: #f3f3f3;
     color: #111;
+
     border: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    padding: 10px;
+
+    white-space: nowrap;
+
+    cursor: pointer;
 }
 
 
@@ -412,6 +465,7 @@ nav a {
 footer {
     background: #080808;
     color: #fff;
+
     padding: 70px 6%;
 }
 
@@ -427,97 +481,180 @@ footer p {
 
 
 /* ==========================================
-   MOBILE
+   MOBILE — 768PX
    ========================================== */
 
 @media (max-width: 768px) {
 
-    /* HEADER */
+    /* --------------------------------------
+       HEADER
+       -------------------------------------- */
 
-    .site-header,
-    header {
-        height: 105px !important;
-        min-height: 105px !important;
-        padding: 0 !important;
-        position: relative !important;
-    }
-
-    .site-header .header-inner,
-    header .header-inner {
+    header,
+    .site-header {
         position: relative !important;
 
         width: 100% !important;
+
         height: 105px !important;
         min-height: 105px !important;
 
         padding: 0 !important;
+        margin: 0 !important;
 
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        background: #fff !important;
+
+        overflow: visible !important;
     }
 
-    /* CENTER LOGO */
 
+    header .header-inner,
+    .site-header .header-inner {
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: 105px !important;
+        min-height: 105px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        display: block !important;
+    }
+
+
+    /* --------------------------------------
+       LOGO — CENTER
+       -------------------------------------- */
+
+    header .header-inner > a,
     .site-header .header-inner > a,
-    header .header-inner > a {
+    header > a,
+    .site-header > a {
+
         position: absolute !important;
 
         left: 50% !important;
-        top: 50% !important;
+        right: auto !important;
 
-        transform: translate(-50%, -50%) !important;
+        top: 50% !important;
+        bottom: auto !important;
+
+        transform:
+            translate(-50%, -50%) !important;
+
+        width: auto !important;
+        height: auto !important;
 
         margin: 0 !important;
         padding: 0 !important;
 
         display: block !important;
+
+        z-index: 1001 !important;
     }
 
-    .site-header img,
-    header img {
+
+    header .header-inner > a img,
+    .site-header .header-inner > a img,
+    header > a img,
+    .site-header > a img {
+
         width: 105px !important;
+
         max-width: 105px !important;
-        max-height: 65px !important;
+
+        height: auto !important;
+
+        max-height: 70px !important;
+
+        margin: 0 auto !important;
+        padding: 0 !important;
 
         object-fit: contain !important;
     }
 
 
-    /* HAMBURGER */
+    /* --------------------------------------
+       HAMBURGER — RIGHT
+       -------------------------------------- */
 
-    .mobile-menu-btn {
-        display: flex !important;
+    .mobile-menu-btn,
+    header .mobile-menu-btn,
+    .site-header .mobile-menu-btn {
 
         position: absolute !important;
 
-        right: 30px !important;
+        left: auto !important;
+
+        right: 25px !important;
+
         top: 50% !important;
 
-        transform: translateY(-50%) !important;
+        bottom: auto !important;
+
+        transform:
+            translateY(-50%) !important;
 
         width: 76px !important;
         height: 76px !important;
 
+        min-width: 76px !important;
+        min-height: 76px !important;
+
         margin: 0 !important;
         padding: 0 !important;
 
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 7px !important;
+
         background: #111 !important;
+
         border: 0 !important;
 
+        border-radius: 22px !important;
+
         z-index: 99999 !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+
+        cursor: pointer !important;
     }
 
-    .mobile-menu-btn span {
+
+    .mobile-menu-btn span,
+    header .mobile-menu-btn span,
+    .site-header .mobile-menu-btn span {
+
         display: block !important;
+
         width: 38px !important;
         height: 4px !important;
+
+        min-width: 38px !important;
+        min-height: 4px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
         background: #fff !important;
+
         border-radius: 10px !important;
     }
 
 
-    /* HIDE DESKTOP NAV */
+    /* --------------------------------------
+       DESKTOP NAV OFF
+       -------------------------------------- */
 
     header nav,
     .site-header nav {
@@ -525,7 +662,9 @@ footer p {
     }
 
 
-    /* HERO */
+    /* --------------------------------------
+       HERO
+       -------------------------------------- */
 
     .premium-hero-content {
         padding: 100px 35px 90px;
@@ -534,23 +673,30 @@ footer p {
     .premium-hero .eyebrow {
         font-size: 13px;
         letter-spacing: 3px;
+
         margin-bottom: 28px;
     }
 
     .premium-hero h1 {
         font-size: 58px;
+
         line-height: .96;
+
         letter-spacing: -3px;
+
         margin-bottom: 32px;
     }
 
     .premium-hero p {
         font-size: 18px;
+
         line-height: 1.55;
     }
 
 
-    /* CONTROLS */
+    /* --------------------------------------
+       CATEGORY CONTROLS
+       -------------------------------------- */
 
     .product-controls {
         padding: 70px 30px 0;
@@ -558,17 +704,25 @@ footer p {
 
     .category-nav {
         gap: 10px;
+
         margin-bottom: 28px;
     }
 
     .category-nav a,
     .category-nav button {
+
         min-height: 72px;
+
         font-size: 14px;
+
         padding: 10px;
     }
 
+
+    /* SEARCH */
+
     #search {
+
         min-height: 125px;
 
         border-radius: 32px;
@@ -579,13 +733,18 @@ footer p {
     }
 
 
-    /* PRODUCTS */
+    /* --------------------------------------
+       PRODUCTS
+       -------------------------------------- */
 
     .products-section,
     .products-container,
     #products {
-        padding: 25px 30px 55px;
+
+        padding:
+            25px 30px 55px;
     }
+
 
     .category-heading {
         margin-bottom: 38px;
@@ -593,7 +752,9 @@ footer p {
 
     .category-heading h2,
     .products-section h2 {
+
         font-size: 53px;
+
         letter-spacing: -3px;
     }
 
@@ -602,52 +763,79 @@ footer p {
     }
 
 
-    /* GRID */
+    /* --------------------------------------
+       PRODUCT GRID
+       -------------------------------------- */
 
     .product-grid,
     .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
         gap: 26px;
     }
 
 
-    /* CARDS */
+    /* --------------------------------------
+       PRODUCT CARDS
+       -------------------------------------- */
 
     .product-card {
+
         padding: 28px 28px 25px;
+
         border-radius: 28px;
     }
 
+
     .product-card img {
+
         height: 255px;
+
         margin-bottom: 35px;
+
         border-radius: 20px;
     }
 
+
     .product-card h3 {
+
         font-size: 19px;
+
         margin-bottom: 20px;
     }
+
 
     .product-card .price {
+
         font-size: 17px;
+
         margin-bottom: 20px;
     }
 
+
     .product-card p {
+
         font-size: 15px;
+
         line-height: 1.55;
+
         margin-bottom: 28px;
     }
 
 
-    /* BUTTONS */
+    /* --------------------------------------
+       PRODUCT BUTTONS
+       -------------------------------------- */
 
     .product-actions {
         gap: 9px;
     }
 
+
     .product-actions .add-cart-btn {
+
         min-height: 64px !important;
 
         border-radius: 18px !important;
@@ -657,160 +845,392 @@ footer p {
         padding: 10px 5px !important;
     }
 
+
     .product-actions .whatsapp-btn,
     .product-actions .call-btn {
+
         min-height: 62px;
 
         border-radius: 17px;
 
         font-size: 14px;
+
+        padding: 8px;
     }
 }
 
 
 /* ==========================================
-   SMALL PHONES
+   SMALL PHONES — 430PX
    ========================================== */
 
 @media (max-width: 430px) {
 
-    /* HEADER */
 
-    .site-header,
-    header {
+    /* --------------------------------------
+       HEADER
+       -------------------------------------- */
+
+    header,
+    .site-header {
+
         height: 105px !important;
+
         min-height: 105px !important;
     }
 
-    .site-header .header-inner,
-    header .header-inner {
+
+    header .header-inner,
+    .site-header .header-inner {
+
         height: 105px !important;
+
         min-height: 105px !important;
     }
 
-    .site-header img,
-    header img {
-        width: 95px !important;
-        max-width: 95px !important;
+
+    /* LOGO */
+
+    header .header-inner > a img,
+    .site-header .header-inner > a img,
+    header > a img,
+    .site-header > a img {
+
+        width: 100px !important;
+
+        max-width: 100px !important;
     }
 
-    .mobile-menu-btn {
+
+    /* HAMBURGER */
+
+    .mobile-menu-btn,
+    header .mobile-menu-btn,
+    .site-header .mobile-menu-btn {
+
         right: 20px !important;
 
         width: 70px !important;
         height: 70px !important;
 
+        min-width: 70px !important;
+        min-height: 70px !important;
+
         border-radius: 20px !important;
     }
 
-    .mobile-menu-btn span {
+
+    .mobile-menu-btn span,
+    header .mobile-menu-btn span,
+    .site-header .mobile-menu-btn span {
+
         width: 35px !important;
+
+        min-width: 35px !important;
+
         height: 4px !important;
+
+        min-height: 4px !important;
     }
 
 
-    /* HERO */
+    /* --------------------------------------
+       HERO
+       -------------------------------------- */
 
     .premium-hero-content {
-        padding: 100px 35px 90px;
+
+        padding:
+            100px 35px 90px;
     }
 
+
     .premium-hero h1 {
+
         font-size: 53px;
+
         letter-spacing: -3px;
     }
 
+
     .premium-hero p {
+
         font-size: 17px;
     }
 
 
-    /* CONTROLS */
+    /* --------------------------------------
+       CONTROLS
+       -------------------------------------- */
 
     .product-controls {
-        padding: 60px 25px 0;
+
+        padding:
+            60px 25px 0;
     }
 
+
     .category-nav {
+
         gap: 8px;
     }
 
+
     .category-nav a,
     .category-nav button {
+
         min-height: 68px;
+
         font-size: 13px;
     }
 
+
     #search {
+
         min-height: 115px;
-        padding: 22px 30px;
+
+        padding:
+            22px 30px;
+
         font-size: 23px;
     }
 
 
-    /* PRODUCTS */
+    /* --------------------------------------
+       PRODUCTS
+       -------------------------------------- */
 
     .products-section,
     .products-container,
     #products {
-        padding: 20px 25px 55px;
+
+        padding:
+            20px 25px 55px;
     }
 
+
     .category-heading {
+
         margin-bottom: 32px;
     }
 
+
     .category-heading h2,
     .products-section h2 {
+
         font-size: 47px;
     }
 
 
-    /* GRID */
+    /* --------------------------------------
+       GRID
+       -------------------------------------- */
 
     .product-grid,
     .products-grid {
+
         gap: 20px;
     }
 
 
-    /* CARDS */
+    /* --------------------------------------
+       CARDS
+       -------------------------------------- */
 
     .product-card {
-        padding: 22px 20px 20px;
+
+        padding:
+            22px 20px 20px;
+
         border-radius: 24px;
     }
 
+
     .product-card img {
+
         height: 220px;
+
         margin-bottom: 30px;
+
         border-radius: 18px;
     }
 
+
     .product-card h3 {
+
         font-size: 17px;
     }
 
+
     .product-card .price {
+
         font-size: 16px;
     }
 
+
     .product-card p {
+
         font-size: 14px;
     }
 
 
-    /* BUTTONS */
+    /* --------------------------------------
+       BUTTONS
+       -------------------------------------- */
 
     .product-actions .add-cart-btn {
+
         min-height: 60px !important;
+
         font-size: 15px !important;
+
         border-radius: 17px !important;
     }
 
+
     .product-actions .whatsapp-btn,
     .product-actions .call-btn {
+
         min-height: 58px;
+
         font-size: 13px;
     }
 }
+
+
+/* ==========================================
+   FINAL HEADER OVERRIDE
+   Forces the mobile header layout
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    header,
+    .site-header {
+
+        position: relative !important;
+
+        height: 105px !important;
+
+        min-height: 105px !important;
+
+        overflow: visible !important;
+    }
+
+
+    /* CENTER LOGO REGARDLESS OF OTHER HEADER RULES */
+
+    header img:first-of-type,
+    .site-header img:first-of-type {
+
+        position: absolute !important;
+
+        left: 50% !important;
+
+        top: 50% !important;
+
+        transform:
+            translate(-50%, -50%) !important;
+
+        width: 105px !important;
+
+        max-width: 105px !important;
+
+        height: auto !important;
+
+        max-height: 70px !important;
+
+        margin: 0 !important;
+
+        z-index: 1001 !important;
+    }
+
+
+    /* FORCE HAMBURGER TO TOP RIGHT */
+
+    .mobile-menu-btn {
+
+        position: fixed !important;
+
+        top: 122px !important;
+
+        right: 20px !important;
+
+        left: auto !important;
+
+        width: 70px !important;
+
+        height: 70px !important;
+
+        min-width: 70px !important;
+
+        min-height: 70px !important;
+
+        transform: none !important;
+
+        display: flex !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+
+        z-index: 999999 !important;
+
+        background: #111 !important;
+
+        border-radius: 20px !important;
+    }
+
+
+    .mobile-menu-btn span {
+
+        display: block !important;
+
+        width: 35px !important;
+
+        height: 4px !important;
+
+        min-width: 35px !important;
+
+        min-height: 4px !important;
+
+        background: #fff !important;
+    }
+}
+
+
+/* ==========================================
+   FINAL SMALL-PHONE HEADER
+   ========================================== */
+
+@media (max-width: 430px) {
+
+    header,
+    .site-header {
+
+        height: 105px !important;
+
+        min-height: 105px !important;
+    }
+
+
+    header img:first-of-type,
+    .site-header img:first-of-type {
+
+        width: 100px !important;
+
+        max-width: 100px !important;
+    }
+
+
+    .mobile-menu-btn {
+
+        top: 120px !important;
+
+        right: 18px !important;
+
+        width: 70px !important;
+
+        height: 70px !important;
+    }
+   }
