@@ -11,60 +11,35 @@ const CART_KEY = "4ljtekCart";
 // ==========================================
 
 function getCart() {
-
     try {
-
-        return JSON.parse(
-            localStorage.getItem(CART_KEY)
-        ) || [];
-
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
     } catch (error) {
-
         return [];
-
     }
-
 }
 
 
 function saveCart(cart) {
-
-    localStorage.setItem(
-        CART_KEY,
-        JSON.stringify(cart)
-    );
-
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-
-// ==========================================
-// CART COUNT
-// ==========================================
 
 function updateCartCount() {
 
     const cart = getCart();
 
-    const total = cart.reduce(
-        function(sum, item) {
+    const total = cart.reduce(function(sum, item) {
+        return sum + item.quantity;
+    }, 0);
 
-            return sum + item.quantity;
+    document.querySelectorAll('a[href="cart.html"]').forEach(function(link) {
 
-        },
-        0
-    );
+        link.textContent =
+            total > 0
+                ? "Cart (" + total + ")"
+                : "Cart";
 
-    document
-        .querySelectorAll('a[href="cart.html"]')
-        .forEach(function(link) {
-
-            link.textContent =
-                total > 0
-                    ? "Cart (" + total + ")"
-                    : "Cart";
-
-        });
-
+    });
 }
 
 
@@ -76,14 +51,9 @@ function addToCart(productName) {
 
     const cart = getCart();
 
-    const existing = cart.find(
-        function(item) {
-
-            return item.name === productName;
-
-        }
-    );
-
+    const existing = cart.find(function(item) {
+        return item.name === productName;
+    });
 
     if (existing) {
 
@@ -92,31 +62,22 @@ function addToCart(productName) {
     } else {
 
         cart.push({
-
             name: productName,
-
             quantity: 1
-
         });
 
     }
-
 
     saveCart(cart);
 
     updateCartCount();
 
-
-    alert(
-        productName +
-        " has been added to your cart."
-    );
-
+    alert(productName + " has been added to your cart.");
 }
 
 
 // ==========================================
-// PRODUCT ADD TO CART BUTTONS
+// PRODUCT CART BUTTONS
 // ==========================================
 
 function setupAddToCartButtons() {
@@ -124,126 +85,51 @@ function setupAddToCartButtons() {
     const products =
         document.querySelectorAll(".product-card");
 
+    products.forEach(function(card) {
 
-    products.forEach(
-        function(card) {
+        const actions =
+            card.querySelector(".product-actions");
 
-            const actions =
-                card.querySelector(".product-actions");
+        const name =
+            card.querySelector("h3");
 
-            const name =
-                card.querySelector("h3");
+        if (!actions || !name) {
+            return;
+        }
 
+        if (actions.querySelector(".add-cart-btn")) {
+            return;
+        }
 
-            if (!actions || !name) {
+        const button =
+            document.createElement("button");
 
-                return;
+        button.type = "button";
 
-            }
+        button.className = "add-cart-btn";
 
+        button.textContent = "Add to Cart";
 
-            /*
-             * If Add to Cart already exists,
-             * make sure it still works.
-             */
+        /*
+         * Important:
+         * Keep the button simple.
+         * No inline font-size or positioning.
+         */
 
-            let button =
-                actions.querySelector(".add-cart-btn");
+        button.addEventListener("click", function() {
 
-
-            if (!button) {
-
-                button =
-                    document.createElement("button");
-
-                button.type = "button";
-
-                button.className =
-                    "add-cart-btn";
-
-                button.textContent =
-                    "Add to Cart";
-
-
-                actions.insertBefore(
-                    button,
-                    actions.firstChild
-                );
-
-            }
-
-
-            /*
-             * Remove old click handlers by
-             * cloning the button.
-             */
-
-            const newButton =
-                button.cloneNode(true);
-
-
-            button.replaceWith(newButton);
-
-
-            newButton.addEventListener(
-                "click",
-                function() {
-
-                    const productName =
-                        name.textContent.trim();
-
-                    addToCart(productName);
-
-                }
+            addToCart(
+                name.textContent.trim()
             );
 
+        });
 
-            /*
-             * Force correct appearance.
-             */
+        actions.insertBefore(
+            button,
+            actions.firstChild
+        );
 
-            newButton.style.display =
-                "flex";
-
-            newButton.style.alignItems =
-                "center";
-
-            newButton.style.justifyContent =
-                "center";
-
-            newButton.style.width =
-                "100%";
-
-            newButton.style.minHeight =
-                "46px";
-
-            newButton.style.padding =
-                "10px";
-
-            newButton.style.borderRadius =
-                "12px";
-
-            newButton.style.border =
-                "1px solid #111";
-
-            newButton.style.background =
-                "#111";
-
-            newButton.style.color =
-                "#fff";
-
-            newButton.style.fontFamily =
-                "inherit";
-
-            newButton.style.fontWeight =
-                "850";
-
-            newButton.style.cursor =
-                "pointer";
-
-        }
-    );
-
+    });
 }
 
 
@@ -256,148 +142,103 @@ function setupProductSearch() {
     const search =
         document.getElementById("search");
 
-
     if (!search) {
-
         return;
-
     }
 
+    search.addEventListener("input", function() {
 
-    search.addEventListener(
-        "input",
-        function() {
+        const term =
+            search.value
+                .toLowerCase()
+                .trim();
 
-            const term =
-                search.value
-                    .toLowerCase()
-                    .trim();
+        document
+            .querySelectorAll(".product-card")
+            .forEach(function(card) {
 
+                const text =
+                    card.textContent
+                        .toLowerCase();
 
-            document
-                .querySelectorAll(".product-card")
-                .forEach(function(card) {
+                card.style.display =
+                    text.includes(term)
+                        ? ""
+                        : "none";
 
-                    const text =
-                        card.textContent
-                            .toLowerCase();
+            });
 
-
-                    if (
-                        text.includes(term)
-                    ) {
-
-                        card.style.display =
-                            "";
-
-                    } else {
-
-                        card.style.display =
-                            "none";
-
-                    }
-
-                });
-
-        }
-    );
-
+    });
 }
 
 
 // ==========================================
-// PRODUCT WHATSAPP
+// WHATSAPP PRODUCT BUTTONS
 // ==========================================
 
 function setupWhatsAppButtons() {
 
     document
-        .querySelectorAll(
-            ".product-card .whatsapp-btn"
-        )
-        .forEach(
-            function(button) {
+        .querySelectorAll(".product-card .whatsapp-btn")
+        .forEach(function(button) {
 
-                button.addEventListener(
-                    "click",
-                    function(event) {
+            button.textContent = "WhatsApp";
 
-                        event.preventDefault();
+            button.addEventListener(
+                "click",
+                function(event) {
 
+                    event.preventDefault();
 
-                        const card =
-                            button.closest(
-                                ".product-card"
-                            );
+                    const card =
+                        button.closest(".product-card");
 
-
-                        if (!card) {
-
-                            return;
-
-                        }
-
-
-                        const name =
-                            card.querySelector(
-                                "h3"
-                            );
-
-
-                        if (!name) {
-
-                            return;
-
-                        }
-
-
-                        const productName =
-                            name.textContent.trim();
-
-
-                        const message =
-                            "Hi 4LJTek, I'm interested in the " +
-                            productName +
-                            ". Please share the price and availability.";
-
-
-                        const url =
-                            "https://api.whatsapp.com/send?phone=" +
-                            WHATSAPP_NUMBER +
-                            "&text=" +
-                            encodeURIComponent(message);
-
-
-                        window.location.href =
-                            url;
-
+                    if (!card) {
+                        return;
                     }
-                );
 
-            }
-        );
+                    const name =
+                        card.querySelector("h3");
 
+                    if (!name) {
+                        return;
+                    }
+
+                    const productName =
+                        name.textContent.trim();
+
+                    const message =
+                        "Hi 4LJTek, I'm interested in the " +
+                        productName +
+                        ". Please share the price and availability.";
+
+                    const url =
+                        "https://api.whatsapp.com/send?phone=" +
+                        WHATSAPP_NUMBER +
+                        "&text=" +
+                        encodeURIComponent(message);
+
+                    window.location.href = url;
+
+                }
+            );
+
+        });
 }
 
 
 // ==========================================
-// HOMEPAGE WHATSAPP
+// HOME WHATSAPP
 // ==========================================
 
 function setupHomeWhatsApp() {
 
     const button =
-        document.getElementById(
-            "home-whatsapp"
-        );
-
+        document.getElementById("home-whatsapp");
 
     if (!button) {
-
         return;
-
     }
-
 
     button.addEventListener(
         "click",
@@ -405,10 +246,8 @@ function setupHomeWhatsApp() {
 
             event.preventDefault();
 
-
             const message =
                 "Hi 4LJTek, I'd like to order from your store.";
-
 
             const url =
                 "https://api.whatsapp.com/send?phone=" +
@@ -416,13 +255,10 @@ function setupHomeWhatsApp() {
                 "&text=" +
                 encodeURIComponent(message);
 
-
-            window.location.href =
-                url;
+            window.location.href = url;
 
         }
     );
-
 }
 
 
@@ -435,129 +271,90 @@ function setupMobileMenu() {
     const header =
         document.querySelector("header");
 
-
-    const nav =
-        document.querySelector("header nav");
-
-
-    if (!header || !nav) {
-
+    if (!header) {
         return;
-
     }
 
+    let button =
+        header.querySelector(".mobile-menu-btn");
 
-    let menuButton =
-        document.querySelector(
-            ".mobile-menu-btn"
-        );
+    if (!button) {
 
-
-    /*
-     * Create hamburger button if missing.
-     */
-
-    if (!menuButton) {
-
-        menuButton =
+        button =
             document.createElement("button");
 
-        menuButton.type =
-            "button";
+        button.type = "button";
 
-        menuButton.className =
+        button.className =
             "mobile-menu-btn";
 
-        menuButton.setAttribute(
+        button.setAttribute(
             "aria-label",
             "Open menu"
         );
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+        button.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
 
-        menuButton.innerHTML =
-            "<span></span>" +
-            "<span></span>" +
-            "<span></span>";
-
-
-        header.appendChild(
-            menuButton
-        );
-
+        header.appendChild(button);
     }
 
 
-    /*
-     * Mobile menu toggle.
-     */
+    const nav =
+        header.querySelector("nav");
 
-    menuButton.onclick =
+    if (!nav) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
         function() {
 
-            const open =
-                nav.classList.toggle(
-                    "mobile-open"
+            const isOpen =
+                header.classList.toggle(
+                    "menu-open"
                 );
 
-
-            menuButton.classList.toggle(
+            button.classList.toggle(
                 "active",
-                open
+                isOpen
             );
 
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                open
-                    ? "true"
-                    : "false"
-            );
-
-
-            menuButton.setAttribute(
+            button.setAttribute(
                 "aria-label",
-                open
+                isOpen
                     ? "Close menu"
                     : "Open menu"
             );
 
-        };
+        }
+    );
 
-
-    /*
-     * Close menu after clicking a link.
-     */
 
     nav.querySelectorAll("a")
-        .forEach(
-            function(link) {
+        .forEach(function(link) {
 
-                link.addEventListener(
-                    "click",
-                    function() {
+            link.addEventListener(
+                "click",
+                function() {
 
-                        nav.classList.remove(
-                            "mobile-open"
-                        );
+                    header.classList.remove(
+                        "menu-open"
+                    );
 
-                        menuButton.classList.remove(
-                            "active"
-                        );
+                    button.classList.remove(
+                        "active"
+                    );
 
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+                }
+            );
 
-                    }
-                );
-
-            }
-        );
+        });
 
 }
 
@@ -573,25 +370,19 @@ function displayCart() {
             "cart-items"
         );
 
-
     if (!container) {
-
         return;
-
     }
-
 
     const summary =
         document.getElementById(
             "cart-summary"
         );
 
-
     const empty =
         document.getElementById(
             "empty-cart"
         );
-
 
     const cart =
         getCart();
@@ -600,268 +391,199 @@ function displayCart() {
     if (cart.length === 0) {
 
         if (empty) {
-
-            empty.style.display =
-                "block";
-
+            empty.style.display = "block";
         }
-
 
         if (summary) {
-
-            summary.style.display =
-                "none";
-
+            summary.style.display = "none";
         }
 
-
         return;
-
     }
 
 
     if (empty) {
-
-        empty.style.display =
-            "none";
-
+        empty.style.display = "none";
     }
-
 
     if (summary) {
-
-        summary.style.display =
-            "block";
-
+        summary.style.display = "block";
     }
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
-    cart.forEach(
-        function(item, index) {
+    cart.forEach(function(item, index) {
 
-            const div =
-                document.createElement(
-                    "div"
-                );
+        const div =
+            document.createElement("div");
 
 
-            div.innerHTML = `
+        div.innerHTML = `
 
-                <h3>
-                    ${item.name}
-                </h3>
+            <h3>${item.name}</h3>
 
-                <div style="
-                    display:flex;
-                    align-items:center;
-                    gap:12px;
-                    margin:15px 0;
-                ">
-
-                    <button
-                        type="button"
-                        class="quantity-btn"
-                        data-index="${index}"
-                        data-action="minus"
-                        style="
-                            width:45px;
-                            height:45px;
-                            border:1px solid #ccc;
-                            border-radius:10px;
-                            background:#fff;
-                            font-size:24px;
-                            cursor:pointer;
-                        "
-                    >
-                        −
-                    </button>
-
-
-                    <strong style="
-                        min-width:30px;
-                        text-align:center;
-                        font-size:20px;
-                    ">
-                        ${item.quantity}
-                    </strong>
-
-
-                    <button
-                        type="button"
-                        class="quantity-btn"
-                        data-index="${index}"
-                        data-action="plus"
-                        style="
-                            width:45px;
-                            height:45px;
-                            border:1px solid #ccc;
-                            border-radius:10px;
-                            background:#fff;
-                            font-size:24px;
-                            cursor:pointer;
-                        "
-                    >
-                        +
-                    </button>
-
-                </div>
-
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:12px;
+                margin:15px 0;
+            ">
 
                 <button
                     type="button"
-                    class="remove-cart-btn"
+                    class="quantity-btn"
                     data-index="${index}"
+                    data-action="minus"
                     style="
-                        padding:11px 18px;
-                        border:0;
+                        width:45px;
+                        height:45px;
+                        border:1px solid #ccc;
                         border-radius:10px;
-                        background:#111;
-                        color:#fff;
+                        background:#fff;
+                        font-size:24px;
                         cursor:pointer;
-                        font-family:inherit;
-                        font-weight:600;
                     "
                 >
-                    Remove
+                    −
                 </button>
 
-            `;
+                <strong style="
+                    min-width:30px;
+                    text-align:center;
+                    font-size:20px;
+                ">
+                    ${item.quantity}
+                </strong>
 
+                <button
+                    type="button"
+                    class="quantity-btn"
+                    data-index="${index}"
+                    data-action="plus"
+                    style="
+                        width:45px;
+                        height:45px;
+                        border:1px solid #ccc;
+                        border-radius:10px;
+                        background:#fff;
+                        font-size:24px;
+                        cursor:pointer;
+                    "
+                >
+                    +
+                </button>
 
-            container.appendChild(
-                div
-            );
+            </div>
 
-        }
-    );
+            <button
+                type="button"
+                class="remove-cart-btn"
+                data-index="${index}"
+                style="
+                    padding:11px 18px;
+                    border:0;
+                    border-radius:10px;
+                    background:#111;
+                    color:#fff;
+                    cursor:pointer;
+                    font-family:inherit;
+                    font-weight:600;
+                "
+            >
+                Remove
+            </button>
 
+        `;
 
-    /*
-     * Quantity buttons
-     */
+        container.appendChild(div);
+
+    });
+
 
     document
-        .querySelectorAll(
-            ".quantity-btn"
-        )
-        .forEach(
-            function(button) {
+        .querySelectorAll(".quantity-btn")
+        .forEach(function(button) {
 
-                button.addEventListener(
-                    "click",
-                    function() {
+            button.addEventListener(
+                "click",
+                function() {
 
-                        const index =
-                            Number(
-                                button.dataset.index
-                            );
-
-
-                        const action =
-                            button.dataset.action;
-
-
-                        const cart =
-                            getCart();
-
-
-                        if (!cart[index]) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            action === "plus"
-                        ) {
-
-                            cart[index].quantity++;
-
-                        }
-
-
-                        if (
-                            action === "minus"
-                        ) {
-
-                            cart[index].quantity--;
-
-
-                            if (
-                                cart[index]
-                                    .quantity <= 0
-                            ) {
-
-                                cart.splice(
-                                    index,
-                                    1
-                                );
-
-                            }
-
-                        }
-
-
-                        saveCart(cart);
-
-                        displayCart();
-
-                        updateCartCount();
-
-                    }
-                );
-
-            }
-        );
-
-
-    /*
-     * Remove buttons
-     */
-
-    document
-        .querySelectorAll(
-            ".remove-cart-btn"
-        )
-        .forEach(
-            function(button) {
-
-                button.addEventListener(
-                    "click",
-                    function() {
-
-                        const index =
-                            Number(
-                                button.dataset.index
-                            );
-
-
-                        const cart =
-                            getCart();
-
-
-                        cart.splice(
-                            index,
-                            1
+                    const index =
+                        Number(
+                            button.dataset.index
                         );
 
+                    const action =
+                        button.dataset.action;
 
-                        saveCart(cart);
+                    const cart =
+                        getCart();
 
-                        displayCart();
+                    if (!cart[index]) {
+                        return;
+                    }
 
-                        updateCartCount();
+
+                    if (action === "plus") {
+                        cart[index].quantity++;
+                    }
+
+
+                    if (action === "minus") {
+
+                        cart[index].quantity--;
+
+                        if (
+                            cart[index].quantity <= 0
+                        ) {
+                            cart.splice(index, 1);
+                        }
 
                     }
-                );
 
-            }
-        );
+
+                    saveCart(cart);
+
+                    displayCart();
+
+                    updateCartCount();
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".remove-cart-btn")
+        .forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const index =
+                        Number(
+                            button.dataset.index
+                        );
+
+                    const cart =
+                        getCart();
+
+                    cart.splice(index, 1);
+
+                    saveCart(cart);
+
+                    displayCart();
+
+                    updateCartCount();
+
+                }
+            );
+
+        });
 
 
     const count =
@@ -869,24 +591,17 @@ function displayCart() {
             "cart-count"
         );
 
-
     if (count) {
 
         const total =
             cart.reduce(
                 function(sum, item) {
-
-                    return sum +
-                        item.quantity;
-
+                    return sum + item.quantity;
                 },
                 0
             );
 
-
-        count.textContent =
-            total;
-
+        count.textContent = total;
     }
 
 }
@@ -903,13 +618,9 @@ function setupClearCart() {
             "clear-cart"
         );
 
-
     if (!button) {
-
         return;
-
     }
-
 
     button.addEventListener(
         "click",
@@ -919,14 +630,12 @@ function setupClearCart() {
                 CART_KEY
             );
 
-
             displayCart();
 
             updateCartCount();
 
         }
     );
-
 }
 
 
@@ -941,13 +650,9 @@ function setupCartWhatsApp() {
             "cart-whatsapp"
         );
 
-
     if (!button) {
-
         return;
-
     }
-
 
     button.addEventListener(
         "click",
@@ -956,7 +661,6 @@ function setupCartWhatsApp() {
             const cart =
                 getCart();
 
-
             if (cart.length === 0) {
 
                 alert(
@@ -964,39 +668,34 @@ function setupCartWhatsApp() {
                 );
 
                 return;
-
             }
 
 
             let message =
-                "Hi 4LJTek, I'd like to order:\n\n";
+                "Hi 4LJTek, I'd like to order:%0A%0A";
 
 
-            cart.forEach(
-                function(item) {
+            cart.forEach(function(item) {
 
-                    message +=
-                        "• " +
-                        item.name +
-                        " x" +
-                        item.quantity +
-                        "\n";
+                message +=
+                    "• " +
+                    item.name +
+                    " x" +
+                    item.quantity +
+                    "%0A";
 
-                }
-            );
+            });
 
 
             message +=
-                "\nPlease share the total price and availability.";
+                "%0APlease share the total price and availability.";
 
 
             window.location.href =
                 "https://api.whatsapp.com/send?phone=" +
                 WHATSAPP_NUMBER +
                 "&text=" +
-                encodeURIComponent(
-                    message
-                );
+                message;
 
         }
     );
@@ -1015,13 +714,9 @@ function setupCartCall() {
             "cart-call"
         );
 
-
     if (!button) {
-
         return;
-
     }
-
 
     button.addEventListener(
         "click",
@@ -1037,7 +732,7 @@ function setupCartCall() {
 
 
 // ==========================================
-// START WEBSITE
+// START 4LJTEK
 // ==========================================
 
 function start4LJTek() {
@@ -1064,10 +759,6 @@ function start4LJTek() {
 
 }
 
-
-// ==========================================
-// DOM READY
-// ==========================================
 
 if (
     document.readyState === "loading"
