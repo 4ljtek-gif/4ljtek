@@ -11,9 +11,10 @@
         content="Shop smartphones, PlayStation consoles and Smart TVs at 4LJTek Nairobi."
     >
 
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
 
     <style>
+
         /* ==========================================
            PRODUCTS PAGE
         ========================================== */
@@ -23,397 +24,826 @@
             color: #111;
         }
 
+
+        /* ==========================================
+           PREMIUM HERO
+        ========================================== */
+
         .products-hero {
+            position: relative;
+            overflow: hidden;
+
             background:
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,.12), transparent 30%),
-                linear-gradient(135deg, #050505, #161616);
+                radial-gradient(
+                    circle at 85% 35%,
+                    rgba(0, 91, 255, 0.35),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    110deg,
+                    #050505 0%,
+                    #08111d 55%,
+                    #061a32 100%
+                );
+
             color: #fff;
-            padding: 85px 20px 70px;
-            text-align: center;
+
+            padding: 120px 35px 115px;
+
+            text-align: left;
         }
+
+
+        .products-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            right: -140px;
+            top: -130px;
+
+            background: rgba(0, 102, 255, 0.18);
+
+            filter: blur(90px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+
+        .products-hero::before {
+            content: "4LJTEK PREMIUM ELECTRONICS";
+
+            position: relative;
+
+            z-index: 2;
+
+            display: block;
+
+            margin-bottom: 25px;
+
+            color: #4da3ff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+        }
+
 
         .products-hero h1 {
-            margin: 0 0 15px;
-            font-size: clamp(38px, 6vw, 72px);
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 760px;
+
+            margin: 0 0 24px;
+
+            font-size: clamp(48px, 7vw, 82px);
+
+            line-height: .95;
+
             font-weight: 800;
-            letter-spacing: -2px;
+
+            letter-spacing: -3px;
         }
 
+
         .products-hero p {
-            max-width: 650px;
-            margin: 0 auto;
-            color: #cfcfcf;
-            font-size: 17px;
-            line-height: 1.7;
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 700px;
+
+            margin: 0;
+
+            color: #d1d5db;
+
+            font-size: 18px;
+
+            line-height: 1.65;
         }
+
+
+        /* ==========================================
+           SEARCH + CATEGORY CONTROLS
+        ========================================== */
 
         .product-controls {
             max-width: 1200px;
-            margin: -30px auto 45px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 5;
+
+            margin: 0 auto;
+
+            padding: 70px 20px 30px;
         }
+
 
         #search {
             width: 100%;
-            height: 58px;
-            padding: 0 22px;
+
+            height: 70px;
+
+            padding: 0 28px;
+
             border: 1px solid #ddd;
-            border-radius: 16px;
+
+            border-radius: 20px;
+
             background: #fff;
+
             color: #111;
+
             font-family: inherit;
-            font-size: 16px;
+
+            font-size: 17px;
+
             outline: none;
-            box-shadow: 0 10px 35px rgba(0,0,0,.08);
+
+            box-shadow: 0 10px 35px rgba(0,0,0,.06);
+
+            box-sizing: border-box;
         }
+
 
         #search:focus {
             border-color: #111;
         }
 
+
         .category-nav {
             display: flex;
+
             justify-content: center;
+
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
+
+            gap: 12px;
+
+            margin-top: 25px;
         }
+
 
         .category-nav a {
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
-            padding: 12px 20px;
+
+            min-width: 150px;
+
+            padding: 14px 24px;
+
             border-radius: 999px;
+
             background: #111;
+
             color: #fff;
+
             text-decoration: none;
+
             font-size: 14px;
+
             font-weight: 700;
+
             transition: .2s ease;
         }
 
+
         .category-nav a:hover {
-            transform: translateY(-2px);
             background: #333;
+
+            transform: translateY(-2px);
         }
+
+
+        /* ==========================================
+           PRODUCTS
+        ========================================== */
 
         .products-section {
             max-width: 1250px;
+
             margin: 0 auto;
+
             padding: 0 20px 80px;
         }
 
+
         .category-heading {
             display: flex;
+
             align-items: center;
+
             gap: 18px;
+
             margin: 55px 0 25px;
         }
 
+
         .category-heading h2 {
             margin: 0;
+
             font-size: 30px;
+
             letter-spacing: -1px;
         }
 
+
         .category-heading::after {
             content: "";
+
             height: 1px;
+
             flex: 1;
+
             background: #ddd;
         }
 
+
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
             gap: 22px;
         }
 
+
+        /* ==========================================
+           PRODUCT CARD
+        ========================================== */
+
         .product-card {
             background: #fff;
+
             border-radius: 22px;
+
             overflow: hidden;
+
             border: 1px solid #e7e7e7;
-            box-shadow: 0 12px 35px rgba(0,0,0,.06);
-            transition: transform .25s ease, box-shadow .25s ease;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,.06);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
             display: flex;
+
             flex-direction: column;
         }
+
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 18px 45px rgba(0,0,0,.10);
+
+            box-shadow:
+                0 18px 45px rgba(0,0,0,.10);
         }
+
 
         .product-card img {
             width: 100%;
+
             height: 245px;
+
             object-fit: contain;
+
             padding: 18px;
+
             background: #fafafa;
+
             display: block;
+
+            box-sizing: border-box;
         }
+
 
         .product-info {
             padding: 20px;
+
             display: flex;
+
             flex-direction: column;
+
             flex: 1;
         }
 
+
         .product-card h3 {
             margin: 0 0 14px;
+
             font-size: 18px;
+
             line-height: 1.35;
         }
 
+
+        /* ==========================================
+           STORAGE
+        ========================================== */
+
         .storage-label {
             display: block;
+
             margin-bottom: 8px;
+
             font-size: 13px;
+
             font-weight: 700;
+
             color: #555;
         }
 
+
         .storage-select {
             width: 100%;
+
             height: 46px;
+
             padding: 0 12px;
+
             border: 1px solid #d8d8d8;
+
             border-radius: 12px;
+
             background: #fff;
+
             color: #111;
+
             font-family: inherit;
+
             font-size: 14px;
+
             font-weight: 600;
+
             outline: none;
+
             cursor: pointer;
+
             margin-bottom: 18px;
+
+            box-sizing: border-box;
         }
+
 
         .storage-select:focus {
             border-color: #111;
         }
 
+
         .no-storage {
             height: 46px;
+
             margin-bottom: 18px;
+
             display: flex;
+
             align-items: center;
+
             padding: 0 14px;
+
             border-radius: 12px;
+
             background: #f5f5f5;
+
             color: #666;
+
             font-size: 13px;
+
             font-weight: 600;
+
+            box-sizing: border-box;
         }
+
+
+        /* ==========================================
+           PRODUCT BUTTONS
+        ========================================== */
 
         .product-actions {
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 9px;
+
             margin-top: auto;
         }
 
+
         .product-actions .add-cart-btn {
             grid-column: 1 / -1;
+
             width: 100%;
+
             min-height: 50px;
+
             border: 0;
+
             border-radius: 13px;
+
             background: #111;
+
             color: #fff;
+
             font-family: inherit;
+
             font-size: 14px;
+
             font-weight: 700;
+
             cursor: pointer;
+
             transition: .2s ease;
         }
 
+
         .product-actions .add-cart-btn:hover {
             background: #333;
+
             transform: translateY(-1px);
         }
+
 
         .product-actions .whatsapp-btn,
         .product-actions .call-btn {
             width: 100%;
+
             min-height: 48px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             border-radius: 13px;
+
             text-decoration: none;
+
             font-size: 13px;
+
             font-weight: 700;
+
             box-sizing: border-box;
         }
 
+
         .product-actions .whatsapp-btn {
             background: #25D366;
+
             color: #fff;
         }
 
+
         .product-actions .call-btn {
             background: #f0f0f0;
+
             color: #111;
         }
 
-        .product-actions .whatsapp-btn:hover,
-        .product-actions .call-btn:hover {
-            transform: translateY(-1px);
-        }
 
         .product-card.hidden-product {
             display: none;
         }
 
-        @media (max-width: 1050px) {
-            .products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background: #111;
+
+            color: #aaa;
+
+            font-size: 13px;
         }
 
-        @media (max-width: 768px) {
-            .products-hero {
-                padding: 65px 18px 55px;
+
+        /* ==========================================
+           TABLET
+        ========================================== */
+
+        @media (max-width: 1050px) {
+
+            .products-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 768px) {
+
+            .products-hero {
+                padding: 120px 34px 105px;
+
+                text-align: left;
+
+                background:
+                    radial-gradient(
+                        circle at 88% 25%,
+                        rgba(0, 91, 255, 0.38),
+                        transparent 48%
+                    ),
+                    linear-gradient(
+                        110deg,
+                        #050505 0%,
+                        #08111d 55%,
+                        #061a32 100%
+                    );
+            }
+
+
+            .products-hero::before {
+                margin-bottom: 28px;
+
+                font-size: 12px;
+
+                letter-spacing: 2.5px;
+            }
+
 
             .products-hero h1 {
-                font-size: 42px;
+                max-width: 560px;
+
+                font-size: 54px;
+
+                line-height: .98;
+
+                letter-spacing: -2.5px;
+
+                margin-bottom: 28px;
             }
+
 
             .products-hero p {
-                font-size: 15px;
+                max-width: 600px;
+
+                font-size: 17px;
+
+                line-height: 1.65;
             }
 
+
             .product-controls {
-                padding: 0 14px;
+                padding: 70px 14px 25px;
             }
+
+
+            #search {
+                height: 62px;
+
+                font-size: 16px;
+
+                padding: 0 22px;
+            }
+
+
+            .category-nav {
+                gap: 8px;
+            }
+
+
+            .category-nav a {
+                min-width: 0;
+
+                flex: 1;
+
+                padding: 14px 10px;
+
+                font-size: 12px;
+            }
+
 
             .products-section {
                 padding: 0 14px 60px;
             }
 
+
             .products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
                 gap: 12px;
             }
+
 
             .category-heading {
                 margin: 40px 0 18px;
             }
 
+
             .category-heading h2 {
                 font-size: 23px;
             }
+
 
             .product-card {
                 border-radius: 17px;
             }
 
+
             .product-card img {
                 height: 155px;
+
                 padding: 10px;
             }
+
 
             .product-info {
                 padding: 13px;
             }
 
+
             .product-card h3 {
                 font-size: 15px;
+
                 margin-bottom: 10px;
             }
 
+
             .storage-label {
                 font-size: 11px;
+
                 margin-bottom: 5px;
             }
 
+
             .storage-select {
                 height: 40px;
+
                 margin-bottom: 12px;
+
                 padding: 0 8px;
+
                 font-size: 12px;
             }
 
+
             .no-storage {
                 height: 40px;
+
                 margin-bottom: 12px;
+
                 font-size: 11px;
             }
+
 
             .product-actions {
                 gap: 7px;
             }
 
+
             .product-actions .add-cart-btn {
                 min-height: 44px;
+
                 border-radius: 11px;
+
                 font-size: 12px;
             }
+
 
             .product-actions .whatsapp-btn,
             .product-actions .call-btn {
                 min-height: 42px;
+
                 border-radius: 11px;
-                font-size: 11px;
+
+                font-size: 10px;
+
+                min-width: 0;
+
+                padding: 0 5px;
+
+                white-space: nowrap;
+
+                overflow: hidden;
             }
 
-            .category-nav {
-                gap: 7px;
-            }
-
-            .category-nav a {
-                padding: 10px 14px;
-                font-size: 12px;
-            }
         }
 
+
+        /* ==========================================
+           SMALL PHONES
+        ========================================== */
+
         @media (max-width: 430px) {
+
+            .products-hero {
+                padding: 120px 34px 105px;
+            }
+
+
+            .products-hero::before {
+                font-size: 11px;
+
+                letter-spacing: 2px;
+            }
+
+
+            .products-hero h1 {
+                font-size: 48px;
+            }
+
+
+            .products-hero p {
+                font-size: 16px;
+            }
+
+
             .products-grid {
                 gap: 9px;
             }
+
 
             .product-card img {
                 height: 140px;
             }
 
+
             .product-info {
                 padding: 10px;
             }
+
 
             .product-card h3 {
                 font-size: 14px;
             }
 
+
             .storage-select {
                 font-size: 11px;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
     <a href="index.html" class="logo-link">
-        <img src="images/logo.png" alt="4LJTek">
+
+        <img
+            src="images/logo.png"
+            alt="4LJTek"
+        >
+
     </a>
 
+
     <nav>
+
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="cart.html">Cart</a></li>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="products.html">Products</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+            <li>
+                <a href="cart.html">Cart</a>
+            </li>
+
         </ul>
+
     </nav>
 
 </header>
@@ -421,17 +851,30 @@
 
 <main>
 
+
+    <!-- ==========================================
+         PREMIUM HERO
+    ========================================== -->
+
     <section class="products-hero">
 
-        <h1>Find Your Next Upgrade.</h1>
+        <h1>
+            Find Your<br>
+            Next Upgrade.
+        </h1>
 
         <p>
-            Explore smartphones, PlayStation consoles and Smart TVs
-            from 4LJTek.
+            Explore premium smartphones, PlayStation consoles and
+            Smart TVs — genuine products, great deals, and easy
+            ordering through 4LJTek.
         </p>
 
     </section>
 
+
+    <!-- ==========================================
+         SEARCH
+    ========================================== -->
 
     <section class="product-controls">
 
@@ -442,11 +885,20 @@
             autocomplete="off"
         >
 
+
         <div class="category-nav">
 
-            <a href="#smartphones">Phones</a>
-            <a href="#playstation">PlayStation</a>
-            <a href="#tvs">Smart TVs</a>
+            <a href="#smartphones">
+                Phones
+            </a>
+
+            <a href="#playstation">
+                PlayStation
+            </a>
+
+            <a href="#tvs">
+                Smart TVs
+            </a>
 
         </div>
 
@@ -464,7 +916,11 @@
             class="category-heading"
             id="smartphones"
         >
-            <h2>Smartphones</h2>
+
+            <h2>
+                Smartphones
+            </h2>
+
         </div>
 
 
@@ -485,24 +941,40 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 17</h3>
+                    <h3>
+                        iPhone 17
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
-                        <a href="#" class="whatsapp-btn">
+                        <a
+                            href="#"
+                            class="whatsapp-btn"
+                        >
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -515,10 +987,7 @@
 
             <!-- iPhone 17 Air -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/iphone17air.jpg"
@@ -527,17 +996,30 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 17 Air</h3>
+                    <h3>
+                        iPhone 17 Air
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
@@ -545,7 +1027,10 @@
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -558,10 +1043,7 @@
 
             <!-- iPhone 17 Pro -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/iphone17pro.jpg"
@@ -570,17 +1052,30 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 17 Pro</h3>
+                    <h3>
+                        iPhone 17 Pro
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
@@ -588,7 +1083,10 @@
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -601,10 +1099,7 @@
 
             <!-- iPhone 17 Pro Max -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/iphone17promax.jpg"
@@ -613,18 +1108,34 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 17 Pro Max</h3>
+                    <h3>
+                        iPhone 17 Pro Max
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
-                        <option value="2TB">2TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
+                        <option value="2TB">
+                            2TB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
@@ -632,7 +1143,10 @@
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -645,10 +1159,7 @@
 
             <!-- iPhone 18 Pro -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/iphone18pro.jpg"
@@ -657,18 +1168,34 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 18 Pro</h3>
+                    <h3>
+                        iPhone 18 Pro
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
-                        <option value="2TB">2TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
+                        <option value="2TB">
+                            2TB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
@@ -676,7 +1203,10 @@
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -689,10 +1219,7 @@
 
             <!-- iPhone 18 Pro Max -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/iphone18promax.jpg"
@@ -701,18 +1228,34 @@
 
                 <div class="product-info">
 
-                    <h3>iPhone 18 Pro Max</h3>
+                    <h3>
+                        iPhone 18 Pro Max
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
-                        <option value="2TB">2TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
+                        <option value="2TB">
+                            2TB
+                        </option>
+
                     </select>
+
 
                     <div class="product-actions">
 
@@ -720,7 +1263,10 @@
                             WhatsApp
                         </a>
 
-                        <a href="tel:+254101984723" class="call-btn">
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
                             Call
                         </a>
 
@@ -731,12 +1277,9 @@
             </article>
 
 
-            <!-- Samsung S25 -->
+            <!-- Samsung Galaxy S25 -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s25.jpg"
@@ -745,21 +1288,44 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S25</h3>
+                    <h3>
+                        Samsung Galaxy S25
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="128GB">128GB</option>
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="128GB">
+                            128GB
+                        </option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -767,12 +1333,9 @@
             </article>
 
 
-            <!-- Samsung S25+ -->
+            <!-- Samsung Galaxy S25+ -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s25plus.jpg"
@@ -781,20 +1344,40 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S25+</h3>
+                    <h3>
+                        Samsung Galaxy S25+
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -802,12 +1385,9 @@
             </article>
 
 
-            <!-- Samsung S25 Ultra -->
+            <!-- Samsung Galaxy S25 Ultra -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s25ultra.jpg"
@@ -816,21 +1396,44 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S25 Ultra</h3>
+                    <h3>
+                        Samsung Galaxy S25 Ultra
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -838,12 +1441,9 @@
             </article>
 
 
-            <!-- Samsung S26 -->
+            <!-- Samsung Galaxy S26 -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s26.jpg"
@@ -852,20 +1452,40 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S26</h3>
+                    <h3>
+                        Samsung Galaxy S26
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -873,12 +1493,9 @@
             </article>
 
 
-            <!-- Samsung S26+ -->
+            <!-- Samsung Galaxy S26+ -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s26plus.jpg"
@@ -887,20 +1504,40 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S26+</h3>
+                    <h3>
+                        Samsung Galaxy S26+
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -908,12 +1545,9 @@
             </article>
 
 
-            <!-- Samsung S26 Ultra -->
+            <!-- Samsung Galaxy S26 Ultra -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/s26ultra.jpg"
@@ -922,21 +1556,44 @@
 
                 <div class="product-info">
 
-                    <h3>Samsung Galaxy S26 Ultra</h3>
+                    <h3>
+                        Samsung Galaxy S26 Ultra
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -944,12 +1601,9 @@
             </article>
 
 
-            <!-- Google Pixel 10 -->
+            <!-- Pixel 10 -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel10.jpg"
@@ -958,20 +1612,40 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 10</h3>
+                    <h3>
+                        Google Pixel 10
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="128GB">128GB</option>
-                        <option value="256GB">256GB</option>
+
+                        <option value="128GB">
+                            128GB
+                        </option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -981,10 +1655,7 @@
 
             <!-- Pixel 10 Pro -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel10pro.jpg"
@@ -993,22 +1664,48 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 10 Pro</h3>
+                    <h3>
+                        Google Pixel 10 Pro
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="128GB">128GB</option>
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="128GB">
+                            128GB
+                        </option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1018,10 +1715,7 @@
 
             <!-- Pixel 10 Pro XL -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel10proxl.jpg"
@@ -1030,21 +1724,44 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 10 Pro XL</h3>
+                    <h3>
+                        Google Pixel 10 Pro XL
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1054,10 +1771,7 @@
 
             <!-- Pixel 10 Pro Fold -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel10profold.jpg"
@@ -1066,21 +1780,44 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 10 Pro Fold</h3>
+                    <h3>
+                        Google Pixel 10 Pro Fold
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1090,10 +1827,7 @@
 
             <!-- Pixel 11 -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel11.jpg"
@@ -1102,20 +1836,40 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 11</h3>
+                    <h3>
+                        Google Pixel 11
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1125,10 +1879,7 @@
 
             <!-- Pixel 11 Pro -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel11pro.jpg"
@@ -1137,21 +1888,44 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 11 Pro</h3>
+                    <h3>
+                        Google Pixel 11 Pro
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1161,10 +1935,7 @@
 
             <!-- Pixel 11 Pro XL -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel11proxl.jpg"
@@ -1173,21 +1944,44 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 11 Pro XL</h3>
+                    <h3>
+                        Google Pixel 11 Pro XL
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1197,10 +1991,7 @@
 
             <!-- Pixel 11 Pro Fold -->
 
-            <article
-                class="product-card"
-                data-category="phone"
-            >
+            <article class="product-card">
 
                 <img
                     src="images/pixel11profold.jpg"
@@ -1209,21 +2000,44 @@
 
                 <div class="product-info">
 
-                    <h3>Google Pixel 11 Pro Fold</h3>
+                    <h3>
+                        Google Pixel 11 Pro Fold
+                    </h3>
 
                     <label class="storage-label">
                         Storage
                     </label>
 
                     <select class="storage-select">
-                        <option value="256GB">256GB</option>
-                        <option value="512GB">512GB</option>
-                        <option value="1TB">1TB</option>
+
+                        <option value="256GB">
+                            256GB
+                        </option>
+
+                        <option value="512GB">
+                            512GB
+                        </option>
+
+                        <option value="1TB">
+                            1TB
+                        </option>
+
                     </select>
 
+
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1242,7 +2056,11 @@
             class="category-heading"
             id="playstation"
         >
-            <h2>PlayStation</h2>
+
+            <h2>
+                PlayStation
+            </h2>
+
         </div>
 
 
@@ -1258,15 +2076,27 @@
 
                 <div class="product-info">
 
-                    <h3>PlayStation 5</h3>
+                    <h3>
+                        PlayStation 5
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1283,15 +2113,27 @@
 
                 <div class="product-info">
 
-                    <h3>PlayStation 5 Digital Edition</h3>
+                    <h3>
+                        PlayStation 5 Digital Edition
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1308,15 +2150,27 @@
 
                 <div class="product-info">
 
-                    <h3>PS5 Slim</h3>
+                    <h3>
+                        PS5 Slim
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1333,15 +2187,27 @@
 
                 <div class="product-info">
 
-                    <h3>PlayStation 5 Pro</h3>
+                    <h3>
+                        PlayStation 5 Pro
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1358,15 +2224,27 @@
 
                 <div class="product-info">
 
-                    <h3>DualSense Wireless Controller</h3>
+                    <h3>
+                        DualSense Wireless Controller
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
@@ -1385,11 +2263,16 @@
             class="category-heading"
             id="tvs"
         >
-            <h2>Smart TVs</h2>
+
+            <h2>
+                Smart TVs
+            </h2>
+
         </div>
 
 
         <div class="products-grid">
+
 
             <article class="product-card">
 
@@ -1400,22 +2283,36 @@
 
                 <div class="product-info">
 
-                    <h3>TCL Smart TVs</h3>
+                    <h3>
+                        TCL Smart TVs
+                    </h3>
 
                     <div class="no-storage">
                         Contact us for price & availability
                     </div>
 
                     <div class="product-actions">
-                        <a href="#" class="whatsapp-btn">WhatsApp</a>
-                        <a href="tel:+254101984723" class="call-btn">Call</a>
+
+                        <a href="#" class="whatsapp-btn">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="tel:+254101984723"
+                            class="call-btn"
+                        >
+                            Call
+                        </a>
+
                     </div>
 
                 </div>
 
             </article>
 
+
         </div>
+
 
     </section>
 
@@ -1435,20 +2332,3 @@
 
 </body>
 </html>
-@media (max-width: 768px) {
-
-    .product-actions .whatsapp-btn,
-    .product-actions .call-btn {
-        min-width: 0 !important;
-        padding: 0 5px !important;
-        font-size: 10px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: clip !important;
-    }
-
-    .product-actions .whatsapp-btn {
-        letter-spacing: -0.2px;
-    }
-
-}
