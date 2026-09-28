@@ -1233,12 +1233,31 @@ footer p {
 
         height: 70px !important;
     }
-   }
-/* Hide old contact-for-price messages */
+}
+
+
+/* ==========================================
+   REMOVE OLD PRICE / STORAGE PLACEHOLDERS
+   ========================================== */
+
 .price-note {
     display: none !important;
 }
-/* Remove old price placeholders */
+
 .product-card > .price {
     display: none !important;
+}
+
+
+/* Remove empty storage boxes from
+   PlayStation, controllers and TVs */
+
+.no-storage {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
 }
