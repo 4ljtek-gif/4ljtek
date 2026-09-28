@@ -1,13 +1,20 @@
+/* =========================================================
+   4LJTEK - MAIN JAVASCRIPT
+   ========================================================= */
+
 const WHATSAPP_NUMBER = "254101984723";
 const CART_KEY = "4ljtekCart";
 
-/* ==========================================
+
+/* =========================================================
    PRODUCT PRICES
-========================================== */
+   ========================================================= */
 
 const PRODUCT_PRICES = {
 
-    /* APPLE */
+    /* =========================
+       APPLE
+    ========================= */
 
     "iPhone 17": {
         "256GB": 116000,
@@ -48,7 +55,9 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* SAMSUNG */
+    /* =========================
+       SAMSUNG
+    ========================= */
 
     "Samsung Galaxy S25": {
         "128GB": 80000,
@@ -84,7 +93,9 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* GOOGLE PIXEL */
+    /* =========================
+       GOOGLE PIXEL
+    ========================= */
 
     "Google Pixel 10": {
         "128GB": 82000,
@@ -134,7 +145,9 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* PLAYSTATION */
+    /* =========================
+       PLAYSTATION
+    ========================= */
 
     "PlayStation 5": 85000,
 
@@ -145,12 +158,35 @@ const PRODUCT_PRICES = {
     "PlayStation 5 Pro": 145000,
 
     "DualSense Wireless Controller": 10500
+
 };
 
 
-/* ==========================================
+/* =========================================================
+   FORMAT PRICE
+   ========================================================= */
+
+function formatPrice(price) {
+
+    if (
+        price === null ||
+        price === undefined ||
+        isNaN(price)
+    ) {
+
+        return "Contact for Price";
+
+    }
+
+    return "KSh " +
+        Number(price).toLocaleString("en-KE");
+
+}
+
+
+/* =========================================================
    GET CART
-========================================== */
+   ========================================================= */
 
 function getCart() {
 
@@ -165,12 +201,13 @@ function getCart() {
         return [];
 
     }
+
 }
 
 
-/* ==========================================
+/* =========================================================
    SAVE CART
-========================================== */
+   ========================================================= */
 
 function saveCart(cart) {
 
@@ -182,40 +219,26 @@ function saveCart(cart) {
 }
 
 
-/* ==========================================
-   FORMAT PRICE
-========================================== */
-
-function formatPrice(price) {
-
-    if (
-        price === null ||
-        price === undefined ||
-        isNaN(price)
-    ) {
-
-        return "Contact for Price";
-
-    }
-
-    return "KSh " + Number(price).toLocaleString("en-KE");
-
-}
-
-
-/* ==========================================
+/* =========================================================
    GET PRODUCT PRICE
-========================================== */
+   ========================================================= */
 
-function getProductPrice(productName, storage) {
+function getProductPrice(
+    productName,
+    storage
+) {
 
-    const product = PRODUCT_PRICES[productName];
+    const product =
+        PRODUCT_PRICES[productName];
 
     if (!product) {
 
         return null;
 
     }
+
+
+    /* Products without storage */
 
     if (
         typeof product === "number"
@@ -224,6 +247,9 @@ function getProductPrice(productName, storage) {
         return product;
 
     }
+
+
+    /* Products with storage */
 
     if (!storage) {
 
@@ -236,57 +262,93 @@ function getProductPrice(productName, storage) {
 }
 
 
-/* ==========================================
+/* =========================================================
    UPDATE CART COUNT
-========================================== */
+   ========================================================= */
 
 function updateCartCount() {
 
     const cart = getCart();
 
-    const total = cart.reduce(
-        function(sum, item) {
+    const total =
+        cart.reduce(
+            function(sum, item) {
 
-            return sum + item.quantity;
+                return sum + item.quantity;
 
-        },
-        0
-    );
+            },
+            0
+        );
+
 
     document
-        .querySelectorAll('a[href="cart.html"]')
-        .forEach(function(link) {
+        .querySelectorAll(
+            'a[href="cart.html"]'
+        )
+        .forEach(
+            function(link) {
 
-            link.textContent =
-                total > 0
-                    ? "Cart (" + total + ")"
-                    : "Cart";
+                link.textContent =
+                    total > 0
+                        ? "Cart (" + total + ")"
+                        : "Cart";
 
-        });
+            }
+        );
 
 }
 
 
-/* ==========================================
-   ADD TO CART
-========================================== */
+/* =========================================================
+   GET SELECTED STORAGE
+   ========================================================= */
 
-function addToCart(productName, storage) {
+function getSelectedStorage(card) {
+
+    const select =
+        card.querySelector(
+            ".storage-select"
+        );
+
+    if (!select) {
+
+        return "";
+
+    }
+
+    return select.value;
+
+}
+
+
+/* =========================================================
+   ADD TO CART
+   ========================================================= */
+
+function addToCart(
+    productName,
+    storage
+) {
 
     const cart = getCart();
 
     const fullName =
         storage
-            ? productName + " — " + storage
+            ? productName +
+              " — " +
+              storage
             : productName;
 
-    const existing = cart.find(
-        function(item) {
 
-            return item.name === fullName;
+    const existing =
+        cart.find(
+            function(item) {
 
-        }
-    );
+                return item.name === fullName;
+
+            }
+        );
+
 
     if (existing) {
 
@@ -304,9 +366,11 @@ function addToCart(productName, storage) {
 
     }
 
+
     saveCart(cart);
 
     updateCartCount();
+
 
     alert(
         fullName +
@@ -316,184 +380,320 @@ function addToCart(productName, storage) {
 }
 
 
-/* ==========================================
-   GET SELECTED STORAGE
-========================================== */
-
-function getSelectedStorage(card) {
-
-    const select =
-        card.querySelector(".storage-select");
-
-    if (!select) {
-
-        return "";
-
-    }
-
-    return select.value;
-
-}
-
-
-/* ==========================================
-   SET PRODUCT PRICES
-========================================== */
+/* =========================================================
+   PRODUCT PRICES
+   Creates price elements because the current
+   products.html cards do not contain them.
+   ========================================================= */
 
 function setupProductPrices() {
 
     document
-        .querySelectorAll(".product-card")
-        .forEach(function(card) {
+        .querySelectorAll(
+            ".product-card"
+        )
+        .forEach(
+            function(card) {
 
-            const nameElement =
-                card.querySelector("h3");
+                const nameElement =
+                    card.querySelector("h3");
 
-            const select =
-                card.querySelector(".storage-select");
-
-            const priceElement =
-                card.querySelector(".price");
-
-            if (
-                !nameElement ||
-                !priceElement
-            ) {
-
-                return;
-
-            }
-
-            const productName =
-                nameElement.textContent.trim();
-
-            function updatePrice() {
-
-                const storage =
-                    select
-                        ? select.value
-                        : "";
-
-                const price =
-                    getProductPrice(
-                        productName,
-                        storage
+                const select =
+                    card.querySelector(
+                        ".storage-select"
                     );
 
-                priceElement.textContent =
-                    formatPrice(price);
+                const actions =
+                    card.querySelector(
+                        ".product-actions"
+                    );
+
+
+                if (
+                    !nameElement ||
+                    !actions
+                ) {
+
+                    return;
+
+                }
+
+
+                const productName =
+                    nameElement.textContent.trim();
+
+
+                /*
+                 * Do not add prices to TVs
+                 * or products not in the
+                 * price list.
+                 */
+
+                if (
+                    !Object.prototype.hasOwnProperty.call(
+                        PRODUCT_PRICES,
+                        productName
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                /* Find existing price */
+
+                let priceElement =
+                    card.querySelector(
+                        ".price"
+                    );
+
+
+                /*
+                 * Create price element
+                 * if it doesn't exist.
+                 */
+
+                if (!priceElement) {
+
+                    priceElement =
+                        document.createElement(
+                            "p"
+                        );
+
+                    priceElement.className =
+                        "price";
+
+
+                    priceElement.style.margin =
+                        "0 0 14px";
+
+                    priceElement.style.fontWeight =
+                        "800";
+
+                    priceElement.style.fontSize =
+                        "17px";
+
+                    priceElement.style.lineHeight =
+                        "1.4";
+
+                    priceElement.style.color =
+                        "#111";
+
+
+                    /*
+                     * Phones:
+                     * Put price directly before
+                     * storage selector.
+                     */
+
+                    if (select) {
+
+                        const storageLabel =
+                            card.querySelector(
+                                ".storage-label"
+                            );
+
+
+                        if (
+                            storageLabel &&
+                            storageLabel.parentNode
+                        ) {
+
+                            storageLabel.parentNode.insertBefore(
+                                priceElement,
+                                storageLabel
+                            );
+
+                        } else {
+
+                            select.parentNode.insertBefore(
+                                priceElement,
+                                select
+                            );
+
+                        }
+
+                    } else {
+
+                        /*
+                         * PlayStation:
+                         * Put price before buttons.
+                         */
+
+                        actions.parentNode.insertBefore(
+                            priceElement,
+                            actions
+                        );
+
+                    }
+
+                }
+
+
+                /* Update price */
+
+                function updatePrice() {
+
+                    const storage =
+                        select
+                            ? select.value
+                            : "";
+
+
+                    const price =
+                        getProductPrice(
+                            productName,
+                            storage
+                        );
+
+
+                    priceElement.textContent =
+                        formatPrice(price);
+
+                }
+
+
+                /*
+                 * Change price when
+                 * storage changes.
+                 */
+
+                if (select) {
+
+                    select.addEventListener(
+                        "change",
+                        updatePrice
+                    );
+
+                }
+
+
+                /* Initial price */
+
+                updatePrice();
 
             }
-
-            if (select) {
-
-                select.addEventListener(
-                    "change",
-                    updatePrice
-                );
-
-            }
-
-            updatePrice();
-
-        });
+        );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    ADD TO CART BUTTONS
-========================================== */
+   ========================================================= */
 
 function setupAddToCartButtons() {
 
-    const products =
-        document.querySelectorAll(
+    document
+        .querySelectorAll(
             ".product-card"
-        );
+        )
+        .forEach(
+            function(card) {
 
-    products.forEach(function(card) {
+                const actions =
+                    card.querySelector(
+                        ".product-actions"
+                    );
 
-        const actions =
-            card.querySelector(
-                ".product-actions"
-            );
+                const name =
+                    card.querySelector("h3");
 
-        const name =
-            card.querySelector("h3");
 
-        if (
-            !actions ||
-            !name
-        ) {
+                if (
+                    !actions ||
+                    !name
+                ) {
 
-            return;
+                    return;
 
-        }
+                }
 
-        if (
-            actions.querySelector(
-                ".add-cart-btn"
-            )
-        ) {
 
-            return;
+                /*
+                 * Don't create duplicate
+                 * Add to Cart buttons.
+                 */
 
-        }
+                if (
+                    actions.querySelector(
+                        ".add-cart-btn"
+                    )
+                ) {
 
-        const button =
-            document.createElement("button");
+                    return;
 
-        button.type = "button";
+                }
 
-        button.className =
-            "add-cart-btn";
 
-        button.textContent =
-            "Add to Cart";
+                const button =
+                    document.createElement(
+                        "button"
+                    );
 
-        button.addEventListener(
-            "click",
-            function() {
 
-                const productName =
-                    name.textContent.trim();
+                button.type =
+                    "button";
 
-                const storage =
-                    getSelectedStorage(card);
+                button.className =
+                    "add-cart-btn";
 
-                addToCart(
-                    productName,
-                    storage
+                button.textContent =
+                    "Add to Cart";
+
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        const productName =
+                            name.textContent.trim();
+
+                        const storage =
+                            getSelectedStorage(
+                                card
+                            );
+
+
+                        addToCart(
+                            productName,
+                            storage
+                        );
+
+                    }
+                );
+
+
+                actions.insertBefore(
+                    button,
+                    actions.firstChild
                 );
 
             }
         );
 
-        actions.insertBefore(
-            button,
-            actions.firstChild
-        );
-
-    });
-
 }
 
 
-/* ==========================================
+/* =========================================================
    PRODUCT SEARCH
-========================================== */
+   ========================================================= */
 
 function setupProductSearch() {
 
     const search =
-        document.getElementById("search");
+        document.getElementById(
+            "search"
+        );
+
 
     if (!search) {
 
         return;
 
     }
+
 
     search.addEventListener(
         "input",
@@ -504,33 +704,37 @@ function setupProductSearch() {
                     .toLowerCase()
                     .trim();
 
+
             document
                 .querySelectorAll(
                     ".product-card"
                 )
-                .forEach(function(card) {
+                .forEach(
+                    function(card) {
 
-                    const text =
-                        card.textContent
-                            .toLowerCase();
+                        const text =
+                            card.textContent
+                                .toLowerCase();
 
-                    if (
-                        text.includes(term)
-                    ) {
 
-                        card.classList.remove(
-                            "hidden-product"
-                        );
+                        if (
+                            text.includes(term)
+                        ) {
 
-                    } else {
+                            card.classList.remove(
+                                "hidden-product"
+                            );
 
-                        card.classList.add(
-                            "hidden-product"
-                        );
+                        } else {
+
+                            card.classList.add(
+                                "hidden-product"
+                            );
+
+                        }
 
                     }
-
-                });
+                );
 
         }
     );
@@ -538,9 +742,9 @@ function setupProductSearch() {
 }
 
 
-/* ==========================================
-   PRODUCT WHATSAPP
-========================================== */
+/* =========================================================
+   PRODUCT WHATSAPP BUTTONS
+   ========================================================= */
 
 function setupWhatsAppButtons() {
 
@@ -548,73 +752,94 @@ function setupWhatsAppButtons() {
         .querySelectorAll(
             ".product-card .whatsapp-btn"
         )
-        .forEach(function(button) {
+        .forEach(
+            function(button) {
 
-            button.addEventListener(
-                "click",
-                function(event) {
+                button.addEventListener(
+                    "click",
+                    function(event) {
 
-                    event.preventDefault();
+                        event.preventDefault();
 
-                    const card =
-                        button.closest(
-                            ".product-card"
-                        );
 
-                    if (!card) {
+                        const card =
+                            button.closest(
+                                ".product-card"
+                            );
 
-                        return;
 
-                    }
+                        if (!card) {
 
-                    const name =
-                        card.querySelector("h3");
+                            return;
 
-                    if (!name) {
+                        }
 
-                        return;
 
-                    }
+                        const name =
+                            card.querySelector(
+                                "h3"
+                            );
 
-                    const productName =
-                        name.textContent.trim();
 
-                    const storage =
-                        getSelectedStorage(card);
+                        if (!name) {
 
-                    let message =
-                        "Hi 4LJTek, I'm interested in the " +
-                        productName;
+                            return;
 
-                    if (storage) {
+                        }
+
+
+                        const productName =
+                            name.textContent.trim();
+
+
+                        const storage =
+                            getSelectedStorage(
+                                card
+                            );
+
+
+                        let message =
+                            "Hi 4LJTek, I'm interested in the " +
+                            productName;
+
+
+                        if (storage) {
+
+                            message +=
+                                " — " +
+                                storage;
+
+                        }
+
 
                         message +=
-                            " — " + storage;
+                            ". Please share the price and availability.";
+
+
+                        const url =
+                            "https://api.whatsapp.com/send?phone=" +
+                            WHATSAPP_NUMBER +
+                            "&text=" +
+                            encodeURIComponent(
+                                message
+                            );
+
+
+                        window.location.href =
+                            url;
 
                     }
+                );
 
-                    message +=
-                        ". Please share the price and availability.";
-
-                    const url =
-                        "https://api.whatsapp.com/send?phone=" +
-                        WHATSAPP_NUMBER +
-                        "&text=" +
-                        encodeURIComponent(message);
-
-                    window.location.href = url;
-
-                }
-            );
-
-        });
+            }
+        );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    HOMEPAGE WHATSAPP
-========================================== */
+   ========================================================= */
 
 function setupHomeWhatsApp() {
 
@@ -623,11 +848,13 @@ function setupHomeWhatsApp() {
             "home-whatsapp"
         );
 
+
     if (!button) {
 
         return;
 
     }
+
 
     button.addEventListener(
         "click",
@@ -635,16 +862,22 @@ function setupHomeWhatsApp() {
 
             event.preventDefault();
 
+
             const message =
                 "Hi 4LJTek, I'd like to order from your store.";
+
 
             const url =
                 "https://api.whatsapp.com/send?phone=" +
                 WHATSAPP_NUMBER +
                 "&text=" +
-                encodeURIComponent(message);
+                encodeURIComponent(
+                    message
+                );
 
-            window.location.href = url;
+
+            window.location.href =
+                url;
 
         }
     );
@@ -652,16 +885,110 @@ function setupHomeWhatsApp() {
 }
 
 
-/* ==========================================
-   UPDATE OLD STATIC CART SUMMARY
-========================================== */
+/* =========================================================
+   EXTRACT PRODUCT NAME + STORAGE
+   ========================================================= */
 
-function updateCartSummary(totalItems, totalPrice) {
+function getCartProductDetails(
+    itemName
+) {
+
+    let productName =
+        itemName;
+
+    let storage =
+        "";
+
+
+    if (
+        itemName.includes(" — ")
+    ) {
+
+        const parts =
+            itemName.split(" — ");
+
+
+        productName =
+            parts[0].trim();
+
+
+        storage =
+            parts
+                .slice(1)
+                .join(" — ")
+                .trim();
+
+    }
+
+
+    return {
+        productName,
+        storage
+    };
+
+}
+
+
+/* =========================================================
+   CART TOTAL
+   ========================================================= */
+
+function calculateCartTotal(cart) {
+
+    let total =
+        0;
+
+
+    cart.forEach(
+        function(item) {
+
+            const details =
+                getCartProductDetails(
+                    item.name
+                );
+
+
+            const price =
+                getProductPrice(
+                    details.productName,
+                    details.storage
+                );
+
+
+            if (
+                price !== null &&
+                price !== undefined
+            ) {
+
+                total +=
+                    price *
+                    item.quantity;
+
+            }
+
+        }
+    );
+
+
+    return total;
+
+}
+
+
+/* =========================================================
+   UPDATE CART SUMMARY
+   ========================================================= */
+
+function updateCartSummary(
+    totalItems,
+    totalPrice
+) {
 
     const summary =
         document.getElementById(
             "cart-summary"
         );
+
 
     if (!summary) {
 
@@ -669,94 +996,115 @@ function updateCartSummary(totalItems, totalPrice) {
 
     }
 
-    /* Update item count */
 
-    const allElements =
+    /*
+     * Remove any total previously
+     * generated by this script.
+     */
+
+    const oldGenerated =
+        summary.querySelector(
+            "#cart-total-price"
+        );
+
+
+    if (oldGenerated) {
+
+        oldGenerated.remove();
+
+    }
+
+
+    /*
+     * Look for an existing
+     * "Contact for Price" element.
+     */
+
+    let totalElement =
+        null;
+
+
+    const descendants =
         summary.querySelectorAll("*");
 
-    allElements.forEach(function(element) {
 
-        const text =
-            element.textContent.trim();
+    descendants.forEach(
+        function(element) {
 
-        if (
-            text === "Items: 2" ||
-            text.startsWith("Items:")
-        ) {
-
-            element.textContent =
-                "Items: " + totalItems;
-
-        }
-
-    });
-
-
-    /* Find and replace old
-       "Contact for Price" */
-
-    let replaced = false;
-
-    summary
-        .querySelectorAll("*")
-        .forEach(function(element) {
-
-            if (replaced) {
+            if (totalElement) {
 
                 return;
 
             }
 
+
             const text =
-                element.textContent.trim();
+                element.textContent
+                    .trim();
+
 
             if (
-                text === "Total: Contact for Price" ||
-                text === "Total Contact for Price"
+                text ===
+                "Total: Contact for Price"
             ) {
 
-                element.textContent =
-                    "Total: " +
-                    formatPrice(totalPrice);
-
-                replaced = true;
+                totalElement =
+                    element;
 
             }
 
-        });
+        }
+    );
 
 
-    /* Handle cases where
-       Contact for Price is inside
-       a separate span */
+    /*
+     * If found, replace it.
+     */
 
-    if (!replaced) {
+    if (totalElement) {
 
-        summary
-            .querySelectorAll("*")
-            .forEach(function(element) {
+        totalElement.textContent =
+            "Total: " +
+            formatPrice(totalPrice);
 
-                if (replaced) {
+    }
+
+
+    /*
+     * Handle separate
+     * "Contact for Price"
+     * element.
+     */
+
+    if (!totalElement) {
+
+        descendants.forEach(
+            function(element) {
+
+                if (totalElement) {
 
                     return;
 
                 }
 
-                const text =
-                    element.textContent.trim();
 
                 if (
-                    text === "Contact for Price"
+                    element.textContent
+                        .trim() ===
+                    "Contact for Price"
                 ) {
 
                     const parent =
                         element.parentElement;
 
+
                     if (
                         parent &&
                         parent.textContent
                             .toLowerCase()
-                            .includes("total")
+                            .includes(
+                                "total"
+                            )
                     ) {
 
                         element.textContent =
@@ -764,37 +1112,98 @@ function updateCartSummary(totalItems, totalPrice) {
                                 totalPrice
                             );
 
-                        replaced = true;
+
+                        totalElement =
+                            element;
 
                     }
 
                 }
 
-            });
-
-    }
-
-
-    /* Remove any previously generated
-       duplicate total */
-
-    const generated =
-        document.getElementById(
-            "cart-total-price"
+            }
         );
 
-    if (generated) {
+    }
 
-        generated.remove();
+
+    /*
+     * If the old static total
+     * cannot be found, create
+     * one clean total.
+     */
+
+    if (!totalElement) {
+
+        const newTotal =
+            document.createElement(
+                "div"
+            );
+
+
+        newTotal.id =
+            "cart-total-price";
+
+
+        newTotal.style.marginTop =
+            "12px";
+
+
+        newTotal.style.fontWeight =
+            "800";
+
+
+        newTotal.style.fontSize =
+            "18px";
+
+
+        newTotal.textContent =
+            "Total: " +
+            formatPrice(totalPrice);
+
+
+        summary.appendChild(
+            newTotal
+        );
 
     }
+
+
+    /*
+     * Update Items count
+     * without destroying the
+     * rest of the summary.
+     */
+
+    descendants.forEach(
+        function(element) {
+
+            const text =
+                element.textContent
+                    .trim();
+
+
+            if (
+                text === "Items: 2" ||
+                /^Items:\s*\d+$/.test(
+                    text
+                )
+            ) {
+
+                element.textContent =
+                    "Items: " +
+                    totalItems;
+
+            }
+
+        }
+    );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    DISPLAY CART
-========================================== */
+   ========================================================= */
 
 function displayCart() {
 
@@ -803,29 +1212,37 @@ function displayCart() {
             "cart-items"
         );
 
+
     if (!container) {
 
         return;
 
     }
 
+
     const summary =
         document.getElementById(
             "cart-summary"
         );
+
 
     const empty =
         document.getElementById(
             "empty-cart"
         );
 
+
     const cart =
         getCart();
 
 
-    /* EMPTY CART */
+    /* =========================
+       EMPTY CART
+    ========================= */
 
-    if (cart.length === 0) {
+    if (
+        cart.length === 0
+    ) {
 
         if (empty) {
 
@@ -834,6 +1251,7 @@ function displayCart() {
 
         }
 
+
         if (summary) {
 
             summary.style.display =
@@ -841,14 +1259,19 @@ function displayCart() {
 
         }
 
-        container.innerHTML = "";
+
+        container.innerHTML =
+            "";
+
 
         return;
 
     }
 
 
-    /* SHOW CART */
+    /* =========================
+       CART HAS PRODUCTS
+    ========================= */
 
     if (empty) {
 
@@ -856,6 +1279,7 @@ function displayCart() {
             "none";
 
     }
+
 
     if (summary) {
 
@@ -865,12 +1289,16 @@ function displayCart() {
     }
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
-    let totalItems = 0;
+    let totalItems =
+        0;
 
-    let totalPrice = 0;
+
+    let totalPrice =
+        0;
 
 
     cart.forEach(
@@ -880,42 +1308,22 @@ function displayCart() {
                 item.quantity;
 
 
-            /* Extract product name
-               and storage */
-
-            let productName =
-                item.name;
-
-            let storage = "";
-
-
-            if (
-                item.name.includes(" — ")
-            ) {
-
-                const parts =
-                    item.name.split(" — ");
-
-                productName =
-                    parts[0].trim();
-
-                storage =
-                    parts.slice(1)
-                        .join(" — ")
-                        .trim();
-
-            }
+            const details =
+                getCartProductDetails(
+                    item.name
+                );
 
 
             const unitPrice =
                 getProductPrice(
-                    productName,
-                    storage
+                    details.productName,
+                    details.storage
                 );
 
 
             if (
-                unitPrice !== null
+                unitPrice !== null &&
+                unitPrice !== undefined
             ) {
 
                 totalPrice +=
@@ -926,7 +1334,9 @@ function displayCart() {
 
 
             const div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             div.style.marginBottom =
@@ -939,20 +1349,25 @@ function displayCart() {
                     ${item.name}
                 </h3>
 
-                <p style="
-                    margin:8px 0;
-                    font-weight:600;
-                    color:#555;
-                ">
+                <p
+                    class="cart-item-price"
+                    style="
+                        margin:8px 0;
+                        font-weight:700;
+                        color:#111;
+                    "
+                >
                     ${formatPrice(unitPrice)}
                 </p>
 
-                <div style="
-                    display:flex;
-                    align-items:center;
-                    gap:12px;
-                    margin:15px 0;
-                ">
+                <div
+                    style="
+                        display:flex;
+                        align-items:center;
+                        gap:12px;
+                        margin:15px 0;
+                    "
+                >
 
                     <button
                         type="button"
@@ -972,13 +1387,17 @@ function displayCart() {
                         −
                     </button>
 
-                    <strong style="
-                        min-width:30px;
-                        text-align:center;
-                        font-size:20px;
-                    ">
+
+                    <strong
+                        style="
+                            min-width:30px;
+                            text-align:center;
+                            font-size:20px;
+                        "
+                    >
                         ${item.quantity}
                     </strong>
+
 
                     <button
                         type="button"
@@ -999,6 +1418,7 @@ function displayCart() {
                     </button>
 
                 </div>
+
 
                 <button
                     type="button"
@@ -1021,15 +1441,17 @@ function displayCart() {
             `;
 
 
-            container.appendChild(div);
+            container.appendChild(
+                div
+            );
 
         }
     );
 
 
-    /* ==========================================
-       UPDATE SUMMARY
-    ========================================== */
+    /*
+     * Update order summary.
+     */
 
     updateCartSummary(
         totalItems,
@@ -1037,121 +1459,145 @@ function displayCart() {
     );
 
 
-    /* ==========================================
-       QUANTITY BUTTONS
-    ========================================== */
+    /* =========================
+       PLUS / MINUS
+    ========================= */
 
     document
         .querySelectorAll(
             ".quantity-btn"
         )
-        .forEach(function(button) {
+        .forEach(
+            function(button) {
 
-            button.addEventListener(
-                "click",
-                function() {
+                button.addEventListener(
+                    "click",
+                    function() {
 
-                    const index =
-                        Number(
-                            button.dataset.index
-                        );
+                        const index =
+                            Number(
+                                button.dataset.index
+                            );
 
-                    const action =
-                        button.dataset.action;
 
-                    const cart =
-                        getCart();
+                        const action =
+                            button.dataset.action;
 
-                    if (!cart[index]) {
 
-                        return;
+                        const cart =
+                            getCart();
 
-                    }
-
-                    if (
-                        action === "plus"
-                    ) {
-
-                        cart[index].quantity++;
-
-                    }
-
-                    if (
-                        action === "minus"
-                    ) {
-
-                        cart[index].quantity--;
 
                         if (
-                            cart[index].quantity <= 0
+                            !cart[index]
                         ) {
 
-                            cart.splice(
-                                index,
-                                1
-                            );
+                            return;
 
                         }
 
+
+                        if (
+                            action ===
+                            "plus"
+                        ) {
+
+                            cart[index]
+                                .quantity++;
+
+                        }
+
+
+                        if (
+                            action ===
+                            "minus"
+                        ) {
+
+                            cart[index]
+                                .quantity--;
+
+
+                            if (
+                                cart[index]
+                                    .quantity <= 0
+                            ) {
+
+                                cart.splice(
+                                    index,
+                                    1
+                                );
+
+                            }
+
+                        }
+
+
+                        saveCart(cart);
+
+                        displayCart();
+
+                        updateCartCount();
+
                     }
+                );
 
-                    saveCart(cart);
-
-                    displayCart();
-
-                    updateCartCount();
-
-                }
-            );
-
-        });
+            }
+        );
 
 
-    /* ==========================================
-       REMOVE BUTTONS
-    ========================================== */
+    /* =========================
+       REMOVE
+    ========================= */
 
     document
         .querySelectorAll(
             ".remove-cart-btn"
         )
-        .forEach(function(button) {
+        .forEach(
+            function(button) {
 
-            button.addEventListener(
-                "click",
-                function() {
+                button.addEventListener(
+                    "click",
+                    function() {
 
-                    const index =
-                        Number(
-                            button.dataset.index
+                        const index =
+                            Number(
+                                button.dataset.index
+                            );
+
+
+                        const cart =
+                            getCart();
+
+
+                        cart.splice(
+                            index,
+                            1
                         );
 
-                    const cart =
-                        getCart();
 
-                    cart.splice(
-                        index,
-                        1
-                    );
+                        saveCart(cart);
 
-                    saveCart(cart);
+                        displayCart();
 
-                    displayCart();
+                        updateCartCount();
 
-                    updateCartCount();
+                    }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
 
-    /* CART COUNT */
+    /* =========================
+       CART COUNT
+    ========================= */
 
     const count =
         document.getElementById(
             "cart-count"
         );
+
 
     if (count) {
 
@@ -1163,9 +1609,9 @@ function displayCart() {
 }
 
 
-/* ==========================================
+/* =========================================================
    CLEAR CART
-========================================== */
+   ========================================================= */
 
 function setupClearCart() {
 
@@ -1174,11 +1620,13 @@ function setupClearCart() {
             "clear-cart"
         );
 
+
     if (!button) {
 
         return;
 
     }
+
 
     button.addEventListener(
         "click",
@@ -1187,6 +1635,7 @@ function setupClearCart() {
             localStorage.removeItem(
                 CART_KEY
             );
+
 
             displayCart();
 
@@ -1198,9 +1647,9 @@ function setupClearCart() {
 }
 
 
-/* ==========================================
+/* =========================================================
    CART WHATSAPP
-========================================== */
+   ========================================================= */
 
 function setupCartWhatsApp() {
 
@@ -1209,11 +1658,13 @@ function setupCartWhatsApp() {
             "cart-whatsapp"
         );
 
+
     if (!button) {
 
         return;
 
     }
+
 
     button.addEventListener(
         "click",
@@ -1221,6 +1672,7 @@ function setupCartWhatsApp() {
 
             const cart =
                 getCart();
+
 
             if (
                 cart.length === 0
@@ -1239,48 +1691,29 @@ function setupCartWhatsApp() {
                 "Hi 4LJTek, I'd like to order:%0A%0A";
 
 
-            let totalPrice = 0;
+            let totalPrice =
+                0;
 
 
             cart.forEach(
                 function(item) {
 
-                    let productName =
-                        item.name;
-
-                    let storage = "";
-
-
-                    if (
-                        item.name.includes(" — ")
-                    ) {
-
-                        const parts =
-                            item.name.split(
-                                " — "
-                            );
-
-                        productName =
-                            parts[0].trim();
-
-                        storage =
-                            parts
-                                .slice(1)
-                                .join(" — ")
-                                .trim();
-
-                    }
+                    const details =
+                        getCartProductDetails(
+                            item.name
+                        );
 
 
                     const price =
                         getProductPrice(
-                            productName,
-                            storage
+                            details.productName,
+                            details.storage
                         );
 
 
                     if (
-                        price !== null
+                        price !== null &&
+                        price !== undefined
                     ) {
 
                         totalPrice +=
@@ -1305,11 +1738,13 @@ function setupCartWhatsApp() {
 
             message +=
                 "%0ATotal: " +
-                formatPrice(totalPrice) +
-                "%0A%0A";
+                formatPrice(
+                    totalPrice
+                );
+
 
             message +=
-                "Please confirm availability.";
+                "%0A%0APlease confirm availability.";
 
 
             window.location.href =
@@ -1324,9 +1759,9 @@ function setupCartWhatsApp() {
 }
 
 
-/* ==========================================
+/* =========================================================
    CART CALL
-========================================== */
+   ========================================================= */
 
 function setupCartCall() {
 
@@ -1335,11 +1770,13 @@ function setupCartCall() {
             "cart-call"
         );
 
+
     if (!button) {
 
         return;
 
     }
+
 
     button.addEventListener(
         "click",
@@ -1354,11 +1791,15 @@ function setupCartCall() {
 }
 
 
-/* ==========================================
+/* =========================================================
    MOBILE MENU
-========================================== */
+   ========================================================= */
 
 function setupMobileMenu() {
+
+    /*
+     * Prevent duplicate menu.
+     */
 
     if (
         document.querySelector(
@@ -1376,6 +1817,7 @@ function setupMobileMenu() {
             "header, .site-header"
         );
 
+
     if (!header) {
 
         return;
@@ -1384,7 +1826,10 @@ function setupMobileMenu() {
 
 
     const nav =
-        header.querySelector("nav");
+        header.querySelector(
+            "nav"
+        );
+
 
     if (!nav) {
 
@@ -1399,10 +1844,13 @@ function setupMobileMenu() {
         );
 
 
-    button.type = "button";
+    button.type =
+        "button";
+
 
     button.className =
         "mobile-menu-btn";
+
 
     button.setAttribute(
         "aria-label",
@@ -1417,7 +1865,9 @@ function setupMobileMenu() {
     `;
 
 
-    header.appendChild(button);
+    header.appendChild(
+        button
+    );
 
 
     button.addEventListener(
@@ -1428,6 +1878,7 @@ function setupMobileMenu() {
                 "mobile-nav-open"
             );
 
+
             button.classList.toggle(
                 "menu-open"
             );
@@ -1437,31 +1888,34 @@ function setupMobileMenu() {
 
 
     nav.querySelectorAll("a")
-        .forEach(function(link) {
+        .forEach(
+            function(link) {
 
-            link.addEventListener(
-                "click",
-                function() {
+                link.addEventListener(
+                    "click",
+                    function() {
 
-                    nav.classList.remove(
-                        "mobile-nav-open"
-                    );
+                        nav.classList.remove(
+                            "mobile-nav-open"
+                        );
 
-                    button.classList.remove(
-                        "menu-open"
-                    );
 
-                }
-            );
+                        button.classList.remove(
+                            "menu-open"
+                        );
 
-        });
+                    }
+                );
+
+            }
+        );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    START 4LJTEK
-========================================== */
+   ========================================================= */
 
 function start4LJTek() {
 
@@ -1490,9 +1944,9 @@ function start4LJTek() {
 }
 
 
-/* ==========================================
-   STARTUP
-========================================== */
+/* =========================================================
+   START SCRIPT
+   ========================================================= */
 
 if (
     document.readyState === "loading"
