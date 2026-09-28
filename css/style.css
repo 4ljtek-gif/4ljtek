@@ -1234,3 +1234,7 @@ footer p {
         height: 70px !important;
     }
    }
+/* Hide old contact-for-price messages */
+.price-note {
+    display: none !important;
+}
