@@ -1238,3 +1238,7 @@ footer p {
 .price-note {
     display: none !important;
 }
+/* Remove old price placeholders */
+.product-card > .price {
+    display: none !important;
+}
