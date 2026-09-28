@@ -1,5 +1,5 @@
 /* =========================================================
-   4LJTEK - MAIN JAVASCRIPT
+   4LJTEK - COMPLETE STORE JAVASCRIPT
    ========================================================= */
 
 const WHATSAPP_NUMBER = "254101984723";
@@ -12,9 +12,7 @@ const CART_KEY = "4ljtekCart";
 
 const PRODUCT_PRICES = {
 
-    /* =========================
-       APPLE
-    ========================= */
+    /* APPLE */
 
     "iPhone 17": {
         "256GB": 116000,
@@ -55,9 +53,7 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* =========================
-       SAMSUNG
-    ========================= */
+    /* SAMSUNG */
 
     "Samsung Galaxy S25": {
         "128GB": 80000,
@@ -93,9 +89,7 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* =========================
-       GOOGLE PIXEL
-    ========================= */
+    /* GOOGLE PIXEL */
 
     "Google Pixel 10": {
         "128GB": 82000,
@@ -145,9 +139,7 @@ const PRODUCT_PRICES = {
     },
 
 
-    /* =========================
-       PLAYSTATION
-    ========================= */
+    /* PLAYSTATION */
 
     "PlayStation 5": 85000,
 
@@ -158,7 +150,46 @@ const PRODUCT_PRICES = {
     "PlayStation 5 Pro": 145000,
 
     "DualSense Wireless Controller": 10500
+};
 
+
+/* =========================================================
+   PRODUCT IMAGES
+   ========================================================= */
+
+const PRODUCT_IMAGES = {
+
+    "iPhone 17": "images/iphone17.jpg",
+    "iPhone 17 Air": "images/iphone17air.jpg",
+    "iPhone 17 Pro": "images/iphone17pro.jpg",
+    "iPhone 17 Pro Max": "images/iphone17promax.jpg",
+
+    "iPhone 18 Pro": "images/iphone18pro.jpg",
+    "iPhone 18 Pro Max": "images/iphone18promax.jpg",
+
+    "Samsung Galaxy S25": "images/s25.jpg",
+    "Samsung Galaxy S25+": "images/s25plus.jpg",
+    "Samsung Galaxy S25 Ultra": "images/s25ultra.jpg",
+
+    "Samsung Galaxy S26": "images/s26.jpg",
+    "Samsung Galaxy S26+": "images/s26plus.jpg",
+    "Samsung Galaxy S26 Ultra": "images/s26ultra.jpg",
+
+    "Google Pixel 10": "images/pixel10.jpg",
+    "Google Pixel 10 Pro": "images/pixel10pro.jpg",
+    "Google Pixel 10 Pro XL": "images/pixel10proxl.jpg",
+    "Google Pixel 10 Pro Fold": "images/pixel10profold.jpg",
+
+    "Google Pixel 11": "images/pixel11.jpg",
+    "Google Pixel 11 Pro": "images/pixel11pro.jpg",
+    "Google Pixel 11 Pro XL": "images/pixel11proxl.jpg",
+    "Google Pixel 11 Pro Fold": "images/pixel11profold.jpg",
+
+    "PlayStation 5": "images/ps5.jpg",
+    "PlayStation 5 Digital Edition": "images/ps5digital.jpg",
+    "PS5 Slim": "images/ps5slim.jpg",
+    "PlayStation 5 Pro": "images/ps5pro.jpg",
+    "DualSense Wireless Controller": "images/dualsense.jpg"
 };
 
 
@@ -173,19 +204,16 @@ function formatPrice(price) {
         price === undefined ||
         isNaN(price)
     ) {
-
         return "Contact for Price";
-
     }
 
     return "KSh " +
         Number(price).toLocaleString("en-KE");
-
 }
 
 
 /* =========================================================
-   GET CART
+   CART
    ========================================================= */
 
 function getCart() {
@@ -201,13 +229,8 @@ function getCart() {
         return [];
 
     }
-
 }
 
-
-/* =========================================================
-   SAVE CART
-   ========================================================= */
 
 function saveCart(cart) {
 
@@ -220,7 +243,37 @@ function saveCart(cart) {
 
 
 /* =========================================================
-   GET PRODUCT PRICE
+   PRODUCT DETAILS
+   ========================================================= */
+
+function getCartProductDetails(name) {
+
+    let productName = name;
+    let storage = "";
+
+    if (name.includes(" — ")) {
+
+        const parts =
+            name.split(" — ");
+
+        productName =
+            parts[0].trim();
+
+        storage =
+            parts.slice(1)
+                .join(" — ")
+                .trim();
+    }
+
+    return {
+        productName,
+        storage
+    };
+}
+
+
+/* =========================================================
+   GET PRICE
    ========================================================= */
 
 function getProductPrice(
@@ -237,9 +290,6 @@ function getProductPrice(
 
     }
 
-
-    /* Products without storage */
-
     if (
         typeof product === "number"
     ) {
@@ -248,9 +298,6 @@ function getProductPrice(
 
     }
 
-
-    /* Products with storage */
-
     if (!storage) {
 
         return null;
@@ -258,23 +305,61 @@ function getProductPrice(
     }
 
     return product[storage] ?? null;
-
 }
 
 
 /* =========================================================
-   UPDATE CART COUNT
+   CART TOTAL
+   ========================================================= */
+
+function calculateCartTotal(cart) {
+
+    let total = 0;
+
+    cart.forEach(function(item) {
+
+        const details =
+            getCartProductDetails(
+                item.name
+            );
+
+        const price =
+            getProductPrice(
+                details.productName,
+                details.storage
+            );
+
+        if (
+            price !== null &&
+            price !== undefined
+        ) {
+
+            total +=
+                price * item.quantity;
+
+        }
+
+    });
+
+    return total;
+}
+
+
+/* =========================================================
+   CART COUNT
    ========================================================= */
 
 function updateCartCount() {
 
-    const cart = getCart();
+    const cart =
+        getCart();
 
     const total =
         cart.reduce(
             function(sum, item) {
 
-                return sum + item.quantity;
+                return sum +
+                    Number(item.quantity || 0);
 
             },
             0
@@ -300,7 +385,7 @@ function updateCartCount() {
 
 
 /* =========================================================
-   GET SELECTED STORAGE
+   STORAGE
    ========================================================= */
 
 function getSelectedStorage(card) {
@@ -330,7 +415,8 @@ function addToCart(
     storage
 ) {
 
-    const cart = getCart();
+    const cart =
+        getCart();
 
     const fullName =
         storage
@@ -344,7 +430,8 @@ function addToCart(
         cart.find(
             function(item) {
 
-                return item.name === fullName;
+                return item.name ===
+                    fullName;
 
             }
         );
@@ -381,9 +468,7 @@ function addToCart(
 
 
 /* =========================================================
-   PRODUCT PRICES
-   Creates price elements because the current
-   products.html cards do not contain them.
+   PRODUCT PAGE PRICES
    ========================================================= */
 
 function setupProductPrices() {
@@ -423,12 +508,6 @@ function setupProductPrices() {
                     nameElement.textContent.trim();
 
 
-                /*
-                 * Do not add prices to TVs
-                 * or products not in the
-                 * price list.
-                 */
-
                 if (
                     !Object.prototype.hasOwnProperty.call(
                         PRODUCT_PRICES,
@@ -441,8 +520,6 @@ function setupProductPrices() {
                 }
 
 
-                /* Find existing price */
-
                 let priceElement =
                     card.querySelector(
                         ".price"
@@ -450,8 +527,9 @@ function setupProductPrices() {
 
 
                 /*
-                 * Create price element
-                 * if it doesn't exist.
+                 * Create price if the
+                 * current products.html
+                 * doesn't have one.
                  */
 
                 if (!priceElement) {
@@ -465,44 +543,18 @@ function setupProductPrices() {
                         "price";
 
 
-                    priceElement.style.margin =
-                        "0 0 14px";
-
-                    priceElement.style.fontWeight =
-                        "800";
-
-                    priceElement.style.fontSize =
-                        "17px";
-
-                    priceElement.style.lineHeight =
-                        "1.4";
-
-                    priceElement.style.color =
-                        "#111";
-
-
-                    /*
-                     * Phones:
-                     * Put price directly before
-                     * storage selector.
-                     */
-
                     if (select) {
 
-                        const storageLabel =
+                        const label =
                             card.querySelector(
                                 ".storage-label"
                             );
 
+                        if (label) {
 
-                        if (
-                            storageLabel &&
-                            storageLabel.parentNode
-                        ) {
-
-                            storageLabel.parentNode.insertBefore(
+                            label.parentNode.insertBefore(
                                 priceElement,
-                                storageLabel
+                                label
                             );
 
                         } else {
@@ -516,11 +568,6 @@ function setupProductPrices() {
 
                     } else {
 
-                        /*
-                         * PlayStation:
-                         * Put price before buttons.
-                         */
-
                         actions.parentNode.insertBefore(
                             priceElement,
                             actions
@@ -530,8 +577,6 @@ function setupProductPrices() {
 
                 }
 
-
-                /* Update price */
 
                 function updatePrice() {
 
@@ -554,11 +599,6 @@ function setupProductPrices() {
                 }
 
 
-                /*
-                 * Change price when
-                 * storage changes.
-                 */
-
                 if (select) {
 
                     select.addEventListener(
@@ -568,8 +608,6 @@ function setupProductPrices() {
 
                 }
 
-
-                /* Initial price */
 
                 updatePrice();
 
@@ -611,11 +649,6 @@ function setupAddToCartButtons() {
                 }
 
 
-                /*
-                 * Don't create duplicate
-                 * Add to Cart buttons.
-                 */
-
                 if (
                     actions.querySelector(
                         ".add-cart-btn"
@@ -647,18 +680,11 @@ function setupAddToCartButtons() {
                     "click",
                     function() {
 
-                        const productName =
-                            name.textContent.trim();
-
-                        const storage =
+                        addToCart(
+                            name.textContent.trim(),
                             getSelectedStorage(
                                 card
-                            );
-
-
-                        addToCart(
-                            productName,
-                            storage
+                            )
                         );
 
                     }
@@ -677,7 +703,7 @@ function setupAddToCartButtons() {
 
 
 /* =========================================================
-   PRODUCT SEARCH
+   SEARCH
    ========================================================= */
 
 function setupProductSearch() {
@@ -717,21 +743,10 @@ function setupProductSearch() {
                                 .toLowerCase();
 
 
-                        if (
-                            text.includes(term)
-                        ) {
-
-                            card.classList.remove(
-                                "hidden-product"
-                            );
-
-                        } else {
-
-                            card.classList.add(
-                                "hidden-product"
-                            );
-
-                        }
+                        card.classList.toggle(
+                            "hidden-product",
+                            !text.includes(term)
+                        );
 
                     }
                 );
@@ -743,7 +758,7 @@ function setupProductSearch() {
 
 
 /* =========================================================
-   PRODUCT WHATSAPP BUTTONS
+   WHATSAPP PRODUCT BUTTONS
    ========================================================= */
 
 function setupWhatsAppButtons() {
@@ -816,17 +831,13 @@ function setupWhatsAppButtons() {
                             ". Please share the price and availability.";
 
 
-                        const url =
+                        window.location.href =
                             "https://api.whatsapp.com/send?phone=" +
                             WHATSAPP_NUMBER +
                             "&text=" +
                             encodeURIComponent(
                                 message
                             );
-
-
-                        window.location.href =
-                            url;
 
                     }
                 );
@@ -838,7 +849,7 @@ function setupWhatsAppButtons() {
 
 
 /* =========================================================
-   HOMEPAGE WHATSAPP
+   HOME WHATSAPP
    ========================================================= */
 
 function setupHomeWhatsApp() {
@@ -867,7 +878,7 @@ function setupHomeWhatsApp() {
                 "Hi 4LJTek, I'd like to order from your store.";
 
 
-            const url =
+            window.location.href =
                 "https://api.whatsapp.com/send?phone=" +
                 WHATSAPP_NUMBER +
                 "&text=" +
@@ -875,10 +886,6 @@ function setupHomeWhatsApp() {
                     message
                 );
 
-
-            window.location.href =
-                url;
-
         }
     );
 
@@ -886,323 +893,7 @@ function setupHomeWhatsApp() {
 
 
 /* =========================================================
-   EXTRACT PRODUCT NAME + STORAGE
-   ========================================================= */
-
-function getCartProductDetails(
-    itemName
-) {
-
-    let productName =
-        itemName;
-
-    let storage =
-        "";
-
-
-    if (
-        itemName.includes(" — ")
-    ) {
-
-        const parts =
-            itemName.split(" — ");
-
-
-        productName =
-            parts[0].trim();
-
-
-        storage =
-            parts
-                .slice(1)
-                .join(" — ")
-                .trim();
-
-    }
-
-
-    return {
-        productName,
-        storage
-    };
-
-}
-
-
-/* =========================================================
-   CART TOTAL
-   ========================================================= */
-
-function calculateCartTotal(cart) {
-
-    let total =
-        0;
-
-
-    cart.forEach(
-        function(item) {
-
-            const details =
-                getCartProductDetails(
-                    item.name
-                );
-
-
-            const price =
-                getProductPrice(
-                    details.productName,
-                    details.storage
-                );
-
-
-            if (
-                price !== null &&
-                price !== undefined
-            ) {
-
-                total +=
-                    price *
-                    item.quantity;
-
-            }
-
-        }
-    );
-
-
-    return total;
-
-}
-
-
-/* =========================================================
-   UPDATE CART SUMMARY
-   ========================================================= */
-
-function updateCartSummary(
-    totalItems,
-    totalPrice
-) {
-
-    const summary =
-        document.getElementById(
-            "cart-summary"
-        );
-
-
-    if (!summary) {
-
-        return;
-
-    }
-
-
-    /*
-     * Remove any total previously
-     * generated by this script.
-     */
-
-    const oldGenerated =
-        summary.querySelector(
-            "#cart-total-price"
-        );
-
-
-    if (oldGenerated) {
-
-        oldGenerated.remove();
-
-    }
-
-
-    /*
-     * Look for an existing
-     * "Contact for Price" element.
-     */
-
-    let totalElement =
-        null;
-
-
-    const descendants =
-        summary.querySelectorAll("*");
-
-
-    descendants.forEach(
-        function(element) {
-
-            if (totalElement) {
-
-                return;
-
-            }
-
-
-            const text =
-                element.textContent
-                    .trim();
-
-
-            if (
-                text ===
-                "Total: Contact for Price"
-            ) {
-
-                totalElement =
-                    element;
-
-            }
-
-        }
-    );
-
-
-    /*
-     * If found, replace it.
-     */
-
-    if (totalElement) {
-
-        totalElement.textContent =
-            "Total: " +
-            formatPrice(totalPrice);
-
-    }
-
-
-    /*
-     * Handle separate
-     * "Contact for Price"
-     * element.
-     */
-
-    if (!totalElement) {
-
-        descendants.forEach(
-            function(element) {
-
-                if (totalElement) {
-
-                    return;
-
-                }
-
-
-                if (
-                    element.textContent
-                        .trim() ===
-                    "Contact for Price"
-                ) {
-
-                    const parent =
-                        element.parentElement;
-
-
-                    if (
-                        parent &&
-                        parent.textContent
-                            .toLowerCase()
-                            .includes(
-                                "total"
-                            )
-                    ) {
-
-                        element.textContent =
-                            formatPrice(
-                                totalPrice
-                            );
-
-
-                        totalElement =
-                            element;
-
-                    }
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /*
-     * If the old static total
-     * cannot be found, create
-     * one clean total.
-     */
-
-    if (!totalElement) {
-
-        const newTotal =
-            document.createElement(
-                "div"
-            );
-
-
-        newTotal.id =
-            "cart-total-price";
-
-
-        newTotal.style.marginTop =
-            "12px";
-
-
-        newTotal.style.fontWeight =
-            "800";
-
-
-        newTotal.style.fontSize =
-            "18px";
-
-
-        newTotal.textContent =
-            "Total: " +
-            formatPrice(totalPrice);
-
-
-        summary.appendChild(
-            newTotal
-        );
-
-    }
-
-
-    /*
-     * Update Items count
-     * without destroying the
-     * rest of the summary.
-     */
-
-    descendants.forEach(
-        function(element) {
-
-            const text =
-                element.textContent
-                    .trim();
-
-
-            if (
-                text === "Items: 2" ||
-                /^Items:\s*\d+$/.test(
-                    text
-                )
-            ) {
-
-                element.textContent =
-                    "Items: " +
-                    totalItems;
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   DISPLAY CART
+   CART DISPLAY
    ========================================================= */
 
 function displayCart() {
@@ -1236,13 +927,9 @@ function displayCart() {
         getCart();
 
 
-    /* =========================
-       EMPTY CART
-    ========================= */
+    /* EMPTY */
 
-    if (
-        cart.length === 0
-    ) {
+    if (!cart.length) {
 
         if (empty) {
 
@@ -1269,10 +956,6 @@ function displayCart() {
     }
 
 
-    /* =========================
-       CART HAS PRODUCTS
-    ========================= */
-
     if (empty) {
 
         empty.style.display =
@@ -1296,7 +979,6 @@ function displayCart() {
     let totalItems =
         0;
 
-
     let totalPrice =
         0;
 
@@ -1304,20 +986,23 @@ function displayCart() {
     cart.forEach(
         function(item, index) {
 
-            totalItems +=
-                item.quantity;
-
-
             const details =
                 getCartProductDetails(
                     item.name
                 );
 
 
+            const productName =
+                details.productName;
+
+            const storage =
+                details.storage;
+
+
             const unitPrice =
                 getProductPrice(
-                    details.productName,
-                    details.storage
+                    productName,
+                    storage
                 );
 
 
@@ -1333,39 +1018,85 @@ function displayCart() {
             }
 
 
-            const div =
+            totalItems +=
+                item.quantity;
+
+
+            const image =
+                PRODUCT_IMAGES[
+                    productName
+                ] ||
+                "images/logo.png";
+
+
+            /*
+             * Build the cart card.
+             */
+
+            const card =
                 document.createElement(
                     "div"
                 );
 
 
-            div.style.marginBottom =
-                "25px";
+            card.className =
+                "cart-product-item";
 
 
-            div.innerHTML = `
+            card.style.cssText = `
+                padding: 30px;
+                margin-bottom: 25px;
+                border: 1px solid #e1e1e1;
+                border-radius: 28px;
+                background: #fff;
+                box-sizing: border-box;
+            `;
 
-                <h3>
+
+            card.innerHTML = `
+
+                <img
+                    src="${image}"
+                    alt="${productName}"
+                    style="
+                        width:100%;
+                        height:260px;
+                        object-fit:contain;
+                        display:block;
+                        background:#fafafa;
+                        border-radius:22px;
+                        margin-bottom:25px;
+                    "
+                >
+
+                <h3
+                    style="
+                        margin:0 0 12px;
+                        font-size:28px;
+                        line-height:1.25;
+                    "
+                >
                     ${item.name}
                 </h3>
 
-                <p
-                    class="cart-item-price"
+
+                <div
                     style="
-                        margin:8px 0;
-                        font-weight:700;
-                        color:#111;
+                        font-size:20px;
+                        font-weight:800;
+                        margin-bottom:20px;
                     "
                 >
                     ${formatPrice(unitPrice)}
-                </p>
+                </div>
+
 
                 <div
                     style="
                         display:flex;
                         align-items:center;
-                        gap:12px;
-                        margin:15px 0;
+                        gap:16px;
+                        margin-bottom:20px;
                     "
                 >
 
@@ -1375,12 +1106,13 @@ function displayCart() {
                         data-index="${index}"
                         data-action="minus"
                         style="
-                            width:45px;
-                            height:45px;
-                            border:1px solid #ccc;
-                            border-radius:10px;
+                            width:82px;
+                            height:82px;
+                            border:1px solid #d2d2d2;
+                            border-radius:20px;
                             background:#fff;
-                            font-size:24px;
+                            font-size:34px;
+                            font-weight:700;
                             cursor:pointer;
                         "
                     >
@@ -1390,9 +1122,9 @@ function displayCart() {
 
                     <strong
                         style="
-                            min-width:30px;
+                            min-width:40px;
                             text-align:center;
-                            font-size:20px;
+                            font-size:28px;
                         "
                     >
                         ${item.quantity}
@@ -1405,12 +1137,13 @@ function displayCart() {
                         data-index="${index}"
                         data-action="plus"
                         style="
-                            width:45px;
-                            height:45px;
-                            border:1px solid #ccc;
-                            border-radius:10px;
+                            width:82px;
+                            height:82px;
+                            border:1px solid #d2d2d2;
+                            border-radius:20px;
                             background:#fff;
-                            font-size:24px;
+                            font-size:34px;
+                            font-weight:700;
                             cursor:pointer;
                         "
                     >
@@ -1425,14 +1158,14 @@ function displayCart() {
                     class="remove-cart-btn"
                     data-index="${index}"
                     style="
-                        padding:11px 18px;
+                        padding:17px 30px;
                         border:0;
-                        border-radius:10px;
+                        border-radius:16px;
                         background:#111;
                         color:#fff;
+                        font-size:17px;
+                        font-weight:700;
                         cursor:pointer;
-                        font-family:inherit;
-                        font-weight:600;
                     "
                 >
                     Remove
@@ -1442,26 +1175,164 @@ function displayCart() {
 
 
             container.appendChild(
-                div
+                card
             );
 
         }
     );
 
 
-    /*
-     * Update order summary.
-     */
+    /* =====================================================
+       UPDATE CART SUMMARY
+       ===================================================== */
 
-    updateCartSummary(
-        totalItems,
-        totalPrice
-    );
+    if (summary) {
+
+        const allElements =
+            summary.querySelectorAll("*");
 
 
-    /* =========================
-       PLUS / MINUS
-    ========================= */
+        let totalUpdated =
+            false;
+
+
+        allElements.forEach(
+            function(element) {
+
+                if (totalUpdated) {
+
+                    return;
+
+                }
+
+
+                const text =
+                    element.textContent
+                        .trim();
+
+
+                if (
+                    text ===
+                    "Total: Contact for Price"
+                ) {
+
+                    element.textContent =
+                        "Total: " +
+                        formatPrice(
+                            totalPrice
+                        );
+
+                    totalUpdated =
+                        true;
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Separate Contact for Price
+         * element.
+         */
+
+        if (!totalUpdated) {
+
+            allElements.forEach(
+                function(element) {
+
+                    if (totalUpdated) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        element.textContent
+                            .trim() ===
+                        "Contact for Price"
+                    ) {
+
+                        const parent =
+                            element.parentElement;
+
+
+                        if (
+                            parent &&
+                            parent.textContent
+                                .toLowerCase()
+                                .includes("total")
+                        ) {
+
+                            element.textContent =
+                                formatPrice(
+                                    totalPrice
+                                );
+
+                            totalUpdated =
+                                true;
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+         * If there is no existing
+         * total, create one.
+         */
+
+        if (!totalUpdated) {
+
+            let totalBox =
+                document.getElementById(
+                    "cart-total-price"
+                );
+
+
+            if (!totalBox) {
+
+                totalBox =
+                    document.createElement(
+                        "div"
+                    );
+
+                totalBox.id =
+                    "cart-total-price";
+
+                totalBox.style.cssText = `
+                    margin-top:20px;
+                    font-size:20px;
+                    font-weight:800;
+                `;
+
+                summary.appendChild(
+                    totalBox
+                );
+
+            }
+
+
+            totalBox.textContent =
+                "Total: " +
+                formatPrice(
+                    totalPrice
+                );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       QUANTITY BUTTONS
+       ===================================================== */
 
     document
         .querySelectorAll(
@@ -1484,12 +1355,12 @@ function displayCart() {
                             button.dataset.action;
 
 
-                        const cart =
+                        const currentCart =
                             getCart();
 
 
                         if (
-                            !cart[index]
+                            !currentCart[index]
                         ) {
 
                             return;
@@ -1502,7 +1373,7 @@ function displayCart() {
                             "plus"
                         ) {
 
-                            cart[index]
+                            currentCart[index]
                                 .quantity++;
 
                         }
@@ -1513,16 +1384,16 @@ function displayCart() {
                             "minus"
                         ) {
 
-                            cart[index]
+                            currentCart[index]
                                 .quantity--;
 
 
                             if (
-                                cart[index]
+                                currentCart[index]
                                     .quantity <= 0
                             ) {
 
-                                cart.splice(
+                                currentCart.splice(
                                     index,
                                     1
                                 );
@@ -1532,7 +1403,9 @@ function displayCart() {
                         }
 
 
-                        saveCart(cart);
+                        saveCart(
+                            currentCart
+                        );
 
                         displayCart();
 
@@ -1545,9 +1418,9 @@ function displayCart() {
         );
 
 
-    /* =========================
+    /* =====================================================
        REMOVE
-    ========================= */
+       ===================================================== */
 
     document
         .querySelectorAll(
@@ -1566,17 +1439,19 @@ function displayCart() {
                             );
 
 
-                        const cart =
+                        const currentCart =
                             getCart();
 
 
-                        cart.splice(
+                        currentCart.splice(
                             index,
                             1
                         );
 
 
-                        saveCart(cart);
+                        saveCart(
+                            currentCart
+                        );
 
                         displayCart();
 
@@ -1587,24 +1462,6 @@ function displayCart() {
 
             }
         );
-
-
-    /* =========================
-       CART COUNT
-    ========================= */
-
-    const count =
-        document.getElementById(
-            "cart-count"
-        );
-
-
-    if (count) {
-
-        count.textContent =
-            totalItems;
-
-    }
 
 }
 
@@ -1674,9 +1531,7 @@ function setupCartWhatsApp() {
                 getCart();
 
 
-            if (
-                cart.length === 0
-            ) {
+            if (!cart.length) {
 
                 alert(
                     "Your cart is empty."
@@ -1689,10 +1544,6 @@ function setupCartWhatsApp() {
 
             let message =
                 "Hi 4LJTek, I'd like to order:%0A%0A";
-
-
-            let totalPrice =
-                0;
 
 
             cart.forEach(
@@ -1711,18 +1562,6 @@ function setupCartWhatsApp() {
                         );
 
 
-                    if (
-                        price !== null &&
-                        price !== undefined
-                    ) {
-
-                        totalPrice +=
-                            price *
-                            item.quantity;
-
-                    }
-
-
                     message +=
                         "• " +
                         item.name +
@@ -1736,11 +1575,15 @@ function setupCartWhatsApp() {
             );
 
 
+            const total =
+                calculateCartTotal(
+                    cart
+                );
+
+
             message +=
                 "%0ATotal: " +
-                formatPrice(
-                    totalPrice
-                );
+                formatPrice(total);
 
 
             message +=
@@ -1792,14 +1635,147 @@ function setupCartCall() {
 
 
 /* =========================================================
+   CHECKOUT PRICING
+   ========================================================= */
+
+function setupCheckoutPricing() {
+
+    const cart =
+        getCart();
+
+
+    if (!cart.length) {
+
+        return;
+
+    }
+
+
+    const total =
+        calculateCartTotal(
+            cart
+        );
+
+
+    /*
+     * Find visible "Contact for Price"
+     * elements and replace them with
+     * the actual checkout total when
+     * they are part of an order/total area.
+     */
+
+    document
+        .querySelectorAll("*")
+        .forEach(
+            function(element) {
+
+                if (
+                    element.children.length > 0
+                ) {
+
+                    return;
+
+                }
+
+
+                const text =
+                    element.textContent
+                        .trim();
+
+
+                if (
+                    text !==
+                    "Contact for Price"
+                ) {
+
+                    return;
+
+                }
+
+
+                const parent =
+                    element.parentElement;
+
+
+                if (!parent) {
+
+                    return;
+
+                }
+
+
+                const parentText =
+                    parent.textContent
+                        .toLowerCase();
+
+
+                if (
+                    parentText.includes("total") ||
+                    parentText.includes("your order") ||
+                    parentText.includes("order")
+                ) {
+
+                    element.textContent =
+                        formatPrice(
+                            total
+                        );
+
+                }
+
+            }
+        );
+
+
+    /*
+     * Common checkout total IDs/classes.
+     */
+
+    const selectors = [
+
+        "#checkout-total",
+
+        "#total-price",
+
+        "#order-total",
+
+        ".checkout-total",
+
+        ".order-total",
+
+        ".total-price",
+
+        "[data-checkout-total]"
+
+    ];
+
+
+    selectors.forEach(
+        function(selector) {
+
+            document
+                .querySelectorAll(selector)
+                .forEach(
+                    function(element) {
+
+                        element.textContent =
+                            formatPrice(
+                                total
+                            );
+
+                    }
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
    MOBILE MENU
    ========================================================= */
 
 function setupMobileMenu() {
-
-    /*
-     * Prevent duplicate menu.
-     */
 
     if (
         document.querySelector(
@@ -1847,10 +1823,8 @@ function setupMobileMenu() {
     button.type =
         "button";
 
-
     button.className =
         "mobile-menu-btn";
-
 
     button.setAttribute(
         "aria-label",
@@ -1878,7 +1852,6 @@ function setupMobileMenu() {
                 "mobile-nav-open"
             );
 
-
             button.classList.toggle(
                 "menu-open"
             );
@@ -1899,7 +1872,6 @@ function setupMobileMenu() {
                             "mobile-nav-open"
                         );
 
-
                         button.classList.remove(
                             "menu-open"
                         );
@@ -1914,7 +1886,7 @@ function setupMobileMenu() {
 
 
 /* =========================================================
-   START 4LJTEK
+   START
    ========================================================= */
 
 function start4LJTek() {
@@ -1940,6 +1912,8 @@ function start4LJTek() {
     setupCartWhatsApp();
 
     setupCartCall();
+
+    setupCheckoutPricing();
 
 }
 
