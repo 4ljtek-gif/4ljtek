@@ -13,8 +13,6 @@ const CART_KEY = "4ljtekCart";
 
 const PRODUCT_PRICES = {
 
-    /* ================= APPLE ================= */
-
     "iPhone 17": {
         "256GB": 116000,
         "512GB": 140000
@@ -53,9 +51,6 @@ const PRODUCT_PRICES = {
         "2TB": 385000
     },
 
-
-    /* ================= SAMSUNG ================= */
-
     "Samsung Galaxy S25": {
         "128GB": 80000,
         "256GB": 88000,
@@ -88,9 +83,6 @@ const PRODUCT_PRICES = {
         "512GB": 155000,
         "1TB": 185000
     },
-
-
-    /* ================= GOOGLE PIXEL ================= */
 
     "Google Pixel 10": {
         "128GB": 82000,
@@ -139,9 +131,6 @@ const PRODUCT_PRICES = {
         "1TB": null
     },
 
-
-    /* ================= PLAYSTATION ================= */
-
     "PlayStation 5": {
         "Standard": 85000
     },
@@ -165,50 +154,65 @@ const PRODUCT_PRICES = {
 
 
 /* =========================================================
-   PRODUCT IMAGE FALLBACKS
-   New cart items always use the EXACT image from the card.
+   PRODUCT IMAGES
 ========================================================= */
 
 const PRODUCT_IMAGES = {
 
     "iPhone 17": "images/iphone17.jpg",
+
     "iPhone 17 Air": "images/iphone17air.jpg",
 
-    /* DO NOT CHANGE THESE */
     "iPhone 17 Pro": "images/iphone17pro.jpg",
+
     "iPhone 17 Pro Max": "images/iphone17promax.jpg",
 
     "iPhone 18 Pro": "images/iphone18pro.jpg",
+
     "iPhone 18 Pro Max": "images/iphone18promax.jpg",
 
     "Samsung Galaxy S25": "images/s25.jpg",
+
     "Samsung Galaxy S25+": "images/s25plus.jpg",
+
     "Samsung Galaxy S25 Ultra": "images/s25ultra.jpg",
 
     "Samsung Galaxy S26": "images/s26.jpg",
+
     "Samsung Galaxy S26+": "images/s26plus.jpg",
+
     "Samsung Galaxy S26 Ultra": "images/s26ultra.jpg",
 
     "Google Pixel 10": "images/pixel10.jpg",
+
     "Google Pixel 10 Pro": "images/pixel10pro.jpg",
+
     "Google Pixel 10 Pro XL": "images/pixel10proxl.jpg",
+
     "Google Pixel 10 Pro Fold": "images/pixel10profold.jpg",
 
     "Google Pixel 11": "images/pixel11.jpg",
+
     "Google Pixel 11 Pro": "images/pixel11pro.jpg",
+
     "Google Pixel 11 Pro XL": "images/pixel11proxl.jpg",
+
     "Google Pixel 11 Pro Fold": "images/pixel11profold.jpg",
 
     "PlayStation 5": "images/ps5.jpg",
+
     "PlayStation 5 Digital Edition": "images/ps5digital.jpg",
+
     "PS5 Slim": "images/ps5slim.jpg",
+
     "PlayStation 5 Pro": "images/ps5pro.jpg",
+
     "DualSense Wireless Controller": "images/dualsense.jpg"
 };
 
 
 /* =========================================================
-   FORMAT PRICE
+   PRICE HELPERS
 ========================================================= */
 
 function formatPrice(price) {
@@ -225,21 +229,19 @@ function formatPrice(price) {
 }
 
 
-/* =========================================================
-   GET PRODUCT PRICE
-========================================================= */
-
 function getProductPrice(productName, storage) {
 
     if (!PRODUCT_PRICES[productName]) {
         return null;
     }
 
-    const storagePrices = PRODUCT_PRICES[productName];
+    const prices = PRODUCT_PRICES[productName];
 
-    return Object.prototype.hasOwnProperty.call(storagePrices, storage)
-        ? storagePrices[storage]
-        : null;
+    if (!Object.prototype.hasOwnProperty.call(prices, storage)) {
+        return null;
+    }
+
+    return prices[storage];
 }
 
 
@@ -287,8 +289,8 @@ function saveCart(cart) {
 
 
 /* =========================================================
-   MIGRATE OLD CART ITEMS
-   Gives older cart items price + image information.
+   IMPORTANT CART MIGRATION
+   FIXES OLD LOGO IMAGES + OLD PRICES
 ========================================================= */
 
 function migrateCart() {
@@ -303,65 +305,122 @@ function migrateCart() {
 
         let productName = newItem.productName;
 
+
+        /* Recover old product format */
+
         if (!productName && newItem.name) {
 
             productName = newItem.name;
 
             if (newItem.name.includes(" — ")) {
 
-                const parts = newItem.name.split(" — ");
+                const parts =
+                    newItem.name.split(" — ");
 
                 productName = parts[0];
 
-                if (!newItem.storage && parts[1]) {
+                if (
+                    !newItem.storage &&
+                    parts[1]
+                ) {
                     newItem.storage = parts[1];
                 }
             }
         }
 
-        newItem.productName = productName || "Product";
 
-        newItem.storage = newItem.storage || "Standard";
+        newItem.productName =
+            productName || "Product";
 
-        if (
-            newItem.price === undefined ||
-            newItem.price === null
-        ) {
 
-            newItem.price = getProductPrice(
+        newItem.storage =
+            newItem.storage || "Standard";
+
+
+        /* ==========================================
+           ALWAYS CORRECT THE PRICE
+        ========================================== */
+
+        const correctPrice =
+            getProductPrice(
                 newItem.productName,
                 newItem.storage
             );
 
+
+        if (
+            correctPrice !== null &&
+            Number(newItem.price) !==
+            Number(correctPrice)
+        ) {
+
+            newItem.price = correctPrice;
+
             changed = true;
         }
 
-        if (!newItem.image) {
 
-            newItem.image =
-                PRODUCT_IMAGES[newItem.productName] || "";
+        /* ==========================================
+           ALWAYS CORRECT THE PRODUCT IMAGE
+           
+           This specifically removes the old
+           4LJTek logo from existing cart items.
+        ========================================== */
+
+        const correctImage =
+            PRODUCT_IMAGES[newItem.productName] || "";
+
+
+        if (
+            !newItem.image ||
+            newItem.image.includes("logo.png") ||
+            newItem.image !== correctImage
+        ) {
+
+            newItem.image = correctImage;
 
             changed = true;
         }
 
-        if (!newItem.quantity) {
+
+        /* ==========================================
+           QUANTITY
+        ========================================== */
+
+        if (
+            !newItem.quantity ||
+            Number(newItem.quantity) < 1
+        ) {
 
             newItem.quantity = 1;
 
             changed = true;
         }
 
+
+        /* ==========================================
+           DISPLAY NAME
+        ========================================== */
+
         newItem.name =
             newItem.storage !== "Standard"
-                ? newItem.productName + " — " + newItem.storage
+
+                ? newItem.productName +
+                  " — " +
+                  newItem.storage
+
                 : newItem.productName;
+
 
         return newItem;
     });
 
+
     if (changed) {
+
         saveCart(migrated);
     }
+
 
     return migrated;
 }
@@ -375,14 +434,22 @@ function updateCartCount() {
 
     const cart = migrateCart();
 
-    const total = cart.reduce(function(sum, item) {
+    const total =
+        cart.reduce(
+            function(sum, item) {
 
-        return sum + Number(item.quantity || 0);
+                return sum +
+                    Number(item.quantity || 0);
 
-    }, 0);
+            },
+            0
+        );
+
 
     document
-        .querySelectorAll('a[href="cart.html"]')
+        .querySelectorAll(
+            'a[href="cart.html"]'
+        )
         .forEach(function(link) {
 
             link.textContent =
@@ -409,6 +476,7 @@ function addToCart(
     const actualStorage =
         storage || "Standard";
 
+
     const actualPrice =
         price !== undefined
             ? price
@@ -417,27 +485,36 @@ function addToCart(
                 actualStorage
             );
 
+
     const actualImage =
         image ||
         PRODUCT_IMAGES[productName] ||
         "";
 
-    const existing = cart.find(function(item) {
 
-        return (
-            item.productName === productName &&
-            item.storage === actualStorage
-        );
+    const existing =
+        cart.find(function(item) {
 
-    });
+            return (
+                item.productName ===
+                    productName &&
+
+                item.storage ===
+                    actualStorage
+            );
+        });
+
 
     if (existing) {
 
         existing.quantity =
             Number(existing.quantity || 0) + 1;
 
-        existing.price = actualPrice;
-        existing.image = actualImage;
+        existing.price =
+            actualPrice;
+
+        existing.image =
+            actualImage;
 
     } else {
 
@@ -447,7 +524,11 @@ function addToCart(
 
             name:
                 actualStorage !== "Standard"
-                    ? productName + " — " + actualStorage
+
+                    ? productName +
+                      " — " +
+                      actualStorage
+
                     : productName,
 
             storage: actualStorage,
@@ -460,6 +541,7 @@ function addToCart(
         });
     }
 
+
     saveCart(cart);
 
     updateCartCount();
@@ -468,18 +550,21 @@ function addToCart(
 
     displayCheckout();
 
+
     alert(
         productName +
-        (actualStorage !== "Standard"
-            ? " — " + actualStorage
-            : "") +
+        (
+            actualStorage !== "Standard"
+                ? " — " + actualStorage
+                : ""
+        ) +
         " has been added to your cart."
     );
 }
 
 
 /* =========================================================
-   PRODUCT CARDS
+   ADD TO CART BUTTONS
 ========================================================= */
 
 function setupAddToCartButtons() {
@@ -492,13 +577,18 @@ function setupAddToCartButtons() {
                 card.querySelector("h3");
 
             const actions =
-                card.querySelector(".product-actions");
+                card.querySelector(
+                    ".product-actions"
+                );
 
             const imageElement =
                 card.querySelector("img");
 
             const storageSelect =
-                card.querySelector(".storage-select");
+                card.querySelector(
+                    ".storage-select"
+                );
+
 
             if (
                 !productNameElement ||
@@ -507,24 +597,40 @@ function setupAddToCartButtons() {
                 return;
             }
 
+
             const productName =
-                productNameElement.textContent.trim();
+                productNameElement
+                    .textContent
+                    .trim();
+
 
             let addButton =
-                actions.querySelector(".add-to-cart-btn");
+                actions.querySelector(
+                    ".add-cart-btn"
+                );
+
 
             if (!addButton) {
 
                 addButton =
-                    document.createElement("button");
+                    document.createElement(
+                        "button"
+                    );
 
-                addButton.type = "button";
+                addButton.type =
+                    "button";
+
+
+                /* IMPORTANT:
+                   This now matches style.css */
 
                 addButton.className =
-                    "add-to-cart-btn";
+                    "add-cart-btn";
+
 
                 addButton.textContent =
                     "Add to Cart";
+
 
                 actions.insertBefore(
                     addButton,
@@ -532,39 +638,50 @@ function setupAddToCartButtons() {
                 );
             }
 
-            addButton.onclick = function(event) {
 
-                event.preventDefault();
+            addButton.onclick =
+                function(event) {
 
-                const storage =
-                    storageSelect
-                        ? storageSelect.value
-                        : "Standard";
+                    event.preventDefault();
 
-                const price =
-                    getProductPrice(
+
+                    const storage =
+                        storageSelect
+                            ? storageSelect.value
+                            : "Standard";
+
+
+                    const price =
+                        getProductPrice(
+                            productName,
+                            storage
+                        );
+
+
+                    const image =
+                        imageElement
+                            ? imageElement
+                                .getAttribute(
+                                    "src"
+                                )
+                            : PRODUCT_IMAGES[
+                                productName
+                            ];
+
+
+                    addToCart(
                         productName,
-                        storage
+                        storage,
+                        price,
+                        image
                     );
-
-                const image =
-                    imageElement
-                        ? imageElement.getAttribute("src")
-                        : PRODUCT_IMAGES[productName];
-
-                addToCart(
-                    productName,
-                    storage,
-                    price,
-                    image
-                );
-            };
+                };
         });
 }
 
 
 /* =========================================================
-   DISPLAY PRICES ON PRODUCT CARDS
+   DISPLAY PRODUCT PRICES
 ========================================================= */
 
 function displayProductPrices() {
@@ -577,34 +694,53 @@ function displayProductPrices() {
                 card.querySelector("h3");
 
             const storageSelect =
-                card.querySelector(".storage-select");
+                card.querySelector(
+                    ".storage-select"
+                );
 
             const actions =
-                card.querySelector(".product-actions");
+                card.querySelector(
+                    ".product-actions"
+                );
 
-            if (!nameElement || !actions) {
+
+            if (
+                !nameElement ||
+                !actions
+            ) {
                 return;
             }
 
+
             const productName =
-                nameElement.textContent.trim();
+                nameElement
+                    .textContent
+                    .trim();
+
 
             let priceElement =
-                card.querySelector(".dynamic-product-price");
+                card.querySelector(
+                    ".dynamic-product-price"
+                );
+
 
             if (!priceElement) {
 
                 priceElement =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
                 priceElement.className =
                     "dynamic-product-price";
+
 
                 actions.parentNode.insertBefore(
                     priceElement,
                     actions
                 );
             }
+
 
             function updatePrice() {
 
@@ -613,17 +749,21 @@ function displayProductPrices() {
                         ? storageSelect.value
                         : "Standard";
 
+
                 const price =
                     getProductPrice(
                         productName,
                         storage
                     );
 
+
                 priceElement.textContent =
                     formatPrice(price);
             }
 
+
             updatePrice();
+
 
             if (
                 storageSelect &&
@@ -635,6 +775,7 @@ function displayProductPrices() {
                     updatePrice
                 );
 
+
                 storageSelect.dataset.priceBound =
                     "true";
             }
@@ -643,126 +784,169 @@ function displayProductPrices() {
 
 
 /* =========================================================
-   WHATSAPP BUTTONS
+   WHATSAPP PRODUCT BUTTONS
 ========================================================= */
 
 function setupWhatsAppButtons() {
 
     document
-        .querySelectorAll(".product-card .whatsapp-btn")
+        .querySelectorAll(
+            ".product-card .whatsapp-btn"
+        )
         .forEach(function(button) {
 
-            button.onclick = function(event) {
+            button.onclick =
+                function(event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                const card =
-                    button.closest(".product-card");
 
-                if (!card) {
-                    return;
-                }
+                    const card =
+                        button.closest(
+                            ".product-card"
+                        );
 
-                const nameElement =
-                    card.querySelector("h3");
 
-                const storageSelect =
-                    card.querySelector(".storage-select");
+                    if (!card) {
+                        return;
+                    }
 
-                const imageElement =
-                    card.querySelector("img");
 
-                if (!nameElement) {
-                    return;
-                }
+                    const nameElement =
+                        card.querySelector("h3");
 
-                const productName =
-                    nameElement.textContent.trim();
 
-                const storage =
-                    storageSelect
-                        ? storageSelect.value
-                        : "Standard";
+                    const storageSelect =
+                        card.querySelector(
+                            ".storage-select"
+                        );
 
-                const price =
-                    getProductPrice(
-                        productName,
-                        storage
+
+                    if (!nameElement) {
+                        return;
+                    }
+
+
+                    const productName =
+                        nameElement
+                            .textContent
+                            .trim();
+
+
+                    const storage =
+                        storageSelect
+                            ? storageSelect.value
+                            : "Standard";
+
+
+                    const price =
+                        getProductPrice(
+                            productName,
+                            storage
+                        );
+
+
+                    const message =
+                        "Hi 4LJTek, I'm interested in " +
+                        productName +
+
+                        (
+                            storage !== "Standard"
+                                ? " — " + storage
+                                : ""
+                        ) +
+
+                        ". " +
+
+                        (
+                            price !== null
+                                ? "Listed price: " +
+                                  formatPrice(price) +
+                                  ". "
+                                : ""
+                        ) +
+
+                        "Please confirm availability.";
+
+
+                    const url =
+                        "https://api.whatsapp.com/send?phone=" +
+                        WHATSAPP_NUMBER +
+                        "&text=" +
+                        encodeURIComponent(
+                            message
+                        );
+
+
+                    window.open(
+                        url,
+                        "_blank"
                     );
-
-                const message =
-                    "Hi 4LJTek, I'm interested in " +
-                    productName +
-                    (
-                        storage !== "Standard"
-                            ? " — " + storage
-                            : ""
-                    ) +
-                    ". " +
-                    (
-                        price !== null
-                            ? "Listed price: " +
-                              formatPrice(price) +
-                              ". "
-                            : ""
-                    ) +
-                    "Please confirm availability.";
-
-                const url =
-                    "https://api.whatsapp.com/send?phone=" +
-                    WHATSAPP_NUMBER +
-                    "&text=" +
-                    encodeURIComponent(message);
-
-                window.open(url, "_blank");
-            };
+                };
         });
 }
 
 
 /* =========================================================
-   HOMEPAGE WHATSAPP
+   HOME WHATSAPP
 ========================================================= */
 
 function setupHomeWhatsApp() {
 
     const button =
-        document.getElementById("home-whatsapp");
+        document.getElementById(
+            "home-whatsapp"
+        );
+
 
     if (!button) {
         return;
     }
 
-    button.onclick = function(event) {
 
-        event.preventDefault();
+    button.onclick =
+        function(event) {
 
-        const message =
-            "Hi 4LJTek, I'd like to place an order. Please share your latest prices and availability.";
+            event.preventDefault();
 
-        const url =
-            "https://api.whatsapp.com/send?phone=" +
-            WHATSAPP_NUMBER +
-            "&text=" +
-            encodeURIComponent(message);
 
-        window.open(url, "_blank");
-    };
+            const message =
+                "Hi 4LJTek, I'd like to place an order. Please share your latest prices and availability.";
+
+
+            const url =
+                "https://api.whatsapp.com/send?phone=" +
+                WHATSAPP_NUMBER +
+                "&text=" +
+                encodeURIComponent(
+                    message
+                );
+
+
+            window.open(
+                url,
+                "_blank"
+            );
+        };
 }
 
 
 /* =========================================================
-   SEARCH
+   PRODUCT SEARCH
 ========================================================= */
 
 function setupProductSearch() {
 
     const search =
-        document.getElementById("search");
+        document.getElementById(
+            "search"
+        );
+
 
     if (!search) {
         return;
     }
+
 
     search.addEventListener(
         "input",
@@ -773,13 +957,17 @@ function setupProductSearch() {
                     .toLowerCase()
                     .trim();
 
+
             document
-                .querySelectorAll(".product-card")
+                .querySelectorAll(
+                    ".product-card"
+                )
                 .forEach(function(card) {
 
                     const text =
                         card.textContent
                             .toLowerCase();
+
 
                     card.style.display =
                         text.includes(query)
@@ -798,37 +986,54 @@ function setupProductSearch() {
 function setupMobileMenu() {
 
     if (
-        document.querySelector(".mobile-menu-btn")
+        document.querySelector(
+            ".mobile-menu-btn"
+        )
     ) {
         return;
     }
 
+
     const header =
         document.querySelector("header") ||
-        document.querySelector(".site-header");
+        document.querySelector(
+            ".site-header"
+        );
+
 
     const nav =
         document.querySelector("nav");
+
 
     if (!header || !nav) {
         return;
     }
 
+
     const button =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     button.className =
         "mobile-menu-btn";
+
 
     button.setAttribute(
         "aria-label",
         "Open menu"
     );
 
+
     button.innerHTML =
-        "<span></span><span></span><span></span>";
+        "<span></span>" +
+        "<span></span>" +
+        "<span></span>";
+
 
     header.appendChild(button);
+
 
     button.addEventListener(
         "click",
@@ -837,6 +1042,7 @@ function setupMobileMenu() {
             nav.classList.toggle(
                 "mobile-nav-open"
             );
+
 
             button.classList.toggle(
                 "menu-open"
@@ -852,42 +1058,62 @@ function setupMobileMenu() {
 
 function calculateCartTotal() {
 
-    const cart = migrateCart();
+    const cart =
+        migrateCart();
 
-    return cart.reduce(function(total, item) {
 
-        const price =
-            Number(item.price);
+    return cart.reduce(
+        function(total, item) {
 
-        const quantity =
-            Number(item.quantity || 0);
+            const price =
+                Number(item.price);
 
-        if (
-            Number.isFinite(price) &&
-            price >= 0
-        ) {
 
-            return total +
-                (price * quantity);
-        }
+            const quantity =
+                Number(
+                    item.quantity || 0
+                );
 
-        return total;
 
-    }, 0);
+            if (
+                Number.isFinite(price) &&
+                price >= 0
+            ) {
+
+                return total +
+                    price * quantity;
+            }
+
+
+            return total;
+        },
+        0
+    );
 }
 
 
 /* =========================================================
-   FIND CART CONTAINER
+   CART CONTAINER
 ========================================================= */
 
 function getCartContainer() {
 
     return (
-        document.getElementById("cart-items") ||
-        document.querySelector(".cart-items") ||
-        document.querySelector("[data-cart-items]") ||
-        document.querySelector(".cart-list")
+        document.getElementById(
+            "cart-items"
+        ) ||
+
+        document.querySelector(
+            ".cart-items"
+        ) ||
+
+        document.querySelector(
+            "[data-cart-items]"
+        ) ||
+
+        document.querySelector(
+            ".cart-list"
+        )
     );
 }
 
@@ -901,123 +1127,187 @@ function displayCart() {
     const container =
         getCartContainer();
 
+
     if (!container) {
         return;
     }
 
+
     const cart =
         migrateCart();
 
+
     container.innerHTML = "";
+
 
     if (cart.length === 0) {
 
         container.innerHTML =
-            '<p class="empty-cart-message">Your cart is empty.</p>';
+            '<p class="empty-cart-message">' +
+            'Your cart is empty.' +
+            '</p>';
+
 
         updateCartSummary();
 
         return;
     }
 
-    cart.forEach(function(item, index) {
 
-        const itemBox =
-            document.createElement("div");
+    cart.forEach(
+        function(item, index) {
 
-        itemBox.className =
-            "cart-item";
+            const itemBox =
+                document.createElement(
+                    "div"
+                );
 
-        const image =
-            item.image ||
-            PRODUCT_IMAGES[item.productName] ||
-            "";
 
-        const itemPrice =
-            Number(item.price);
+            itemBox.className =
+                "cart-item";
 
-        const subtotal =
-            Number.isFinite(itemPrice)
-                ? itemPrice *
-                  Number(item.quantity || 0)
-                : null;
 
-        itemBox.innerHTML = `
+            const image =
+                item.image ||
+                PRODUCT_IMAGES[
+                    item.productName
+                ] ||
+                "";
 
-            <div class="cart-item-image">
 
-                ${
-                    image
-                        ? `<img src="${image}" alt="${escapeHtml(item.productName)}">`
-                        : ""
-                }
+            const itemPrice =
+                Number(item.price);
 
-            </div>
 
-            <div class="cart-item-details">
+            const subtotal =
+                Number.isFinite(itemPrice)
 
-                <h3>
-                    ${escapeHtml(item.productName)}
-                </h3>
+                    ? itemPrice *
+                      Number(
+                          item.quantity || 0
+                      )
 
-                ${
-                    item.storage !== "Standard"
-                        ? `<p class="cart-storage">${escapeHtml(item.storage)}</p>`
-                        : ""
-                }
+                    : null;
 
-                <p class="cart-item-price">
-                    ${formatPrice(itemPrice)}
-                </p>
 
-                ${
-                    subtotal !== null
-                        ? `<p class="cart-item-subtotal">
-                            Subtotal: ${formatPrice(subtotal)}
-                           </p>`
-                        : ""
-                }
+            itemBox.innerHTML = `
 
-                <div class="cart-quantity">
+                <div class="cart-item-image">
 
-                    <button
-                        type="button"
-                        class="quantity-btn decrease"
-                        data-index="${index}"
-                    >
-                        −
-                    </button>
-
-                    <span>
-                        ${Number(item.quantity || 1)}
-                    </span>
-
-                    <button
-                        type="button"
-                        class="quantity-btn increase"
-                        data-index="${index}"
-                    >
-                        +
-                    </button>
+                    ${
+                        image
+                            ? `
+                                <img
+                                    src="${image}"
+                                    alt="${escapeHtml(
+                                        item.productName
+                                    )}"
+                                >
+                              `
+                            : ""
+                    }
 
                 </div>
 
-                <button
-                    type="button"
-                    class="remove-cart-item"
-                    data-index="${index}"
-                >
-                    Remove
-                </button>
 
-            </div>
-        `;
+                <div class="cart-item-details">
 
-        container.appendChild(itemBox);
-    });
+                    <h3>
+                        ${escapeHtml(
+                            item.productName
+                        )}
+                    </h3>
 
 
-    /* Quantity buttons */
+                    ${
+                        item.storage !==
+                        "Standard"
+
+                            ? `
+                                <p class="cart-storage">
+                                    ${escapeHtml(
+                                        item.storage
+                                    )}
+                                </p>
+                              `
+                            : ""
+                    }
+
+
+                    <p class="cart-item-price">
+
+                        ${formatPrice(
+                            itemPrice
+                        )}
+
+                    </p>
+
+
+                    ${
+                        subtotal !== null
+
+                            ? `
+                                <p class="cart-item-subtotal">
+                                    Subtotal:
+                                    ${formatPrice(
+                                        subtotal
+                                    )}
+                                </p>
+                              `
+
+                            : ""
+                    }
+
+
+                    <div class="cart-quantity">
+
+                        <button
+                            type="button"
+                            class="quantity-btn decrease"
+                            data-index="${index}"
+                        >
+                            −
+                        </button>
+
+
+                        <span>
+                            ${Number(
+                                item.quantity || 1
+                            )}
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="quantity-btn increase"
+                            data-index="${index}"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-cart-item"
+                        data-index="${index}"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+            `;
+
+
+            container.appendChild(
+                itemBox
+            );
+        }
+    );
+
+
+    /* INCREASE */
 
     container
         .querySelectorAll(".increase")
@@ -1028,24 +1318,36 @@ function displayCart() {
                 function() {
 
                     const index =
-                        Number(button.dataset.index);
+                        Number(
+                            button.dataset.index
+                        );
+
 
                     const currentCart =
                         migrateCart();
 
+
                     currentCart[index].quantity++;
 
-                    saveCart(currentCart);
+
+                    saveCart(
+                        currentCart
+                    );
+
 
                     displayCart();
 
                     displayCheckout();
 
                     updateCartCount();
+
+                    updateCartSummary();
                 }
             );
         });
 
+
+    /* DECREASE */
 
     container
         .querySelectorAll(".decrease")
@@ -1056,38 +1358,55 @@ function displayCart() {
                 function() {
 
                     const index =
-                        Number(button.dataset.index);
+                        Number(
+                            button.dataset.index
+                        );
+
 
                     const currentCart =
                         migrateCart();
 
+
                     if (
-                        currentCart[index].quantity > 1
+                        currentCart[index]
+                            .quantity > 1
                     ) {
 
-                        currentCart[index].quantity--;
+                        currentCart[index]
+                            .quantity--;
 
                     } else {
 
-                        currentCart.splice(index, 1);
+                        currentCart.splice(
+                            index,
+                            1
+                        );
                     }
 
-                    saveCart(currentCart);
+
+                    saveCart(
+                        currentCart
+                    );
+
 
                     displayCart();
 
                     displayCheckout();
 
                     updateCartCount();
+
+                    updateCartSummary();
                 }
             );
         });
 
 
-    /* Remove buttons */
+    /* REMOVE */
 
     container
-        .querySelectorAll(".remove-cart-item")
+        .querySelectorAll(
+            ".remove-cart-item"
+        )
         .forEach(function(button) {
 
             button.addEventListener(
@@ -1095,23 +1414,37 @@ function displayCart() {
                 function() {
 
                     const index =
-                        Number(button.dataset.index);
+                        Number(
+                            button.dataset.index
+                        );
+
 
                     const currentCart =
                         migrateCart();
 
-                    currentCart.splice(index, 1);
 
-                    saveCart(currentCart);
+                    currentCart.splice(
+                        index,
+                        1
+                    );
+
+
+                    saveCart(
+                        currentCart
+                    );
+
 
                     displayCart();
 
                     displayCheckout();
 
                     updateCartCount();
+
+                    updateCartSummary();
                 }
             );
         });
+
 
     updateCartSummary();
 }
@@ -1126,180 +1459,180 @@ function updateCartSummary() {
     const cart =
         migrateCart();
 
+
     const total =
         calculateCartTotal();
 
+
     const itemCount =
-        cart.reduce(function(sum, item) {
+        cart.reduce(
+            function(sum, item) {
 
-            return sum +
-                Number(item.quantity || 0);
+                return sum +
+                    Number(
+                        item.quantity || 0
+                    );
 
-        }, 0);
-
-
-    /* Items */
-
-    const itemElements =
-        document.querySelectorAll(
-            "#cart-items-count, .cart-items-count"
+            },
+            0
         );
 
-    itemElements.forEach(function(element) {
-
-        element.textContent =
-            itemCount;
-    });
-
-
-    /* Total */
-
-    const totalElements =
-        document.querySelectorAll(
-            "#cart-total-price, .cart-total-price, .total-price"
-        );
-
-    totalElements.forEach(function(element) {
-
-        element.textContent =
-            formatPrice(total);
-    });
-
-
-    /* Replace old Contact for Price text */
 
     document
         .querySelectorAll(
-            ".cart-summary, .order-summary, .cart-total, .summary"
+            "#cart-items-count, .cart-items-count"
         )
-        .forEach(function(section) {
+        .forEach(function(element) {
 
-            const textNodes =
-                section.querySelectorAll("*");
+            element.textContent =
+                itemCount;
+        });
 
-            textNodes.forEach(function(element) {
 
-                if (
-                    element.children.length === 0 &&
-                    element.textContent
-                        .trim()
-                        .toLowerCase()
-                        .includes("contact for price")
-                ) {
+    document
+        .querySelectorAll(
+            "#cart-total-price, .cart-total-price, .total-price"
+        )
+        .forEach(function(element) {
 
-                    if (
-                        element.classList.contains(
-                            "cart-total-price"
-                        ) ||
-                        element.id ===
-                            "cart-total-price"
-                    ) {
-                        element.textContent =
-                            formatPrice(total);
-                    }
-                }
-            });
+            element.textContent =
+                formatPrice(total);
         });
 }
 
 
 /* =========================================================
-   CHECKOUT CONTAINER
+   CHECKOUT
 ========================================================= */
 
 function getCheckoutContainer() {
 
     return (
-        document.getElementById("checkout-items") ||
-        document.querySelector(".checkout-items") ||
-        document.querySelector("[data-checkout-items]") ||
-        document.querySelector(".checkout-order-items")
+        document.getElementById(
+            "checkout-items"
+        ) ||
+
+        document.querySelector(
+            ".checkout-items"
+        ) ||
+
+        document.querySelector(
+            "[data-checkout-items]"
+        ) ||
+
+        document.querySelector(
+            ".checkout-order-items"
+        )
     );
 }
 
-
-/* =========================================================
-   DISPLAY CHECKOUT
-========================================================= */
 
 function displayCheckout() {
 
     const container =
         getCheckoutContainer();
 
+
     if (!container) {
         return;
     }
 
+
     const cart =
         migrateCart();
 
+
     container.innerHTML = "";
+
 
     if (cart.length === 0) {
 
         container.innerHTML =
-            '<p>Your cart is empty.</p>';
+            "<p>Your cart is empty.</p>";
 
         updateCheckoutTotal();
 
         return;
     }
 
-    cart.forEach(function(item) {
 
-        const row =
-            document.createElement("div");
+    cart.forEach(
+        function(item) {
 
-        row.className =
-            "checkout-item";
+            const row =
+                document.createElement(
+                    "div"
+                );
 
-        const subtotal =
-            Number(item.price) *
-            Number(item.quantity || 0);
 
-        row.innerHTML = `
+            row.className =
+                "checkout-item";
 
-            <div>
+
+            const subtotal =
+                Number(item.price) *
+                Number(
+                    item.quantity || 0
+                );
+
+
+            row.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ${escapeHtml(
+                            item.productName
+                        )}
+                    </strong>
+
+                    ${
+                        item.storage !==
+                        "Standard"
+
+                            ? `
+                                <span>
+                                    ${escapeHtml(
+                                        item.storage
+                                    )}
+                                </span>
+                              `
+                            : ""
+                    }
+
+                    <small>
+                        × ${Number(
+                            item.quantity || 1
+                        )}
+                    </small>
+
+                </div>
+
 
                 <strong>
-                    ${escapeHtml(item.productName)}
+                    ${formatPrice(
+                        subtotal
+                    )}
                 </strong>
+            `;
 
-                ${
-                    item.storage !== "Standard"
-                        ? `<span>
-                            ${escapeHtml(item.storage)}
-                           </span>`
-                        : ""
-                }
 
-                <small>
-                    × ${Number(item.quantity || 1)}
-                </small>
+            container.appendChild(
+                row
+            );
+        }
+    );
 
-            </div>
-
-            <strong>
-                ${formatPrice(subtotal)}
-            </strong>
-        `;
-
-        container.appendChild(row);
-    });
 
     updateCheckoutTotal();
 }
 
 
-/* =========================================================
-   CHECKOUT TOTAL
-========================================================= */
-
 function updateCheckoutTotal() {
 
     const total =
         calculateCartTotal();
+
 
     document
         .querySelectorAll(
@@ -1310,36 +1643,11 @@ function updateCheckoutTotal() {
             element.textContent =
                 formatPrice(total);
         });
-
-
-    document
-        .querySelectorAll(
-            ".checkout-summary, .order-summary"
-        )
-        .forEach(function(section) {
-
-            section
-                .querySelectorAll("*")
-                .forEach(function(element) {
-
-                    if (
-                        element.children.length === 0 &&
-                        element.textContent
-                            .trim()
-                            .toLowerCase()
-                            .includes("contact for price")
-                    ) {
-
-                        element.textContent =
-                            formatPrice(total);
-                    }
-                });
-        });
 }
 
 
 /* =========================================================
-   CHECKOUT WHATSAPP
+   CART WHATSAPP
 ========================================================= */
 
 function setupCartWhatsApp() {
@@ -1349,72 +1657,101 @@ function setupCartWhatsApp() {
             "#cart-whatsapp, .cart-whatsapp, .checkout-whatsapp"
         );
 
-    buttons.forEach(function(button) {
 
-        button.onclick = function(event) {
+    buttons.forEach(
+        function(button) {
 
-            event.preventDefault();
+            button.onclick =
+                function(event) {
 
-            const cart =
-                migrateCart();
+                    event.preventDefault();
 
-            if (!cart.length) {
 
-                alert("Your cart is empty.");
+                    const cart =
+                        migrateCart();
 
-                return;
-            }
 
-            let message =
-                "Hi 4LJTek, I'd like to place this order:%0A%0A";
+                    if (!cart.length) {
 
-            cart.forEach(function(item) {
+                        alert(
+                            "Your cart is empty."
+                        );
 
-                message +=
-                    "• " +
-                    item.productName;
+                        return;
+                    }
 
-                if (
-                    item.storage !== "Standard"
-                ) {
+
+                    let message =
+                        "Hi 4LJTek, I'd like to place this order:\n\n";
+
+
+                    cart.forEach(
+                        function(item) {
+
+                            message +=
+                                "• " +
+                                item.productName;
+
+
+                            if (
+                                item.storage !==
+                                "Standard"
+                            ) {
+
+                                message +=
+                                    " — " +
+                                    item.storage;
+                            }
+
+
+                            message +=
+                                " × " +
+                                item.quantity;
+
+
+                            if (
+                                item.price !==
+                                    null &&
+                                item.price !==
+                                    undefined
+                            ) {
+
+                                message +=
+                                    " — " +
+                                    formatPrice(
+                                        item.price
+                                    );
+                            }
+
+
+                            message += "\n";
+                        }
+                    );
+
 
                     message +=
-                        " — " +
-                        item.storage;
-                }
+                        "\nTotal: " +
+                        formatPrice(
+                            calculateCartTotal()
+                        );
 
-                message +=
-                    " × " +
-                    item.quantity;
 
-                if (
-                    item.price !== null &&
-                    item.price !== undefined
-                ) {
+                    const url =
+                        "https://api.whatsapp.com/send?phone=" +
+                        WHATSAPP_NUMBER +
+                        "&text=" +
+                        encodeURIComponent(
+                            message
+                        );
 
-                    message +=
-                        " — " +
-                        formatPrice(item.price);
-                }
 
-                message += "%0A";
-            });
-
-            message +=
-                "%0ATotal: " +
-                formatPrice(
-                    calculateCartTotal()
-                );
-
-            const url =
-                "https://api.whatsapp.com/send?phone=" +
-                WHATSAPP_NUMBER +
-                "&text=" +
-                message;
-
-            window.open(url, "_blank");
-        };
-    });
+                    window.open(
+                        url,
+                        "_blank"
+                    );
+                };
+        }
+    );
 }
 
 
@@ -1450,28 +1787,34 @@ function setupClearCart() {
         )
         .forEach(function(button) {
 
-            button.onclick = function(event) {
+            button.onclick =
+                function(event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                if (
-                    !confirm(
-                        "Are you sure you want to clear your cart?"
-                    )
-                ) {
-                    return;
-                }
 
-                localStorage.removeItem(
-                    CART_KEY
-                );
+                    if (
+                        !confirm(
+                            "Are you sure you want to clear your cart?"
+                        )
+                    ) {
+                        return;
+                    }
 
-                displayCart();
 
-                displayCheckout();
+                    localStorage.removeItem(
+                        CART_KEY
+                    );
 
-                updateCartCount();
-            };
+
+                    displayCart();
+
+                    displayCheckout();
+
+                    updateCartCount();
+
+                    updateCartSummary();
+                };
         });
 }
 
@@ -1483,21 +1826,45 @@ function setupClearCart() {
 function escapeHtml(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 }
 
 
 /* =========================================================
-   START EVERYTHING
+   START 4LJTEK
 ========================================================= */
 
 function start4LJTek() {
 
+    /* FIRST:
+       repair old cart data */
+
     migrateCart();
+
 
     setupMobileMenu();
 
@@ -1528,6 +1895,10 @@ function start4LJTek() {
     setupCartCall();
 }
 
+
+/* =========================================================
+   STARTUP
+========================================================= */
 
 if (
     document.readyState === "loading"
