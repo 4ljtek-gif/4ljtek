@@ -17,7 +17,10 @@
         href="css/style.css"
     >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -30,6 +33,7 @@
         rel="stylesheet"
     >
 
+
     <style>
 
         /* ==========================================
@@ -37,22 +41,36 @@
         ========================================== */
 
         .cart-page {
+
             max-width: 1100px;
+
             margin: 0 auto;
-            padding: 70px 25px 90px;
+
+            padding:
+                70px 25px 90px;
         }
 
+
         .cart-page h1 {
+
             font-size: 56px;
+
             font-weight: 800;
+
             line-height: 1;
+
             letter-spacing: -3px;
+
             margin-bottom: 15px;
         }
 
+
         .cart-subtitle {
+
             font-size: 19px;
+
             color: #777;
+
             margin-bottom: 45px;
         }
 
@@ -62,12 +80,20 @@
         ========================================== */
 
         #empty-cart {
+
             text-align: center;
+
             padding: 70px 20px;
+
             background: #f7f7f7;
-            border: 1px solid #e5e5e5;
+
+            border:
+                1px solid #e5e5e5;
+
             border-radius: 22px;
+
             color: #777;
+
             font-size: 18px;
         }
 
@@ -77,18 +103,29 @@
         ========================================== */
 
         #cart-items {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 18px;
         }
 
+
         .cart-item {
+
             display: grid;
-            grid-template-columns: 150px 1fr;
+
+            grid-template-columns:
+                150px 1fr;
+
             gap: 25px;
 
             background: #f7f7f7;
-            border: 1px solid #e2e2e2;
+
+            border:
+                1px solid #e2e2e2;
+
             border-radius: 22px;
 
             padding: 20px;
@@ -100,7 +137,9 @@
         /* PRODUCT IMAGE */
 
         .cart-product-image {
+
             width: 150px;
+
             height: 150px;
 
             object-fit: contain;
@@ -110,79 +149,146 @@
             border-radius: 16px;
 
             padding: 12px;
+
+            box-sizing: border-box;
         }
 
 
         /* PRODUCT INFO */
 
         .cart-product-info h3 {
+
             font-size: 25px;
+
             font-weight: 800;
-            margin: 0 0 18px;
+
+            margin:
+                0 0 10px;
         }
 
 
-        /* QUANTITY */
+        .cart-unit-price {
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            color: #111;
+
+            margin:
+                0 0 6px;
+        }
+
+
+        .cart-subtotal {
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            color: #666;
+
+            margin:
+                0 0 18px;
+        }
+
+
+        /* ==========================================
+           QUANTITY
+        ========================================== */
 
         .cart-quantity {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
 
             margin-bottom: 18px;
         }
 
+
         .quantity-btn {
+
             width: 46px;
+
             height: 46px;
 
-            border: 1px solid #ccc;
+            border:
+                1px solid #ccc;
+
             border-radius: 12px;
 
             background: #fff;
+
             color: #111;
 
             font-size: 24px;
+
             font-weight: 600;
 
             cursor: pointer;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             transition: .2s ease;
         }
 
+
         .quantity-btn:hover {
-            transform: translateY(-2px);
+
+            transform:
+                translateY(-2px);
         }
 
+
         .quantity-number {
+
             min-width: 35px;
+
             text-align: center;
 
             font-size: 20px;
+
             font-weight: 800;
         }
 
 
-        /* REMOVE */
+        /* ==========================================
+           REMOVE
+        ========================================== */
 
         .remove-cart-btn {
-            padding: 11px 18px;
+
+            padding:
+                11px 18px;
 
             border: 0;
+
             border-radius: 10px;
 
             background: #111;
+
             color: #fff;
 
             font-family: inherit;
+
             font-size: 14px;
+
             font-weight: 700;
 
             cursor: pointer;
+        }
+
+
+        .remove-cart-btn:hover {
+
+            background: #333;
         }
 
 
@@ -191,7 +297,10 @@
         ========================================== */
 
         #cart-summary {
-            background: #111 !important;
+
+            background:
+                #111 !important;
+
             color: #fff;
 
             border-radius: 22px;
@@ -201,21 +310,31 @@
             margin-top: 30px !important;
         }
 
+
         #cart-summary h3 {
+
             font-size: 29px;
+
             font-weight: 800;
 
-            margin: 0 0 20px;
+            margin:
+                0 0 20px;
         }
+
 
         #cart-summary p {
+
             font-size: 18px;
+
             color: #ddd;
 
-            margin: 10px 0;
+            margin:
+                10px 0;
         }
 
+
         #cart-summary strong {
+
             color: #fff;
         }
 
@@ -225,24 +344,34 @@
         ========================================== */
 
         #cart-summary .product-actions {
+
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                1fr 1fr;
 
             gap: 12px;
 
             margin-top: 28px;
         }
 
-        #cart-summary .product-actions button,
-        #checkout-btn {
+
+        #cart-summary
+        .product-actions button,
+
+        #cart-summary
+        .product-actions a {
+
             min-height: 55px;
 
             border: 0;
+
             border-radius: 13px;
 
             font-family: inherit;
+
             font-size: 15px;
+
             font-weight: 800;
 
             cursor: pointer;
@@ -250,7 +379,9 @@
             text-decoration: none;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             box-sizing: border-box;
@@ -260,49 +391,86 @@
         /* CHECKOUT */
 
         #checkout-btn {
-            background: #fff;
-            color: #111;
+
+            background:
+                #fff;
+
+            color:
+                #111;
         }
 
+
         #checkout-btn:hover {
-            background: #f0f0f0;
+
+            background:
+                #f0f0f0;
         }
 
 
         /* WHATSAPP */
 
         #cart-whatsapp {
-            background: #25D366;
-            color: #fff;
+
+            background:
+                #25D366;
+
+            color:
+                #fff;
         }
 
 
         /* CALL */
 
         #cart-call {
-            background: #fff;
-            color: #111;
+
+            background:
+                #fff;
+
+            color:
+                #111;
         }
 
 
         /* CLEAR CART */
 
         #clear-cart {
-            margin-top: 18px;
 
-            padding: 12px 20px;
+            margin-top:
+                18px;
 
-            border: 1px solid #555 !important;
-            border-radius: 10px;
+            padding:
+                12px 20px;
 
-            background: transparent;
-            color: #fff;
+            border:
+                1px solid #555 !important;
 
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius:
+                10px;
 
-            cursor: pointer;
+            background:
+                transparent;
+
+            color:
+                #fff;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+        }
+
+
+        #clear-cart:hover {
+
+            background:
+                #222;
         }
 
 
@@ -313,68 +481,124 @@
         @media (max-width: 600px) {
 
             .cart-page {
-                padding: 50px 18px 70px;
+
+                padding:
+                    50px 18px 70px;
             }
+
 
             .cart-page h1 {
-                font-size: 45px;
-                letter-spacing: -2px;
+
+                font-size:
+                    45px;
+
+                letter-spacing:
+                    -2px;
             }
 
+
             .cart-subtitle {
-                font-size: 17px;
-                line-height: 1.5;
-                margin-bottom: 30px;
+
+                font-size:
+                    17px;
+
+                line-height:
+                    1.5;
+
+                margin-bottom:
+                    30px;
             }
 
 
             .cart-item {
-                grid-template-columns: 1fr;
 
-                gap: 18px;
+                grid-template-columns:
+                    1fr;
 
-                padding: 18px;
+                gap:
+                    18px;
 
-                border-radius: 20px;
+                padding:
+                    18px;
+
+                border-radius:
+                    20px;
             }
 
 
             .cart-product-image {
-                width: 100%;
-                height: 220px;
+
+                width:
+                    100%;
+
+                height:
+                    220px;
             }
 
 
             .cart-product-info h3 {
-                font-size: 23px;
-                margin-bottom: 15px;
+
+                font-size:
+                    23px;
+
+                margin-bottom:
+                    10px;
+            }
+
+
+            .cart-unit-price {
+
+                font-size:
+                    16px;
+            }
+
+
+            .cart-subtotal {
+
+                font-size:
+                    15px;
             }
 
 
             .cart-quantity {
-                margin-bottom: 16px;
+
+                margin-bottom:
+                    16px;
             }
 
 
             .quantity-btn {
-                width: 48px;
-                height: 48px;
+
+                width:
+                    48px;
+
+                height:
+                    48px;
             }
 
 
             #cart-summary {
-                padding: 25px;
-                border-radius: 20px;
+
+                padding:
+                    25px;
+
+                border-radius:
+                    20px;
             }
 
 
             #cart-summary h3 {
-                font-size: 25px;
+
+                font-size:
+                    25px;
             }
 
 
-            #cart-summary .product-actions {
-                grid-template-columns: 1fr;
+            #cart-summary
+            .product-actions {
+
+                grid-template-columns:
+                    1fr;
             }
 
         }
@@ -444,10 +668,17 @@
         Your Cart
     </h1>
 
+
     <p class="cart-subtitle">
         Review the products you've selected.
     </p>
 
+
+    <!--
+        IMPORTANT:
+        script.js controls everything inside
+        this container.
+    -->
 
     <div id="cart-items">
 
@@ -473,24 +704,31 @@
 
 
         <p>
+
             Items:
+
             <strong id="cart-count">
                 0
             </strong>
+
         </p>
 
 
         <p>
+
             Total:
+
             <strong id="cart-total">
-                Contact for Price
+                KSh 0
             </strong>
+
         </p>
 
 
         <div class="product-actions">
 
-            <!-- CHECKOUT BUTTON -->
+
+            <!-- CHECKOUT -->
 
             <a
                 href="checkout.html"
@@ -519,6 +757,7 @@
                 Call 4LJTek
             </button>
 
+
         </div>
 
 
@@ -528,6 +767,7 @@
         >
             Clear Cart
         </button>
+
 
     </div>
 
@@ -547,395 +787,12 @@
 </footer>
 
 
-<script src="js/script.js?v=4"></script>
-
-
-<!-- ==========================================
-     CART DISPLAY
-========================================== -->
-
-<script>
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const cartContainer =
-            document.getElementById("cart-items");
-
-        if (!cartContainer) {
-            return;
-        }
-
-
-        function getCart() {
-
-            try {
-
-                return JSON.parse(
-                    localStorage.getItem("4ljtekCart")
-                ) || [];
-
-            } catch (error) {
-
-                return [];
-
-            }
-
-        }
-
-
-        function saveCart(cart) {
-
-            localStorage.setItem(
-                "4ljtekCart",
-                JSON.stringify(cart)
-            );
-
-        }
-
-
-        /*
-         * Product image mapping
-         */
-
-        const images = {
-
-            "iPhone 17":
-                "images/iphone17.jpg",
-
-            "iPhone 17 Air":
-                "images/iphone17air.jpg",
-
-            "iPhone 17 Pro":
-                "images/iphone17pro.jpg",
-
-            "iPhone 17 Pro Max":
-                "images/iphone17promax.jpg",
-
-            "Samsung Galaxy S25":
-                "images/s25.jpg",
-
-            "Samsung Galaxy S25+":
-                "images/s25plus.jpg",
-
-            "Samsung Galaxy S25 Ultra":
-                "images/s25ultra.jpg",
-
-            "Samsung Galaxy S26":
-                "images/s26.jpg",
-
-            "Samsung Galaxy S26+":
-                "images/s26plus.jpg",
-
-            "Samsung Galaxy S26 Ultra":
-                "images/s26ultra.jpg",
-
-            "Google Pixel 10":
-                "images/pixel10.jpg",
-
-            "Google Pixel 10 Pro":
-                "images/pixel10pro.jpg",
-
-            "Google Pixel 10 Pro XL":
-                "images/pixel10proxl.jpg",
-
-            "Google Pixel 10 Pro Fold":
-                "images/pixel10profold.jpg",
-
-            "Google Pixel 11":
-                "images/pixel11.jpg",
-
-            "Google Pixel 11 Pro":
-                "images/pixel11pro.jpg",
-
-            "Google Pixel 11 Pro XL":
-                "images/pixel11proxl.jpg",
-
-            "Google Pixel 11 Pro Fold":
-                "images/pixel11profold.jpg",
-
-            "PlayStation 5":
-                "images/ps5.jpg",
-
-            "PlayStation 5 Digital Edition":
-                "images/ps5digital.jpg",
-
-            "PS5 Slim":
-                "images/ps5slim.jpg",
-
-            "PlayStation 5 Pro":
-                "images/ps5pro.jpg",
-
-            "DualSense Wireless Controller":
-                "images/dualsense.jpg",
-
-            "TCL Smart TVs":
-                "images/tcl.jpg"
-
-        };
-
-
-        function renderCart() {
-
-            const cart = getCart();
-
-            const summary =
-                document.getElementById("cart-summary");
-
-
-            if (cart.length === 0) {
-
-                cartContainer.innerHTML =
-                    '<p id="empty-cart">Your cart is empty.</p>';
-
-                if (summary) {
-                    summary.style.display = "none";
-                }
-
-                return;
-
-            }
-
-
-            if (summary) {
-                summary.style.display = "block";
-            }
-
-
-            cartContainer.innerHTML = "";
-
-
-            cart.forEach(function(item, index) {
-
-                const itemBox =
-                    document.createElement("div");
-
-                itemBox.className =
-                    "cart-item";
-
-
-                const image =
-                    images[item.name] ||
-                    "images/logo.png";
-
-
-                itemBox.innerHTML = `
-
-                    <img
-                        class="cart-product-image"
-                        src="${image}"
-                        alt="${item.name}"
-                    >
-
-                    <div class="cart-product-info">
-
-                        <h3>
-                            ${item.name}
-                        </h3>
-
-
-                        <div class="cart-quantity">
-
-                            <button
-                                type="button"
-                                class="quantity-btn"
-                                data-index="${index}"
-                                data-action="minus"
-                            >
-                                −
-                            </button>
-
-
-                            <span
-                                class="quantity-number"
-                            >
-                                ${item.quantity}
-                            </span>
-
-
-                            <button
-                                type="button"
-                                class="quantity-btn"
-                                data-index="${index}"
-                                data-action="plus"
-                            >
-                                +
-                            </button>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="remove-cart-btn"
-                            data-index="${index}"
-                        >
-                            Remove
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                cartContainer.appendChild(itemBox);
-
-            });
-
-
-            /* ==================================
-               QUANTITY BUTTONS
-            ================================== */
-
-            document
-                .querySelectorAll(".quantity-btn")
-                .forEach(function(button) {
-
-                    button.addEventListener(
-                        "click",
-                        function() {
-
-                            const index =
-                                Number(
-                                    button.dataset.index
-                                );
-
-                            const action =
-                                button.dataset.action;
-
-                            const cart = getCart();
-
-                            if (!cart[index]) {
-                                return;
-                            }
-
-
-                            if (
-                                action === "plus"
-                            ) {
-
-                                cart[index].quantity++;
-
-                            }
-
-
-                            if (
-                                action === "minus"
-                            ) {
-
-                                cart[index].quantity--;
-
-                                if (
-                                    cart[index].quantity <= 0
-                                ) {
-
-                                    cart.splice(
-                                        index,
-                                        1
-                                    );
-
-                                }
-
-                            }
-
-
-                            saveCart(cart);
-
-                            renderCart();
-
-                            updateCount();
-
-                        }
-                    );
-
-                });
-
-
-            /* ==================================
-               REMOVE
-            ================================== */
-
-            document
-                .querySelectorAll(".remove-cart-btn")
-                .forEach(function(button) {
-
-                    button.addEventListener(
-                        "click",
-                        function() {
-
-                            const index =
-                                Number(
-                                    button.dataset.index
-                                );
-
-                            const cart =
-                                getCart();
-
-                            cart.splice(index, 1);
-
-                            saveCart(cart);
-
-                            renderCart();
-
-                            updateCount();
-
-                        }
-                    );
-
-                });
-
-
-            updateCount();
-
-        }
-
-
-        function updateCount() {
-
-            const cart = getCart();
-
-            const total =
-                cart.reduce(
-                    function(sum, item) {
-                        return sum + item.quantity;
-                    },
-                    0
-                );
-
-
-            const count =
-                document.getElementById(
-                    "cart-count"
-                );
-
-            if (count) {
-                count.textContent = total;
-            }
-
-
-            document
-                .querySelectorAll(
-                    'a[href="cart.html"]'
-                )
-                .forEach(function(link) {
-
-                    link.textContent =
-                        total > 0
-                            ? "Cart (" + total + ")"
-                            : "Cart";
-
-                });
-
-        }
-
-
-        renderCart();
-
-    }
-);
-
-</script>
+<!--
+    ONLY ONE CART JAVASCRIPT SYSTEM.
+    The old duplicate cart script has been removed.
+-->
+
+<script src="js/script.js?v=12"></script>
 
 
 </body>
