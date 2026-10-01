@@ -475,6 +475,33 @@
 
 
         /* ==========================================
+           CART FOOTER LOGO
+        ========================================== */
+
+        footer .footer-logo {
+
+            margin-bottom:
+                28px;
+        }
+
+
+        footer .footer-logo img {
+
+            display: block;
+
+            width: 145px;
+
+            height: auto;
+
+            max-width: 100%;
+
+            margin: 0 auto;
+
+            object-fit: contain;
+        }
+
+
+        /* ==========================================
            MOBILE
         ========================================== */
 
@@ -599,6 +626,20 @@
 
                 grid-template-columns:
                     1fr;
+            }
+
+
+            footer .footer-logo {
+
+                margin-bottom:
+                    24px;
+            }
+
+
+            footer .footer-logo img {
+
+                width:
+                    120px;
             }
 
         }
@@ -750,12 +791,12 @@
 
             <!-- CALL -->
 
-            <a
-                href="tel:+254101984723"
+            <button
+                type="button"
                 id="cart-call"
             >
                 Call 4LJTek
-            </a>
+            </button>
 
 
         </div>
@@ -779,6 +820,16 @@
 ========================================== -->
 
 <footer>
+
+    <div class="footer-logo">
+
+        <img
+            src="images/logo.png"
+            alt="4LJTek"
+        >
+
+    </div>
+
 
     <p>
         © 2026 4LJTek. All Rights Reserved.
