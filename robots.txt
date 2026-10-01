@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://4ljtek-gif.github.io/4ljtek/sitemap.xml
