@@ -1889,7 +1889,7 @@ updateCheckoutTotal();
 
 window.location.href =
     whatsappUrl;
-    );
+});
 }
 
 
