@@ -1849,17 +1849,46 @@ function setupCheckoutForm() {
 
 
             const whatsappUrl =
-                "https://api.whatsapp.com/send?phone=" +
-                WHATSAPP_NUMBER +
-                "&text=" +
-                encodeURIComponent(
-                    message
-                );
+    "https://api.whatsapp.com/send?phone=" +
+    WHATSAPP_NUMBER +
+    "&text=" +
+    encodeURIComponent(
+        message
+    );
 
 
-            window.location.href =
-                whatsappUrl;
-        }
+/*
+    Clear the cart after the order
+    has been prepared for WhatsApp.
+*/
+
+localStorage.removeItem(
+    CART_KEY
+);
+
+
+/*
+    Refresh the cart and checkout
+    displays immediately.
+*/
+
+displayCart();
+
+displayCheckout();
+
+updateCartCount();
+
+updateCartSummary();
+
+updateCheckoutTotal();
+
+
+/*
+    Open WhatsApp with the order.
+*/
+
+window.location.href =
+    whatsappUrl;
     );
 }
 
